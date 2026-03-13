@@ -34,10 +34,12 @@ export function CookieToast() {
     <div
       style={{
         position: "fixed",
-        bottom: 24,
-        left: 24,
+        bottom: 16,
+        left: 16,
+        right: 16,
         zIndex: 9999,
-        maxWidth: 420,
+        width: "min(420px, calc(100vw - 32px))",
+        maxWidth: "calc(100vw - 32px)",
         borderRadius: 20,
         background: "rgba(255,255,255,0.95)",
         backdropFilter: "blur(24px)",

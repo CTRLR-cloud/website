@@ -16,7 +16,6 @@ function useMobileNav() {
 }
 
 const HeroScene3D = lazy(() => import("@/components/scenes/HeroScene3D"));
-const RoboticScene3D = lazy(() => import("@/components/scenes/RoboticScene3D"));
 
 /* ───────────────────────── DESIGN TOKENS ───────────────────────── */
 const T = {
@@ -139,28 +138,6 @@ const latestUpdates: { title: string; gradient: string; pattern: string; overlay
 ];
 
 
-/* ───────────────────────── ROBOTICS CAPABILITIES ───────────────────────── */
-const roboticsCapabilities = [
-  { name: "Teleoperation", desc: "Ultra-low latency remote control", color: "#4F46E5", stat: "12ms", statLabel: "Latency", detail: "Real-time robot control with haptic feedback across any distance. Sub-frame video streaming at 1080p@60fps with force feedback.", logs: ["handshake complete (12ms)", "video: 1080p @ 60fps streaming", "haptic: force feedback active", "status: OPERATIONAL"] },
-  { name: "Fleet Management", desc: "Multi-robot orchestration", color: "#0EA5E9", stat: "2,400+", statLabel: "Robots Online", detail: "Monitor, coordinate and deploy entire robot fleets from a single dashboard with real-time geolocation and task assignment.", logs: ["fleet_sync: 2,413 robots online", "zone_B: 340 units dispatched", "battery_alert: unit-892 (14%)", "task_queue: 1,204 pending"] },
-  { name: "Sensor Fusion", desc: "Multi-modal perception", color: "#10B981", stat: "6", statLabel: "Sensor Types", detail: "Combine LiDAR, cameras, IMU, GPS, force sensors and ToF into a unified spatial understanding layer.", logs: ["lidar: 300K points/sec", "cameras: 4x stereo calibrated", "imu: 200Hz sampling", "fusion: 3D map updated"] },
-  { name: "Path Planning", desc: "Autonomous navigation", color: "#F59E0B", stat: "99.7%", statLabel: "Success Rate", detail: "AI-powered obstacle avoidance and optimal route calculation in dynamic environments with moving objects.", logs: ["route: A→B optimized (3.2m)", "obstacle: human detected, rerouting", "clearance: 0.4m margin ok", "ETA: 12 seconds"] },
-  { name: "Manipulation", desc: "Precision arm control", color: "#EF4444", stat: "0.1mm", statLabel: "Precision", detail: "Sub-millimeter accuracy for industrial assembly, surgical assistance, and delicate material handling.", logs: ["gripper: force 2.4N applied", "position: target reached (±0.08mm)", "torque: within safe limits", "cycle: complete, resetting"] },
-  { name: "Computer Vision", desc: "Object detection & tracking", color: "#8B5CF6", stat: "120fps", statLabel: "Processing", detail: "Real-time object detection, semantic segmentation and 3D scene reconstruction running on edge GPUs.", logs: ["yolo_v9: 47 objects detected", "tracking: 12 dynamic targets", "segmentation: scene updated", "depth: stereo map computed"] },
-  { name: "Safety Systems", desc: "Collision avoidance", color: "#EC4899", stat: "<1ms", statLabel: "Response Time", detail: "Hardware-level emergency stops with predictive collision avoidance and configurable safety zones.", logs: ["zone_check: all clear", "proximity: nearest object 1.8m", "e_stop: armed, ready", "compliance: ISO 10218 verified"] },
-  { name: "Diagnostics", desc: "Predictive maintenance", color: "#06B6D4", stat: "97%", statLabel: "Fleet Uptime", detail: "Real-time health monitoring with ML-based failure prediction, automated part ordering and service scheduling.", logs: ["motor_temp: 42°C (nominal)", "bearing_wear: 12% (lifecycle ok)", "next_service: in 340 hours", "prediction: no failures expected"] },
-];
-
-/* ───────────────────────── WEB3 FEATURES ───────────────────────── */
-const web3Features = [
-  { name: "Data Marketplace", desc: "Trade robot telemetry data", color: "#F59E0B", stat: "1.2M", statLabel: "Datasets", detail: "Buy and sell high-quality robot training data, sensor recordings and simulation environments on a decentralized marketplace.", txs: ["0x8f3a…c721 → Purchased LiDAR dataset (500 MDR)", "0x2b7d…e412 → Listed manipulation training data", "0xa91c…f320 → Dataset verified by 3 validators"] },
-  { name: "Staking", desc: "Secure the network", color: "#10B981", stat: "12.4%", statLabel: "APY", detail: "Stake MDR tokens to become a validator, secure robot operations and earn proportional network rewards.", txs: ["0x4e2d…a891 → Staked 10,000 MDR", "0x7f1a…b234 → Rewards claimed: 124 MDR", "0xc3d8…e567 → Validator node registered"] },
-  { name: "Governance", desc: "Community-driven protocol", color: "#6366F1", stat: "847", statLabel: "Active Validators", detail: "Vote on protocol upgrades, fee structures, safety policies, and network parameters. One token, one voice.", txs: ["Proposal #47: Increase fleet cap → PASSED", "Proposal #48: New safety standard → VOTING", "0xd92f…c123 → Voted YES on Proposal #48"] },
-  { name: "Compute Credits", desc: "Decentralized GPU resources", color: "#3B82F6", stat: "50K+", statLabel: "GPU Hours/day", detail: "Access distributed GPU/TPU compute for robot AI model training, inference and real-time simulation.", txs: ["0xb67e…d901 → Reserved 100 GPU-hrs (A100)", "0x1a4c…f678 → Training job completed", "0xe58d…a234 → Compute credit purchased"] },
-  { name: "Digital Twins", desc: "On-chain robot identity", color: "#8B5CF6", stat: "24K", statLabel: "Registered Robots", detail: "Verifiable on-chain records of robot capabilities, maintenance history, operational certifications and ownership.", txs: ["0x6c3b…e789 → Robot #8847 registered", "0x9d2a…c456 → Certification updated", "0xf71e…b012 → Ownership transferred"] },
-  { name: "Smart Contracts", desc: "Automated SLAs & payments", color: "#EC4899", stat: "340K", statLabel: "Txns/day", detail: "Automated service-level agreements, milestone-based payments and insurance for robot operations.", txs: ["0x3f8d…a567 → SLA deployed (warehouse ops)", "0x82c1…d890 → Milestone payment: 2,000 MDR", "0xab4e…f123 → Insurance claim processed"] },
-];
-
 /* ───────────────────────── NETWORK STATS ───────────────────────── */
 const networkStats = [
   { label: "Robots connected", value: "1,200+" },
@@ -173,32 +150,9 @@ const networkStats = [
    PAGE COMPONENT
    ═══════════════════════════════════════════════════════════════════ */
 export default function HomePage() {
-  const [activeProductTab, setActiveProductTab] = useState<"robotics" | "web3">("robotics");
-  const [activeRobotIdx, setActiveRobotIdx] = useState(0);
-  const [activeWeb3Idx, setActiveWeb3Idx] = useState(0);
-  const [robotPaused, setRobotPaused] = useState(false);
-  const [web3Paused, setWeb3Paused] = useState(false);
   const [activeRoadmapIdx, setActiveRoadmapIdx] = useState(roadmapDates.length - 1);
   const timelineRef = useRef<HTMLDivElement>(null);
   const mobileNav = useMobileNav();
-
-  /* Auto-rotate robotics capabilities */
-  useEffect(() => {
-    if (robotPaused) return;
-    const id = setInterval(() => {
-      setActiveRobotIdx((p) => (p + 1) % roboticsCapabilities.length);
-    }, 3500);
-    return () => clearInterval(id);
-  }, [robotPaused]);
-
-  /* Auto-rotate web3 features */
-  useEffect(() => {
-    if (web3Paused) return;
-    const id = setInterval(() => {
-      setActiveWeb3Idx((p) => (p + 1) % web3Features.length);
-    }, 3500);
-    return () => clearInterval(id);
-  }, [web3Paused]);
 
 
   const sectionBorder = `1px solid ${T.border}`;
@@ -309,10 +263,7 @@ export default function HomePage() {
         <div style={{ maxWidth: T.maxW, margin: "0 auto" }}>
           <Reveal>
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 40 }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span className="pulse-dot" />
-                <h2 style={{ fontSize: 20, fontWeight: 500, color: T.text }}>Trusted by leading developers and enterprises</h2>
-              </div>
+              <h2 style={{ fontSize: 20, fontWeight: 500, color: T.text }}>Trusted by leading developers and enterprises</h2>
               <Link href="/research" className="link-underline" style={{ fontSize: 14, color: T.muted, textDecoration: "none" }}>Read all stories</Link>
             </div>
           </Reveal>
@@ -352,208 +303,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ════════════ PRODUCT SHOWCASE (Robotics / Web3 tabs) ════════════ */}
-      <section style={{ maxWidth: T.maxW, margin: "0 auto", padding: "0 24px 80px", marginTop: 16 }}>
-        <div style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden" }}>
-          {/* Tab bar */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 24px", borderBottom: sectionBorder }}>
-            <div style={{ display: "flex", gap: 4 }}>
-              {(["robotics", "web3"] as const).map((tab) => (
-                <button
-                  key={tab}
-                  onClick={() => setActiveProductTab(tab)}
-                  style={{
-                    padding: "8px 18px",
-                    borderRadius: T.radiusPill,
-                    fontSize: 14,
-                    fontWeight: 500,
-                    border: "none",
-                    cursor: "pointer",
-                    background: activeProductTab === tab ? "#fff" : "transparent",
-                    color: activeProductTab === tab ? T.text : T.muted,
-                    boxShadow: activeProductTab === tab ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
-                    transition: "all 0.2s",
-                  }}
-                >
-                  {tab === "robotics" ? (<><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" style={{display:"inline",verticalAlign:"-2px",marginRight:6}}><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="8.5" cy="16" r="1.5"/><circle cx="15.5" cy="16" r="1.5"/><path d="M12 3v4"/><path d="M8 7h8"/><circle cx="12" cy="3" r="1"/></svg>Robotics</>) : (<><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" style={{display:"inline",verticalAlign:"-2px",marginRight:6}}><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Web3</>)}
-                </button>
-              ))}
-            </div>
-            <div style={{ fontSize: 14, color: T.muted, textAlign: "right" }}>
-              {activeProductTab === "robotics" ? (
-                <span><strong style={{ color: T.text }}>Robot Operations</strong><br />Teleoperate, manage and scale robot fleets globally</span>
-              ) : (
-                <span><strong style={{ color: T.text }}>Decentralized Network</strong><br />Stake, trade data, and govern the open robotics economy</span>
-              )}
-            </div>
-          </div>
-
-          {/* Content */}
-          <div style={{ padding: 24, minHeight: 460 }}>
-            {activeProductTab === "robotics" ? (() => {
-              const item = roboticsCapabilities[activeRobotIdx];
-              return (
-                <div className="el-g-split">
-                  {/* Left: Capabilities list */}
-                  <div
-                    style={{ display: "flex", flexDirection: "column", gap: 2 }}
-                    onMouseEnter={() => setRobotPaused(true)}
-                    onMouseLeave={() => setRobotPaused(false)}
-                  >
-                    {roboticsCapabilities.map((cap, i) => (
-                      <div
-                        key={cap.name}
-                        onClick={() => setActiveRobotIdx(i)}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 12,
-                          padding: "10px 14px",
-                          borderRadius: 12,
-                          background: activeRobotIdx === i ? "#fff" : "transparent",
-                          boxShadow: activeRobotIdx === i ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
-                          transition: "background 0.2s, box-shadow 0.2s",
-                          cursor: "pointer",
-                        }}
-                      >
-                        <div style={{ width: 36, height: 36, borderRadius: "50%", background: cap.color, flexShrink: 0, opacity: activeRobotIdx === i ? 1 : 0.5, transition: "opacity 0.2s" }} />
-                        <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: 14, fontWeight: 500, color: activeRobotIdx === i ? T.text : T.muted }}>{cap.name}</div>
-                        </div>
-                        <div className="el-desktop-only" style={{ fontSize: 13, color: T.muted2, textAlign: "right" }}>{cap.desc}</div>
-                        {activeRobotIdx === i && (
-                          <div style={{
-                            width: 6, height: 6, borderRadius: "50%",
-                            background: cap.color,
-                            boxShadow: `0 0 8px ${cap.color}`,
-                            animation: "pulse 1.5s ease-in-out infinite",
-                          }} />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  {/* Right: Live console panel */}
-                  <div style={{ background: "#fff", borderRadius: T.radius, border: sectionBorder, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-                    {/* Console header */}
-                    <div style={{ padding: "12px 20px", borderBottom: sectionBorder, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: "50%", background: "#34d399", boxShadow: "0 0 6px #34d399" }} />
-                        <span style={{ fontSize: 12, fontWeight: 600, color: T.text, letterSpacing: "0.05em" }}>LIVE</span>
-                      </div>
-                      <span style={{ fontSize: 12, color: T.muted2 }}>{item.name}</span>
-                    </div>
-                    {/* Stat display */}
-                    <div style={{ padding: "24px 20px 16px", borderBottom: sectionBorder }}>
-                      <div style={{ fontSize: 42, fontWeight: 700, letterSpacing: "-0.03em", color: T.text, lineHeight: 1 }}>{item.stat}</div>
-                      <div style={{ fontSize: 13, color: T.muted2, marginTop: 6 }}>{item.statLabel}</div>
-                    </div>
-                    {/* Detail text */}
-                    <div style={{ padding: "16px 20px", borderBottom: sectionBorder }}>
-                      <p style={{ fontSize: 14, lineHeight: 1.6, color: T.muted }}>{item.detail}</p>
-                    </div>
-                    {/* System log */}
-                    <div style={{ padding: "12px 20px", flex: 1, background: "#fafafa" }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: T.muted2, marginBottom: 8, letterSpacing: "0.05em" }}>SYSTEM LOG</div>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-                        {item.logs.map((log, li) => (
-                          <div key={li} style={{ fontSize: 12, fontFamily: "var(--font-geist-mono), monospace", color: T.muted, display: "flex", gap: 8 }}>
-                            <span style={{ color: T.muted2, flexShrink: 0 }}>{`>`}</span>
-                            <span>{log}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })() : (() => {
-              const item = web3Features[activeWeb3Idx];
-              return (
-                <div className="el-g-split">
-                  {/* Left: Web3 features list */}
-                  <div
-                    style={{ display: "flex", flexDirection: "column", gap: 2 }}
-                    onMouseEnter={() => setWeb3Paused(true)}
-                    onMouseLeave={() => setWeb3Paused(false)}
-                  >
-                    {web3Features.map((feat, i) => (
-                      <div
-                        key={feat.name}
-                        onClick={() => setActiveWeb3Idx(i)}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 12,
-                          padding: "12px 14px",
-                          borderRadius: 12,
-                          background: activeWeb3Idx === i ? "#fff" : "transparent",
-                          boxShadow: activeWeb3Idx === i ? "0 1px 3px rgba(0,0,0,0.06)" : "none",
-                          transition: "background 0.2s, box-shadow 0.2s",
-                          cursor: "pointer",
-                        }}
-                      >
-                        <div style={{ width: 36, height: 36, borderRadius: "50%", background: feat.color, flexShrink: 0, opacity: activeWeb3Idx === i ? 1 : 0.5, transition: "opacity 0.2s" }} />
-                        <div style={{ flex: 1 }}>
-                          <div style={{ fontSize: 14, fontWeight: 500, color: activeWeb3Idx === i ? T.text : T.muted }}>{feat.name}</div>
-                        </div>
-                        <div style={{ fontSize: 13, color: T.muted2, textAlign: "right" }}>{feat.desc}</div>
-                        {activeWeb3Idx === i && (
-                          <div style={{
-                            width: 6, height: 6, borderRadius: "50%",
-                            background: feat.color,
-                            boxShadow: `0 0 8px ${feat.color}`,
-                          }} />
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                  {/* Right: Network dashboard panel */}
-                  <div style={{ background: "#fff", borderRadius: T.radius, border: sectionBorder, display: "flex", flexDirection: "column", overflow: "hidden" }}>
-                    {/* Header */}
-                    <div style={{ padding: "12px 20px", borderBottom: sectionBorder, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: T.text, letterSpacing: "0.05em" }}>MODULR NETWORK</span>
-                      </div>
-                      <span style={{ fontSize: 12, color: T.muted2 }}>{item.name}</span>
-                    </div>
-                    {/* Stat display */}
-                    <div style={{ padding: "24px 20px 16px", borderBottom: sectionBorder }}>
-                      <div style={{ fontSize: 42, fontWeight: 700, letterSpacing: "-0.03em", color: T.text, lineHeight: 1 }}>{item.stat}</div>
-                      <div style={{ fontSize: 13, color: T.muted2, marginTop: 6 }}>{item.statLabel}</div>
-                    </div>
-                    {/* Detail text */}
-                    <div style={{ padding: "16px 20px", borderBottom: sectionBorder }}>
-                      <p style={{ fontSize: 14, lineHeight: 1.6, color: T.muted }}>{item.detail}</p>
-                    </div>
-                    {/* Recent transactions */}
-                    <div style={{ padding: "12px 20px", flex: 1, background: "#fafafa" }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: T.muted2, marginBottom: 8, letterSpacing: "0.05em" }}>RECENT ACTIVITY</div>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-                        {item.txs.map((tx, ti) => (
-                          <div key={ti} style={{ fontSize: 12, fontFamily: "var(--font-geist-mono), monospace", color: T.muted, padding: "6px 10px", borderRadius: 6, background: "#fff", border: sectionBorder }}>
-                            {tx}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })()}
-          </div>
-
-          {/* Bottom bar */}
-          <div style={{ padding: "12px 24px", borderTop: sectionBorder, display: "flex", alignItems: "center" }}>
-            <Link href="https://docs.modulr.cloud" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 14, color: T.muted, textDecoration: "none" }}>
-              Explore platform docs <span>→</span>
-            </Link>
-            <Link href="https://app.modulr.cloud" target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", height: 40, padding: "0 18px", background: T.accent, color: T.accentFg, borderRadius: T.radiusPill, fontSize: 14, fontWeight: 600, textDecoration: "none", marginLeft: 12 }}>
-              Get started
-            </Link>
-            </div>
-          </div>
-        </section>
 
       {/* ════════════ A NEW ROBOTICS PARADIGM ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
@@ -893,29 +642,142 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ════════════ ROBOTIC 3D VISUAL ════════════ */}
-      <section style={{ maxWidth: T.maxW, margin: "0 auto", padding: `${T.sectionPy} 24px`, position: "relative", overflow: "visible" }}>
-        <FloatingOrbs variant="purple" count={3} bleedX={260} />
-        <Reveal3D variant="zoom">
-        <div style={{ textAlign: "center", marginBottom: 40, position: "relative", zIndex: 1 }}>
-          <span className="glass-3d" style={{ display: "inline-block", padding: "6px 16px", borderRadius: T.radiusPill, fontSize: 13, fontWeight: 500, color: T.muted, marginBottom: 16 }}>
-            Robotic Intelligence
-          </span>
-          <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.1, maxWidth: 700, margin: "0 auto" }}>
-            Say hi to your<br />personal robot
-          </h2>
-          <p style={{ marginTop: 16, fontSize: 16, color: T.muted, maxWidth: 520, margin: "16px auto 0", lineHeight: 1.6 }}>
-            The future of human-robot interaction begins with a simple greeting. Meet the next generation of intelligent companions.
-          </p>
+      {/* ════════════ ROBOTIC FULLSCREEN SHOWCASE ════════════ */}
+      <section
+        style={{
+          position: "relative",
+          minHeight: "100vh",
+          overflow: "hidden",
+          background: "#050506",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: [
+              "radial-gradient(620px 320px at 50% 18%, rgba(242,180,0,0.14), transparent 60%)",
+              "radial-gradient(460px 260px at 24% 30%, rgba(99,102,241,0.14), transparent 60%)",
+              "radial-gradient(420px 220px at 78% 28%, rgba(236,72,153,0.10), transparent 60%)",
+              "linear-gradient(180deg, rgba(5,5,6,0.3) 0%, rgba(5,5,6,0.04) 22%, rgba(5,5,6,0.24) 100%)",
+            ].join(", "),
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.16,
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "120px 120px",
+            maskImage: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.8) 80%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.8) 80%, transparent 100%)",
+          }}
+        />
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+          }}
+        >
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "center center",
+            }}
+          >
+            <source src="/Robot_Video.mp4" type="video/mp4" />
+          </video>
         </div>
-        </Reveal3D>
-        <Tilt3D intensity={4} scale={1.01} style={{ borderRadius: T.radiusXl }}>
-          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "clamp(400px, 50vh, 560px)" }}>
-            <Suspense fallback={<div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: T.muted, fontSize: 14 }}>Loading 3D…</div>}>
-              <RoboticScene3D />
-            </Suspense>
-          </div>
-        </Tilt3D>
+
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              [
+                "linear-gradient(180deg, rgba(5,5,6,0.86) 0%, rgba(5,5,6,0.46) 24%, rgba(5,5,6,0.18) 52%, rgba(5,5,6,0.72) 100%)",
+                "radial-gradient(circle at 50% 42%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.12) 38%, rgba(0,0,0,0.42) 100%)",
+              ].join(", "),
+          }}
+        />
+
+        <div
+          style={{
+            position: "relative",
+            zIndex: 1,
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            padding: "clamp(72px, 9vw, 112px) 24px 36px",
+          }}
+        >
+          <Reveal3D variant="zoom">
+            <div style={{ textAlign: "center", maxWidth: 640 }}>
+              <h2
+                style={{
+                  fontSize: "clamp(34px, 4.8vw, 62px)",
+                  fontWeight: 480,
+                  letterSpacing: "-0.05em",
+                  lineHeight: 0.98,
+                  color: "#fff",
+                  textWrap: "balance",
+                  textShadow: "0 10px 28px rgba(0,0,0,0.28)",
+                }}
+              >
+                Say hi to your
+                <br />
+                personal robot
+              </h2>
+              <p
+                style={{
+                  margin: "18px auto 0",
+                  maxWidth: 500,
+                  fontSize: 15,
+                  lineHeight: 1.55,
+                  color: "rgba(255,255,255,0.62)",
+                  textShadow: "0 6px 18px rgba(0,0,0,0.22)",
+                }}
+              >
+                Premium telepresence for the next generation of human-robot interaction.
+              </p>
+              <div style={{ marginTop: 24, display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
+                <Link
+                  href="https://app.modulr.cloud"
+                  target="_blank"
+                  rel="noreferrer"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    height: 44,
+                    padding: "0 20px",
+                    borderRadius: 999,
+                    background: "#fff",
+                    color: "#111318",
+                    fontSize: 14,
+                    fontWeight: 600,
+                    textDecoration: "none",
+                    boxShadow: "0 12px 34px rgba(0,0,0,0.18)",
+                  }}
+                >
+                  Launch App
+                </Link>
+              </div>
+            </div>
+          </Reveal3D>
+        </div>
       </section>
 
       {/* ════════════ DEVELOPER SDK ════════════ */}

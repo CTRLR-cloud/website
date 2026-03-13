@@ -42,6 +42,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   // Default theme is light; pages can still toggle via html[data-theme].
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#ffffff",
   colorScheme: "light",
 };
