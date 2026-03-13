@@ -42,7 +42,7 @@ type CardVisual = {
 
 const cardVisuals: CardVisual[] = [
   {
-    /* Warm noisy gradient — like the ElevenLabs hero */
+    /* Warm noisy gradient */
     bg: "linear-gradient(145deg, #4a3f8a 0%, #6e5fa8 20%, #a18595 40%, #c49b7a 60%, #8a7bb5 80%, #5f6fb0 100%)",
     dark: true,
     pattern: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E\")",
@@ -62,7 +62,7 @@ const cardVisuals: CardVisual[] = [
     ),
   },
   {
-    /* Coral-red with wavy mesh (like ElevenLabs Government card) */
+    /* Coral-red with wavy mesh */
     bg: "linear-gradient(145deg, #dc6b55 0%, #c55a4b 30%, #8b3a3a 60%, #a54a4a 100%)",
     dark: true,
     pattern: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E\")",
@@ -89,7 +89,7 @@ const cardVisuals: CardVisual[] = [
     pattern: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E\")",
   },
   {
-    /* Cool indigo-violet (like ElevenLabs Expressive Mode) */
+    /* Cool indigo-violet */
     bg: "linear-gradient(145deg, #1e1b4b 0%, #312e81 30%, #4338ca 55%, #6366f1 80%, #818cf8 100%)",
     dark: true,
     svg: (
@@ -201,7 +201,7 @@ function CardVisualBlock({ visual, title, height = 420 }: { visual: CardVisual; 
   );
 }
 
-export default function ElevenResearchPage() {
+export default function ResearchPage() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const navLinks = [
@@ -257,7 +257,7 @@ export default function ElevenResearchPage() {
         </p>
       </section>
 
-      {/* FEATURED POST (full-width hero card like ElevenLabs blog) */}
+      {/* FEATURED POST */}
       {researchPosts.length > 0 && (
         <section style={{ padding: "0 24px 20px", maxWidth: T.maxW, margin: "0 auto" }}>
           <Link href={`/research/${researchPosts[0].slug}`} style={{ textDecoration: "none", color: "inherit", display: "block" }}>
@@ -314,7 +314,7 @@ export default function ElevenResearchPage() {
         </section>
       )}
 
-      {/* POSTS GRID (2-column like ElevenLabs blog) */}
+      {/* POSTS GRID */}
       <section style={{ maxWidth: T.maxW, margin: "0 auto" }} className="el-section-pad">
         <div className="el-g2">
           {researchPosts.slice(1).map((post, idx) => {

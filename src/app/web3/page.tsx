@@ -131,7 +131,7 @@ const faqs = [
   { q: "When is mainnet launching?", a: "Mainnet is targeted for Q2 2026. The testnet and explorer are already live. Early contributors can participate in the rewards program now." },
   { q: "Is Modulr compatible with other blockchains?", a: "Yes. Starting Q3 2026, MDR will be bridgeable to Ethereum, Base, and Solana. Smart contract SLAs for robot operations will be cross-chain compatible." },
   { q: "How do I become a validator?", a: "Install the Modulr validator client, stake the minimum MDR amount, and register your node. Full documentation is available at docs.modulr.cloud." },
-  { q: "What is ElevenCreative vs ElevenAgents equivalent?", a: "Modulr has two core tracks: Robotics (hardware fleet management, teleoperation, AI models) and Web3 (blockchain payments, staking, governance, data marketplace). Together they form the full Modulr ecosystem." },
+  { q: "What are Modulr's core product tracks?", a: "Modulr has two core tracks: Robotics (hardware fleet management, teleoperation, AI models) and Web3 (blockchain payments, staking, governance, data marketplace). Together they form the full Modulr ecosystem." },
   { q: "How does the data marketplace work?", a: "Robot operators can list datasets (LiDAR scans, manipulation recordings, navigation logs) on the marketplace. Buyers pay in MDR tokens, and data is verified on-chain before delivery." },
   { q: "Are APIs available?", a: "Yes. All Modulr capabilities — including data marketplace, staking, governance, and compute credits — are available via REST APIs and TypeScript/Python SDKs." },
 ];
@@ -587,7 +587,7 @@ export default function Web3Page() {
         </div>
       </section>
 
-      {/* ════════════ CROSS-CHAIN — ElevenAgents-style 2-col ════════════ */}
+      {/* ════════════ CROSS-CHAIN ════════════ */}
       <section style={{ borderTop: `1px dotted ${T.border}` }}>
         <div style={{ maxWidth: T.maxW, margin: "0 auto", padding: `${T.sectionPy} 24px` }}>
           <div style={{ fontSize: 14, fontWeight: 600, color: T.muted, letterSpacing: "0.04em", marginBottom: 60 }}>Cross-chain Protocol</div>
@@ -830,7 +830,7 @@ export default function Web3Page() {
         </div>
       </section>
 
-      {/* ════════════ DATA & STAKING — ElevenAgents-style 2-col ════════════ */}
+      {/* ════════════ DATA & STAKING ════════════ */}
       <section style={{ borderTop: `1px dotted ${T.border}`, background: T.surface }}>
         <div style={{ maxWidth: T.maxW, margin: "0 auto", padding: `${T.sectionPy} 24px` }}>
           <div style={{ fontSize: 14, fontWeight: 600, color: T.muted, letterSpacing: "0.04em", marginBottom: 60 }}>Fully customizable</div>
@@ -928,7 +928,7 @@ export default function Web3Page() {
       </section>
 
 
-      {/* ════════════ FULL-WIDTH EXPLORER MOCKUP (like Studio UI section) ════════════ */}
+      {/* ════════════ FULL-WIDTH EXPLORER MOCKUP ════════════ */}
       <section style={{ padding: `0 24px ${T.sectionPy}`, maxWidth: T.maxW, margin: "0 auto" }}>
         <div className="el-g-split" style={{ gap: 48, alignItems: "center", marginBottom: 48 }}>
           <div>
@@ -1395,7 +1395,7 @@ export default function Web3Page() {
         </div>
       </section>
 
-      {/* ════════════ EVERYTHING IN ONE PROTOCOL (like workspace cards) ════════════ */}
+      {/* ════════════ EVERYTHING IN ONE PROTOCOL ════════════ */}
       <section style={{ borderTop: sectionBorder, padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 56 }}>
           <h2 style={{ fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 500, letterSpacing: "-0.03em", marginBottom: 12 }}>

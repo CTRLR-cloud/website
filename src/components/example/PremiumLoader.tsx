@@ -67,7 +67,7 @@ export function PremiumLoader({
     if (!ctx) return;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // Mesh cluster lives in a right-side ellipse (like the reference image).
+    // Mesh cluster lives in a right-side ellipse.
     const clusterCx = size.w * 0.72;
     const clusterCy = size.h * 0.58;
     const clusterRx = size.w * 0.23;
@@ -210,7 +210,7 @@ export function PremiumLoader({
     };
   }, []);
 
-  // Loader in Antigravity style: keep it premium-dark even in light theme.
+  // Keep it premium-dark even in light theme.
   const palette = useMemo(() => {
     return {
       bg: "#000",

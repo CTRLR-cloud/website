@@ -281,7 +281,7 @@ function PageHeader({ isMobileNavOpen, setIsMobileNavOpen }: { isMobileNavOpen: 
 }
 
 /* ───────────────────────── PAGE ───────────────────────── */
-export default function ElevenResearchArticlePage() {
+export default function ResearchArticlePage() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const params = useParams();
   const slug = typeof params.slug === "string" ? params.slug : "";

@@ -7,10 +7,6 @@ import { cn } from "@/lib/cn";
 import { SmartImage } from "@/components/SmartImage";
 import { MODULR_LINKS } from "@/config/links";
 
-/**
- * Reworked into ElevenLabs-like clean product section
- */
-
 type Tile = {
   title: string;
   desc: string;
@@ -50,7 +46,7 @@ const tiles: Tile[] = [
   },
 ];
 
-export function TonStyleShowcase({ className }: { className?: string }) {
+export function ProductShowcase({ className }: { className?: string }) {
   const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {

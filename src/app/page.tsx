@@ -5,6 +5,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { ModulrFooter } from "@/components/ModulrFooter";
 import { Reveal } from "@/components/Reveal";
+import { Tilt3D } from "@/components/Tilt3D";
+import { Reveal3D } from "@/components/Reveal3D";
+import { FloatingOrbs } from "@/components/FloatingOrbs";
 
 /* ── Mobile nav state hook ── */
 function useMobileNav() {
@@ -12,8 +15,8 @@ function useMobileNav() {
   return { open, toggle: () => setOpen((p) => !p), close: () => setOpen(false) };
 }
 
-const HeroScene3D = lazy(() => import("@/components/eleven/HeroScene3D"));
-const RoboticScene3D = lazy(() => import("@/components/eleven/RoboticScene3D"));
+const HeroScene3D = lazy(() => import("@/components/scenes/HeroScene3D"));
+const RoboticScene3D = lazy(() => import("@/components/scenes/RoboticScene3D"));
 
 /* ───────────────────────── DESIGN TOKENS ───────────────────────── */
 const T = {
@@ -72,6 +75,9 @@ const platformCards = [
   { number: "03", subtitle: "Intelligence", title: "Plug-and-play robotics stack", desc: "No hardware or software expertise required for clients. Partners can easily add robotic systems to access everything: teleoperation, AI models, compute, data modules, and more.", gradient: "linear-gradient(135deg, #e0e7ff, #c7d2fe, #a5b4fc)" },
   { number: "04", subtitle: "Earnings", title: "Earn from idle robots", desc: "Turn downtime into revenue and data. List your robots on Modulr's marketplace and earn when others operate them. Outsource data collection to qualified operators.", gradient: "linear-gradient(135deg, #fce7f3, #f9a8d4, #f472b6)" },
 ];
+
+/* ─── Re-export shared overlay ─── */
+import { AbstractOverlay } from "@/components/AbstractOverlay";
 
 /* ───────────────────────── USE CASES ───────────────────────── */
 const useCases = [
@@ -166,7 +172,7 @@ const networkStats = [
 /* ═══════════════════════════════════════════════════════════════════
    PAGE COMPONENT
    ═══════════════════════════════════════════════════════════════════ */
-export default function ElevenPage() {
+export default function HomePage() {
   const [activeProductTab, setActiveProductTab] = useState<"robotics" | "web3">("robotics");
   const [activeRobotIdx, setActiveRobotIdx] = useState(0);
   const [activeWeb3Idx, setActiveWeb3Idx] = useState(0);
@@ -261,18 +267,19 @@ export default function ElevenPage() {
       </header>
 
       {/* ════════════ HERO ════════════ */}
-      <section style={{ padding: `${T.sectionPy} 24px 60px`, maxWidth: T.maxW, margin: "0 auto", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <Reveal>
-          <h1 className="text-shimmer" style={{ fontSize: "clamp(48px, 7vw, 80px)", fontWeight: 500, letterSpacing: "-0.04em", lineHeight: 1.02, maxWidth: 800 }}>
+      <section style={{ padding: `${T.sectionPy} 24px 60px`, maxWidth: T.maxW, margin: "0 auto", textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", position: "relative" }}>
+        <FloatingOrbs variant="gold" count={4} />
+        <Reveal3D variant="zoom">
+          <h1 className="text-shimmer" style={{ fontSize: "clamp(48px, 7vw, 80px)", fontWeight: 500, letterSpacing: "-0.04em", lineHeight: 1.02, maxWidth: 800, position: "relative", zIndex: 1 }}>
           Robot Operation<br />at Scale
                   </h1>
-        </Reveal>
-        <Reveal delayMs={120}>
+        </Reveal3D>
+        <Reveal3D variant="rise" delayMs={150}>
           <p style={{ marginTop: 24, fontSize: 17, color: T.muted, maxWidth: 640, lineHeight: 1.6 }}>
           A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.
           </p>
-        </Reveal>
-        <Reveal delayMs={240}>
+        </Reveal3D>
+        <Reveal3D variant="pop" delayMs={300}>
           <div style={{ marginTop: 32, display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
             <Link href="https://app.modulr.cloud" style={{ display: "inline-flex", alignItems: "center", height: 48, padding: "0 24px", background: T.accent, color: T.accentFg, borderRadius: T.radiusPill, fontSize: 15, fontWeight: 600, textDecoration: "none" }}>
               Launch App
@@ -281,16 +288,20 @@ export default function ElevenPage() {
               Book a Demo
             </Link>
           </div>
-        </Reveal>
+        </Reveal3D>
       </section>
 
       {/* ════════════ 3D VISUAL ════════════ */}
       <section style={{ maxWidth: T.maxW, margin: "0 auto", padding: "0 24px 80px" }}>
-        <div style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "clamp(400px, 50vh, 560px)" }}>
-          <Suspense fallback={<div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: T.muted, fontSize: 14 }}>Loading 3D…</div>}>
-            <HeroScene3D />
-          </Suspense>
-        </div>
+        <Reveal3D variant="pop">
+        <Tilt3D intensity={4} scale={1.01} style={{ borderRadius: T.radiusXl }}>
+          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "clamp(400px, 50vh, 560px)" }}>
+            <Suspense fallback={<div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: T.muted, fontSize: 14 }}>Loading 3D…</div>}>
+              <HeroScene3D />
+            </Suspense>
+          </div>
+        </Tilt3D>
+        </Reveal3D>
       </section>
 
       {/* ════════════ TRUSTED BY ════════════ */}
@@ -563,10 +574,11 @@ export default function ElevenPage() {
             { name: "Operator Console", desc: "Control robots, monitor missions, and manage handoffs in one unified interface.", gradient: "linear-gradient(135deg, #ffecd2, #fcb69f)", href: "https://app.modulr.cloud", image: "/session-history-screenshot.png" },
             { name: "Modulr Network", desc: "Stake, trade data, govern the protocol, and access decentralized compute for robot AI.", gradient: "linear-gradient(135deg, #a8edea, #d1c4e9)" , href: "/web3" },
           ].map((p, i) => (
-            <Reveal key={p.name} delayMs={i * 120}>
+            <Reveal3D key={p.name} delayMs={i * 150} variant={i === 0 ? "slide-left" : "slide-right"}>
+            <Tilt3D intensity={6} style={{ borderRadius: T.radiusXl }}>
             <Link
               href={p.href}
-              className="hover-lift card-shine"
+              className="depth-shadow card-shine"
               style={{
                 borderRadius: T.radiusXl,
                 border: sectionBorder,
@@ -577,8 +589,9 @@ export default function ElevenPage() {
                 display: "block",
               }}
             >
-              <div style={{ height: 200, background: p.gradient, position: "relative" }}>
+              <div style={{ height: 200, background: p.gradient, position: "relative", overflow: "hidden" }}>
                 {p.image && <Image src={p.image} fill style={{ objectFit: "cover", objectPosition: "left top" }} alt={p.name} />}
+                {!p.image && <AbstractOverlay index={3} viewBox="0 0 500 200" />}
               </div>
               <div style={{ padding: "24px 28px" }}>
                 <h3 style={{ fontSize: 24, fontWeight: 600, letterSpacing: "-0.02em" }}>{p.name}</h3>
@@ -586,7 +599,8 @@ export default function ElevenPage() {
                 <div style={{ marginTop: 16, fontSize: 14, fontWeight: 500, color: T.text }}>Explore {p.name} →</div>
               </div>
             </Link>
-            </Reveal>
+            </Tilt3D>
+            </Reveal3D>
           ))}
         </div>
       </section>
@@ -594,53 +608,65 @@ export default function ElevenPage() {
       {/* ════════════ PLATFORM CARDS (Monetize robots. Globally.) ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
       <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+        <Reveal3D variant="zoom">
           <h2 style={{ fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 500, letterSpacing: "-0.03em", textAlign: "center", marginBottom: 12 }}>
             Monetize robots. <span style={{ color: T.muted }}>Globally.</span>
           </h2>
           <p style={{ fontSize: 16, color: T.muted, textAlign: "center", maxWidth: 600, margin: "0 auto 48px", lineHeight: 1.6 }}>
             From sourcing global robot liquidity to earning from idle assets — everything you need to build a robotics business on one platform.
           </p>
-        </Reveal>
+        </Reveal3D>
 
         <div style={{ display: "grid", gridTemplateColumns: "1fr", gap: 32 }}>
           {platformCards.map((card, idx) => (
-            <div
+            <Reveal3D key={`r-${card.number}`} variant={idx % 2 === 0 ? "slide-left" : "slide-right"} delayMs={idx * 80}>
+            <Tilt3D
               key={card.number}
+              intensity={5}
+              scale={1.01}
               style={{
                 position: "sticky",
                 top: 80 + idx * 20,
                 zIndex: idx + 1,
                 borderRadius: T.radiusXl,
-                border: sectionBorder,
-                background: "#fff",
-                overflow: "hidden",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-                transition: "box-shadow 0.3s",
               }}
             >
-              <div className="el-g-platform-inner">
-                <div className="el-card-inner-text">
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-                    <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: "0.08em", color: T.muted2 }}>{card.number}</span>
-                    <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", color: T.muted2, textTransform: "uppercase" }}>{card.subtitle}</span>
+              <div
+                className="depth-shadow glass-3d"
+                style={{
+                  borderRadius: T.radiusXl,
+                  border: sectionBorder,
+                  background: "#fff",
+                  overflow: "hidden",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                }}
+              >
+                <div className="el-g-platform-inner">
+                  <div className="el-card-inner-text">
+                    <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                      <span style={{ fontSize: 14, fontWeight: 700, letterSpacing: "0.08em", color: T.muted2 }}>{card.number}</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: "0.08em", color: T.muted2, textTransform: "uppercase" }}>{card.subtitle}</span>
+                    </div>
+                    <h3 style={{ fontSize: 28, fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 16 }}>{card.title}</h3>
+                    <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.65 }}>{card.desc}</p>
                   </div>
-                  <h3 style={{ fontSize: 28, fontWeight: 600, letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 16 }}>{card.title}</h3>
-                  <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.65 }}>{card.desc}</p>
-                </div>
-                <div style={{ background: card.gradient, padding: 32, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 300 }}>
-                  <div style={{ fontSize: 64, fontWeight: 800, color: "rgba(255,255,255,0.4)", letterSpacing: "-0.04em" }}>{card.number}</div>
+                  <div style={{ background: card.gradient, padding: 32, display: "flex", alignItems: "center", justifyContent: "center", minHeight: 300, position: "relative", overflow: "hidden" }}>
+                    <AbstractOverlay index={idx} />
+                    <div style={{ fontSize: 64, fontWeight: 800, color: "rgba(255,255,255,0.4)", letterSpacing: "-0.04em", position: "relative", zIndex: 2 }}>{card.number}</div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Tilt3D>
+            </Reveal3D>
           ))}
         </div>
       </section>
 
       {/* ════════════ TELEOPERATION SECTION ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
-      <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+      <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto", position: "relative" }}>
+        <FloatingOrbs variant="blue" count={3} />
+        <Reveal3D variant="slide-left">
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
             <div>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
@@ -655,18 +681,19 @@ export default function ElevenPage() {
               Launch App
             </Link>
           </div>
-        </Reveal>
-        <Reveal delayMs={100}>
+        </Reveal3D>
+        <Reveal3D variant="rise" delayMs={100}>
           <p style={{ fontSize: 16, color: T.muted, maxWidth: 720, lineHeight: 1.65, marginBottom: 48 }}>
             Real-time robot operation built for enterprise reliability and security. Operate any robot from anywhere with precise control inputs, real-time video streaming, and sub-500ms latency.
           </p>
-        </Reveal>
+        </Reveal3D>
 
         {/* Feature cards */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16, marginBottom: 40 }}>
           {teleopFeatures.map((f, fIdx) => (
-            <Reveal key={f.title} delayMs={fIdx * 80}>
-            <div className="hover-lift" style={{ padding: 24, borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, minHeight: 200, display: "flex", flexDirection: "column" }}>
+            <Reveal3D key={f.title} delayMs={fIdx * 100} variant="pop">
+            <Tilt3D intensity={10} scale={1.03} style={{ borderRadius: T.radiusXl, height: "100%" }}>
+            <div className="depth-shadow" style={{ padding: 24, borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, minHeight: 200, display: "flex", flexDirection: "column", height: "100%" }}>
               <div style={{ width: 48, height: 48, borderRadius: 14, background: "#fff", border: sectionBorder, display: "flex", alignItems: "center", justifyContent: "center", color: T.text, marginBottom: "auto" }}>
                 {f.icon === "globe" && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="10" /><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>}
                 {f.icon === "bolt" && <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" /></svg>}
@@ -678,7 +705,8 @@ export default function ElevenPage() {
                 <p style={{ fontSize: 14, color: T.muted, lineHeight: 1.55 }}>{f.desc}</p>
               </div>
             </div>
-            </Reveal>
+            </Tilt3D>
+            </Reveal3D>
           ))}
         </div>
 
@@ -724,10 +752,10 @@ export default function ElevenPage() {
         </div>
       </section>
 
-      {/* ════════════ HOW IT WORKS (ElevenAgents style) ════════════ */}
+      {/* ════════════ HOW IT WORKS ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
       <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+        <Reveal3D variant="slide-right">
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
             <div>
               <div style={{ fontSize: 13, color: T.muted2, marginBottom: 8 }}>How it works</div>
@@ -739,16 +767,17 @@ export default function ElevenPage() {
               Learn more
             </Link>
           </div>
-        </Reveal>
-        <Reveal delayMs={100}>
+        </Reveal3D>
+        <Reveal3D variant="rise" delayMs={100}>
           <p style={{ fontSize: 16, color: T.muted, maxWidth: 720, lineHeight: 1.65, marginBottom: 40 }}>
             Whether you&apos;re a robotics team looking for better internal controls, or an operator looking to rent and operate robots for your business — Modulr connects both sides seamlessly.
           </p>
-        </Reveal>
+        </Reveal3D>
 
         {/* Main showcase grid */}
         <div className="el-g-split-wide" style={{ marginBottom: 16 }}>
           {/* Left: Operator session mockup */}
+          <Reveal3D variant="slide-left" delayMs={0}>
           <div style={{
             borderRadius: T.radiusXl,
             overflow: "hidden",
@@ -786,8 +815,10 @@ export default function ElevenPage() {
               </p>
             </div>
           </div>
+          </Reveal3D>
 
           {/* Right: Analytics card */}
+          <Reveal3D variant="slide-right" delayMs={150}>
           <div style={{ borderRadius: T.radiusXl, border: sectionBorder, background: "#fff", padding: 24, display: "flex", flexDirection: "column" }}>
             <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 4 }}>Success rate</h4>
             <div style={{ fontSize: 32, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 16 }}>94.7%</div>
@@ -821,6 +852,7 @@ export default function ElevenPage() {
               <p style={{ fontSize: 13, color: T.muted, lineHeight: 1.5 }}>Track session success rates, fleet utilization, and operator performance in real-time.</p>
             </div>
           </div>
+          </Reveal3D>
         </div>
 
         {/* Bottom row: 3 feature cards */}
@@ -829,12 +861,16 @@ export default function ElevenPage() {
             { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>, title: "Fleet Controls", desc: "Register, monitor and orchestrate your entire robot fleet from a single dashboard." },
             { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>, title: "Safety Guardrails", desc: "Rate limits, geofencing, collision zones, and hardware e-stops on every session." },
             { icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" /></svg>, title: "Multi-operator", desc: "Handle shift handoffs, session transfers, and concurrent access with role-based permissions." },
-          ].map((card) => (
-            <div key={card.title} style={{ borderRadius: T.radiusXl, border: sectionBorder, background: "#fff", padding: 24 }}>
+          ].map((card, ci) => (
+            <Reveal3D key={card.title} delayMs={ci * 100}>
+            <Tilt3D intensity={10} scale={1.03} style={{ borderRadius: T.radiusXl, height: "100%" }}>
+            <div className="glass-3d" style={{ borderRadius: T.radiusXl, border: sectionBorder, background: "#fff", padding: 24, height: "100%" }}>
               <div style={{ color: T.text, marginBottom: 20 }}>{card.icon}</div>
               <h4 style={{ fontSize: 16, fontWeight: 700, marginBottom: 6 }}>{card.title}</h4>
               <p style={{ fontSize: 13, color: T.muted, lineHeight: 1.55 }}>{card.desc}</p>
             </div>
+            </Tilt3D>
+            </Reveal3D>
           ))}
         </div>
 
@@ -858,9 +894,11 @@ export default function ElevenPage() {
       </section>
 
       {/* ════════════ ROBOTIC 3D VISUAL ════════════ */}
-      <section style={{ maxWidth: T.maxW, margin: "0 auto", padding: `${T.sectionPy} 24px` }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <span style={{ display: "inline-block", padding: "6px 16px", borderRadius: T.radiusPill, background: T.surface, border: sectionBorder, fontSize: 13, fontWeight: 500, color: T.muted, marginBottom: 16 }}>
+      <section style={{ maxWidth: T.maxW, margin: "0 auto", padding: `${T.sectionPy} 24px`, position: "relative" }}>
+        <FloatingOrbs variant="purple" count={3} />
+        <Reveal3D variant="zoom">
+        <div style={{ textAlign: "center", marginBottom: 40, position: "relative", zIndex: 1 }}>
+          <span className="glass-3d" style={{ display: "inline-block", padding: "6px 16px", borderRadius: T.radiusPill, fontSize: 13, fontWeight: 500, color: T.muted, marginBottom: 16 }}>
             Robotic Intelligence
           </span>
           <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.1, maxWidth: 700, margin: "0 auto" }}>
@@ -870,17 +908,22 @@ export default function ElevenPage() {
             The future of human-robot interaction begins with a simple greeting. Meet the next generation of intelligent companions.
           </p>
         </div>
-        <div style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "clamp(400px, 50vh, 560px)" }}>
-          <Suspense fallback={<div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: T.muted, fontSize: 14 }}>Loading 3D…</div>}>
-            <RoboticScene3D />
-          </Suspense>
-        </div>
+        </Reveal3D>
+        <Reveal3D variant="pop" delayMs={150}>
+        <Tilt3D intensity={4} scale={1.01} style={{ borderRadius: T.radiusXl }}>
+          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "clamp(400px, 50vh, 560px)" }}>
+            <Suspense fallback={<div style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", color: T.muted, fontSize: 14 }}>Loading 3D…</div>}>
+              <RoboticScene3D />
+            </Suspense>
+          </div>
+        </Tilt3D>
+        </Reveal3D>
       </section>
 
       {/* ════════════ DEVELOPER SDK ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
       <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+        <Reveal3D variant="flip">
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
             <div>
               <div style={{ fontSize: 13, color: T.muted2, marginBottom: 8 }}>For Developers</div>
@@ -892,9 +935,10 @@ export default function ElevenPage() {
               Explore docs
             </Link>
           </div>
-        </Reveal>
+        </Reveal3D>
 
         {/* Teleoperation API */}
+        <Reveal3D variant="slide-left">
         <div style={{ borderRadius: T.radiusXl, border: sectionBorder, overflow: "hidden", marginBottom: 20 }}>
           <div className="el-g-split-code">
             <div style={{ padding: "32px 28px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -927,8 +971,10 @@ export default function ElevenPage() {
             </div>
           </div>
         </div>
+        </Reveal3D>
 
         {/* Fleet Management API */}
+        <Reveal3D variant="slide-right" delayMs={100}>
         <div style={{ borderRadius: T.radiusXl, border: sectionBorder, overflow: "hidden", marginBottom: 20 }}>
           <div className="el-g-split-code">
             <div style={{ padding: "32px 28px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -971,8 +1017,10 @@ export default function ElevenPage() {
             </div>
           </div>
         </div>
+        </Reveal3D>
 
         {/* Blockchain / Network API */}
+        <Reveal3D variant="flip" delayMs={100}>
         <div style={{ borderRadius: T.radiusXl, border: sectionBorder, overflow: "hidden" }}>
           <div className="el-g-split-code">
             <div style={{ padding: "32px 28px", display: "flex", flexDirection: "column", justifyContent: "center" }}>
@@ -1001,12 +1049,13 @@ export default function ElevenPage() {
             </div>
           </div>
         </div>
+        </Reveal3D>
       </section>
 
       {/* ════════════ USE CASES ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
       <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+        <Reveal3D variant="zoom">
           <div style={{ marginBottom: 32 }}>
             <div style={{ fontSize: 13, color: T.muted2, marginBottom: 8 }}>Remote Teleoperation</div>
             <h2 style={{ fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 500, letterSpacing: "-0.03em" }}>
@@ -1016,11 +1065,12 @@ export default function ElevenPage() {
               From agriculture to space exploration, Modulr powers real-time robotic control in the most demanding environments.
             </p>
           </div>
-        </Reveal>
+        </Reveal3D>
         {/* Masonry-like asymmetric grid */}
         <div className="el-g-masonry">
           {/* Tall left card — Industrial Automation */}
-          <div style={{ gridRow: "1 / 3", borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 380, background: useCases[0].gradient, cursor: "pointer" }}>
+          <Tilt3D intensity={6} style={{ gridRow: "1 / 3", borderRadius: T.radiusXl }}>
+          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 380, background: useCases[0].gradient, cursor: "pointer", height: "100%" }}>
             <div style={{ position: "absolute", top: 16, left: 16, zIndex: 2 }}>
               <div style={{ padding: "4px 10px", background: "rgba(255,255,255,0.9)", borderRadius: 4, fontSize: 10, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}>Industry</div>
             </div>
@@ -1052,9 +1102,11 @@ export default function ElevenPage() {
               <p style={{ color: "rgba(255,255,255,0.82)", fontSize: 14, lineHeight: 1.5 }}>{useCases[0].desc}</p>
             </div>
           </div>
+          </Tilt3D>
 
           {/* Middle top card — Entertainment */}
-          <div style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 280, background: useCases[1].gradient, cursor: "pointer" }}>
+          <Tilt3D intensity={8} style={{ borderRadius: T.radiusXl }}>
+          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 280, background: useCases[1].gradient, cursor: "pointer", height: "100%" }}>
             {/* Gamepad / Arena illustration */}
             <div style={{ position: "absolute", top: "12%", left: "50%", transform: "translateX(-50%)", opacity: 0.32 }}>
               <svg width="200" height="140" viewBox="0 0 200 140" fill="none">
@@ -1081,9 +1133,11 @@ export default function ElevenPage() {
               <p style={{ color: "rgba(255,255,255,0.82)", fontSize: 13, lineHeight: 1.5 }}>{useCases[1].desc}</p>
             </div>
           </div>
+          </Tilt3D>
 
           {/* Middle bottom — Defense */}
-          <div style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 120, background: useCases[2].gradient, cursor: "pointer" }}>
+          <Tilt3D intensity={8} style={{ borderRadius: T.radiusXl }}>
+          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 120, background: useCases[2].gradient, cursor: "pointer", height: "100%" }}>
             {/* Shield / radar illustration */}
             <div style={{ position: "absolute", top: "50%", right: 24, transform: "translateY(-50%)", opacity: 0.3 }}>
               <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
@@ -1097,9 +1151,11 @@ export default function ElevenPage() {
               <p style={{ color: "#fff", fontSize: 15, fontWeight: 600, lineHeight: 1.3 }}>{useCases[2].title}</p>
             </div>
           </div>
+          </Tilt3D>
 
           {/* Right tall card — Healthcare */}
-          <div style={{ gridRow: "1 / 3", borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 280, background: useCases[3].gradient, cursor: "pointer" }}>
+          <Tilt3D intensity={6} style={{ gridRow: "1 / 3", borderRadius: T.radiusXl }}>
+          <div className="depth-shadow" style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 280, background: useCases[3].gradient, cursor: "pointer", height: "100%" }}>
             {/* Medical cross + precision instrument illustration */}
             <div style={{ position: "absolute", top: "10%", left: "50%", transform: "translateX(-50%)", opacity: 0.32 }}>
               <svg width="160" height="160" viewBox="0 0 160 160" fill="none">
@@ -1124,10 +1180,12 @@ export default function ElevenPage() {
               <p style={{ color: "rgba(255,255,255,0.82)", fontSize: 13, lineHeight: 1.5 }}>{useCases[3].desc}</p>
             </div>
           </div>
+          </Tilt3D>
         </div>
 
         {/* Full-width Space card */}
-        <div style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 180, background: useCases[4].gradient, cursor: "pointer", marginTop: 12 }}>
+        <Tilt3D intensity={4} scale={1.01} style={{ borderRadius: T.radiusXl, marginTop: 12 }}>
+        <div className="depth-shadow" style={{ borderRadius: T.radiusXl, overflow: "hidden", position: "relative", minHeight: 180, background: useCases[4].gradient, cursor: "pointer" }}>
           {/* Space / satellite illustration */}
           <div style={{ position: "absolute", top: "50%", right: 60, transform: "translateY(-50%)", opacity: 0.3 }}>
             <svg width="180" height="120" viewBox="0 0 180 120" fill="none">
@@ -1157,6 +1215,7 @@ export default function ElevenPage() {
             <p style={{ color: "rgba(255,255,255,0.82)", fontSize: 14, lineHeight: 1.5 }}>{useCases[4].desc}</p>
           </div>
         </div>
+        </Tilt3D>
       </section>
 
       {/* ════════════ ROADMAP (DUAL TRACK) ════════════ */}
@@ -1252,18 +1311,19 @@ export default function ElevenPage() {
       {/* ════════════ SAFETY ════════════ */}
       <div className="section-divider" style={{ maxWidth: T.maxW, margin: "0 auto" }} />
       <section style={{ padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+        <Reveal3D variant="slide-left">
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", marginBottom: 48, flexWrap: "wrap", gap: 20 }}>
             <h2 style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 500, letterSpacing: "-0.03em" }}>Safety, built in</h2>
             <Link href="#" style={{ display: "inline-flex", alignItems: "center", height: 44, padding: "0 22px", background: T.accent, color: T.accentFg, borderRadius: T.radiusPill, fontSize: 14, fontWeight: 600, textDecoration: "none" }}>
               Learn more
             </Link>
           </div>
-        </Reveal>
+        </Reveal3D>
         <div className="el-g3">
           {safetyItems.map((item, i) => (
-            <Reveal key={item.title} delayMs={i * 80}>
-            <div className="hover-lift" style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "100%" }}>
+            <Reveal3D key={item.title} delayMs={i * 120} variant="pop">
+            <Tilt3D intensity={8} scale={1.02} style={{ borderRadius: T.radiusXl, height: "100%" }}>
+            <div className="depth-shadow" style={{ borderRadius: T.radiusXl, border: sectionBorder, background: T.surface, overflow: "hidden", height: "100%" }}>
               {/* Geometric SVG illustration area */}
               <div style={{ height: 220, display: "flex", alignItems: "center", justifyContent: "center", padding: 24 }}>
                 {i === 0 && (
@@ -1312,24 +1372,26 @@ export default function ElevenPage() {
                 <p style={{ fontSize: 14, color: T.muted, lineHeight: 1.55 }}>{item.desc}</p>
               </div>
             </div>
-            </Reveal>
+            </Tilt3D>
+            </Reveal3D>
           ))}
           </div>
         </section>
 
       {/* ════════════ LATEST UPDATES ════════════ */}
       <section style={{ borderTop: sectionBorder, padding: `${T.sectionPy} 24px`, maxWidth: T.maxW, margin: "0 auto" }}>
-        <Reveal>
+        <Reveal3D variant="slide-right">
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32 }}>
             <h2 style={{ fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 500, letterSpacing: "-0.03em" }}>Latest updates</h2>
             <Link href="/news" className="link-underline" style={{ fontSize: 14, color: T.muted, textDecoration: "none" }}>All posts</Link>
           </div>
-        </Reveal>
+        </Reveal3D>
         <div className="el-g3">
           {latestUpdates.map((post, i) => (
-            <Reveal key={post.title} delayMs={i * 100}>
-            <div className="hover-lift" style={{ cursor: "pointer" }}>
-              <div className="card-shine" style={{
+            <Reveal3D key={post.title} delayMs={i * 120} variant="flip">
+            <Tilt3D intensity={8} scale={1.02} style={{ borderRadius: T.radiusXl }}>
+            <div style={{ cursor: "pointer" }}>
+              <div className="card-shine depth-shadow" style={{
                 borderRadius: T.radiusXl,
                 overflow: "hidden",
                 position: "relative",
@@ -1372,7 +1434,8 @@ export default function ElevenPage() {
               </div>
               <p style={{ fontSize: 16, fontWeight: 500, lineHeight: 1.4, color: T.text }}>{post.title}</p>
             </div>
-            </Reveal>
+            </Tilt3D>
+            </Reveal3D>
           ))}
         </div>
       </section>

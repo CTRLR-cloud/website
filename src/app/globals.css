@@ -510,4 +510,124 @@ html {
   animation-play-state: paused;
 }
 
+/* ═══════════ 3D / Premium effects ═══════════ */
+
+/* Floating orb drift animation */
+@keyframes orbDrift {
+  0%   { transform: translate(-50%,-50%) translate3d(0, 0, 0)   scale(1);   }
+  25%  { transform: translate(-50%,-50%) translate3d(30px, -20px, 0) scale(1.05); }
+  50%  { transform: translate(-50%,-50%) translate3d(-15px, 25px, 0) scale(0.95); }
+  75%  { transform: translate(-50%,-50%) translate3d(-25px, -10px, 0) scale(1.03); }
+  100% { transform: translate(-50%,-50%) translate3d(0, 0, 0)   scale(1);   }
+}
+.floating-orb {
+  animation: orbDrift 16s ease-in-out infinite;
+}
+
+/* ── 3D Reveal variants ──
+   Each [data-r3d="<variant>"] sets the hidden state.
+   [data-r3d="in"] is the resolved (visible) state for ALL variants. */
+
+[data-r3d] {
+  will-change: opacity, transform;
+  transition:
+    opacity 900ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* RISE — tilts up from below, emerges from depth */
+[data-r3d="rise"] {
+  opacity: 0;
+  transform: perspective(1000px) rotateX(8deg) translateY(60px) translateZ(-80px);
+}
+
+/* POP — starts tiny & far back, pops towards the viewer */
+[data-r3d="pop"] {
+  opacity: 0;
+  transform: perspective(800px) translateZ(-200px) scale(0.7);
+}
+
+/* FLIP — flips in around the Y axis from behind */
+[data-r3d="flip"] {
+  opacity: 0;
+  transform: perspective(1000px) rotateY(-60deg) translateX(-30px);
+  backface-visibility: hidden;
+}
+
+/* ZOOM — zooms in from far away, straight at you */
+[data-r3d="zoom"] {
+  opacity: 0;
+  transform: perspective(600px) translateZ(-300px) scale(0.5);
+}
+
+/* SLIDE-LEFT — slides in from the left with slight 3D rotation */
+[data-r3d="slide-left"] {
+  opacity: 0;
+  transform: perspective(1000px) rotateY(12deg) translateX(-120px) translateZ(-60px);
+}
+
+/* SLIDE-RIGHT — slides in from the right with slight 3D rotation */
+[data-r3d="slide-right"] {
+  opacity: 0;
+  transform: perspective(1000px) rotateY(-12deg) translateX(120px) translateZ(-60px);
+}
+
+/* RESOLVED STATE — all variants land here */
+[data-r3d="in"] {
+  opacity: 1;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateX(0) translateY(0) translateZ(0) scale(1);
+}
+
+/* 3D depth shadow on hover — premium card depth */
+.depth-shadow {
+  transition:
+    transform 0.45s cubic-bezier(0.03,0.98,0.52,0.99),
+    box-shadow 0.45s cubic-bezier(0.03,0.98,0.52,0.99);
+}
+.depth-shadow:hover {
+  box-shadow:
+    0 25px 50px rgba(0,0,0,0.08),
+    0 12px 24px rgba(0,0,0,0.05),
+    0 0 0 1px rgba(0,0,0,0.03),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Parallax layer system — for stacking elements at different Z depths */
+.parallax-container {
+  perspective: 1200px;
+  perspective-origin: center center;
+  transform-style: preserve-3d;
+}
+.parallax-back {
+  transform: translateZ(-80px) scale(1.08);
+}
+.parallax-mid {
+  transform: translateZ(0);
+}
+.parallax-front {
+  transform: translateZ(40px) scale(0.96);
+}
+
+/* Glass morphism card with 3D depth */
+.glass-3d {
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow:
+    0 8px 32px rgba(0,0,0,0.06),
+    0 2px 8px rgba(0,0,0,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+.glass-3d:hover {
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.08),
+    0 8px 24px rgba(0,0,0,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-orb { animation: none; }
+  [data-r3d] { opacity: 1; transform: none; transition: none; }
+}
 

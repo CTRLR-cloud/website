@@ -41,7 +41,7 @@ export function ScrollExpandingVideoTile({
   // We want the “pin” effect: tile expands while section scrolls,
   // but it should feel like normal scrolling (shorter pinned distance, no plateau).
   // Important: reach “fully expanded” earlier, not only at the very end of the section.
-  // Antigravity-style: the tile becomes fullscreen mid-way, then you keep scrolling.
+  // The tile becomes fullscreen mid-way, then you keep scrolling.
   // Expand faster: hit fullscreen while you are still “in” the video moment.
   // (Previously it needed almost a full-screen worth of scrolling.)
   const p = useTransform(scrollYProgress, (v: number) => clamp(v / 0.38, 0, 1));
@@ -61,7 +61,7 @@ export function ScrollExpandingVideoTile({
   }, []);
 
   // Keep a “safe gutter” so the fully-expanded state still shows the tile boundaries
-  // (Antigravity-style: it feels huge, but not bleeding into the page edges).
+  // Feels huge, but not bleeding into the page edges.
   const GUTTER_PX = 24;
 
   const clipPath = useTransform(p, (v) => {
@@ -79,7 +79,7 @@ export function ScrollExpandingVideoTile({
   const tileHeight = useTransform(p, (v) => `${Math.round(62 + v * 38)}%`); // 62% -> 100%
 
   const titleY = useTransform(p, [0, 1], [16, 0]);
-  // Previously we faded the title at full expansion (Antigravity-style).
+  // Previously we faded the title at full expansion.
   // Users may prefer keeping text visible even when fully expanded.
   const titleOpacity = fadeTextOnFull
     ? useTransform(p, [0, 0.25, 0.78, 1], [0, 1, 1, 0])
@@ -252,7 +252,7 @@ export function ScrollExpandingVideoTile({
               </div>
             </motion.div>
 
-            {/* “Play intro” chip - bottom right like Antigravity */}
+            {/* “Play intro” chip - bottom right */}
             <div
               style={{
                 position: "absolute",

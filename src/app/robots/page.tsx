@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ModulrFooter } from "@/components/ModulrFooter";
 import { Reveal } from "@/components/Reveal";
+import { AbstractOverlay } from "@/components/AbstractOverlay";
 
 function useMobileNav() {
   const [open, setOpen] = useState(false);
@@ -649,6 +650,7 @@ export default function RobotsPage() {
                   <p style={{ fontSize: 15, color: T.muted, lineHeight: 1.6 }}>{card.desc}</p>
                 </div>
                 <div style={{ background: card.gradient, minHeight: 260, position: "relative", overflow: "hidden" }}>
+                  <AbstractOverlay index={i} />
                   <div style={{ position: "absolute", inset: 0, background: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E\")", backgroundSize: "256px 256px", mixBlendMode: "overlay" }} />
                 </div>
               </div>

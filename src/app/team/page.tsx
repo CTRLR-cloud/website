@@ -99,7 +99,7 @@ const navLinks = [
   { label: "Brand Kit", href: "/brand-kit" },
 ];
 
-export default function ElevenTeamPage() {
+export default function TeamPage() {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   return (

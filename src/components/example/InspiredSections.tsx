@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { MODULR_LINKS } from "@/config/links";
 
-export function ElevenInspiredSections({ theme }: { theme: "dark" | "light" }) {
+export function InspiredSections({ theme }: { theme: "dark" | "light" }) {
   const isDark = theme === "dark";
   const pageBg = isDark ? "#0a0a0b" : "#f3f3f5";
   const panelBg = isDark ? "#111214" : "#efeff0";

@@ -20,7 +20,7 @@ function lerp(a: number, b: number, t: number) {
   return a + (b - a) * t;
 }
 
-export function AntigravityParticleTile({
+export function ParticleTile({
   theme,
 }: {
   theme: "dark" | "light";
@@ -232,7 +232,7 @@ export function AntigravityParticleTile({
           }
         }
 
-        // Point (small “capsule” like Antigravity)
+        // Point (small “capsule” capsule shape)
         const sp = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
         const r = 0.8 + sp * 0.35;
         const alpha = 0.45 + p.s * 0.45;

@@ -179,7 +179,7 @@ const navLinks = [
   { label: "Brand Kit", href: "/brand-kit" },
 ];
 
-export default function ElevenNewsPage() {
+export default function NewsPage() {
   const [stories, setStories] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");

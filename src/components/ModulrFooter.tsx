@@ -80,7 +80,7 @@ const footerCols = [
 ];
 
 /**
- * Unified footer for all /eleven-style (light) pages.
+ * Unified footer for all pages.
  * Drop-in: `<ModulrFooter />` — optionally pass `showCta` for the main page CTA block.
  */
 export function ModulrFooter({ showCta = false }: { showCta?: boolean }) {
