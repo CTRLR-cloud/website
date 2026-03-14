@@ -249,7 +249,7 @@ const navLinks = [
 /* ───────────────────────── SHARED HEADER ───────────────────────── */
 function PageHeader({ isMobileNavOpen, setIsMobileNavOpen }: { isMobileNavOpen: boolean; setIsMobileNavOpen: (v: boolean) => void }) {
   return (
-    <header style={{ position: "sticky", top: 0, zIndex: 100, background: "rgba(255,255,255,0.82)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: sectionBorder }}>
+    <header style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, background: "rgba(255,255,255,0.82)", backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)", borderBottom: sectionBorder }}>
       <div style={{ maxWidth: T.maxWFull, margin: "0 auto", padding: "0 24px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
         <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
           <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, fontWeight: 700, fontSize: 18, color: T.text, textDecoration: "none", letterSpacing: "-0.02em" }}><Image src="/Modulr_logo.png" alt="Modulr" width={28} height={28} style={{ objectFit: "contain" }} unoptimized />Modulr</Link>
@@ -289,7 +289,7 @@ export default function ResearchArticlePage() {
 
   if (!post) {
     return (
-      <div style={{ background: T.bg, color: T.text, minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+      <div style={{ background: T.bg, color: T.text, minHeight: "100vh", display: "flex", flexDirection: "column", fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', paddingTop: 64 }}>
         <PageHeader isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
         <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 16, padding: 40 }}>
           <h1 style={{ fontSize: 48, fontWeight: 500, letterSpacing: "-0.04em" }}>404</h1>
@@ -310,7 +310,7 @@ export default function ResearchArticlePage() {
   const related = researchPosts.filter((p) => p.slug !== slug).slice(0, 3);
 
   return (
-    <div style={{ background: T.bg, color: T.text, fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+    <div style={{ background: T.bg, color: T.text, fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', paddingTop: 64 }}>
       <PageHeader isMobileNavOpen={isMobileNavOpen} setIsMobileNavOpen={setIsMobileNavOpen} />
 
       {/* HERO VISUAL — full-bleed editorial cover */}
@@ -437,8 +437,8 @@ export default function ResearchArticlePage() {
       {/* ARTICLE BODY */}
       <article
         style={{
-          maxWidth: 960,
-          margin: "-72px auto 0",
+          maxWidth: T.maxWFull,
+          margin: "-28px auto 0",
           padding: "0 24px 80px",
           position: "relative",
           zIndex: 3,
@@ -452,97 +452,99 @@ export default function ResearchArticlePage() {
             padding: "40px 0 0",
           }}
         >
-        {/* Optional: Table of contents indicator */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 12,
-          marginBottom: 48,
-          paddingBottom: 32,
-          paddingLeft: 40,
-          paddingRight: 40,
-          borderBottom: sectionBorder,
-        }}>
+          <div style={{ maxWidth: 960, margin: "0 auto" }}>
+          {/* Optional: Table of contents indicator */}
           <div style={{
-            width: 40,
-            height: 40,
-            borderRadius: 12,
-            background: T.surface,
             display: "flex",
             alignItems: "center",
-            justifyContent: "center",
-            fontSize: 18,
+            gap: 12,
+            marginBottom: 48,
+            paddingBottom: 32,
+            paddingLeft: 40,
+            paddingRight: 40,
+            borderBottom: sectionBorder,
           }}>
-            📄
+            <div style={{
+              width: 40,
+              height: 40,
+              borderRadius: 12,
+              background: T.surface,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: 18,
+            }}>
+              📄
+            </div>
+            <div>
+              <div style={{ fontSize: 14, fontWeight: 600, letterSpacing: "-0.01em" }}>Research Article</div>
+              <div style={{ fontSize: 13, color: T.muted2 }}>{post.category} · {post.readingMinutes} min read</div>
+            </div>
           </div>
-          <div>
-            <div style={{ fontSize: 14, fontWeight: 600, letterSpacing: "-0.01em" }}>Research Article</div>
-            <div style={{ fontSize: 13, color: T.muted2 }}>{post.category} · {post.readingMinutes} min read</div>
+
+          {/* Body content */}
+          <div style={{ paddingLeft: 40, paddingRight: 40 }}>
+            <ArticleBody body={post.body} />
           </div>
-        </div>
 
-        {/* Body content */}
-        <div style={{ paddingLeft: 40, paddingRight: 40 }}>
-          <ArticleBody body={post.body} />
-        </div>
+          {/* Divider */}
+          <div style={{ height: 1, background: T.border, marginTop: 60, marginBottom: 40, marginLeft: 40, marginRight: 40 }} />
 
-        {/* Divider */}
-        <div style={{ height: 1, background: T.border, marginTop: 60, marginBottom: 40, marginLeft: 40, marginRight: 40 }} />
-
-        {/* Back link */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingLeft: 40, paddingRight: 40, paddingBottom: 40 }}>
-          <Link href="/research" style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            fontSize: 14,
-            fontWeight: 500,
-            color: T.muted,
-            textDecoration: "none",
-            transition: "color 0.2s",
-          }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = T.text; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = T.muted as string; }}
-          >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ marginTop: -1 }}>
-              <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back to Research
-          </Link>
-
-          {/* Share / copy link placeholder */}
-          <button
-            onClick={() => { navigator.clipboard?.writeText(window.location.href); }}
-            style={{
-              padding: "8px 16px",
-              borderRadius: T.radiusPill,
-              border: sectionBorder,
-              background: "#fff",
-              fontSize: 13,
-              fontWeight: 500,
-              color: T.muted,
-              cursor: "pointer",
-              transition: "all 0.2s",
+          {/* Back link */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingLeft: 40, paddingRight: 40, paddingBottom: 40 }}>
+            <Link href="/research" style={{
               display: "inline-flex",
               alignItems: "center",
-              gap: 6,
+              gap: 8,
+              fontSize: 14,
+              fontWeight: 500,
+              color: T.muted,
+              textDecoration: "none",
+              transition: "color 0.2s",
             }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0,0,0,0.2)";
-              (e.currentTarget as HTMLButtonElement).style.color = T.text;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0,0,0,0.08)";
-              (e.currentTarget as HTMLButtonElement).style.color = T.muted as string;
-            }}
-          >
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
-              <path d="M3 11V3h8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-            </svg>
-            Copy link
-          </button>
-        </div>
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = T.text; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = T.muted as string; }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ marginTop: -1 }}>
+                <path d="M10 12L6 8L10 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back to Research
+            </Link>
+
+            {/* Share / copy link placeholder */}
+            <button
+              onClick={() => { navigator.clipboard?.writeText(window.location.href); }}
+              style={{
+                padding: "8px 16px",
+                borderRadius: T.radiusPill,
+                border: sectionBorder,
+                background: "#fff",
+                fontSize: 13,
+                fontWeight: 500,
+                color: T.muted,
+                cursor: "pointer",
+                transition: "all 0.2s",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 6,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0,0,0,0.2)";
+                (e.currentTarget as HTMLButtonElement).style.color = T.text;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(0,0,0,0.08)";
+                (e.currentTarget as HTMLButtonElement).style.color = T.muted as string;
+              }}
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <rect x="5" y="5" width="8" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M3 11V3h8" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+              </svg>
+              Copy link
+            </button>
+          </div>
+          </div>
         </div>
       </article>
 
