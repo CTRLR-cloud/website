@@ -28,7 +28,7 @@ function Card({ className, children, hover = true }: { className?: string; child
       )}
       whileHover={shouldHover ? { y: -6, scale: 1.01, transition: { duration: 0.22, ease: [0.2, 0.8, 0.2, 1] } } : undefined}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-80 bg-[radial-gradient(900px_420px_at_80%_25%,rgba(242,180,0,0.10),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-80 bg-[radial-gradient(900px_420px_at_80%_25%,rgba(255,20,40,0.10),transparent_60%)]" />
       {children}
     </motion.div>
   );
@@ -60,7 +60,7 @@ export function AccessBentoSection() {
                     The Open Network For Anything Robotics
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-white/55">
-                    Modulr lets anyone rent or deploy robots globally for practical, real-world
+                    CTRL+R lets anyone rent or deploy robots globally for practical, real-world
                     work. It’s powered by an open network that brings robots, AI, data, and
                     compute into one seamless interface that anyone can use.
                   </p>
@@ -105,7 +105,7 @@ export function AccessBentoSection() {
             },
             {
               title: "Earn From Idle Robots",
-              desc: "Robots no longer sit idle. Modulr makes them discoverable, rentable, and operable from anywhere, turning downtime into revenue.",
+              desc: "Robots no longer sit idle. CTRL+R makes them discoverable, rentable, and operable from anywhere, turning downtime into revenue.",
               lottie: LOTTIE_EARN,
             },
           ].map(({ title, desc, lottie }, i) => (

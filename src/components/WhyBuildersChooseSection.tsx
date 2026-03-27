@@ -10,7 +10,7 @@ type Panel = {
   kicker: string;
   title: string;
   desc: string;
-  theme: "mono" | "green" | "gold";
+  theme: "mono" | "green" | "brand";
   backgroundImage?: string;
 };
 
@@ -18,14 +18,14 @@ const panels: Panel[] = [
   {
     kicker: "Customizability",
     title: "Operate any robot with any interface",
-    desc: "Modulr works across robot manufacturers and control inputs including keyboards, joysticks, VR/AR, haptics, and custom controllers. Teams can operate diverse fleets without rebuilding control systems for each new robot.",
+    desc: "CTRL+R works across robot manufacturers and control inputs including keyboards, joysticks, VR/AR, haptics, and custom controllers. Teams can operate diverse fleets without rebuilding control systems for each new robot.",
     theme: "mono",
     backgroundImage: "/vibrant-wires-bg.png",
   },
   {
     kicker: "Coordination",
     title: "Designed for human-in-the-loop operations",
-    desc: "Modulr helps teams coordinate live robot operations with safe interventions, clear handoffs, and detailed logs, so responsibility and oversight never get lost.",
+    desc: "CTRL+R helps teams coordinate live robot operations with safe interventions, clear handoffs, and detailed logs, so responsibility and oversight never get lost.",
     theme: "green",
     backgroundImage: "/coordination-bg.png",
   },
@@ -33,7 +33,7 @@ const panels: Panel[] = [
     kicker: "Scale",
     title: "Built to grow with your organization",
     desc: "Easily add robots, deployments, and team members as your organization grows, while keeping operations consistent, safe, and manageable over time.",
-    theme: "gold",
+    theme: "brand",
     backgroundImage: "/expansion-2.png",
   },
 ];
@@ -57,7 +57,7 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
       <div className="md:hidden">
         <div className="mx-auto max-w-7xl px-6 pt-24 pb-10">
           <Reveal>
-            <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why Modulr</div>
+            <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why CTRL+R</div>
           </Reveal>
           <Reveal delayMs={60}>
             <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white">
@@ -67,7 +67,7 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
           </Reveal>
           <Reveal delayMs={110}>
             <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
-              Modulr is designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams.
+              CTRL+R is designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams.
             </p>
           </Reveal>
           <Reveal delayMs={160}>
@@ -124,7 +124,7 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
             <div className="grid gap-10 md:grid-cols-12 md:gap-16 pt-24 md:pt-32 pb-20">
               <div className="md:col-span-5">
                 <Reveal>
-                  <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why Modulr</div>
+                  <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why CTRL+R</div>
                 </Reveal>
                 <Reveal delayMs={60}>
                   <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
@@ -134,7 +134,7 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
                 </Reveal>
                 <Reveal delayMs={110}>
                   <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
-                  Modulr is designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams.
+                  CTRL+R is designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams.
                   </p>
                 </Reveal>
                 <Reveal delayMs={160}>

@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ModulrLogo } from "@/components/ModulrLogo";
-import { MODULR_LINKS } from "@/config/links";
+import { CtrlRLogo } from "@/components/CtrlRLogo";
+import { SITE_LINKS } from "@/config/links";
 
 function IconButton({
   href,
@@ -90,7 +90,7 @@ export function SiteFooter() {
           <div className="md:col-span-2">
             <Link href="/" className="rounded ring-premium inline-flex">
               <span className="text-[var(--accent)]">
-                <ModulrLogo variant="footer" />
+                <CtrlRLogo variant="footer" />
               </span>
             </Link>
             <p className="mt-3 max-w-md text-sm text-muted-2">
@@ -98,22 +98,22 @@ export function SiteFooter() {
             </p>
 
             <div className="mt-5 flex flex-wrap items-center gap-2">
-              <IconButton href={MODULR_LINKS.X} label="X">
+              <IconButton href={SITE_LINKS.X} label="X">
                 <XBrandIcon className="h-4 w-4" />
               </IconButton>
-              <IconButton href={MODULR_LINKS.LINKEDIN} label="LinkedIn">
+              <IconButton href={SITE_LINKS.LINKEDIN} label="LinkedIn">
                 <LinkedInBrandIcon className="h-4 w-4" />
               </IconButton>
-              <IconButton href={MODULR_LINKS.GITHUB} label="GitHub">
+              <IconButton href={SITE_LINKS.GITHUB} label="GitHub">
                 <GitHubBrandIcon className="h-4 w-4" />
               </IconButton>
-              <IconButton href={MODULR_LINKS.LINKTREE} label="Linktree">
+              <IconButton href={SITE_LINKS.LINKTREE} label="Linktree">
                 <LinkIcon className="h-[18px] w-[18px]" />
               </IconButton>
-              <IconButton href={MODULR_LINKS.TELEGRAM} label="Telegram">
+              <IconButton href={SITE_LINKS.TELEGRAM} label="Telegram">
                 <TelegramBrandIcon className="h-4 w-4" />
               </IconButton>
-              <IconButton href={MODULR_LINKS.DOCS} label="Docs">
+              <IconButton href={SITE_LINKS.DOCS} label="Docs">
                 <LinkIcon className="h-[18px] w-[18px]" />
               </IconButton>
             </div>
@@ -169,7 +169,7 @@ export function SiteFooter() {
               <li>
                 <a
                   className="hover:text-white ring-premium rounded"
-                  href={MODULR_LINKS.DEMO}
+                  href={SITE_LINKS.DEMO}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -179,7 +179,7 @@ export function SiteFooter() {
               <li>
                 <a
                   className="hover:text-white ring-premium rounded"
-                  href={MODULR_LINKS.APP}
+                  href={SITE_LINKS.APP}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -189,7 +189,7 @@ export function SiteFooter() {
               <li>
                 <a
                   className="hover:text-white ring-premium rounded"
-                  href={MODULR_LINKS.DOCS}
+                  href={SITE_LINKS.DOCS}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -199,7 +199,7 @@ export function SiteFooter() {
               <li>
                 <a
                   className="hover:text-white ring-premium rounded"
-                  href={MODULR_LINKS.GITHUB}
+                  href={SITE_LINKS.GITHUB}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -225,7 +225,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-hairline pt-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
-          <div>Copyright © {new Date().getFullYear()} Modulr. All rights reserved.</div>
+          <div>Copyright © {new Date().getFullYear()} CTRL+R. All rights reserved.</div>
           <div className="text-white/25">Powering the Global Robot Economy</div>
         </div>
       </div>

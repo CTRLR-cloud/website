@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 
 export function PremiumShowcaseSection() {
   const reduce = useReducedMotion();
@@ -34,7 +34,7 @@ export function PremiumShowcaseSection() {
             <Reveal delayMs={150}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={MODULR_LINKS.DEMO}
+                  href={SITE_LINKS.DEMO}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90 ring-premium"
@@ -61,7 +61,7 @@ export function PremiumShowcaseSection() {
                     : { y: [0, -8, 0], transition: { duration: 7, repeat: Infinity } }
                 }
               >
-                <div className="pointer-events-none absolute inset-0 opacity-90 bg-[radial-gradient(900px_380px_at_80%_20%,rgba(242,180,0,0.10),transparent_60%)]" />
+                <div className="pointer-events-none absolute inset-0 opacity-90 bg-[radial-gradient(900px_380px_at_80%_20%,rgba(255,20,40,0.10),transparent_60%)]" />
                 <div className="relative">
                   <div className="text-xs tracking-[0.22em] uppercase text-white/45">
                     Operator cockpit

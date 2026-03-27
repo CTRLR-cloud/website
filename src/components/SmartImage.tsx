@@ -33,7 +33,7 @@ export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc
     return (
       <div
         className={cn(
-          "h-full w-full bg-[radial-gradient(900px_420px_at_80%_25%,rgba(242,180,0,0.10),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(0,0,0,0.1))]",
+          "h-full w-full bg-[radial-gradient(900px_420px_at_80%_25%,rgba(255,20,40,0.10),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.05),rgba(0,0,0,0.1))]",
           fallbackClassName,
         )}
         aria-hidden="true"

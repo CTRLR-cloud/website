@@ -63,7 +63,7 @@ export function JoinNetworkSection({ className }: { className?: string }) {
               Earn with us
             </div>
             <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Join the <span className="text-gradient">Modulr Network</span>
+              Join the <span className="text-gradient">CTRL+R Network</span>
             </h2>
             <p className="mt-5 text-base leading-7 text-muted">
               If you're a provider of robotics or AI/data/compute services, you can join our

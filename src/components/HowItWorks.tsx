@@ -7,7 +7,7 @@ import { cn } from "@/lib/cn";
 const ownerSteps = [
   {
     title: "Control any robot with one interface",
-    desc: "Modulr supports any robot, any interface, any command. Add the Modulr agent to your robot, set your parameters, and you're live. No custom interfaces from scratch or one-off rules per robot.",
+    desc: "CTRL+R supports any robot, any interface, any command. Add the CTRL+R agent to your robot, set your parameters, and you're live. No custom interfaces from scratch or one-off rules per robot.",
   },
   {
     title: "Empower teams & scale operations",
@@ -15,7 +15,7 @@ const ownerSteps = [
   },
   {
     title: "Operate on your terms",
-    desc: "Use custom controllers, AR/VR headsets, keyboards, joysticks, location/task presets, or any bespoke interface—even add custom ROS commands. Easily make the Modulr interface your own.",
+    desc: "Use custom controllers, AR/VR headsets, keyboards, joysticks, location/task presets, or any bespoke interface—even add custom ROS commands. Easily make the CTRL+R interface your own.",
   },
 ];
 
@@ -65,7 +65,7 @@ export function HowItWorks({
           </Reveal>
           <Reveal delayMs={110}>
             <p className="mt-5 text-sm leading-7 text-white/60 max-w-2xl">
-              Whether you're a robotics team looking for better internal controls over your fleet, or an operator looking to rent and operate robots for your business—Modulr has you covered.
+              Whether you're a robotics team looking for better internal controls over your fleet, or an operator looking to rent and operate robots for your business—CTRL+R has you covered.
             </p>
           </Reveal>
         </div>
@@ -96,7 +96,7 @@ export function HowItWorks({
             </Reveal>
           </div>
 
-          {/* Right: For clients & operators — Modulr yellow theme, same card structure as left */}
+          {/* Right: For clients & operators — brand accent panel */}
           <div className="min-h-0">
             <Reveal delayMs={120}>
               <div className="relative overflow-hidden h-full rounded-2xl border border-[var(--accent)]/25 bg-black/50 flex flex-col">
@@ -104,7 +104,7 @@ export function HowItWorks({
                   className="pointer-events-none absolute inset-0 opacity-100"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(242,180,0,0.06) 0%, transparent 50%), radial-gradient(600px 400px at 80% 20%, rgba(242,180,0,0.08), transparent 50%)",
+                      "linear-gradient(135deg, rgba(255,20,40,0.06) 0%, transparent 50%), radial-gradient(600px 400px at 80% 20%, rgba(255,20,40,0.08), transparent 50%)",
                   }}
                 />
                 <div className="relative p-6 md:p-8 flex flex-col flex-1 min-h-0">

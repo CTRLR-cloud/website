@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Reveal } from "@/components/Reveal";
 import { SmartImage } from "@/components/SmartImage";
 import { cn } from "@/lib/cn";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 
 type Tile = {
   title: string;
@@ -23,11 +23,11 @@ type Tile = {
 const tiles: Tile[] = [
   {
     title: "Built from Teleoperation Up",
-    desc: "Modulr is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale. We're standardizing robot control into a customizable yet intuitive UX while laying the foundation for a peer-to-peer network connecting robots, AI, data, and compute. This approach earned Modulr a place in NVIDIA's Inception Program.",
+    desc: "CTRL+R is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale. We're standardizing robot control into a customizable yet intuitive UX while laying the foundation for a peer-to-peer network connecting robots, AI, data, and compute. This approach earned CTRL+R a place in NVIDIA's Inception Program.",
     image: "/NVIDIA_3.jpeg",
     href: "/technology-overview",
     cta: "Learn More",
-    accent: "rgba(242,180,0,0.25)",
+    accent: "rgba(255,20,40,0.25)",
     size: "large",
     minimalOverlay: true,
     hideCta: true,
@@ -36,7 +36,7 @@ const tiles: Tile[] = [
     title: "Get Started with Teleoperation",
     desc: "Set up your first robotic system and connect it to the network in minutes. No extra hardware needed.",
     image: "/mining3.png",
-    href: MODULR_LINKS.APP,
+    href: SITE_LINKS.APP,
     cta: "Launch App",
     accent: "rgba(0,200,150,0.25)",
     size: "medium",
@@ -44,10 +44,10 @@ const tiles: Tile[] = [
   {
     title: "Long Term Vision",
     desc: "See the vision for a world where anyone can operate & earn from any robot, anywhere: a decentralized network connecting robots, AI, data, and compute.",
-    image: "/modulr_vision_image.jpg",
+    image: "/ctrlr_vision_image.jpg",
     href: "/technology-overview",
     cta: "View Technology",
-    accent: "rgba(242,180,0,0.25)",
+    accent: "rgba(255,20,40,0.25)",
     size: "medium",
   },
 ];

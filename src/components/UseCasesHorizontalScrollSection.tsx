@@ -43,7 +43,7 @@ const useCases: UseCase[] = [
     title: "Defense & Security",
     desc: "Operate unmanned ground and aerial vehicles for reconnaissance, patrol, and hazardous environment inspection with military-grade reliability.",
     image: "/defense_robots.jpg",
-    accent: "rgba(242,180,0,0.35)",
+    accent: "rgba(255,20,40,0.35)",
     stat: "99.9%",
     statLabel: "Uptime",
   },
@@ -115,7 +115,7 @@ export function UseCasesHorizontalScrollSection({
           >
             <h2
               className="font-black leading-[0.85] tracking-[-0.04em] uppercase text-[14vw] sm:text-[11vw] md:text-[10vw] lg:text-[12vw]"
-              style={{ fontFamily: "var(--font-geist-sans), system-ui" }}
+              style={{ fontFamily: "var(--font-open-sans), system-ui" }}
             >
               <span
                 className="text-transparent"
@@ -145,7 +145,7 @@ export function UseCasesHorizontalScrollSection({
                         Remote Teleoperation
                       </div>
                       <p className="text-lg md:text-xl leading-8 text-white/70 max-w-md">
-                        From agriculture to space exploration, Modulr powers
+                        From agriculture to space exploration, CTRL+R powers
                         real-time robotic control in the most demanding
                         environments.
                       </p>

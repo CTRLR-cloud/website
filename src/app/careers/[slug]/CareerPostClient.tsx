@@ -55,8 +55,8 @@ export function CareerPostClient({ post }: { post: CareerPost }) {
             <Reveal delayMs={150}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={`mailto:jobs@modulr.cloud?subject=Application: ${post.title}`}
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-95 ring-premium"
+                  href={`mailto:jobs@ctrlr.cloud?subject=Application: ${post.title}`}
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95 ring-premium"
                 >
                   Apply Now
                 </a>
@@ -88,14 +88,14 @@ export function CareerPostClient({ post }: { post: CareerPost }) {
                       {post.excerpt}
                     </p>
                     <p className="text-white/70 leading-7 mt-4">
-                      At Modulr, we're building the open network for the robot economy. This role is critical to our mission of enabling real-time teleoperation of robotic systems anywhere in the world.
+                      At CTRL+R, we're building the open network for the robot economy. This role is critical to our mission of enabling real-time teleoperation of robotic systems anywhere in the world.
                     </p>
 
                     <h3 className="text-lg font-semibold text-white mt-8 mb-4">
                       What You'll Do
                     </h3>
                     <ul className="space-y-2 text-white/70">
-                      <li>• Design and implement core systems for the Modulr Network</li>
+                      <li>• Design and implement core systems for the CTRL+R Network</li>
                       <li>• Collaborate with cross-functional teams including robotics and blockchain engineers</li>
                       <li>• Write clean, maintainable, and well-tested code</li>
                       <li>• Participate in architecture discussions and code reviews</li>
@@ -159,8 +159,8 @@ export function CareerPostClient({ post }: { post: CareerPost }) {
 
                     <div className="mt-6 pt-6 border-t border-white/10">
                       <a
-                        href={`mailto:jobs@modulr.cloud?subject=Application: ${post.title}`}
-                        className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-black transition hover:brightness-95 ring-premium"
+                        href={`mailto:jobs@ctrlr.cloud?subject=Application: ${post.title}`}
+                        className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-95 ring-premium"
                       >
                         Apply Now
                       </a>

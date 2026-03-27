@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ModulrLogo } from "@/components/ModulrLogo";
+import { CtrlRLogo } from "@/components/CtrlRLogo";
 import { cn } from "@/lib/cn";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 
 const nav = [
   { label: "Home", href: "/" },
@@ -73,7 +73,9 @@ export function SiteHeader() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-[60] transition-all duration-300",
-          scrolled ? "bg-black/80 backdrop-blur-xl" : "bg-black/40 backdrop-blur-md",
+          scrolled
+            ? "bg-black/88 backdrop-blur-xl border-b border-[color-mix(in_oklab,var(--accent)_14%,transparent)]"
+            : "bg-black/50 backdrop-blur-md",
         )}
       >
         <div className="mx-auto max-w-6xl px-6">
@@ -81,9 +83,9 @@ export function SiteHeader() {
             <Link
               href="/"
               className="inline-flex items-center gap-2 text-[var(--accent)] ring-premium rounded"
-              aria-label="Modulr home"
+              aria-label="CTRL+R home"
             >
-              <ModulrLogo />
+              <CtrlRLogo variant="symbol" />
             </Link>
 
             <nav className="hidden md:flex items-center gap-6 text-sm font-semibold">
@@ -106,7 +108,7 @@ export function SiteHeader() {
 
             <div className="flex items-center gap-2">
               <a
-                href={MODULR_LINKS.APP}
+                href={SITE_LINKS.APP}
                 target="_blank"
                 rel="noreferrer"
                 className="hidden sm:inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ring-premium btn-primary"
@@ -150,7 +152,7 @@ export function SiteHeader() {
               <div className="p-4">
                 <div className="flex items-center justify-between">
                   <div className="text-[var(--accent)]">
-                    <ModulrLogo wordmark />
+                    <CtrlRLogo wordmark />
                   </div>
                   <button
                     type="button"
@@ -182,7 +184,7 @@ export function SiteHeader() {
 
                 <div className="mt-4">
                   <a
-                    href={MODULR_LINKS.APP}
+                    href={SITE_LINKS.APP}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ring-premium btn-primary"

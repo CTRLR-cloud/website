@@ -1,14 +1,11 @@
-export const MODULR_LINKS = {
-  APP: "https://app.modulr.cloud/",
-  DOCS: "https://modulr.gitbook.io/modulr.cloud",
-  GITHUB: "https://github.com/ModulrCloud",
-  DEMO: "https://calendly.com/d/cxn4-g4x-5sh/modulr-20min-product-demo",
-  X: "https://x.com/Modulr_Robotics",
-  LINKEDIN: "http://linkedin.com/company/modulrcloud",
-  LINKTREE: "https://linktr.ee/modulr.cloud",
-  TELEGRAM: "https://t.me/Modulr_Robotics",
+/** External URLs for CTRL+R (update handles when official profiles move). */
+export const SITE_LINKS = {
+  APP: "https://app.ctrlr.cloud/",
+  DOCS: "https://ctrlr.gitbook.io/ctrlr.cloud",
+  GITHUB: "https://github.com/ctrlrcloud",
+  DEMO: "https://calendly.com/d/cxn4-g4x-5sh/ctrlr-20min-product-demo",
+  X: "https://x.com/ctrlr_cloud",
+  LINKEDIN: "https://www.linkedin.com/company/ctrlrcloud",
+  LINKTREE: "https://linktr.ee/ctrlr.cloud",
+  TELEGRAM: "https://t.me/ctrlr_cloud",
 } as const;
-
-
-
-

@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
 import { Reveal } from "@/components/Reveal";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 
 export const metadata: Metadata = {
   title: "Pricing & Billing",
   description:
-    "Usage-based pricing for the Modulr platform. Clear, upfront pricing in local currency. Book a demo to learn more.",
+    "Usage-based pricing for the CTRL+R platform. Clear, upfront pricing in local currency. Book a demo to learn more.",
 };
 
 export default function PricingPage() {
@@ -20,7 +20,7 @@ export default function PricingPage() {
                 Interested in Learning More?
               </p>
               <a
-                href={MODULR_LINKS.DEMO}
+                href={SITE_LINKS.DEMO}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-primary"
@@ -40,7 +40,7 @@ export default function PricingPage() {
                 Usage-Based Pricing
               </h2>
               <p className="mt-3 text-sm leading-6 text-muted-2">
-                Modulr is a SaaS platform that provides access to robots, compute, storage,
+                CTRL+R is a SaaS platform that provides access to robots, compute, storage,
                 and AI services through an open marketplace. Users are always shown{" "}
                 <strong className="text-white/85">
                   clear, upfront pricing in their selected local currency
@@ -52,8 +52,8 @@ export default function PricingPage() {
             <Reveal delayMs={80} className="bg-card rounded-3xl p-6">
               <h3 className="text-sm font-semibold text-white">How Billing Works</h3>
               <p className="mt-3 text-sm leading-6 text-muted-2">
-                All payments on Modulr are made using standard fiat currencies (such as
-                USD, EUR, GBP, and others). Modulr uses a credit system (internally these
+                All payments on CTRL+R are made using standard fiat currencies (such as
+                USD, EUR, GBP, and others). CTRL+R uses a credit system (internally these
                 credits are called "MTR") to track service usage across the platform.
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-2">
@@ -66,8 +66,8 @@ export default function PricingPage() {
             <Reveal delayMs={140} className="bg-card rounded-3xl p-6">
               <h3 className="text-sm font-semibold text-white">Adding Balance to Your Account</h3>
               <p className="mt-3 text-sm leading-6 text-muted-2">
-                Before using any Modulr services (like remote teleoperation), users will
-                first add balance to their Modulr account in their selected currency.
+                Before using any CTRL+R services (like remote teleoperation), users will
+                first add balance to their CTRL+R account in their selected currency.
               </p>
               <p className="mt-4 text-sm text-muted-2">Common balance packages include:</p>
               <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-2">
@@ -80,7 +80,7 @@ export default function PricingPage() {
             <Reveal delayMs={200} className="bg-card rounded-3xl p-6">
               <h3 className="text-sm font-semibold text-white">Service Pricing</h3>
               <p className="mt-3 text-sm leading-6 text-muted-2">
-                Service pricing on Modulr is set by independent providers. Pricing may vary
+                Service pricing on CTRL+R is set by independent providers. Pricing may vary
                 based on:
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-2">
@@ -93,8 +93,8 @@ export default function PricingPage() {
             <Reveal delayMs={260} className="bg-card rounded-3xl p-6">
               <h3 className="text-sm font-semibold text-white">Payments</h3>
               <p className="mt-3 text-sm leading-6 text-muted-2">
-                Payments are processed securely within the Modulr application after sign-in.
-                Modulr does not store or process payment card information directly. Payments
+                Payments are processed securely within the CTRL+R application after sign-in.
+                CTRL+R does not store or process payment card information directly. Payments
                 are handled by trusted third-party payment providers.
               </p>
             </Reveal>
@@ -109,7 +109,7 @@ export default function PricingPage() {
               </p>
               <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-muted-2">
                 <li>Internal usage units (MTR) have no cash value</li>
-                <li>Balances can only be used to access Modulr services</li>
+                <li>Balances can only be used to access CTRL+R services</li>
                 <li>
                   Accounts may be temporarily restricted if payments are disputed or reversed
                 </li>
@@ -119,7 +119,7 @@ export default function PricingPage() {
             <Reveal delayMs={380} className="bg-card rounded-3xl p-6">
               <h3 className="text-sm font-semibold text-white">Early Access</h3>
               <p className="mt-3 text-sm leading-6 text-muted-2">
-                Modulr is under active development. Features, services, and pricing models may
+                CTRL+R is under active development. Features, services, and pricing models may
                 evolve as the platform grows.
               </p>
             </Reveal>
@@ -128,8 +128,8 @@ export default function PricingPage() {
               <h3 className="text-sm font-semibold text-white">Questions?</h3>
               <p className="mt-3 text-sm leading-6 text-muted-2">
                 For billing or pricing questions, contact{" "}
-                <a className="text-white/85 underline" href="mailto:support@modulr.cloud">
-                  support@modulr.cloud
+                <a className="text-white/85 underline" href="mailto:support@ctrlr.cloud">
+                  support@ctrlr.cloud
                 </a>
                 .
               </p>

@@ -29,7 +29,7 @@ export const careerPosts: CareerPost[] = [
     level: "Senior",
     salary: "$150k – $200k",
     excerpt:
-      "Build core blockchain infrastructure for the Modulr Network. You'll design high-performance systems for real-time robotic teleoperation using Rust.",
+      "Build core blockchain infrastructure for the CTRL+R Network. You'll design high-performance systems for real-time robotic teleoperation using Rust.",
     posted: "Jan 15, 2026",
   },*/
   {
@@ -77,7 +77,7 @@ export const careerPosts: CareerPost[] = [
     type: "Full-time",
     level: "Mid-Senior",
     excerpt:
-      "Build community and help developers succeed on Modulr. Create tutorials, documentation, and engage with the robotics and blockchain communities.",
+      "Build community and help developers succeed on CTRL+R. Create tutorials, documentation, and engage with the robotics and blockchain communities.",
     posted: "Jan 5, 2026",
   },
   {
@@ -102,7 +102,7 @@ export const careerPosts: CareerPost[] = [
     level: "Senior",
     salary: "$120k – $140k",
     excerpt:
-      "Design and implement consensus mechanisms, smart contract VMs, and cryptographic primitives for the Modulr Network.",
+      "Design and implement consensus mechanisms, smart contract VMs, and cryptographic primitives for the CTRL+R Network.",
     posted: "Dec 28, 2025",
   },*/
   {

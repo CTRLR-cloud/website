@@ -1,13 +1,19 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-export const alt = "Modulr — Robot Operation, at Scale.";
+export const alt = "CTRL+R — Robot Operation, at Scale.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const SITE_ORIGIN = process.env.NEXT_PUBLIC_SITE_ORIGIN ?? "https://www.modulr.cloud";
-const ACCENT = "#f2b400";
+const ACCENT = "#ff1428";
 
 export default async function Image() {
+  const logoBuf = await readFile(
+    join(process.cwd(), "public", "Main-CTRLR-logo-trans-bg.png"),
+  );
+  const logoSrc = `data:image/png;base64,${logoBuf.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -18,18 +24,17 @@ export default async function Image() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#050506",
+          background: "#000000",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        {/* Dark background with subtle yellow/gold glow (circuit-board feel) */}
         <div
           style={{
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse 80% 50% at 50% 20%, rgba(242, 180, 0, 0.18), transparent 55%), radial-gradient(ellipse 60% 40% at 80% 70%, rgba(255, 255, 255, 0.06), transparent 50%), linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6), rgba(0,0,0,0.92))",
+              "radial-gradient(ellipse 85% 55% at 50% 12%, rgba(255, 20, 40, 0.32), transparent 55%), radial-gradient(ellipse 55% 45% at 92% 45%, rgba(58, 0, 10, 0.62), transparent 52%), linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.75), rgba(0,0,0,0.98))",
           }}
         />
         <div
@@ -45,13 +50,13 @@ export default async function Image() {
         >
           {/* Logo */}
           <img
-            src={`${SITE_ORIGIN}/Modulr_logo.png`}
+            src={logoSrc}
             alt=""
-            width={96}
-            height={96}
+            width={280}
+            height={193}
             style={{ objectFit: "contain", marginBottom: 32 }}
           />
-          {/* Headline: "Robot Operation, at Scale." — Scale. in yellow */}
+          {/* Headline accent — brand ruby */}
           <div
             style={{
               display: "flex",
@@ -89,7 +94,7 @@ export default async function Image() {
             and an open network economy—connecting robots, AI, data, and
             compute.
           </p>
-          {/* Buttons: Launch App (solid yellow), Book a Demo (outlined) */}
+          {/* CTA pills — primary ruby / light secondary */}
           <div
             style={{
               display: "flex",
@@ -109,7 +114,7 @@ export default async function Image() {
                 paddingBottom: 12,
                 borderRadius: 9999,
                 backgroundColor: ACCENT,
-                color: "#130b00",
+                color: "#ffffff",
                 fontSize: 14,
                 fontWeight: 600,
               }}
@@ -126,9 +131,9 @@ export default async function Image() {
                 paddingTop: 12,
                 paddingBottom: 12,
                 borderRadius: 9999,
-                border: `2px solid ${ACCENT}`,
-                backgroundColor: "rgba(0, 0, 0, 0.3)",
-                color: "white",
+                border: "1px solid rgba(255,255,255,0.2)",
+                backgroundColor: "rgba(245, 245, 245, 0.96)",
+                color: "#141414",
                 fontSize: 14,
                 fontWeight: 600,
               }}

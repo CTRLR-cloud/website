@@ -1,11 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono } from "next/font/google";
+import { Open_Sans } from "next/font/google";
 import "./globals.css";
 import { PointerGlow } from "@/components/PointerGlow";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const openSans = Open_Sans({
+  variable: "--font-open-sans",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -15,34 +18,34 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Modulr - Robot Operation, at Scale",
-    template: "Modulr - %s",
+    default: "CTRL+R - Robot Operation, at Scale",
+    template: "CTRL+R - %s",
   },
   description: "A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.",
-  metadataBase: new URL("https://www.modulr.cloud"),
+  metadataBase: new URL("https://www.ctrlr.cloud"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "Modulr - Robot Operation, at Scale",
+    title: "CTRL+R - Robot Operation, at Scale",
     description: "A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.",
     type: "website",
-    url: "https://www.modulr.cloud/",
-    siteName: "Modulr",
+    url: "https://www.ctrlr.cloud/",
+    siteName: "CTRL+R",
     images: [
       {
-        url: "/Updated_Modulr_Social_Preview.png",
-        width: 1200,
-        height: 630,
-        alt: "Modulr - Robot Operation, at Scale",
+        url: "/Main-CTRLR-logo-trans-bg.png",
+        width: 2680,
+        height: 1852,
+        alt: "CTRL+R",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Modulr - Robot Operation, at Scale",
+    title: "CTRL+R - Robot Operation, at Scale",
     description: "A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.",
-    images: ["/Updated_Modulr_Social_Preview.png"],
+    images: ["/Main-CTRLR-logo-trans-bg.png"],
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
@@ -50,7 +53,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#050506",
+  themeColor: "#000000",
   colorScheme: "dark",
 };
 
@@ -62,7 +65,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-white/15 selection:text-white`}
+        className={`${openSans.variable} ${geistMono.variable} antialiased selection:bg-[color-mix(in_oklab,var(--accent)_28%,transparent)] selection:text-white`}
       >
         <PointerGlow />
         <div id="app-root">{children}</div>
@@ -70,5 +73,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-

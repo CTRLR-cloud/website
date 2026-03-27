@@ -11,7 +11,7 @@ export default function NotFound() {
           <div className="mx-auto max-w-6xl px-6 py-20">
             <div className="overflow-hidden rounded-[32px] border border-hairline bg-black/35 shadow-glow">
               <div className="relative p-10 md:p-14">
-                <div className="pointer-events-none absolute inset-0 opacity-90 bg-[radial-gradient(900px_380px_at_80%_20%,rgba(242,180,0,0.12),transparent_60%),radial-gradient(700px_420px_at_20%_70%,rgba(255,255,255,0.06),transparent_60%)]" />
+                <div className="pointer-events-none absolute inset-0 opacity-90 bg-[radial-gradient(900px_380px_at_80%_20%,rgba(255,20,40,0.12),transparent_60%),radial-gradient(700px_420px_at_20%_70%,rgba(255,255,255,0.06),transparent_60%)]" />
                 <div className="relative">
                   <div className="text-xs tracking-[0.28em] uppercase text-white/45">
                     Error 404

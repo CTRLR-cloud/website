@@ -1,9 +1,9 @@
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
-import { ModulrLogo } from "@/components/ModulrLogo";
+import { CtrlRLogo } from "@/components/CtrlRLogo";
 import { JoinNetworkSection } from "@/components/JoinNetworkSection";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 import { PageIntro } from "@/components/PageIntro";
 import { ParallaxTextSection } from "@/components/ParallaxTextSection";
 import { TrustedByMarquee } from "@/components/TrustedByMarquee";
@@ -18,16 +18,6 @@ import { MonetizeRobotsGlobally } from "@/components/MonetizeRobotsGlobally";
 import { DiscoverNewParadigm } from "@/components/DiscoverNewParadigm";
 import { TeleoperationSection } from "@/components/TeleoperationSection";
 
-const ROADMAP_IMG =
-  "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/690bd13cd22e0860718d9af7_ROADMAP%20(website%20version).png";
-
-const HERO_VIDEO_MP4 =
-  "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7%2F689b4e755b6819dac8d89bd5_hero_bg_semsombra%20%281%29-transcode.mp4";
-const HERO_VIDEO_WEBM =
-  "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7%2F689b4e755b6819dac8d89bd5_hero_bg_semsombra%20%281%29-transcode.webm";
-const HERO_POSTER =
-  "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7%2F689b4e755b6819dac8d89bd5_hero_bg_semsombra%20%281%29-poster-00001.jpg";
-
 export default async function Home() {
   const stories = await getCachedStories();
 
@@ -37,29 +27,25 @@ export default async function Home() {
       <SiteHeader />
 
       <main className="pt-16 flex-1">
-        {/* Hero */}
-        <section className="relative overflow-hidden border-b border-hairline min-h-[70vh] flex items-center">
-          <div className="pointer-events-none absolute inset-0">
-            <video
-              className="absolute inset-0 h-full w-full object-cover opacity-[0.55]"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              poster={HERO_POSTER}
-            >
-              <source src={HERO_VIDEO_WEBM} type="video/webm" />
-              <source src={HERO_VIDEO_MP4} type="video/mp4" />
-            </video>
-            <div className="absolute inset-0 bg-[radial-gradient(1400px_900px_at_50%_30%,rgba(242,180,0,0.15),transparent_55%),radial-gradient(1000px_700px_at_80%_70%,rgba(255,255,255,0.06),transparent_55%)]" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,.25),rgba(0,0,0,.65),rgba(0,0,0,.88))]" />
-          </div>
+        {/* Hero — black canvas, ruby glow, engineering grid (brand-aligned) */}
+        <section className="relative overflow-hidden border-b border-hairline min-h-[72vh] flex items-center">
+          <div className="pointer-events-none absolute inset-0 bg-black" />
+          <div className="pointer-events-none absolute inset-0 ctrlr-hero-glow opacity-90" />
+          <div className="pointer-events-none absolute inset-0 ctrlr-hero-grid opacity-[0.35]" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black" />
+          <div className="pointer-events-none absolute -right-32 top-1/4 h-[min(70vw,520px)] w-[min(70vw,520px)] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_22%,transparent)_0%,transparent_68%)] blur-3xl opacity-70" />
 
-          <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32 w-full">
+          <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-36 w-full">
             <Reveal className="flex justify-center">
-              <div className="text-[var(--accent)]">
-                <ModulrLogo size="xl" />
+              {/* Glow follows logo alpha only — transparent PNG sits clean on the hero */}
+              <div
+                className="inline-block"
+                style={{
+                  filter:
+                    "drop-shadow(0 0 36px rgba(255,20,40,0.45)) drop-shadow(0 0 80px rgba(255,20,40,0.2))",
+                }}
+              >
+                <CtrlRLogo size="xl" />
               </div>
             </Reveal>
 
@@ -80,7 +66,7 @@ export default async function Home() {
                 className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:items-center"
               >
                 <a
-                  href={MODULR_LINKS.APP}
+                  href={SITE_LINKS.APP}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
@@ -88,7 +74,7 @@ export default async function Home() {
                   Launch App
                 </a>
                 <a
-                  href={MODULR_LINKS.DEMO}
+                  href={SITE_LINKS.DEMO}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
@@ -126,7 +112,7 @@ export default async function Home() {
               <div className="bg-card-2 rounded-3xl p-4 shadow-glow">
                 <SmartImage
                   src={ROADMAP_IMG}
-                  alt="Modulr Roadmap"
+                  alt="CTRL+R roadmap"
                   className="w-full rounded-2xl border border-hairline"
                 />
               </div>

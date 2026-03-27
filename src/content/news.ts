@@ -28,7 +28,7 @@ export const newsPosts: NewsPost[] = [
     image:
       "https://ton.org/images/home-page/builder-success/notcoin-1.jpg",
     body: [
-      { kind: "p", text: "Modulr is built for real-world control. The demo focuses on latency, safety controls, and operator UX." },
+      { kind: "p", text: "CTRL+R is built for real-world control. The demo focuses on latency, safety controls, and operator UX." },
       { kind: "h2", text: "What you’ll see" },
       { kind: "ul", items: ["Browser-first teleoperation", "Near-zero perceived latency", "Session pricing upfront"] },
     ],
@@ -39,7 +39,7 @@ export const newsPosts: NewsPost[] = [
     type: "Update",
     date: "Jan 2026",
     readingMinutes: 3,
-    title: "Providers: earn from idle robots with Modulr",
+    title: "Providers: earn from idle robots with CTRL+R",
     excerpt:
       "Turn downtime into revenue by listing robots, compute, or AI modules—set pricing, availability, and constraints.",
     image:
@@ -57,7 +57,7 @@ export const newsPosts: NewsPost[] = [
     readingMinutes: 4,
     title: "Pricing & billing: usage-based, upfront, transparent",
     excerpt:
-      "How Modulr pricing works, why we keep it clear in local fiat currencies, and what providers can customize.",
+      "How CTRL+R pricing works, why we keep it clear in local fiat currencies, and what providers can customize.",
     image:
       "https://ton.org/images/wallet-features/own-your-play.jpg",
     body: [

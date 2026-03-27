@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
     const res = await fetch(url, {
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (compatible; Modulr-Site/1.0; +https://modulr.cloud)",
+          "Mozilla/5.0 (compatible; CTRL+R-Site/1.0; +https://ctrlr.cloud)",
         Accept: "image/*",
       },
       next: { revalidate: 86400 },

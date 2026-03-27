@@ -77,7 +77,7 @@ export default function ResearchPage() {
               <Reveal delayMs={140}>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href="mailto:hello@modulr.cloud"
+                    href="mailto:hello@ctrlr.cloud"
                     className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90 ring-premium"
                   >
                     Contact

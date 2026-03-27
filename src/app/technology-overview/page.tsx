@@ -3,12 +3,12 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { HowItWorks } from "@/components/HowItWorks";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 
 export const metadata: Metadata = {
   title: "Technology",
   description:
-    "Discover the architecture and capabilities that power the Modulr network.",
+    "Discover the architecture and capabilities that power the CTRL+R network.",
 };
 
 export default function TechnologyOverviewPage() {
@@ -33,13 +33,13 @@ export default function TechnologyOverviewPage() {
               </Reveal>
               <Reveal delayMs={100}>
                 <p className="mt-6 text-lg text-white/60 max-w-2xl">
-                  Discover the architecture and capabilities that power the Modulr network.
+                  Discover the architecture and capabilities that power the CTRL+R network.
                 </p>
               </Reveal>
               <Reveal delayMs={140}>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href={MODULR_LINKS.DEMO}
+                    href={SITE_LINKS.DEMO}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90 ring-premium"
@@ -47,7 +47,7 @@ export default function TechnologyOverviewPage() {
                     Book a Demo
                   </a>
                   <a
-                    href={MODULR_LINKS.GITHUB}
+                    href={SITE_LINKS.GITHUB}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white/[0.06] hover:text-white ring-premium"
@@ -67,7 +67,7 @@ export default function TechnologyOverviewPage() {
           <div className="mb-12 md:mb-14">
             <Reveal>
               <div className="text-xs tracking-[0.22em] uppercase text-white/55">
-                The Modulr Network
+                The CTRL+R Network
               </div>
             </Reveal>
             <Reveal delayMs={60}>
@@ -88,7 +88,7 @@ export default function TechnologyOverviewPage() {
                 kicker: "Intelligence",
                 title: "AI apps, models & agents",
                 desc: "Real-time learning and autonomous decision-making let robots interpret environments, anticipate needs, and execute tasks with precision and safety. Deploy the models and agents that make human-robot collaboration seamless.",
-                accent: "rgba(242,180,0,0.12)",
+                accent: "rgba(255,20,40,0.12)",
               },
               {
                 kicker: "Data",
@@ -165,7 +165,7 @@ export default function TechnologyOverviewPage() {
               <em>
                 ''To build the kind of world where robots can improve individual lives and
                 entire industries, we need to establish a universal connection layer between
-                all of the moving parts. This is Modulr's vision—a decentralized,
+                all of the moving parts. This is CTRL+R's vision—a decentralized,
                 peer-to-peer, modular network that makes robotics accessible to everyone.''
               </em>{" "}
               <span className="text-white/55">- Christopher Boggs</span>
@@ -179,14 +179,14 @@ export default function TechnologyOverviewPage() {
           <Reveal>
             <h2 className="text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               A look toward the future:{" "}
-              <span className="text-gradient">A Modulr Ecosystem of Co-Chains</span>
+              <span className="text-gradient">A CTRL+R Ecosystem of Co-Chains</span>
             </h2>
           </Reveal>
 
           <div className="mt-10 grid gap-4 md:grid-cols-12">
             <Reveal className="md:col-span-12 bg-card-2 rounded-3xl p-7 shadow-glow">
               <div className="text-xs tracking-[0.18em] uppercase text-white/45">
-                Modulr.Robotics
+                CTRL+R.Robotics
               </div>
               <div className="mt-3 text-lg font-semibold text-white">The robotics chain</div>
               <p className="mt-3 text-sm leading-6 text-muted-2">
@@ -197,14 +197,14 @@ export default function TechnologyOverviewPage() {
             </Reveal>
 
             {[
-              ["Modulr.AI", "A fast, flexible AI layer made of small task-specific models. A hypervisor routes requests to the right one, more efficient, easier to update, and hardware-friendly."],
-              ["Modulr.Web", "A Web 4.0 system replacing bulky webpages with modular updates. No cookies. Includes naming (UnaS) and age/content verification tools."],
-              ["Modulr.Store", "A failsafe for your assets. Set rules for transfers if inactive, freeze hacked wallets instantly, and cap withdrawals to stay in control."],
-              ["Modulr.Social", "Decentralized streaming built for low-latency interaction, perfect for creators, educators, and realtime events."],
-              ["Modulr.Code", "Code, track, and earn. Developers get rewarded for real contributions. Includes bounties and built-in chat for smoother collaboration."],
-              ["Modulr.Database", "Decentralized SQL-style databases, public or private. Great for storing everything from media libraries to logistics and inventory data."],
-              ["Modulr.Chat", "A private, decentralized chat layer. DM, create groups, or run entire communities, without centralized control."],
-              ["Modulr.Game", "Real-time multiplayer and simulation support. Live gaming, shared physics, and global state changes built into the chain."],
+              ["CTRL+R.AI", "A fast, flexible AI layer made of small task-specific models. A hypervisor routes requests to the right one, more efficient, easier to update, and hardware-friendly."],
+              ["CTRL+R.Web", "A Web 4.0 system replacing bulky webpages with modular updates. No cookies. Includes naming (UnaS) and age/content verification tools."],
+              ["CTRL+R.Store", "A failsafe for your assets. Set rules for transfers if inactive, freeze hacked wallets instantly, and cap withdrawals to stay in control."],
+              ["CTRL+R.Social", "Decentralized streaming built for low-latency interaction, perfect for creators, educators, and realtime events."],
+              ["CTRL+R.Code", "Code, track, and earn. Developers get rewarded for real contributions. Includes bounties and built-in chat for smoother collaboration."],
+              ["CTRL+R.Database", "Decentralized SQL-style databases, public or private. Great for storing everything from media libraries to logistics and inventory data."],
+              ["CTRL+R.Chat", "A private, decentralized chat layer. DM, create groups, or run entire communities, without centralized control."],
+              ["CTRL+R.Game", "Real-time multiplayer and simulation support. Live gaming, shared physics, and global state changes built into the chain."],
             ].map(([title, desc], i) => (
               <Reveal
                 key={title}

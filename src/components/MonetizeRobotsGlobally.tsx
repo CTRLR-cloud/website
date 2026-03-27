@@ -25,7 +25,7 @@ const items: Item[] = [
     number: "01",
     title: "Source global robot liquidity",
     subtitle: "Network",
-    desc: "Modulr lets anyone rent or deploy robots globally for practical, real-world work. Need to deploy a robot to inspect a pipeline? Or what about a robot for construction site security? It's all possible through Modulr's peer-to-peer network.",
+    desc: "CTRL+R lets anyone rent or deploy robots globally for practical, real-world work. Need to deploy a robot to inspect a pipeline? Or what about a robot for construction site security? It's all possible through CTRL+R's peer-to-peer network.",
     image: "/drones.png",
     accent: "rgba(0,200,180,0.25)",
   },
@@ -35,7 +35,7 @@ const items: Item[] = [
     subtitle: "Control",
     desc: "Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, VR headset, gaming controller, or custom rig.",
     image: "/operate_any_robot3.png",
-    accent: "rgba(242,180,0,0.25)",
+    accent: "rgba(255,20,40,0.25)",
   },
   {
     number: "03",
@@ -49,7 +49,7 @@ const items: Item[] = [
     number: "04",
     title: "Earn from idle robots",
     subtitle: "Earnings",
-    desc: "Turn downtime into revenue and data. List your robots on Modulr's marketplace and earn when others operate them. Or, outsource your robot data collection to qualified operators.",
+    desc: "Turn downtime into revenue and data. List your robots on CTRL+R's marketplace and earn when others operate them. Or, outsource your robot data collection to qualified operators.",
     image: "/earnings.png",
     accent: "rgba(255,100,100,0.25)",
   },
@@ -99,7 +99,7 @@ export function MonetizeRobotsGlobally({ className }: { className?: string }) {
               className="absolute inset-0 opacity-30"
               style={{
                 backgroundImage:
-                  "radial-gradient(circle at 20% 50%, rgba(242,180,0,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.04) 0%, transparent 50%)",
+                  "radial-gradient(circle at 20% 50%, rgba(255,20,40,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.04) 0%, transparent 50%)",
               }}
             />
             <div className="absolute inset-0 k-noise opacity-[0.12]" />

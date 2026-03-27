@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/PageShell";
-import { MODULR_LINKS } from "@/config/links";
+import { SITE_LINKS } from "@/config/links";
 
 export const metadata: Metadata = {
   title: "Launch App",
@@ -19,7 +19,7 @@ export default function LaunchAppPage() {
           <div className="bg-card-2 rounded-3xl p-7 shadow-glow">
             <div className="grid gap-3 sm:grid-cols-2">
               <a
-                href={MODULR_LINKS.DEMO}
+                href={SITE_LINKS.DEMO}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-primary"
@@ -27,7 +27,7 @@ export default function LaunchAppPage() {
                 Book a Demo
               </a>
               <a
-                href={MODULR_LINKS.DOCS}
+                href={SITE_LINKS.DOCS}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
@@ -38,8 +38,8 @@ export default function LaunchAppPage() {
 
             <div className="mt-6 text-xs text-white/35">
               If you already have access, open the app at{" "}
-              <a className="underline text-white/70" href={MODULR_LINKS.APP}>
-                app.modulr.cloud
+              <a className="underline text-white/70" href={SITE_LINKS.APP}>
+                app.ctrlr.cloud
               </a>
               .
             </div>

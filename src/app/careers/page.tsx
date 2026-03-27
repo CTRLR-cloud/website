@@ -88,7 +88,7 @@ export default function CareersPage() {
               <Reveal delayMs={140}>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href="mailto:jobs@modulr.cloud"
+                    href="mailto:jobs@ctrlr.cloud"
                     className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90 ring-premium"
                   >
                     Contact HR
@@ -246,8 +246,8 @@ export default function CareersPage() {
                   We're always looking for exceptional talent. Send us your resume and tell us how you'd like to contribute to the robot economy.
                 </p>
                 <a
-                  href="mailto:jobs@modulr.cloud?subject=Open Application"
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-black transition hover:brightness-95 ring-premium mt-6"
+                  href="mailto:jobs@ctrlr.cloud?subject=Open Application"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95 ring-premium mt-6 shadow-[0_0_24px_color-mix(in_oklab,var(--accent)_35%,transparent)]"
                 >
                   Send Open Application
                 </a>

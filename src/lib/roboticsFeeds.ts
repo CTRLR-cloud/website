@@ -30,7 +30,7 @@ const FEEDS: { url: string; name: string; fallbackImage: string }[] = [
 const parser = new Parser({
   timeout: 10000,
   headers: {
-    "User-Agent": "Modulr-Site/1.0 (Robotics News Aggregator)",
+    "User-Agent": "CTRL+R-Site/1.0 (Robotics News Aggregator)",
   },
   customFields: {
     item: [
@@ -133,7 +133,7 @@ const REVALIDATE_SECONDS = 6 * 60 * 60; // 6 hours
 async function fetchFeedXml(url: string): Promise<string> {
   const res = await fetch(url, {
     headers: {
-      "User-Agent": "Modulr-Site/1.0 (Robotics News Aggregator)",
+      "User-Agent": "CTRL+R-Site/1.0 (Robotics News Aggregator)",
       Accept: "application/rss+xml, application/xml, text/xml",
     },
     next: { revalidate: REVALIDATE_SECONDS },

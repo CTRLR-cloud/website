@@ -1,18 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050506;
-  --bg-section: #050506;
-  --foreground: #f5f6ff;
-  --muted: color-mix(in oklab, var(--foreground) 64%, transparent);
-  --muted-2: color-mix(in oklab, var(--foreground) 42%, transparent);
-  --card: color-mix(in oklab, white 6%, transparent);
-  --card-2: color-mix(in oklab, white 9%, transparent);
-  --border: color-mix(in oklab, white 14%, transparent);
-  --border-2: color-mix(in oklab, white 22%, transparent);
-  --accent: #f2b400;
-  --accent-2: #ffd36a;
-  --ring: color-mix(in oklab, var(--accent) 55%, transparent);
+  --background: #000000;
+  --bg-section: #030303;
+  --foreground: #f5f5f5;
+  --muted: color-mix(in oklab, var(--foreground) 62%, transparent);
+  --muted-2: color-mix(in oklab, var(--foreground) 40%, transparent);
+  --card: color-mix(in oklab, white 5%, transparent);
+  --card-2: color-mix(in oklab, white 8%, transparent);
+  --border: color-mix(in oklab, white 12%, transparent);
+  --border-2: color-mix(in oklab, white 20%, transparent);
+  /* Electric crimson + deep maroon — matches logo facets */
+  --accent: #ff1428;
+  --accent-2: #ff5567;
+  --accent-deep: #3a000a;
+  --ring: color-mix(in oklab, var(--accent) 50%, transparent);
   --mx: 50vw;
   --my: 35vh;
 }
@@ -20,30 +22,33 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
 }
 
 body {
   background:
-    radial-gradient(1100px 650px at 18% -8%, color-mix(in oklab, var(--accent) 10%, transparent), transparent 70%),
-    radial-gradient(900px 700px at 55% 110%, color-mix(in oklab, white 10%, transparent), transparent 60%),
+    radial-gradient(1200px 720px at 50% -15%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 58%),
+    radial-gradient(900px 600px at 100% 40%, color-mix(in oklab, var(--accent-deep) 55%, transparent), transparent 55%),
+    radial-gradient(700px 500px at 0% 80%, color-mix(in oklab, var(--accent) 8%, transparent), transparent 50%),
     var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji",
-    "Segoe UI Emoji";
+  font-family: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Subtle engineering grid + light grain */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.08;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+  opacity: 0.11;
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--accent) 35%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--accent) 35%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 20%, black 0%, transparent 72%);
 }
 
 body::after {
@@ -52,12 +57,12 @@ body::after {
   inset: -1px;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.55;
   background:
-    radial-gradient(520px 420px at var(--mx) var(--my), color-mix(in oklab, var(--accent) 18%, transparent), transparent 62%),
-    radial-gradient(520px 420px at calc(var(--mx) + 80px) calc(var(--my) + 60px), color-mix(in oklab, var(--accent-2) 10%, transparent), transparent 64%);
+    radial-gradient(520px 420px at var(--mx) var(--my), color-mix(in oklab, var(--accent) 16%, transparent), transparent 62%),
+    radial-gradient(480px 380px at calc(var(--mx) + 90px) calc(var(--my) + 50px), color-mix(in oklab, var(--accent-2) 8%, transparent), transparent 64%);
   mix-blend-mode: screen;
-  filter: blur(1px);
+  filter: blur(1.2px);
 }
 
 #app-root {
@@ -93,22 +98,31 @@ html {
 
   .shadow-glow {
     box-shadow:
-      0 0 0 1px color-mix(in oklab, white 10%, transparent),
-      0 24px 84px color-mix(in oklab, var(--accent) 12%, transparent),
-      0 10px 32px rgba(0, 0, 0, 0.55);
+      0 0 0 1px color-mix(in oklab, var(--accent) 18%, transparent),
+      0 24px 80px color-mix(in oklab, var(--accent) 14%, transparent),
+      0 10px 32px rgba(0, 0, 0, 0.65);
   }
 
   .bg-section {
     background:
-      radial-gradient(ellipse 100% 60% at 50% 0%, rgba(255, 255, 255, 0.015), transparent 50%),
-      radial-gradient(ellipse 100% 60% at 50% 100%, rgba(255, 255, 255, 0.01), transparent 50%),
+      radial-gradient(ellipse 100% 55% at 50% 0%, color-mix(in oklab, var(--accent) 6%, transparent), transparent 52%),
+      radial-gradient(ellipse 100% 50% at 50% 100%, color-mix(in oklab, var(--accent-deep) 35%, transparent), transparent 55%),
       var(--background);
   }
 
   .text-premium { letter-spacing: -0.02em; }
 
   .text-gradient {
-    background: linear-gradient(100deg, #fff 0%, rgba(255, 236, 190, 0.95) 38%, var(--accent) 72%, color-mix(in oklab, var(--accent) 80%, white 20%) 100%);
+    background: linear-gradient(
+      105deg,
+      #f0f0f0 0%,
+      #ffffff 12%,
+      #ffb8c3 30%,
+      var(--accent-2) 52%,
+      var(--accent) 74%,
+      #b30018 92%,
+      var(--accent-deep) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -116,18 +130,31 @@ html {
 
   .ring-premium:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 6px color-mix(in oklab, var(--ring) 38%, transparent);
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--ring) 35%, transparent);
   }
 
-  .btn-primary { background: var(--accent); color: #130b00; }
-  .btn-primary:hover { filter: brightness(0.96); }
+  .btn-primary {
+    background: linear-gradient(180deg, color-mix(in oklab, var(--accent-2) 70%, var(--accent)) 0%, var(--accent) 100%);
+    color: #ffffff;
+    box-shadow:
+      0 0 28px color-mix(in oklab, var(--accent) 42%, transparent),
+      0 6px 20px rgba(0, 0, 0, 0.45);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.06);
+  }
 
+  /* Light pill — matches reference “Learn More” */
   .btn-secondary {
-    border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.03);
-    color: rgba(255, 255, 255, 0.82);
+    border: 1px solid color-mix(in oklab, white 22%, transparent);
+    background: rgba(245, 245, 245, 0.96);
+    color: #141414;
   }
-  .btn-secondary:hover { background: rgba(255, 255, 255, 0.055); color: #fff; }
+  .btn-secondary:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: color-mix(in oklab, white 35%, transparent);
+  }
 
   .kly-chip {
     border: 1px solid var(--border);
@@ -137,11 +164,28 @@ html {
 
   .k-noise {
     background-image:
-      radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.06) 0, transparent 35%),
-      radial-gradient(circle at 80% 30%, rgba(242, 180, 0, 0.05) 0, transparent 40%),
-      radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.04) 0, transparent 40%),
-      radial-gradient(circle at 60% 60%, rgba(255, 255, 255, 0.04) 0, transparent 35%);
-    filter: contrast(110%) saturate(115%);
+      radial-gradient(circle at 20% 10%, rgba(255, 255, 255, 0.05) 0, transparent 35%),
+      radial-gradient(circle at 80% 30%, color-mix(in oklab, var(--accent) 12%, transparent) 0, transparent 42%),
+      radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.03) 0, transparent 40%),
+      radial-gradient(circle at 60% 60%, rgba(255, 255, 255, 0.03) 0, transparent 35%);
+    filter: contrast(110%) saturate(108%);
+  }
+
+  /* Hero / feature zones — stronger red grid */
+  .ctrlr-hero-grid {
+    background-image:
+      linear-gradient(color-mix(in oklab, var(--accent) 32%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in oklab, var(--accent) 32%, transparent) 1px, transparent 1px);
+    background-size: 52px 52px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 10%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, black 10%, transparent 70%);
+  }
+
+  .ctrlr-hero-glow {
+    background:
+      radial-gradient(ellipse 100% 80% at 50% -5%, color-mix(in oklab, var(--accent) 38%, transparent), transparent 55%),
+      radial-gradient(ellipse 70% 60% at 95% 45%, color-mix(in oklab, var(--accent-deep) 50%, transparent), transparent 50%),
+      radial-gradient(ellipse 50% 45% at 5% 75%, color-mix(in oklab, var(--accent) 12%, transparent), transparent 50%);
   }
 
   .mask-fade-x {

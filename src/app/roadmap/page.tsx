@@ -8,7 +8,7 @@ const ROADMAP_IMG =
 
 export const metadata: Metadata = {
   title: "Roadmap",
-  description: "View the Modulr product roadmap and upcoming developments.",
+  description: "View the CTRL+R product roadmap and upcoming developments.",
 };
 
 export default function RoadmapPage() {
@@ -19,7 +19,7 @@ export default function RoadmapPage() {
           <Reveal className="bg-card-2 rounded-3xl p-4 shadow-glow">
             <SmartImage
               src={ROADMAP_IMG}
-              alt="Modulr Roadmap"
+              alt="CTRL+R Roadmap"
               className="w-full rounded-2xl border border-hairline"
             />
           </Reveal>

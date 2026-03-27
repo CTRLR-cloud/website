@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/cn";
+import { SITE_LINKS } from "@/config/links";
 import { SmartImage } from "@/components/SmartImage";
 import { Reveal } from "@/components/Reveal";
 
@@ -75,7 +76,7 @@ export function TeleoperationSection({ className }: { className?: string }) {
 
   return (
     <section ref={ref} className={cn("relative border-t border-hairline bg-black", className)}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(242,180,0,0.08),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,20,40,0.08),transparent)]" />
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
         <div className="mb-16 max-w-2xl">
@@ -151,16 +152,16 @@ export function TeleoperationSection({ className }: { className?: string }) {
         <Reveal delayMs={280}>
           <div className="mt-16 flex flex-wrap gap-3">
             <a
-              href="https://app.modulr.cloud"
+              href={SITE_LINKS.APP}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-black font-medium text-sm hover:brightness-110 transition"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-white font-medium text-sm hover:brightness-110 transition shadow-[0_0_24px_color-mix(in_oklab,var(--accent)_40%,transparent)]"
             >
               Launch App
-              <span className="text-black/60">→</span>
+              <span className="text-white/70">→</span>
             </a>
             <a
-              href="https://modulr.gitbook.io/modulr.cloud"
+              href={SITE_LINKS.DOCS}
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 text-white/70 font-medium text-sm hover:bg-white/[0.04] transition"
