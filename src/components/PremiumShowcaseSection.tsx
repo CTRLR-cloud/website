@@ -61,7 +61,7 @@ export function PremiumShowcaseSection() {
                     : { y: [0, -8, 0], transition: { duration: 7, repeat: Infinity } }
                 }
               >
-                <div className="pointer-events-none absolute inset-0 opacity-90 bg-[radial-gradient(900px_380px_at_80%_20%,rgba(255,20,40,0.10),transparent_60%)]" />
+                <div className="pointer-events-none absolute inset-0 opacity-90 bg-[radial-gradient(900px_380px_at_80%_20%,rgba(201,0,7,0.10),transparent_60%)]" />
                 <div className="relative">
                   <div className="text-xs tracking-[0.22em] uppercase text-white/45">
                     Operator cockpit

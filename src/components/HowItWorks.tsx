@@ -104,7 +104,7 @@ export function HowItWorks({
                   className="pointer-events-none absolute inset-0 opacity-100"
                   style={{
                     background:
-                      "linear-gradient(135deg, rgba(255,20,40,0.06) 0%, transparent 50%), radial-gradient(600px 400px at 80% 20%, rgba(255,20,40,0.08), transparent 50%)",
+                      "linear-gradient(135deg, rgba(201,0,7,0.06) 0%, transparent 50%), radial-gradient(600px 400px at 80% 20%, rgba(201,0,7,0.08), transparent 50%)",
                   }}
                 />
                 <div className="relative p-6 md:p-8 flex flex-col flex-1 min-h-0">

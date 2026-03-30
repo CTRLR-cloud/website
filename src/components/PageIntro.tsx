@@ -54,7 +54,7 @@ export function PageIntro() {
               animate={{ opacity: 1 }}
               transition={{ duration: 1.1, delay: 0.2 }}
               style={{
-                backgroundImage: "radial-gradient(ellipse 40% 25% at 50% 50%, rgba(255,20,40,0.10) 0%, transparent 70%)",
+                backgroundImage: "radial-gradient(ellipse 40% 25% at 50% 50%, rgba(201,0,7,0.10) 0%, transparent 70%)",
               }}
             />
 
@@ -100,7 +100,7 @@ export function PageIntro() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_rgba(255,20,40,0.55)]" />
+              <div className="h-1.5 w-1.5 rounded-full bg-[var(--accent)] shadow-[0_0_10px_rgba(201,0,7,0.55)]" />
               <span className="text-[10px] tracking-[0.3em] uppercase text-white/30">Loading</span>
             </motion.div>
 

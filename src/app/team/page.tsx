@@ -129,7 +129,7 @@ export default function TeamPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
                   </div>
                 ) : (
-                  <div className="aspect-[16/10] bg-[radial-gradient(900px_420px_at_80%_25%,rgba(255,20,40,0.12),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.2))]" />
+                  <div className="aspect-[16/10] bg-[radial-gradient(900px_420px_at_80%_25%,rgba(201,0,7,0.12),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.2))]" />
                 )}
 
                 <div className="p-6">

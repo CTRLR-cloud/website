@@ -42,7 +42,7 @@ export default async function Home() {
                 className="inline-block"
                 style={{
                   filter:
-                    "drop-shadow(0 0 36px rgba(255,20,40,0.45)) drop-shadow(0 0 80px rgba(255,20,40,0.2))",
+                    "drop-shadow(0 0 36px rgba(201,0,7,0.45)) drop-shadow(0 0 80px rgba(201,0,7,0.2))",
                 }}
               >
                 <CtrlRLogo size="xl" />

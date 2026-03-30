@@ -76,7 +76,7 @@ export function TeleoperationSection({ className }: { className?: string }) {
 
   return (
     <section ref={ref} className={cn("relative border-t border-hairline bg-black", className)}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(255,20,40,0.08),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(201,0,7,0.08),transparent)]" />
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
         <div className="mb-16 max-w-2xl">

@@ -27,7 +27,7 @@ const tiles: Tile[] = [
     image: "/NVIDIA_3.jpeg",
     href: "/technology-overview",
     cta: "Learn More",
-    accent: "rgba(255,20,40,0.25)",
+    accent: "rgba(201,0,7,0.25)",
     size: "large",
     minimalOverlay: true,
     hideCta: true,
@@ -47,7 +47,7 @@ const tiles: Tile[] = [
     image: "/ctrlr_vision_image.jpg",
     href: "/technology-overview",
     cta: "View Technology",
-    accent: "rgba(255,20,40,0.25)",
+    accent: "rgba(201,0,7,0.25)",
     size: "medium",
   },
 ];

@@ -28,7 +28,7 @@ function Card({ className, children, hover = true }: { className?: string; child
       )}
       whileHover={shouldHover ? { y: -6, scale: 1.01, transition: { duration: 0.22, ease: [0.2, 0.8, 0.2, 1] } } : undefined}
     >
-      <div className="pointer-events-none absolute inset-0 opacity-80 bg-[radial-gradient(900px_420px_at_80%_25%,rgba(255,20,40,0.10),transparent_60%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-80 bg-[radial-gradient(900px_420px_at_80%_25%,rgba(201,0,7,0.10),transparent_60%)]" />
       {children}
     </motion.div>
   );

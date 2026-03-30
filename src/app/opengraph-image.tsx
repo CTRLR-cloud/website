@@ -2,11 +2,13 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
+import { BRAND_COLORS } from "@/config/brand-colors";
+
 export const alt = "CTRL+R — Robot Operation, at Scale.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const ACCENT = "#ff1428";
+const ACCENT = BRAND_COLORS.primaryRed;
 
 export default async function Image() {
   const logoBuf = await readFile(
@@ -34,7 +36,7 @@ export default async function Image() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse 85% 55% at 50% 12%, rgba(255, 20, 40, 0.32), transparent 55%), radial-gradient(ellipse 55% 45% at 92% 45%, rgba(58, 0, 10, 0.62), transparent 52%), linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.75), rgba(0,0,0,0.98))",
+              "radial-gradient(ellipse 85% 55% at 50% 12%, rgba(201, 0, 7, 0.32), transparent 55%), radial-gradient(ellipse 55% 45% at 92% 45%, rgba(105, 4, 4, 0.62), transparent 52%), linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.75), rgba(0,0,0,0.98))",
           }}
         />
         <div

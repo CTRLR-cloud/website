@@ -35,7 +35,7 @@ const items: Item[] = [
     subtitle: "Control",
     desc: "Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, VR headset, gaming controller, or custom rig.",
     image: "/operate_any_robot3.png",
-    accent: "rgba(255,20,40,0.25)",
+    accent: "rgba(201,0,7,0.25)",
   },
   {
     number: "03",
@@ -99,7 +99,7 @@ export function MonetizeRobotsGlobally({ className }: { className?: string }) {
               className="absolute inset-0 opacity-30"
               style={{
                 backgroundImage:
-                  "radial-gradient(circle at 20% 50%, rgba(255,20,40,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.04) 0%, transparent 50%)",
+                  "radial-gradient(circle at 20% 50%, rgba(201,0,7,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.04) 0%, transparent 50%)",
               }}
             />
             <div className="absolute inset-0 k-noise opacity-[0.12]" />

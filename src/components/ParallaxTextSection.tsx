@@ -45,10 +45,10 @@ export function ParallaxTextSection() {
               className="absolute inset-0"
               style={{
                 backgroundImage: `
-                  radial-gradient(ellipse 80% 60% at 50% 40%, rgba(255,20,40,0.20) 0%, transparent 54%),
+                  radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,0,7,0.20) 0%, transparent 54%),
                   radial-gradient(ellipse 70% 45% at 30% 60%, rgba(255,255,255,0.08) 0%, transparent 55%),
-                  radial-gradient(ellipse 55% 40% at 70% 28%, rgba(255,20,40,0.10) 0%, transparent 52%),
-                  radial-gradient(ellipse 110% 90% at 50% 100%, rgba(255,20,40,0.10) 0%, transparent 46%)
+                  radial-gradient(ellipse 55% 40% at 70% 28%, rgba(201,0,7,0.10) 0%, transparent 52%),
+                  radial-gradient(ellipse 110% 90% at 50% 100%, rgba(201,0,7,0.10) 0%, transparent 46%)
                 `,
               }}
             />
@@ -89,7 +89,7 @@ export function ParallaxTextSection() {
                   style={{
                     color: "transparent",
                     WebkitTextStroke: "1px rgba(255,255,255,0.16)",
-                    fontFamily: "var(--font-open-sans), system-ui",
+                    fontFamily: "var(--font-geist-sans), system-ui",
                   }}
                 >
                   ROBOT
@@ -109,7 +109,7 @@ export function ParallaxTextSection() {
                 >
                   <h2
                     className="text-[18vw] md:text-[14vw] lg:text-[12vw] font-black leading-[0.85] tracking-[-0.02em] uppercase bg-gradient-to-r from-white via-white to-[var(--accent)] bg-clip-text text-transparent"
-                    style={{ fontFamily: "var(--font-open-sans), system-ui" }}
+                    style={{ fontFamily: "var(--font-geist-sans), system-ui" }}
                   >
                     ROBOT
                     <br />

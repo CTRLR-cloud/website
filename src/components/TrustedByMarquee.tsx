@@ -44,7 +44,7 @@ export function TrustedByMarquee({ className }: { className?: string }) {
     <section className={cn("border-t border-b border-hairline bg-black overflow-hidden", className)}>
       <div className="mx-auto max-w-7xl px-6 py-5">
         <div className="flex items-center gap-3 text-xs tracking-[0.22em] uppercase text-white/45">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]/80 shadow-[0_0_14px_rgba(255,20,40,0.35)]" />
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]/80 shadow-[0_0_14px_rgba(201,0,7,0.35)]" />
           Trusted By
         </div>
       </div>

@@ -1,14 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono } from "next/font/google";
-import { Open_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PointerGlow } from "@/components/PointerGlow";
 
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -65,7 +62,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${openSans.variable} ${geistMono.variable} antialiased selection:bg-[color-mix(in_oklab,var(--accent)_28%,transparent)] selection:text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-[color-mix(in_oklab,var(--accent)_28%,transparent)] selection:text-white`}
       >
         <PointerGlow />
         <div id="app-root">{children}</div>

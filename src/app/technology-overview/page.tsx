@@ -88,7 +88,7 @@ export default function TechnologyOverviewPage() {
                 kicker: "Intelligence",
                 title: "AI apps, models & agents",
                 desc: "Real-time learning and autonomous decision-making let robots interpret environments, anticipate needs, and execute tasks with precision and safety. Deploy the models and agents that make human-robot collaboration seamless.",
-                accent: "rgba(255,20,40,0.12)",
+                accent: "rgba(201,0,7,0.12)",
               },
               {
                 kicker: "Data",
