@@ -22,8 +22,8 @@ type Tile = {
 
 const tiles: Tile[] = [
   {
-    title: "Built from Teleoperation Up",
-    desc: "CTRL+R is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale. We're standardizing robot control into a customizable yet intuitive UX while laying the foundation for a peer-to-peer network connecting robots, AI, data, and compute. This approach earned CTRL+R a place in NVIDIA's Inception Program.",
+    title: "Built for Enterprise Performance",
+    desc: "CTRL+R is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale. We're standardizing robot control into one unified operations platform that is intuitive for first-time operators, yet powerful and customizable for advanced robotics teams. This approach earned CTRL+R a place in NVIDIA's Inception Program.",
     image: "/NVIDIA_3.jpeg",
     href: "/technology-overview",
     cta: "Learn More",
@@ -65,8 +65,8 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                 Discover
               </div>
               <h2 className="mt-3 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-              A New  {" "}
-                <span className="text-gradient">Robotics Paradigm</span>
+              Real-Time  {" "}
+                <span className="text-gradient">Robot Operations</span>
               </h2>
             </div>
           </Reveal>

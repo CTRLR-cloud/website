@@ -18,14 +18,14 @@ export const metadata: Metadata = {
     default: "CTRL+R - Robot Operation, at Scale",
     template: "CTRL+R - %s",
   },
-  description: "A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.",
+  description: "One unified platform to control and coordinate robots at scale.",
   metadataBase: new URL("https://www.ctrlr.cloud"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "CTRL+R - Robot Operation, at Scale",
-    description: "A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.",
+    description: "One unified platform to control and coordinate robots at scale.",
     type: "website",
     url: "https://www.ctrlr.cloud/",
     siteName: "CTRL+R",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "CTRL+R - Robot Operation, at Scale",
-    description: "A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.",
+    description: "One unified platform to control and coordinate robots at scale.",
     images: ["/Main-CTRLR-logo-trans-bg.png"],
   },
   icons: {

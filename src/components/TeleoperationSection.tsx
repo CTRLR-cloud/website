@@ -81,7 +81,7 @@ export function TeleoperationSection({ className }: { className?: string }) {
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
         <div className="mb-16 max-w-2xl">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent)] mb-4">
+            <p className="text-xs uppercase tracking-[0.22em] text-white/55 mb-4">
               Teleoperation
             </p>
           </Reveal>

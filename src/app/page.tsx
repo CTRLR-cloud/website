@@ -55,14 +55,14 @@ export default async function Home() {
                   Robot Operation, <span className="text-gradient whitespace-nowrap">at Scale.</span>
                 </h1>
               </Reveal>
-              <Reveal delayMs={140}>
-                <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted sm:text-lg">
-                  A real-time robot operations platform built for enterprise performance and an open network economy—connecting robots, AI, data, and compute.
+              <Reveal delayMs={110}>
+                <p className="mx-auto mt-5 max-w-3xl text-lg font-medium leading-relaxed tracking-wide text-white/80 sm:mt-6 sm:text-xl">
+                  One Platform. Any Robot. Total Control.
                 </p>
               </Reveal>
 
               <Reveal
-                delayMs={220}
+                delayMs={200}
                 className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:items-center"
               >
                 <a

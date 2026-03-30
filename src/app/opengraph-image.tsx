@@ -92,9 +92,7 @@ export default async function Image() {
               marginBottom: 36,
             }}
           >
-            A real-time robot operations platform built for enterprise performance
-            and an open network economy—connecting robots, AI, data, and
-            compute.
+            One unified platform to control and coordinate robots at scale.
           </p>
           {/* CTA pills — primary ruby / light secondary */}
           <div

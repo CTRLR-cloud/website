@@ -60,28 +60,6 @@ function GitHubBrandIcon({ className }: { className?: string }) {
   );
 }
 
-function TelegramBrandIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-      <path
-        fill="currentColor"
-        d="M9.75 15.5 9.5 19.1c.36 0 .52-.15.71-.34l1.7-1.63 3.52 2.58c.65.36 1.11.17 1.28-.6l2.32-10.9c.21-.94-.34-1.31-.97-1.07L4.47 11.2c-.92.36-.91.88-.16 1.11l3.68 1.15 8.55-5.4c.4-.24.76-.11.46.16l-6.92 6.28-.33 1Z"
-      />
-    </svg>
-  );
-}
-
-function LinkIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" className={className}>
-      <path
-        fill="currentColor"
-        d="M10.6 13.4a1 1 0 0 1 0-1.4l3.4-3.4a3 3 0 1 1 4.2 4.2l-2 2a3 3 0 0 1-4.2 0 1 1 0 1 1 1.4-1.4 1 1 0 0 0 1.4 0l2-2a1 1 0 0 0-1.4-1.4l-3.4 3.4a1 1 0 0 1-1.4 0Zm2.8-2.8a1 1 0 0 1 0 1.4l-3.4 3.4A3 3 0 0 1 5.8 11l2-2A3 3 0 0 1 12 9a1 1 0 0 1-1.4 1.4 1 1 0 0 0-1.4 0l-2 2a1 1 0 0 0 1.4 1.4l3.4-3.4a1 1 0 0 1 1.4 0Z"
-      />
-    </svg>
-  );
-}
-
 export function SiteFooter() {
   return (
     <footer className="border-t border-hairline bg-section">
@@ -93,8 +71,8 @@ export function SiteFooter() {
                 <CtrlRLogo variant="footer" />
               </span>
             </Link>
-            <p className="mt-3 max-w-md text-sm text-muted-2">
-              The Open Network for Robotics, AI, Data, and Compute
+            <p className="mt-3 max-w-md text-base font-medium leading-snug text-white/90 sm:text-lg">
+              Robot Operation, at Scale
             </p>
 
             <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -106,15 +84,6 @@ export function SiteFooter() {
               </IconButton>
               <IconButton href={SITE_LINKS.GITHUB} label="GitHub">
                 <GitHubBrandIcon className="h-4 w-4" />
-              </IconButton>
-              <IconButton href={SITE_LINKS.LINKTREE} label="Linktree">
-                <LinkIcon className="h-[18px] w-[18px]" />
-              </IconButton>
-              <IconButton href={SITE_LINKS.TELEGRAM} label="Telegram">
-                <TelegramBrandIcon className="h-4 w-4" />
-              </IconButton>
-              <IconButton href={SITE_LINKS.DOCS} label="Docs">
-                <LinkIcon className="h-[18px] w-[18px]" />
               </IconButton>
             </div>
           </div>

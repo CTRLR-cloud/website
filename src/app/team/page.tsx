@@ -48,7 +48,7 @@ const team: TeamMember[] = [
   {
     name: "Michael Hart",
     role: "Chief Robotics Engineer",
-    bio: "Michael, an ex-Amazon robotics expert, brings years of practical experience in engineering robotics. At Amazon he worked as a senior robotics engineer and was one of the core figures behind the development of the Amazon Scout, the company's flagship autonomous delivery robot. He studied at Imperial College and has been active in the robotics community through YouTube, GitHub, and his personal blog, where he shares projects and insights. At CTRL+R he is architecting core teleoperation functionality on the open network for robotics.",
+    bio: "Michael, an ex-Amazon robotics expert, brings years of practical experience in engineering robotics. At Amazon he worked as a senior robotics engineer and was one of the core figures behind the development of the Amazon Scout, the company's flagship autonomous delivery robot. He studied at Imperial College and has been active in the robotics community through YouTube, GitHub, and his personal blog, where he shares projects and insights. At CTRL+R he is architecting core teleoperation functionality and system architecture.",
     imageSrc:
       "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68b20a19cfaf0e6a7c807a26_Mike%20H.jpg",
   },

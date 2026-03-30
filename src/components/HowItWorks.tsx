@@ -19,21 +19,6 @@ const ownerSteps = [
   },
 ];
 
-const clientSteps = [
-  {
-    title: "Discover & rent robots",
-    desc: "Browse and discover robots and services on the network. See availability, pricing, and capabilities in one place. No need to buy a robot you don't need.",
-  },
-  {
-    title: "Operate from anywhere",
-    desc: "Connect and control from your browser, VR headset, or preferred interface. Real-time feedback and built-in safety guardrails are present in every session.",
-  },
-  {
-    title: "Pay per use",
-    desc: "Rent only what you need. Clear per-session or per-minute pricing; no lock-in. Ideal for infrequent, dangerous, or monotonous tasks. Let robots do the work for you—without having to buy.",
-  },
-];
-
 export function HowItWorks({
   className,
   compactTop,
@@ -65,17 +50,23 @@ export function HowItWorks({
           </Reveal>
           <Reveal delayMs={110}>
             <p className="mt-5 text-sm leading-7 text-white/60 max-w-2xl">
-              Whether you're a robotics team looking for better internal controls over your fleet, or an operator looking to rent and operate robots for your business—CTRL+R has you covered.
+              For robotics teams that need stronger internal controls over their fleet—one platform to operate and monetize.
             </p>
           </Reveal>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 md:gap-8 md:items-stretch">
-          {/* Left: For robot owners */}
-          <div className="md:sticky md:top-24 md:self-start">
-            <Reveal delayMs={90}>
-              <div className="h-full rounded-2xl border border-white/20 bg-white/[0.06] p-6 md:p-8 flex flex-col shadow-[0_0_0_1px_rgba(255,255,255,0.06)]">
-                <div className="text-xs tracking-[0.2em] uppercase text-white/70 mb-1">
+        <div className="mx-auto max-w-3xl">
+          <Reveal delayMs={90}>
+            <div className="relative overflow-hidden h-full rounded-2xl border border-[var(--accent)]/25 bg-black/50 flex flex-col">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-100"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(201,0,7,0.06) 0%, transparent 50%), radial-gradient(600px 400px at 80% 20%, rgba(201,0,7,0.08), transparent 50%)",
+                }}
+              />
+              <div className="relative p-6 md:p-8 flex flex-col flex-1 min-h-0">
+                <div className="text-xs tracking-[0.2em] uppercase text-[var(--accent)]/90 mb-1">
                   For partners & robot teams
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold text-white mt-1">
@@ -83,55 +74,21 @@ export function HowItWorks({
                 </h3>
                 <div className="mt-6 space-y-3 flex-1">
                   {ownerSteps.map((s, i) => (
-                    <div key={s.title} className="rounded-xl border border-white/15 bg-white/[0.01] p-5">
-                      <div className="text-sm font-semibold text-white">
-                        <span className="text-[var(--accent)]">{String(i + 1).padStart(2, "0")}</span>{" "}
-                        {s.title}
+                    <div
+                      key={s.title}
+                      className="rounded-xl border border-[var(--accent)]/20 bg-white/[0.03] p-5"
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="text-sm font-semibold text-white">{s.title}</div>
+                        <div className="text-xs text-white/45">Step {i + 1}</div>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-white/60">{s.desc}</p>
                     </div>
                   ))}
                 </div>
               </div>
-            </Reveal>
-          </div>
-
-          {/* Right: For clients & operators — brand accent panel */}
-          <div className="min-h-0">
-            <Reveal delayMs={120}>
-              <div className="relative overflow-hidden h-full rounded-2xl border border-[var(--accent)]/25 bg-black/50 flex flex-col">
-                <div
-                  className="pointer-events-none absolute inset-0 opacity-100"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(201,0,7,0.06) 0%, transparent 50%), radial-gradient(600px 400px at 80% 20%, rgba(201,0,7,0.08), transparent 50%)",
-                  }}
-                />
-                <div className="relative p-6 md:p-8 flex flex-col flex-1 min-h-0">
-                  <div className="text-xs tracking-[0.2em] uppercase text-[var(--accent)]/90 mb-1">
-                    For clients & operators
-                  </div>
-                  <h3 className="text-lg md:text-xl font-semibold text-white mt-1">
-                    Discover, operate, pay per use
-                  </h3>
-                  <div className="mt-6 space-y-3 flex-1">
-                    {clientSteps.map((s, i) => (
-                      <div
-                        key={s.title}
-                        className="rounded-xl border border-[var(--accent)]/20 bg-white/[0.03] p-5"
-                      >
-                        <div className="flex items-center justify-between">
-                          <div className="text-sm font-semibold text-white">{s.title}</div>
-                          <div className="text-xs text-white/45">Step {i + 1}</div>
-                        </div>
-                        <p className="mt-2 text-sm leading-6 text-white/60">{s.desc}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>
