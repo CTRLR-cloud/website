@@ -44,8 +44,8 @@ export function HowItWorks({
             </div>
           </Reveal>
           <Reveal delayMs={60}>
-            <h2 className="mt-3 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Stop wasting time building software{" "}
+            <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
+              Stop building software{" "}
               <span className="text-[var(--accent)]">in-house.</span>
             </h2>
           </Reveal>

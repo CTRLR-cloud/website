@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
@@ -14,9 +15,10 @@ import { UseCasesHorizontalScrollSection } from "@/components/UseCasesHorizontal
 import { HowItWorks } from "@/components/HowItWorks";
 import { NumbersSection } from "@/components/NumbersSection";
 import { WhyBuildersChooseSection } from "@/components/WhyBuildersChooseSection";
-import { MonetizeRobotsGlobally } from "@/components/MonetizeRobotsGlobally";
+import { CommandHQ } from "@/components/CommandHQ";
 import { DiscoverNewParadigm } from "@/components/DiscoverNewParadigm";
 import { TeleoperationSection } from "@/components/TeleoperationSection";
+import { SITE_ASSETS } from "@/config/assets";
 
 export default async function Home() {
   const stories = await getCachedStories();
@@ -27,13 +29,36 @@ export default async function Home() {
       <SiteHeader />
 
       <main className="pt-16 flex-1">
-        {/* Hero — black canvas, ruby glow, engineering grid (brand-aligned) */}
+        {/* Hero — photo + ruby glow, engineering grid (brand-aligned) */}
         <section className="relative overflow-hidden border-b border-hairline min-h-[72vh] flex items-center">
-          <div className="pointer-events-none absolute inset-0 bg-black" />
-          <div className="pointer-events-none absolute inset-0 ctrlr-hero-glow opacity-90" />
-          <div className="pointer-events-none absolute inset-0 ctrlr-hero-grid opacity-[0.35]" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black" />
-          <div className="pointer-events-none absolute -right-32 top-1/4 h-[min(70vw,520px)] w-[min(70vw,520px)] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_22%,transparent)_0%,transparent_68%)] blur-3xl opacity-70" />
+          <div className="pointer-events-none absolute inset-0 bg-black" aria-hidden />
+          <div className="pointer-events-none absolute inset-0" aria-hidden>
+            <Image
+              src={SITE_ASSETS.HERO_BACKGROUND}
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </div>
+          {/* Readability: darken, vignette, subtle brand wash */}
+          <div
+            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/85"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_110%_70%_at_50%_0%,rgba(0,0,0,0.55),transparent_58%)]"
+            aria-hidden
+          />
+          <div
+            className="pointer-events-none absolute inset-0 bg-[color-mix(in_oklab,var(--accent)_12%,transparent)] mix-blend-multiply opacity-90"
+            aria-hidden
+          />
+          <div className="pointer-events-none absolute inset-0 ctrlr-hero-glow opacity-45" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 ctrlr-hero-grid opacity-[0.2]" aria-hidden />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black" aria-hidden />
+          <div className="pointer-events-none absolute -right-32 top-1/4 h-[min(70vw,520px)] w-[min(70vw,520px)] rounded-full bg-[radial-gradient(circle,color-mix(in_oklab,var(--accent)_22%,transparent)_0%,transparent_68%)] blur-3xl opacity-45" aria-hidden />
 
           <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-36 w-full">
             <Reveal className="flex justify-center">
@@ -90,15 +115,18 @@ export default async function Home() {
         <DiscoverNewParadigm />
         <TeleoperationSection />
         <WhyBuildersChooseSection />
-        <PremiumShowcaseSection />
-        <UseCasesHorizontalScrollSection />
+        <CommandHQ />
         <HowItWorks />
+        <UseCasesHorizontalScrollSection />
+        <PremiumShowcaseSection />
+        
+        
         <ParallaxTextSection />
         
 
         {/* <AccessBentoSection /> */}
 
-        <MonetizeRobotsGlobally />
+        
 
 {/*
         <section className="border-t border-hairline bg-section">
