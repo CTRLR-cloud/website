@@ -71,7 +71,7 @@ export function PremiumShowcaseSection() {
                     <div className="col-span-12 md:col-span-7 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                       <div className="text-xs text-white/45">Latency (avg)</div>
                       <div className="mt-2 text-2xl font-semibold text-white">
-                        220ms
+                        200ms
                       </div>
                       <div className="mt-3 h-2 w-full rounded-full bg-white/10 overflow-hidden">
                         <div className="h-full w-[72%] rounded-full bg-[linear-gradient(90deg,var(--accent),rgba(255,255,255,0.2))]" />
@@ -88,13 +88,13 @@ export function PremiumShowcaseSection() {
                     </div>
                     <div className="col-span-12 rounded-2xl border border-white/10 bg-white/[0.03] p-4">
                       <div className="flex items-center justify-between text-xs text-white/45">
-                        <span>Session History</span>
-                        <span className="text-white/60">$1.34/min</span>
+                        <span>Session History & Logs</span>
+                        <span className="text-white/60"></span>
                       </div>
                       <div className="mt-3 min-h-[200px] rounded-xl overflow-hidden border border-white/5 bg-black/30">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="/session-history-screenshot.png"
+                          src="/session-logs.jpeg"
                           alt="Session history: Total Sessions, Completed, Total Time, Avg Duration with session list"
                           className="w-full h-auto object-contain object-top"
                         />

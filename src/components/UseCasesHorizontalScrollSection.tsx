@@ -23,35 +23,36 @@ type UseCase = {
 const useCases: UseCase[] = [
   
   {
+    title: "Retail",
+    desc: "Control real robots across retail environments—stores, warehouses, and fulfillment centers—from anywhere in the world. Think: shelf scanning, restocking, customer assistance, and real-time operations.",
+    image: "/retail.png",
+    accent: "rgba(0,200,150,0.35)",
+    stat: "On-Demand",
+    statLabel: "Access",
+  },
+
+  {
     title: "Industrial Automation",
     desc: "Remotely manage robotic arms, AGVs, and factory floor equipment with sub-second latency. Scale operations without physical presence.",
-    image: "/agriculture-industrial.png",
+    image: "/industrial-automation.png",
     accent: "rgba(120,100,255,0.35)",
     stat: "Unlimited",
-    statLabel: "Robots",
+    statLabel: "Scale",
   },
   
   {
-    title: "Entertainment & Gaming",
-    desc: "Control real robots in fighting arenas, race courses, arcades, and immersive experiences from anywhere in the world. Think: Real Steel, AR/VR, drone racing, and more.",
-    image: "/entertainment-gaming.png",
-    accent: "rgba(0,200,150,0.35)",
-    stat: "Ultra-low",
-    statLabel: "Latency",
-  },
-  {
-    title: "Defense & Security",
-    desc: "Operate unmanned ground and aerial vehicles for reconnaissance, patrol, and hazardous environment inspection with military-grade reliability.",
-    image: "/defense_robots.jpg",
-    accent: "rgba(201,0,7,0.35)",
+    title: "Security & Surveillance",
+    desc: "Operate unmanned ground and aerial vehicles for reconnaissance, patrol, and hazardous environment inspection with military-grade reliability, perfect for construction sites, oil fields, and more.",
+    image: "/construction-site.png",
+    accent: "rgba(250, 204, 21, 0.38)",
     stat: "99.9%",
     statLabel: "Uptime",
   },
   
   {
-    title: "Space & Extreme Environments",
-    desc: "Control rovers, orbital manipulators, and deep-sea exploration robots with real-time feedback loops across vast distances.",
-    image: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1400&h=900&fit=crop",
+    title: "Mining & Offshore",
+    desc: "Control robots across mining sites and offshore environments with real-time feedback, handling inspection, maintenance, and operations from anywhere.",
+    image: "/mining-2.png",
     accent: "rgba(255,100,100,0.35)",
     stat: "∞",
     statLabel: "Range",
@@ -142,10 +143,10 @@ export function UseCasesHorizontalScrollSection({
                       transition={{ duration: 0.8, delay: 0.3 }}
                     >
                       <div className="text-xs tracking-[0.28em] uppercase text-white/45 mb-3">
-                        Remote Teleoperation
+                        Any Robot. Any Vertical.
                       </div>
                       <p className="text-lg md:text-xl leading-8 text-white/70 max-w-md">
-                        From agriculture to space exploration, CTRL+R powers
+                        From retail to deep sea exploration, CTRL+R powers
                         real-time robotic control in the most demanding
                         environments.
                       </p>

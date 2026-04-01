@@ -20,7 +20,7 @@ const panels: Panel[] = [
     title: "Operate any robot with any interface",
     desc: "CTRL+R works across robot manufacturers and control inputs including keyboards, joysticks, VR/AR, haptics, and custom controllers. Teams can operate diverse fleets without rebuilding control systems for each new robot.",
     theme: "mono",
-    backgroundImage: "/vibrant-wires-bg.png",
+    backgroundImage: "/operate_any_robot3.png",
   },
   {
     kicker: "Coordination",
@@ -61,8 +61,8 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
           </Reveal>
           <Reveal delayMs={60}>
             <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white">
-              Built for speed.{" "}
-              <span className="text-gradient">Built for operators.</span>
+              Built for speed. Built {" "}
+              <span className="text-gradient">for operators.</span>
             </h2>
           </Reveal>
           <Reveal delayMs={110}>
@@ -128,8 +128,8 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
                 </Reveal>
                 <Reveal delayMs={60}>
                   <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                    Built for speed.{" "}
-                    <span className="text-gradient">Built for operators.</span>
+                    Built for speed. Built {" "}
+                    <span className="text-gradient">for operators.</span>
                   </h2>
                 </Reveal>
                 <Reveal delayMs={110}>

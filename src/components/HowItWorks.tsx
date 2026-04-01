@@ -45,12 +45,13 @@ export function HowItWorks({
           </Reveal>
           <Reveal delayMs={60}>
             <h2 className="mt-3 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              One platform to <span className="text-gradient">operate and monetize robots</span>
+              Stop wasting time building software{" "}
+              <span className="text-[var(--accent)]">in-house.</span>
             </h2>
           </Reveal>
           <Reveal delayMs={110}>
             <p className="mt-5 text-sm leading-7 text-white/60 max-w-2xl">
-              For robotics teams that need stronger internal controls over their fleet—one platform to operate and monetize.
+              You don't have to build a CRM to track sales leads. Robotics teams shouldn't have to build software just to operate their robots.
             </p>
           </Reveal>
         </div>
