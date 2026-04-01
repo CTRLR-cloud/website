@@ -7,7 +7,7 @@ import { SITE_LINKS } from "@/config/links";
 import { Reveal } from "@/components/Reveal";
 import { SmartImage } from "@/components/SmartImage";
 
-const RETAIL_DEMO_VIDEO_MP4 = "/RETAIL-DEMO-FINAL.mp4";
+const RETAIL_DEMO_VIDEO_MP4 = "/Final-retail-demo.mp4";
 const RETAIL_DEMO_POSTER = "/Command-HQ-multiview.png";
 
 function RetailDemoVideo() {
