@@ -8,7 +8,7 @@ import { SITE_LINKS } from "@/config/links";
 export const metadata: Metadata = {
   title: "Technology",
   description:
-    "Discover the architecture and capabilities that power the CTRL+R network.",
+    "Discover the architecture and capabilities that power CTRL+R.",
 };
 
 export default function TechnologyOverviewPage() {
@@ -33,7 +33,7 @@ export default function TechnologyOverviewPage() {
               </Reveal>
               <Reveal delayMs={100}>
                 <p className="mt-6 text-lg text-white/60 max-w-2xl">
-                  Discover the architecture and capabilities that power the CTRL+R network.
+                  Discover the architecture and capabilities that power CTRL+R.
                 </p>
               </Reveal>
               <Reveal delayMs={140}>

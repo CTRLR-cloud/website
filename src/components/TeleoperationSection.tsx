@@ -1,11 +1,52 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/cn";
 import { SITE_LINKS } from "@/config/links";
-import { SmartImage } from "@/components/SmartImage";
 import { Reveal } from "@/components/Reveal";
+import { SmartImage } from "@/components/SmartImage";
+
+const RETAIL_DEMO_VIDEO_MP4 = "/RETAIL-DEMO-FINAL.mp4";
+const RETAIL_DEMO_POSTER = "/Command-HQ-multiview.png";
+
+function RetailDemoVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [useImageFallback, setUseImageFallback] = useState(false);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el || useImageFallback) return;
+    void el.play().catch(() => {});
+  }, [useImageFallback]);
+
+  if (useImageFallback) {
+    return (
+      <SmartImage
+        src={RETAIL_DEMO_POSTER}
+        alt="Teleoperation interface"
+        className="absolute inset-0 h-full w-full object-cover object-bottom"
+      />
+    );
+  }
+
+  return (
+    <video
+      ref={videoRef}
+      className="absolute inset-0 h-full w-full object-cover object-bottom"
+      poster={RETAIL_DEMO_POSTER}
+      autoPlay
+      muted
+      loop
+      playsInline
+      preload="auto"
+      aria-label="Retail robot operations demo"
+      onError={() => setUseImageFallback(true)}
+    >
+      <source src={RETAIL_DEMO_VIDEO_MP4} type="video/mp4" />
+    </video>
+  );
+}
 
 function IconGlobe({ className }: { className?: string }) {
   return (
@@ -50,7 +91,7 @@ const features = [
   },
   {
     icon: IconBolt,
-    title: "Sub-500ms Latency",
+    title: "200ms Latency",
     desc: "Enterprise-grade responsive control for manipulation, recovery, and intervention.",
   },
   {
@@ -118,13 +159,9 @@ export function TeleoperationSection({ className }: { className?: string }) {
           <Reveal delayMs={200} className="order-1 lg:order-none lg:col-span-3">
             <motion.div className="relative" style={{ y }}>
               <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-black">
-                <div className="aspect-[16/10]">
-                  <SmartImage
-                    src="/robot_touching_human.png"
-                    alt="Teleoperation interface"
-                    className="w-full h-full object-cover opacity-80"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="relative aspect-[16/10]">
+                  <RetailDemoVideo />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                 </div>
 
                 {/* <div className="absolute bottom-0 inset-x-0 p-5">

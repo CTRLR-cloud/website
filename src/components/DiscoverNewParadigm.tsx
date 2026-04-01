@@ -10,6 +10,8 @@ import { SITE_LINKS } from "@/config/links";
 type Tile = {
   title: string;
   desc: string;
+  /** Optional second paragraph (e.g. line break after first sentence) */
+  descParagraph2?: string;
   image: string;
   href: string;
   cta: string;
@@ -18,35 +20,43 @@ type Tile = {
   /** When true, use minimal overlay so the image stays sharp (no blur/fade) */
   minimalOverlay?: boolean;
   hideCta?: boolean;
+  /** `object-position` for cover images (medium tiles); use `right` when the subject is on the right */
+  imagePosition?: "left" | "center" | "right";
+  /** When true, card is not a link (no navigation / button affordance) */
+  staticCard?: boolean;
 };
 
 const tiles: Tile[] = [
   {
     title: "Built for Enterprise Performance",
-    desc: "CTRL+R is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale. We're standardizing robot control into one unified operations platform that is intuitive for first-time operators, yet powerful and customizable for advanced robotics teams. This approach earned CTRL+R a place in NVIDIA's Inception Program.",
-    image: "/NVIDIA_3.jpeg",
+    desc: "CTRL+R is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale.",
+    descParagraph2:
+      "We're standardizing robot control into one unified operations platform that is intuitive for first-time operators, yet powerful and customizable for advanced robotics teams. This approach earned CTRL+R a place in NVIDIA's Inception Program.",
+    image: "/NVIDIA-CTRLR.jpg",
     href: "/technology-overview",
     cta: "Learn More",
     accent: "rgba(201,0,7,0.25)",
     size: "large",
     minimalOverlay: true,
     hideCta: true,
+    staticCard: true,
   },
   {
-    title: "Get Started with Teleoperation",
-    desc: "Set up your first robotic system and connect it to the network in minutes. No extra hardware needed.",
-    image: "/mining3.png",
+    title: "Start Operating Your Robot in Minutes",
+    desc: "Download the CTRL+R agent to your robot, connect in seconds, and start operating through our interface immediately. No custom integrations. No setup headaches.",
+    image: "/teleop-screenshot.png",
     href: SITE_LINKS.APP,
-    cta: "Launch App",
+    cta: "Try It Out",
     accent: "rgba(0,200,150,0.25)",
     size: "medium",
+    imagePosition: "right",
   },
   {
-    title: "Long Term Vision",
-    desc: "See the vision for a world where anyone can operate & earn from any robot, anywhere: a decentralized network connecting robots, AI, data, and compute.",
-    image: "/ctrlr_vision_image.jpg",
+    title: "Deeply Customizable. Infinitely Scalable.",
+    desc: "CTRL+R adapts to your entire fleet—across robot types, software stacks, and environments. Customize control systems, integrate existing tools, and extend functionality with a modular, API-driven platform.",
+    image: "/software-visualizations.png",
     href: "/technology-overview",
-    cta: "View Technology",
+    cta: "View Capabilities",
     accent: "rgba(201,0,7,0.25)",
     size: "medium",
   },
@@ -75,21 +85,18 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
 
       <div className="px-4 md:px-8 pb-20 md:pb-28">
         <div className="grid gap-5 md:grid-cols-2">
-          {tiles.map((tile, i) => (
-            <Reveal
-              key={tile.title}
-              delayMs={60 + i * 50}
-              className={tile.size === "large" ? "md:col-span-2" : ""}
-            >
-              <Link href={tile.href} className="group block">
-                <motion.article
+          {tiles.map((tile, i) => {
+            const article = (
+              <motion.article
                   className={cn(
                     "relative overflow-hidden rounded-[32px] md:rounded-[48px] border border-white/10 bg-black/40",
                     tile.size === "large"
                       ? "md:flex md:items-stretch min-h-[400px] md:min-h-[520px]"
                       : "min-h-[380px] md:min-h-[440px]"
                   )}
-                  whileHover={reduce ? undefined : { y: -6, scale: 1.003 }}
+                  whileHover={
+                    reduce || tile.staticCard ? undefined : { y: -6, scale: 1.003 }
+                  }
                   transition={{ duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}
                 >
                   {/* Mobile only (large tile): stacked image then separate text block — avoids image text conflicting with paragraph */}
@@ -103,12 +110,17 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                         />
                       </div>
                       <div className="border-t border-white/10 bg-black/95 px-6 py-6">
-                        <h3 className="text-2xl font-semibold tracking-tight text-white">
+                        <h3 className="text-2xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
                           {tile.title}
                         </h3>
-                        <p className="mt-3 text-sm leading-7 text-white/80">
+                        <p className="mt-3 text-sm leading-7 text-white/88 [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
                           {tile.desc}
                         </p>
+                        {tile.descParagraph2 && (
+                          <p className="mt-3 text-sm leading-7 text-white/88 [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
+                            {tile.descParagraph2}
+                          </p>
+                        )}
                         {!tile.hideCta && (
                           <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--accent)]">
                             <span>{tile.cta}</span>
@@ -126,9 +138,11 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                         <SmartImage
                           src={tile.image}
                           alt={tile.title}
-                          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                          className={cn(
+                            "absolute inset-0 h-full w-full object-cover transition duration-700",
+                            !tile.staticCard && "group-hover:scale-[1.04]",
+                          )}
                         />
-                        <div className="absolute inset-0 md:bg-none bg-gradient-to-r from-transparent from-30% via-transparent via-60% to-black/45" />
                       </div>
                       <div className="relative flex w-[45%] shrink-0 flex-col justify-center bg-black/95 border-l border-white/10 p-8 md:p-12">
                         <div
@@ -138,15 +152,20 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                           }}
                         />
                         <div className="relative">
-                          <h3 className="text-3xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition md:text-4xl lg:text-5xl">
+                          <h3 className="text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-5xl [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
                             {tile.title}
                           </h3>
-                          <p className="mt-4 text-base leading-7 text-white/60 md:text-lg max-w-lg">
+                          <p className="mt-4 max-w-full text-base leading-7 text-white/88 md:text-lg [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
                             {tile.desc}
                           </p>
+                          {tile.descParagraph2 && (
+                            <p className="mt-3 max-w-full text-base leading-7 text-white/88 md:text-lg [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
+                              {tile.descParagraph2}
+                            </p>
+                          )}
                           {!tile.hideCta && (
                             <div className="mt-8 inline-flex items-center gap-4">
-                              <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-base font-semibold text-white transition group-hover:bg-white/10 group-hover:border-[var(--accent)]/40">
+                              <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-base font-semibold text-white transition group-hover:bg-white/20 group-hover:border-[var(--accent)]/60 group-hover:shadow-[0_0_24px_rgba(201,0,7,0.18)]">
                                 {tile.cta}
                               </span>
                               <span className="text-xl text-white/50 transition group-hover:translate-x-2 group-hover:text-white">
@@ -166,7 +185,13 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                         <SmartImage
                           src={tile.image}
                           alt={tile.title}
-                          className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                          className={cn(
+                            "absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]",
+                            tile.imagePosition === "right" && "object-right",
+                            tile.imagePosition === "left" && "object-left",
+                            (tile.imagePosition === undefined || tile.imagePosition === "center") &&
+                              "object-center",
+                          )}
                         />
                         <>
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/30" />
@@ -187,15 +212,15 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                           }}
                         />
                         <div className="relative">
-                          <h3 className="text-2xl font-semibold tracking-tight text-white transition group-hover:text-[var(--accent)] md:text-3xl">
+                          <h3 className="text-2xl font-semibold tracking-tight text-white md:text-3xl [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
                             {tile.title}
                           </h3>
-                          <p className="mt-4 text-sm leading-7 text-white/60 max-w-md">
+                          <p className="mt-4 max-w-full text-sm leading-7 text-white/88 md:text-base md:leading-relaxed [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
                             {tile.desc}
                           </p>
                           {!tile.hideCta && (
                             <div className="mt-8 inline-flex items-center gap-4">
-                              <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition group-hover:bg-white/10 group-hover:border-[var(--accent)]/40">
+                              <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition group-hover:bg-white/20 group-hover:border-[var(--accent)]/60 group-hover:shadow-[0_0_24px_rgba(201,0,7,0.18)]">
                                 {tile.cta}
                               </span>
                               <span className="text-xl text-white/50 transition group-hover:translate-x-2 group-hover:text-white">
@@ -208,11 +233,30 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                     </>
                   )}
 
-                  <div className="pointer-events-none absolute inset-0 rounded-[32px] md:rounded-[48px] ring-1 ring-inset ring-white/5 group-hover:ring-[var(--accent)]/30 transition" />
+                  <div
+                    className={cn(
+                      "pointer-events-none absolute inset-0 rounded-[32px] md:rounded-[48px] ring-1 ring-inset ring-white/5",
+                      !tile.staticCard && "transition group-hover:ring-[var(--accent)]/30",
+                    )}
+                  />
                 </motion.article>
-              </Link>
-            </Reveal>
-          ))}
+            );
+            return (
+              <Reveal
+                key={tile.title}
+                delayMs={60 + i * 50}
+                className={tile.size === "large" ? "md:col-span-2" : ""}
+              >
+                {tile.staticCard ? (
+                  <div className="block">{article}</div>
+                ) : (
+                  <Link href={tile.href} className="group block">
+                    {article}
+                  </Link>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

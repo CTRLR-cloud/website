@@ -57,12 +57,10 @@ export function AccessBentoSection() {
               <div className="grid gap-10 md:grid-cols-12 md:items-center">
                 <div className="md:col-span-6">
                   <h3 className="text-premium text-xl font-semibold text-white">
-                    The Open Network For Anything Robotics
+                  One Platform. Any Robot. Total Control.
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-white/55">
-                    CTRL+R lets anyone rent or deploy robots globally for practical, real-world
-                    work. It’s powered by an open network that brings robots, AI, data, and
-                    compute into one seamless interface that anyone can use.
+                  CTRL+R is Robot Ops-as-a-Service. Our app provides one unified interface for full robotic control, designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams managing large fleets.
                   </p>
                 </div>
 
