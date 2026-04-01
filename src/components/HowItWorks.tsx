@@ -6,11 +6,11 @@ import { cn } from "@/lib/cn";
 
 const ownerSteps = [
   {
-    title: "Control any robot with one interface",
+    title: "No More Sprawl - Control any robot with one interface",
     desc: "CTRL+R supports any robot, any interface, any command. Add the CTRL+R agent to your robot, set your parameters, and you're live. No custom interfaces from scratch or one-off rules per robot.",
   },
   {
-    title: "Empower teams & scale operations",
+    title: "Delegate minor tasks to ",
     desc: "Define who can access and operate each robot, when, and under what rules. Detailed logs, clear handoffs, and audit trails help engineers focus on solving the real issues instead of babysitting.",
   },
   {
@@ -40,7 +40,7 @@ export function HowItWorks({
         <div className="mb-12 md:mb-14">
           <Reveal>
             <div className="text-xs tracking-[0.22em] uppercase text-white/55">
-              How it works
+              Focus on what matters
             </div>
           </Reveal>
           <Reveal delayMs={60}>
@@ -51,7 +51,7 @@ export function HowItWorks({
           </Reveal>
           <Reveal delayMs={110}>
             <p className="mt-5 text-sm leading-7 text-white/60 max-w-2xl">
-              You don't have to build a CRM to track sales leads. Robotics teams shouldn't have to build software just to operate their robots.
+              Companies don't have to build their own CRM software just to track sales leads. Robotics teams shouldn't have to build their own software just to operate their robots.
             </p>
           </Reveal>
         </div>
@@ -68,10 +68,10 @@ export function HowItWorks({
               />
               <div className="relative p-6 md:p-8 flex flex-col flex-1 min-h-0">
                 <div className="text-xs tracking-[0.2em] uppercase text-[var(--accent)]/90 mb-1">
-                  For partners & robot teams
+                  An Operations Perspective
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold text-white mt-1">
-                  Full customizability for your fleet & team
+                  Engineers should focus on solving the hard problems, not reinventing the wheel.
                 </h3>
                 <div className="mt-6 space-y-3 flex-1">
                   {ownerSteps.map((s, i) => (
@@ -81,7 +81,7 @@ export function HowItWorks({
                     >
                       <div className="flex items-center justify-between">
                         <div className="text-sm font-semibold text-white">{s.title}</div>
-                        <div className="text-xs text-white/45">Step {i + 1}</div>
+                        <div className="text-xs text-white/45"></div>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-white/60">{s.desc}</p>
                     </div>

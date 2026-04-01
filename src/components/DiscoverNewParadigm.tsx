@@ -9,6 +9,8 @@ import { SITE_LINKS } from "@/config/links";
 
 type Tile = {
   title: string;
+  /** Split headline: shadow on white only; gradient span matches Why CTRL+R `text-gradient` */
+  titleParts?: { lead: string; gradient: string };
   desc: string;
   /** Optional second paragraph (e.g. line break after first sentence) */
   descParagraph2?: string;
@@ -29,6 +31,7 @@ type Tile = {
 const tiles: Tile[] = [
   {
     title: "Built for Enterprise Performance",
+    titleParts: { lead: "Built for ", gradient: "Enterprise Performance" },
     desc: "CTRL+R is solving a real pain point in robotics today: fragmented, custom-built operator interfaces that don't scale.",
     descParagraph2:
       "We're standardizing robot control into one unified operations platform that is intuitive for first-time operators, yet powerful and customizable for advanced robotics teams. This approach earned CTRL+R a place in NVIDIA's Inception Program.",
@@ -72,11 +75,11 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
           <Reveal>
             <div>
               <div className="text-xs tracking-[0.22em] uppercase text-white/55">
-                Discover
+                A New Paradigm
               </div>
-              <h2 className="mt-3 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Real-Time  {" "}
-                <span className="text-gradient">Robot Operations</span>
+              <h2 className="mt-3 text-premium text-3xl font-semibold leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl">
+                Real-Time Robot Operations{" "}
+                <span className="text-gradient"></span>
               </h2>
             </div>
           </Reveal>
@@ -110,8 +113,19 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                         />
                       </div>
                       <div className="border-t border-white/10 bg-black/95 px-6 py-6">
-                        <h3 className="text-2xl font-semibold tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
-                          {tile.title}
+                        <h3 className="text-premium text-2xl font-semibold leading-[1.05] tracking-tight md:text-3xl">
+                          {tile.titleParts ? (
+                            <>
+                              <span className="text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
+                                {tile.titleParts.lead}
+                              </span>
+                              <span className="text-gradient">{tile.titleParts.gradient}</span>
+                            </>
+                          ) : (
+                            <span className="text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
+                              {tile.title}
+                            </span>
+                          )}
                         </h3>
                         <p className="mt-3 text-sm leading-7 text-white/88 [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
                           {tile.desc}
@@ -152,8 +166,19 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                           }}
                         />
                         <div className="relative">
-                          <h3 className="text-3xl font-semibold tracking-tight text-white md:text-4xl lg:text-5xl [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
-                            {tile.title}
+                          <h3 className="text-premium text-3xl font-semibold leading-[1.05] tracking-tight text-white md:text-4xl lg:text-5xl">
+                            {tile.titleParts ? (
+                              <>
+                                <span className="text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
+                                  {tile.titleParts.lead}
+                                </span>
+                                <span className="text-gradient">{tile.titleParts.gradient}</span>
+                              </>
+                            ) : (
+                              <span className="text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.88),0_1px_2px_rgba(0,0,0,0.95)]">
+                                {tile.title}
+                              </span>
+                            )}
                           </h3>
                           <p className="mt-4 max-w-full text-base leading-7 text-white/88 md:text-lg [text-shadow:0_1px_12px_rgba(0,0,0,0.92),0_2px_24px_rgba(0,0,0,0.65)]">
                             {tile.desc}
