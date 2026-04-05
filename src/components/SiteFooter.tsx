@@ -4,6 +4,8 @@ import Link from "next/link";
 import { CtrlRLogo } from "@/components/CtrlRLogo";
 import { SITE_LINKS } from "@/config/links";
 
+const NVIDIA_INCEPTION_URL = "https://www.nvidia.com/en-us/startups/";
+
 function IconButton({
   href,
   label,
@@ -64,14 +66,14 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-hairline bg-section">
       <div className="mx-auto max-w-6xl px-6 py-14">
-        <div className="grid gap-10 md:grid-cols-5 md:items-start">
-          <div className="md:col-span-2">
+        <div className="flex flex-col gap-10 md:flex-row md:flex-wrap md:items-start md:gap-x-10 lg:gap-x-14 xl:gap-x-16">
+          <div className="max-w-xs shrink-0 sm:max-w-sm">
             <Link href="/" className="rounded ring-premium inline-flex">
               <span className="text-[var(--accent)]">
                 <CtrlRLogo variant="footer" />
               </span>
             </Link>
-            <p className="mt-3 max-w-md text-base font-medium leading-snug text-white/90 sm:text-lg">
+            <p className="mt-3 max-w-sm text-base font-medium leading-snug text-white/90 sm:text-lg">
               Robot Operation, at Scale
             </p>
 
@@ -86,19 +88,28 @@ export function SiteFooter() {
                 <GitHubBrandIcon className="h-4 w-4" />
               </IconButton>
             </div>
+
+            <a
+              href={NVIDIA_INCEPTION_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-6 inline-flex shrink-0 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-section)]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/nvidia-inception-program-badge-rgb-for-screen.png"
+                alt="NVIDIA Inception Program"
+                className="h-12 w-auto sm:h-14"
+              />
+            </a>
           </div>
 
-          <div className="md:justify-self-end">
+          <div className="min-w-[9rem]">
             <div className="text-sm font-semibold text-white/80">Pages</div>
             <ul className="mt-4 space-y-2 text-sm text-white/55">
               <li>
                 <Link className="hover:text-white ring-premium rounded" href="/">
                   Home
-                </Link>
-              </li>
-              <li>
-                <Link className="hover:text-white ring-premium rounded" href="/research">
-                  Research
                 </Link>
               </li>
               <li>
@@ -125,14 +136,14 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-white ring-premium rounded" href="/pricing">
-                  Pricing
+                <Link className="hover:text-white ring-premium rounded" href="/contact">
+                  Contact Us
                 </Link>
               </li>
             </ul>
           </div>
 
-          <div className="md:justify-self-end">
+          <div className="min-w-[9rem]">
             <div className="text-sm font-semibold text-white/80">Links</div>
             <ul className="mt-4 space-y-2 text-sm text-white/55">
               <li>
@@ -148,21 +159,11 @@ export function SiteFooter() {
               <li>
                 <a
                   className="hover:text-white ring-premium rounded"
-                  href={SITE_LINKS.APP}
+                  href={SITE_LINKS.CLIENT}
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Launch App
-                </a>
-              </li>
-              <li>
-                <a
-                  className="hover:text-white ring-premium rounded"
-                  href={SITE_LINKS.DOCS}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Documentation
+                  Launch Client
                 </a>
               </li>
               <li>
@@ -177,25 +178,11 @@ export function SiteFooter() {
               </li>
             </ul>
           </div>
-
-          <div className="md:justify-self-end">
-            <div className="text-sm font-semibold text-white/80">Legal</div>
-            <ul className="mt-4 space-y-2 text-sm text-white/55">
-              <li>
-                <Link
-                  className="hover:text-white ring-premium rounded"
-                  href="/privacy-policy"
-                >
-                  Privacy Policy
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-hairline pt-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
           <div>Copyright © {new Date().getFullYear()} CTRL+R. All rights reserved.</div>
-          <div className="text-white/25">Powering the Global Robot Economy</div>
+          <div className="text-white/25">One Platform. Any Robot. Total Control.</div>
         </div>
       </div>
     </footer>

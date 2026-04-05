@@ -1,15 +1,13 @@
-import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Research",
-  description:
-    "Explore our latest research, whitepapers, and technical documentation on robotics, AI, and decentralized systems.",
-};
-
+/**
+ * Research is temporarily hidden. Re-enable by restoring a layout that renders
+ * `children` and exporting metadata from here or from `page.tsx`.
+ */
 export default function ResearchLayout({
-  children,
+  children: _children,
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  notFound();
 }

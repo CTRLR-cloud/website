@@ -10,7 +10,7 @@ type JoinPayload = {
   message: string;
 };
 
-export function JoinNetworkSection({ className }: { className?: string }) {
+export function ContactUsSection({ className }: { className?: string }) {
   const [form, setForm] = useState<JoinPayload>({
     firstName: "",
     lastName: "",
@@ -55,20 +55,23 @@ export function JoinNetworkSection({ className }: { className?: string }) {
   };
 
   return (
-    <section className={cn("border-t border-hairline bg-section", className)}>
+    <section
+      id="contact"
+      className={cn("scroll-mt-24 border-t border-hairline bg-section", className)}
+    >
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="grid gap-10 md:grid-cols-12 md:items-start">
           <div className="md:col-span-5">
             <div className="text-xs tracking-[0.18em] uppercase text-white/45">
-              Earn with us
+              Try It Risk-Free
             </div>
             <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Join the <span className="text-gradient">CTRL+R Network</span>
+              Let CTRL+R{" "}
+              <span className="text-[var(--accent)]">scale your business</span> risk-free
             </h2>
             <p className="mt-5 text-base leading-7 text-muted">
-              If you're a provider of robotics or AI/data/compute services, you can join our
-              network and start offering your services immediately. If you have questions,
-              fill out the form and we'll be in touch.
+              If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don't feel that we've saved you a significant amount of time, money, and efficiency, you pay nothing. Simple as that.
+              
             </p>
           </div>
 
@@ -164,7 +167,3 @@ export function JoinNetworkSection({ className }: { className?: string }) {
     </section>
   );
 }
-
-
-
-

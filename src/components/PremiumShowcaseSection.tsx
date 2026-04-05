@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
-import { SITE_LINKS } from "@/config/links";
 
 export function PremiumShowcaseSection() {
   const reduce = useReducedMotion();
@@ -34,12 +33,10 @@ export function PremiumShowcaseSection() {
             <Reveal delayMs={150}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={SITE_LINKS.DEMO}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#contact"
                   className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90 ring-premium"
                 >
-                  Book a Demo
+                  Contact Us
                 </a>
                 <Link
                   href="/technology-overview"

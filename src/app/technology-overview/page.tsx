@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
-import { HowItWorks } from "@/components/HowItWorks";
+import { FocusOnWhatMattersSection } from "@/components/FocusOnWhatMattersSection";
+import { CommandHQ } from "@/components/CommandHQ";
 import { SITE_LINKS } from "@/config/links";
 
 export const metadata: Metadata = {
@@ -60,8 +61,10 @@ export default function TechnologyOverviewPage() {
           </div>
         </section>
 
-        <HowItWorks compactTop />
+        <CommandHQ />
+        <FocusOnWhatMattersSection compactTop />
 
+        {/*
       <section className="border-t border-hairline bg-section">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
           <div className="mb-12 md:mb-14">
@@ -128,7 +131,9 @@ export default function TechnologyOverviewPage() {
           </div>
         </div>
       </section>
-{/*
+        */}
+
+        {/*
       <section className="border-t border-hairline bg-section">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
           <Reveal>
@@ -152,72 +157,72 @@ export default function TechnologyOverviewPage() {
           </Reveal>
         </div>
       </section>
-*/}
-      <section className="border-t border-hairline bg-section">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-          <Reveal>
-            <div className="text-xs tracking-[0.18em] uppercase text-white/45">
-              Our Technology Vision
-            </div>
-          </Reveal>
-          <Reveal delayMs={100} className="mt-6 bg-card-2 rounded-3xl p-7 shadow-glow">
-            <p className="text-base leading-7 text-white/80">
-              <em>
-                ''To build the kind of world where robots can improve individual lives and
-                entire industries, we need to establish a universal connection layer between
-                all of the moving parts. This is CTRL+R's vision—a decentralized,
-                peer-to-peer, modular network that makes robotics accessible to everyone.''
-              </em>{" "}
-              <span className="text-white/55">- Christopher Boggs</span>
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="border-t border-hairline bg-section">
-        <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-          <Reveal>
-            <h2 className="text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              A look toward the future:{" "}
-              <span className="text-gradient">A CTRL+R Ecosystem of Co-Chains</span>
-            </h2>
-          </Reveal>
-
-          <div className="mt-10 grid gap-4 md:grid-cols-12">
-            <Reveal className="md:col-span-12 bg-card-2 rounded-3xl p-7 shadow-glow">
+        */}
+        <section className="border-t border-hairline bg-section">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+            <Reveal>
               <div className="text-xs tracking-[0.18em] uppercase text-white/45">
-                CTRL+R.Robotics
+                CTRL+R Vision
               </div>
-              <div className="mt-3 text-lg font-semibold text-white">The robotics chain</div>
-              <p className="mt-3 text-sm leading-6 text-muted-2">
-                Built to coordinate real-world machines with real-time control, job
-                execution, and reward flows. Perfect for fleets, swarms, or any physical
-                system that needs trust, precision, and payout on real output.
+            </Reveal>
+            <Reveal delayMs={100} className="mt-6 bg-card-2 rounded-3xl p-7 shadow-glow">
+              <p className="text-base leading-7 text-white/80">
+                <em>
+                  ''Our vision is to become the industry standard for robot operation. By building one unified platform that robotics teams across industries can all use, we can help scale the evolution of robotics technology and advance the human race.
+                  ''
+                </em>{" "}
+                <span className="text-white/55">- Mack Lorden, Founder & CEO</span>
               </p>
             </Reveal>
-
-            {[
-              ["CTRL+R.AI", "A fast, flexible AI layer made of small task-specific models. A hypervisor routes requests to the right one, more efficient, easier to update, and hardware-friendly."],
-              ["CTRL+R.Web", "A Web 4.0 system replacing bulky webpages with modular updates. No cookies. Includes naming (UnaS) and age/content verification tools."],
-              ["CTRL+R.Store", "A failsafe for your assets. Set rules for transfers if inactive, freeze hacked wallets instantly, and cap withdrawals to stay in control."],
-              ["CTRL+R.Social", "Decentralized streaming built for low-latency interaction, perfect for creators, educators, and realtime events."],
-              ["CTRL+R.Code", "Code, track, and earn. Developers get rewarded for real contributions. Includes bounties and built-in chat for smoother collaboration."],
-              ["CTRL+R.Database", "Decentralized SQL-style databases, public or private. Great for storing everything from media libraries to logistics and inventory data."],
-              ["CTRL+R.Chat", "A private, decentralized chat layer. DM, create groups, or run entire communities, without centralized control."],
-              ["CTRL+R.Game", "Real-time multiplayer and simulation support. Live gaming, shared physics, and global state changes built into the chain."],
-            ].map(([title, desc], i) => (
-              <Reveal
-                key={title}
-                delayMs={60 + i * 50}
-                className="md:col-span-6 bg-card rounded-3xl p-6"
-              >
-                <div className="text-sm font-semibold text-white">{title}</div>
-                <p className="mt-2 text-sm leading-6 text-muted-2">{desc}</p>
-              </Reveal>
-            ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/*
+        <section className="border-t border-hairline bg-section">
+          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+            <Reveal>
+              <h2 className="text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+                A look toward the future:{" "}
+                <span className="text-gradient">A CTRL+R Ecosystem of Co-Chains</span>
+              </h2>
+            </Reveal>
+
+            <div className="mt-10 grid gap-4 md:grid-cols-12">
+              <Reveal className="md:col-span-12 bg-card-2 rounded-3xl p-7 shadow-glow">
+                <div className="text-xs tracking-[0.18em] uppercase text-white/45">
+                  CTRL+R.Robotics
+                </div>
+                <div className="mt-3 text-lg font-semibold text-white">The robotics chain</div>
+                <p className="mt-3 text-sm leading-6 text-muted-2">
+                  Built to coordinate real-world machines with real-time control, job
+                  execution, and reward flows. Perfect for fleets, swarms, or any physical
+                  system that needs trust, precision, and payout on real output.
+                </p>
+              </Reveal>
+
+              {[
+                ["CTRL+R.AI", "A fast, flexible AI layer made of small task-specific models. A hypervisor routes requests to the right one, more efficient, easier to update, and hardware-friendly."],
+                ["CTRL+R.Web", "A Web 4.0 system replacing bulky webpages with modular updates. No cookies. Includes naming (UnaS) and age/content verification tools."],
+                ["CTRL+R.Store", "A failsafe for your assets. Set rules for transfers if inactive, freeze hacked wallets instantly, and cap withdrawals to stay in control."],
+                ["CTRL+R.Social", "Decentralized streaming built for low-latency interaction, perfect for creators, educators, and realtime events."],
+                ["CTRL+R.Code", "Code, track, and earn. Developers get rewarded for real contributions. Includes bounties and built-in chat for smoother collaboration."],
+                ["CTRL+R.Database", "Decentralized SQL-style databases, public or private. Great for storing everything from media libraries to logistics and inventory data."],
+                ["CTRL+R.Chat", "A private, decentralized chat layer. DM, create groups, or run entire communities, without centralized control."],
+                ["CTRL+R.Game", "Real-time multiplayer and simulation support. Live gaming, shared physics, and global state changes built into the chain."],
+              ].map(([title, desc], i) => (
+                <Reveal
+                  key={title}
+                  delayMs={60 + i * 50}
+                  className="md:col-span-6 bg-card rounded-3xl p-6"
+                >
+                  <div className="text-sm font-semibold text-white">{title}</div>
+                  <p className="mt-2 text-sm leading-6 text-muted-2">{desc}</p>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+        */}
       </main>
 
       <SiteFooter />

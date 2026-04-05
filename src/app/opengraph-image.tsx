@@ -119,7 +119,7 @@ export default async function Image() {
                 fontWeight: 600,
               }}
             >
-              Launch App
+              Launch Client
             </div>
             <div
               style={{

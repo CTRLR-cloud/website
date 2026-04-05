@@ -243,7 +243,7 @@ export default function CareersPage() {
                   Don't see a perfect fit?
                 </h3>
                 <p className="mt-3 text-white/60 max-w-lg mx-auto">
-                  We're always looking for exceptional talent. Send us your resume and tell us how you'd like to contribute to the robot economy.
+                  We're always looking for exceptional talent. Send us your resume and tell us how you'd like to contribute to CTRL+R.
                 </p>
                 <a
                   href="mailto:jobs@ctrlr.cloud?subject=Open Application"

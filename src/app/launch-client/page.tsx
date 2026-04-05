@@ -3,15 +3,15 @@ import { PageShell } from "@/components/PageShell";
 import { SITE_LINKS } from "@/config/links";
 
 export const metadata: Metadata = {
-  title: "Launch App",
+  title: "Launch Client",
   description:
     "Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, VR headset, gaming controller, or custom rig.",
 };
 
-export default function LaunchAppPage() {
+export default function LaunchClientPage() {
   return (
     <PageShell
-      title="Launch App"
+      title="Launch Client"
       subtitle="Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, VR headset, gaming controller, or custom rig."
     >
       <section className="border-t border-hairline bg-section">
@@ -37,9 +37,9 @@ export default function LaunchAppPage() {
             </div>
 
             <div className="mt-6 text-xs text-white/35">
-              If you already have access, open the app at{" "}
-              <a className="underline text-white/70" href={SITE_LINKS.APP}>
-                app.ctrlr.cloud
+              If you already have access, open the client at{" "}
+              <a className="underline text-white/70" href={SITE_LINKS.CLIENT}>
+                client.ctrlr.cloud
               </a>
               .
             </div>
@@ -49,7 +49,3 @@ export default function LaunchAppPage() {
     </PageShell>
   );
 }
-
-
-
-

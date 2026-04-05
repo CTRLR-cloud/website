@@ -6,20 +6,20 @@ import { cn } from "@/lib/cn";
 
 const ownerSteps = [
   {
-    title: "No More Sprawl - Control any robot with one interface",
-    desc: "CTRL+R supports any robot, any interface, any command. Add the CTRL+R agent to your robot, set your parameters, and you're live. No custom interfaces from scratch or one-off rules per robot.",
+    title: "No more sprawl",
+    desc: "CTRL+R supports any robot, any interface, any third party software. Add the CTRL+R agent to your robot, configure any preferences, integrate any additional third-party softwares, and you're live.",
   },
   {
-    title: "Delegate minor tasks to ",
-    desc: "Define who can access and operate each robot, when, and under what rules. Detailed logs, clear handoffs, and audit trails help engineers focus on solving the real issues instead of babysitting.",
+    title: "Focus on solving the hard problems",
+    desc: "Define who can access and operate each robot, when, and under what rules. Detailed logs, clear handoffs, and audit trails help engineers delegate simple tasks while staying focused on solving the real issues, not babysitting.",
   },
   {
     title: "Operate on your terms",
-    desc: "Use custom controllers, AR/VR headsets, keyboards, joysticks, location/task presets, or any bespoke interface—even add custom ROS commands. Easily make the CTRL+R interface your own.",
+    desc: "Use custom controllers, AR/VR headsets, keyboards, joysticks, location/task presets, ROS commands, or any bespoke interface to make the CTRL+R interface your own.",
   },
 ];
 
-export function HowItWorks({
+export function FocusOnWhatMattersSection({
   className,
   compactTop,
 }: {
@@ -45,13 +45,13 @@ export function HowItWorks({
           </Reveal>
           <Reveal delayMs={60}>
             <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Stop building software{" "}
-              <span className="text-[var(--accent)]">in-house.</span>
+              Stop  {" "}
+              <span className="text-[var(--accent)]">reinventing the wheel</span>
             </h2>
           </Reveal>
           <Reveal delayMs={110}>
             <p className="mt-5 text-sm leading-7 text-white/60 max-w-2xl">
-              Companies don't have to build their own CRM software just to track sales leads. Robotics teams shouldn't have to build their own software just to operate their robots.
+              Robotics teams shouldn't have to build custom software just to operate their robots.
             </p>
           </Reveal>
         </div>
@@ -68,10 +68,10 @@ export function HowItWorks({
               />
               <div className="relative p-6 md:p-8 flex flex-col flex-1 min-h-0">
                 <div className="text-xs tracking-[0.2em] uppercase text-[var(--accent)]/90 mb-1">
-                  An Operations Perspective
+                  A Better Way
                 </div>
                 <h3 className="text-lg md:text-xl font-semibold text-white mt-1">
-                  Engineers should focus on solving the hard problems, not reinventing the wheel.
+                  One platform to control and coordinate your entire fleet
                 </h3>
                 <div className="mt-6 space-y-3 flex-1">
                   {ownerSteps.map((s, i) => (

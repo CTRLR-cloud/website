@@ -32,7 +32,7 @@ const panels: Panel[] = [
   {
     kicker: "Scale",
     title: "Built to grow with your organization",
-    desc: "Easily add robots, deployments, and team members as your organization grows, while keeping operations consistent, safe, and manageable over time.",
+    desc: "Easily add new robots, deployments, and team members as your organization grows, while keeping operations consistent, safe, and manageable over time.",
     theme: "brand",
     backgroundImage: "/expansion-2.png",
   },

@@ -22,24 +22,25 @@ function getStoryImage(url: string | undefined, index: number): string {
   return FALLBACK_IMAGES[index % FALLBACK_IMAGES.length];
 }
 
+/** Shown when no RSS stories are passed in; all routes go to the newsroom (no static article slugs). */
 const defaultStories: StoryCard[] = [
   {
-    href: "/news/product-demo",
-    title: "Reading the mind of an AI",
-    meta: "Story • 2 min read",
+    href: "/news",
+    title: "Latest in robotics & AI",
+    meta: "Newsroom",
     image: FALLBACK_IMAGES[0],
     featured: true,
   },
   {
-    href: "/news/providers",
-    title: "Creative work with real-time robotics",
-    meta: "Story • 3 min read",
+    href: "/news",
+    title: "Industry stories & research",
+    meta: "Newsroom",
     image: FALLBACK_IMAGES[1],
   },
   {
-    href: "/news/community",
-    title: "Medical research with teleoperation",
-    meta: "Story • 2 min read",
+    href: "/news",
+    title: "Updates from the ecosystem",
+    meta: "Newsroom",
     image: FALLBACK_IMAGES[2],
   },
 ];
@@ -125,7 +126,9 @@ export function StoriesSection({ stories: storiesProp }: StoriesSectionProps) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
 
-                    {s.featured && !isExternalFeed ? (
+                    {s.featured &&
+                    !isExternalFeed &&
+                    s.href !== "/news" ? (
                       <div className="absolute inset-0 flex items-center justify-center">
                         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/45 px-4 py-3 text-white/90 backdrop-blur-sm">
                           <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white">

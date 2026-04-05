@@ -31,16 +31,10 @@ export default function NotFound() {
                       Go home
                     </Link>
                     <Link
-                      href="/news"
+                      href="/contact"
                       className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
                     >
-                      Latest announcements
-                    </Link>
-                    <Link
-                      href="/research"
-                      className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
-                    >
-                      Research
+                      Contact Us
                     </Link>
                   </div>
                 </div>

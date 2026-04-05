@@ -10,11 +10,11 @@ import { SITE_LINKS } from "@/config/links";
 
 const nav = [
   { label: "Home", href: "/" },
-  { label: "Research", href: "/research" },
   { label: "News", href: "/news" },
   { label: "Careers", href: "/careers" },
   { label: "Technology", href: "/technology-overview" },
   { label: "Team", href: "/team" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 function MenuIcon({ className }: { className?: string }) {
@@ -108,12 +108,12 @@ export function SiteHeader() {
 
             <div className="flex items-center gap-2">
               <a
-                href={SITE_LINKS.APP}
+                href={SITE_LINKS.CLIENT}
                 target="_blank"
                 rel="noreferrer"
                 className="hidden sm:inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition ring-premium btn-primary"
               >
-                Launch App
+                Launch Client
               </a>
 
               <button
@@ -184,12 +184,12 @@ export function SiteHeader() {
 
                 <div className="mt-4">
                   <a
-                    href={SITE_LINKS.APP}
+                    href={SITE_LINKS.CLIENT}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex w-full items-center justify-center rounded-full px-4 py-3 text-sm font-semibold transition ring-premium btn-primary"
                   >
-                    Launch App
+                    Launch Client
                   </a>
                 </div>
               </div>
