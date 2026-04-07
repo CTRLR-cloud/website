@@ -3,14 +3,14 @@
 **Project:** CTRL+R — https://ctrlr.fastmode.ai  
 **Project ID:** `b67e260c-49e2-499d-9294-2cefd08bbd64`
 
-This site uses **Next.js** with **`output: "export"`**. `npm run build` writes the static export to **`out/`** (gitignored), then **`postbuild`** runs **`scripts/build-fastmode-package.mjs`**, which produces **`fastmode-out/`** in Fast Mode’s required layout (`manifest.json`, `pages/`, `public/` with `/public/` asset URLs).
+This site uses **Next.js** with **`output: "export"`**. Production HTML is emitted to the **`out/`** directory after `npm run build` (the folder is gitignored).
 
 ## GitHub → Fast Mode
 
 1. Connect this repository (or the monorepo path that contains this `package.json`) in Fast Mode.
 2. Set the **install command** to: `npm ci` or `npm install`
 3. Set the **build command** to: `npm run build`
-4. Set the **publish / output directory** to: **`fastmode-out`** (not `out` — Fast Mode validates the manifest package format, not the raw Next export folder)
+4. Set the **publish / output directory** to: **`out`**
 
 CI must run the build with **network access** so RSS feeds can populate the home and news pages during static generation (optional but recommended).
 
@@ -36,10 +36,8 @@ Create a form named **`contact`** in the Fast Mode dashboard with matching field
 
 ```bash
 npm run build
-npx serve fastmode-out
+npx serve out
 ```
-
-To preview the raw Next export without the Fast Mode wrapper, use `npx serve out` after build (the `postbuild` step still runs `fastmode-out` generation).
 
 ## MCP
 

@@ -6,18 +6,10 @@ import { AnimatePresence, motion } from "framer-motion";
 const YEAR = new Date().getFullYear().toString();
 
 export function PageIntro() {
-  // Do not SSR the full-screen black overlay: static HTML must show real content when JS
-  // is blocked or fails to load (e.g. some static hosts). Intro only runs after mount.
-  const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [phase, setPhase] = useState<"loading" | "reveal" | "done">("loading");
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
     const loadingTimer = setTimeout(() => setPhase("reveal"), 1600);
     const revealTimer = setTimeout(() => {
       setPhase("done");
@@ -28,9 +20,7 @@ export function PageIntro() {
       clearTimeout(loadingTimer);
       clearTimeout(revealTimer);
     };
-  }, [mounted]);
-
-  if (!mounted) return null;
+  }, []);
 
   if (!isVisible && phase === "done") return null;
 

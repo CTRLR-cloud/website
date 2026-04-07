@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
-    "postbuild": "node scripts/build-fastmode-package.mjs",
     "start": "next start",
     "lint": "eslint"
   },
