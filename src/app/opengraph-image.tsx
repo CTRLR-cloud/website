@@ -4,6 +4,8 @@ import { ImageResponse } from "next/og";
 
 import { BRAND_COLORS } from "@/config/brand-colors";
 
+export const dynamic = "force-static";
+
 export const alt = "CTRL+R — Robot Operation, at Scale.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";

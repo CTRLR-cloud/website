@@ -6,17 +6,15 @@ import { fileURLToPath } from "url";
 const turbopackRoot = fileURLToPath(new URL(".", import.meta.url));
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      { source: "/launch-app", destination: "/launch-client", permanent: true },
-    ];
-  },
+  // Static hosting (e.g. Fast Mode): emits `out/`. Use `src/app/launch-app/page.tsx` for /launch-app → /launch-client (redirects() unsupported).
+  output: "export",
   // Prevent Next/Turbopack from inferring a parent workspace root (monorepo-like)
   // and accidentally picking up sibling `middleware.ts`, lockfiles, etc.
   turbopack: {
     root: turbopackRoot,
   },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",

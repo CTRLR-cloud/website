@@ -1,13 +1,16 @@
-import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
-/**
- * Research is temporarily hidden. Re-enable by restoring a layout that renders
- * `children` and exporting metadata from here or from `page.tsx`.
- */
+export const metadata: Metadata = {
+  title: "Research",
+  description:
+    "Explore our latest research, whitepapers, and technical documentation on robotics, AI, and decentralized systems.",
+};
+
+/** Required for `output: "export"` builds. Research is omitted from main nav; pages remain linkable by URL. */
 export default function ResearchLayout({
-  children: _children,
+  children,
 }: {
   children: React.ReactNode;
 }) {
-  notFound();
+  return children;
 }
