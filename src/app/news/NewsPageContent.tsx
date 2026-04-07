@@ -68,8 +68,10 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
   }, []);
 
   const useRss = stories != null && stories.length > 0;
-  const featured = useRss ? stories[0] : newsPosts[0];
-  const rest = useRss ? stories.slice(1) : newsPosts.slice(1);
+  const rssFeatured = useRss && stories ? stories[0] : null;
+  const rssRest = useRss && stories ? stories.slice(1) : [];
+  const staticFeatured = newsPosts[0];
+  const staticRest = newsPosts.slice(1);
 
   return (
     <div className="min-h-screen min-w-0 w-full max-w-[100vw] flex flex-col overflow-x-hidden">
@@ -109,9 +111,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                   </div>
                 </Reveal>
                 <Reveal delayMs={80}>
-                  {useRss ? (
+                  {useRss && rssFeatured ? (
                     <a
-                      href={(featured as RoboticsStoryCard).href}
+                      href={rssFeatured.href}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block min-w-0 max-w-full"
@@ -120,33 +122,27 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <SmartImage
                             src={
-                              (featured as RoboticsStoryCard).image.startsWith(
-                                "http",
-                              )
-                                ? proxyImageUrl(
-                                    (featured as RoboticsStoryCard).image,
-                                  )
-                                : (featured as RoboticsStoryCard).image
+                              rssFeatured.image.startsWith("http")
+                                ? proxyImageUrl(rssFeatured.image)
+                                : rssFeatured.image
                             }
-                            alt={(featured as RoboticsStoryCard).title}
+                            alt={rssFeatured.title}
                             className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
                             fallbackSrc={FALLBACK_IMAGE}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
                           <div className="absolute bottom-5 left-5 flex items-center gap-2">
                             <Pill variant="a">
-                              {sourceFromMeta(
-                                (featured as RoboticsStoryCard).meta,
-                              )}
+                              {sourceFromMeta(rssFeatured.meta)}
                             </Pill>
                           </div>
                         </div>
                         <div className="p-7">
                           <div className="text-xs text-white/55">
-                            {(featured as RoboticsStoryCard).meta}
+                            {rssFeatured.meta}
                           </div>
                           <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
-                            {(featured as RoboticsStoryCard).title}
+                            {rssFeatured.title}
                           </h3>
                           <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[var(--accent)] transition">
                             Read article{" "}
@@ -157,39 +153,34 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                         </div>
                       </article>
                     </a>
-                  ) : (
+                  ) : staticFeatured ? (
                     <Link
-                      href={`/news/${(featured as (typeof newsPosts)[0]).slug}`}
+                      href={`/news/${staticFeatured.slug}`}
                       className="block min-w-0 max-w-full"
                     >
                       <article className="mt-6 w-full min-w-0 rounded-[28px] border border-white/10 bg-white/[0.03] overflow-hidden group">
                         <div className="relative aspect-[16/10] overflow-hidden">
                           <img
-                            src={(featured as (typeof newsPosts)[0]).image}
-                            alt={(featured as (typeof newsPosts)[0]).title}
+                            src={staticFeatured.image}
+                            alt={staticFeatured.title}
                             className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
                           <div className="absolute bottom-5 left-5 flex items-center gap-2">
-                            <Pill variant="a">
-                              {(featured as (typeof newsPosts)[0]).category}
-                            </Pill>
-                            <Pill variant="b">
-                              {(featured as (typeof newsPosts)[0]).type}
-                            </Pill>
+                            <Pill variant="a">{staticFeatured.category}</Pill>
+                            <Pill variant="b">{staticFeatured.type}</Pill>
                           </div>
                         </div>
                         <div className="p-7">
                           <div className="text-xs text-white/55">
-                            {(featured as (typeof newsPosts)[0]).date} •{" "}
-                            {(featured as (typeof newsPosts)[0]).readingMinutes}{" "}
+                            {staticFeatured.date} • {staticFeatured.readingMinutes}{" "}
                             min read
                           </div>
                           <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
-                            {(featured as (typeof newsPosts)[0]).title}
+                            {staticFeatured.title}
                           </h3>
                           <p className="mt-3 text-sm leading-6 text-white/60">
-                            {(featured as (typeof newsPosts)[0]).excerpt}
+                            {staticFeatured.excerpt}
                           </p>
                           <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[var(--accent)] transition">
                             Read more{" "}
@@ -200,6 +191,11 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                         </div>
                       </article>
                     </Link>
+                  ) : (
+                    <div className="mt-6 rounded-[28px] border border-dashed border-white/15 bg-white/[0.02] px-6 py-10 text-center text-sm text-white/50">
+                      No featured story here yet. When the feed loads, the latest
+                      headlines will appear in this spot.
+                    </div>
                   )}
                 </Reveal>
               </div>
@@ -235,88 +231,100 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
                   {useRss
-                    ? (rest as RoboticsStoryCard[]).map((s, i) => (
-                        <a
-                          key={`${s.href}-${i}`}
-                          href={s.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="[scroll-snap-align:start] flex-shrink-0 w-[320px] sm:w-[360px]"
-                        >
-                          <article className="rounded-[22px] border border-white/10 bg-white/[0.03] overflow-hidden group h-full">
-                            <div className="relative aspect-[16/9] overflow-hidden">
-                              <SmartImage
-                                src={
-                                  s.image.startsWith("http")
-                                    ? proxyImageUrl(s.image)
-                                    : s.image
-                                }
-                                alt={s.title}
-                                className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                                fallbackSrc={FALLBACK_IMAGE}
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-                              <div className="absolute bottom-3 left-3 flex items-center gap-2">
-                                <Pill variant="a">
-                                  {sourceFromMeta(s.meta)}
-                                </Pill>
+                    ? rssRest.length > 0
+                      ? rssRest.map((s, i) => (
+                          <a
+                            key={`${s.href}-${i}`}
+                            href={s.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="[scroll-snap-align:start] flex-shrink-0 w-[320px] sm:w-[360px]"
+                          >
+                            <article className="rounded-[22px] border border-white/10 bg-white/[0.03] overflow-hidden group h-full">
+                              <div className="relative aspect-[16/9] overflow-hidden">
+                                <SmartImage
+                                  src={
+                                    s.image.startsWith("http")
+                                      ? proxyImageUrl(s.image)
+                                      : s.image
+                                  }
+                                  alt={s.title}
+                                  className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                  fallbackSrc={FALLBACK_IMAGE}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                                <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                                  <Pill variant="a">
+                                    {sourceFromMeta(s.meta)}
+                                  </Pill>
+                                </div>
                               </div>
-                            </div>
-                            <div className="p-5">
-                              <div className="text-xs text-white/55">
-                                {s.meta}
+                              <div className="p-5">
+                                <div className="text-xs text-white/55">
+                                  {s.meta}
+                                </div>
+                                <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
+                                  {s.title}
+                                </h4>
+                                <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition">
+                                  Read article{" "}
+                                  <span className="group-hover:translate-x-1 transition">
+                                    →
+                                  </span>
+                                </div>
                               </div>
-                              <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
-                                {s.title}
-                              </h4>
-                              <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition">
-                                Read article{" "}
-                                <span className="group-hover:translate-x-1 transition">
-                                  →
-                                </span>
+                            </article>
+                          </a>
+                        ))
+                      : (
+                          <div className="[scroll-snap-align:start] flex min-h-[140px] min-w-0 flex-1 items-center justify-center rounded-[22px] border border-dashed border-white/10 px-6 text-sm text-white/45">
+                            No additional stories in the feed right now.
+                          </div>
+                        )
+                    : staticRest.length > 0
+                      ? staticRest.map((c) => (
+                          <Link
+                            key={c.slug}
+                            href={`/news/${c.slug}`}
+                            className="[scroll-snap-align:start] flex-shrink-0 w-[320px] sm:w-[360px]"
+                          >
+                            <article className="rounded-[22px] border border-white/10 bg-white/[0.03] overflow-hidden group h-full">
+                              <div className="relative aspect-[16/9] overflow-hidden">
+                                <img
+                                  src={c.image}
+                                  alt={c.title}
+                                  className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                                <div className="absolute bottom-3 left-3 flex items-center gap-2">
+                                  <Pill variant="a">{c.category}</Pill>
+                                </div>
                               </div>
-                            </div>
-                          </article>
-                        </a>
-                      ))
-                    : (rest as (typeof newsPosts)).map((c) => (
-                        <Link
-                          key={c.slug}
-                          href={`/news/${c.slug}`}
-                          className="[scroll-snap-align:start] flex-shrink-0 w-[320px] sm:w-[360px]"
-                        >
-                          <article className="rounded-[22px] border border-white/10 bg-white/[0.03] overflow-hidden group h-full">
-                            <div className="relative aspect-[16/9] overflow-hidden">
-                              <img
-                                src={c.image}
-                                alt={c.title}
-                                className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
-                              <div className="absolute bottom-3 left-3 flex items-center gap-2">
-                                <Pill variant="a">{c.category}</Pill>
+                              <div className="p-5">
+                                <div className="text-xs text-white/55">
+                                  {c.date} • {c.readingMinutes} min read
+                                </div>
+                                <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
+                                  {c.title}
+                                </h4>
+                                <p className="mt-2 text-sm leading-6 text-white/60 line-clamp-2">
+                                  {c.excerpt}
+                                </p>
+                                <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition">
+                                  Read more{" "}
+                                  <span className="group-hover:translate-x-1 transition">
+                                    →
+                                  </span>
+                                </div>
                               </div>
-                            </div>
-                            <div className="p-5">
-                              <div className="text-xs text-white/55">
-                                {c.date} • {c.readingMinutes} min read
-                              </div>
-                              <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
-                                {c.title}
-                              </h4>
-                              <p className="mt-2 text-sm leading-6 text-white/60 line-clamp-2">
-                                {c.excerpt}
-                              </p>
-                              <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition">
-                                Read more{" "}
-                                <span className="group-hover:translate-x-1 transition">
-                                  →
-                                </span>
-                              </div>
-                            </div>
-                          </article>
-                        </Link>
-                      ))}
+                            </article>
+                          </Link>
+                        ))
+                      : (
+                          <div className="[scroll-snap-align:start] flex min-h-[140px] min-w-0 flex-1 items-center justify-center rounded-[22px] border border-dashed border-white/10 px-6 text-sm text-white/45">
+                            No additional stories yet.
+                          </div>
+                        )}
                 </div>
               </div>
             </div>

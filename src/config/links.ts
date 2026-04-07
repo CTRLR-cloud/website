@@ -1,6 +1,6 @@
 /** External URLs for CTRL+R (update handles when official profiles move). */
 export const SITE_LINKS = {
-  APP: "https://app.ctrlr.cloud/",
+  CLIENT: "https://client.ctrlr.cloud/",
   DOCS: "https://ctrlr.gitbook.io/ctrlr.cloud",
   GITHUB: "https://github.com/ctrlrcloud",
   DEMO: "https://calendly.com/d/cxn4-g4x-5sh/ctrlr-20min-product-demo",

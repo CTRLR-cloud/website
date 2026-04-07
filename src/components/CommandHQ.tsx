@@ -25,7 +25,7 @@ const items: Item[] = [
     number: "01",
     title: "Your fleet, one dashboard",
     subtitle: "Robots",
-    desc: "Monitor every asset from a single pane—status, model, and type at a glance. Track operators, sessions, and hours across quadrupeds, arms, drones, and UGVs in real time.",
+    desc: "Monitor every asset from a single pane—status, model, and type at a glance. Track operators, sessions, and hours across quadrupeds, humanoids, arms, drones, and more in real time.",
     image: "/command-hq-robots.png",
     accent: "rgba(0,200,180,0.25)",
   },
@@ -33,7 +33,7 @@ const items: Item[] = [
     number: "02",
     title: "Sessions & logs",
     subtitle: "Operations",
-    desc: "See live and completed sessions side by side with full context—robot, operator, duration, and credits. Catch errors early and export when you need a paper trail.",
+    desc: "See live and completed sessions side by side with full context: robots, operators, session durations & time stamps. Catch errors early and share analytics with team members to inform strategy.",
     image: "/command-hq-sessions-logs.png",
     accent: "rgba(201,0,7,0.25)",
   },
@@ -41,7 +41,7 @@ const items: Item[] = [
     number: "03",
     title: "ROS commands & controls",
     subtitle: "Customizations",
-    desc: "Configure ROS commands, controllers, locations, and keyboard bindings in one place. Search, enable, and run the actions your team depends on—from emergency stops to sensor scans.",
+    desc: "Configure ROS commands, controllers, locations, and keyboard bindings in one place. Search, enable, and run the actions your team depends on, from emergency stops to sensor scans.",
     image: "/command-hq-customizations.png",
     accent: "rgba(110,150,255,0.22)",
   },
@@ -49,7 +49,7 @@ const items: Item[] = [
     number: "04",
     title: "Alerts that reach the right people",
     subtitle: "Notifications",
-    desc: "A live feed of disconnects, battery warnings, session failures, and security events—plus rules so operators respond fast when something goes wrong.",
+    desc: "A live feed of disconnects, battery warnings, session failures, and security events, plus rules so operators respond fast when autonomy fails or something goes wrong.",
     image: "/command-hq-notifications.png",
     accent: "rgba(242, 180, 0, 0.22)",
   },
@@ -109,7 +109,7 @@ export function CommandHQ({ className }: { className?: string }) {
             <div className="mx-auto w-full max-w-[1600px]">
               <div className="mb-4 flex items-center gap-3 sm:mb-6">
                 <span className="h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_0_8px_color-mix(in_oklab,var(--accent)_14%,transparent)]" />
-                <span className="text-xs uppercase tracking-[0.5em] text-white/55">
+                <span className="text-xs uppercase tracking-[0.22em] text-white/55">
                   Command HQ
                 </span>
               </div>

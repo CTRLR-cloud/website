@@ -20,23 +20,12 @@ export const careerDepartments = [
 ] as const;
 
 export const careerPosts: CareerPost[] = [
-  /*{
-    slug: "senior-rust-engineer",
-    title: "Senior Rust Engineer",
-    department: "Engineering",
-    location: "Remote (US/EU)",
-    type: "Full-time",
-    level: "Senior",
-    salary: "$150k – $200k",
-    excerpt:
-      "Build core blockchain infrastructure for the CTRL+R Network. You'll design high-performance systems for real-time robotic teleoperation using Rust.",
-    posted: "Jan 15, 2026",
-  },*/
+
   {
     slug: "robotics-systems-engineer",
     title: "Robotics Systems Engineer",
     department: "Robotics",
-    location: "San Francisco, CA",
+    location: "Remote",
     type: "Full-time",
     level: "Mid-Senior",
     salary: "$110k – $150k",
@@ -60,13 +49,25 @@ export const careerPosts: CareerPost[] = [
     slug: "product-designer",
     title: "Product Designer",
     department: "Design",
-    location: "Remote (US)",
+    location: "Remote",
     type: "Full-time",
     level: "Senior",
     salary: "$80k – $120k",
     excerpt:
       "Shape the future of human-robot interaction. Design intuitive interfaces for complex robotic control systems and blockchain-native applications.",
     posted: "Jan 8, 2026",
+  },
+  {
+    slug: "embedded-systems-engineer",
+    title: "Embedded Systems Engineer",
+    department: "Robotics",
+    location: "Remote",
+    type: "Full-time",
+    level: "Senior",
+    salary: "$140k – $180k",
+    excerpt:
+      "Develop low-latency firmware for robotic controllers and edge devices. Experience with ARM, FPGA, and real-time operating systems required.",
+    posted: "Jan 3, 2026",
   },
   /* Hidden
   {
@@ -80,31 +81,7 @@ export const careerPosts: CareerPost[] = [
       "Build community and help developers succeed on CTRL+R. Create tutorials, documentation, and engage with the robotics and blockchain communities.",
     posted: "Jan 5, 2026",
   },
-  {
-    slug: "embedded-systems-engineer",
-    title: "Embedded Systems Engineer",
-    department: "Robotics",
-    location: "Austin, TX",
-    type: "Full-time",
-    level: "Senior",
-    salary: "$140k – $180k",
-    excerpt:
-      "Develop low-latency firmware for robotic controllers and edge devices. Experience with ARM, FPGA, and real-time operating systems required.",
-    posted: "Jan 3, 2026",
-  },
-  */
-  /*{
-    slug: "blockchain-engineer",
-    title: "Blockchain Protocol Engineer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
-    level: "Senior",
-    salary: "$120k – $140k",
-    excerpt:
-      "Design and implement consensus mechanisms, smart contract VMs, and cryptographic primitives for the CTRL+R Network.",
-    posted: "Dec 28, 2025",
-  },*/
+  
   {
     slug: "operations-manager",
     title: "Operations Manager",
@@ -116,6 +93,7 @@ export const careerPosts: CareerPost[] = [
       "Scale our operations as we grow. Manage vendor relationships, coordinate cross-functional projects, and optimize internal processes.",
     posted: "Dec 20, 2025",
   },
+  */
 ];
 
 

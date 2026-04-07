@@ -27,9 +27,9 @@ const cards: Card[] = [
   },
   {
     title: "Own your operations",
-    href: "/pricing",
+    href: "/#contact",
     image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop",
-    pill: "Billing",
+    pill: "Contact",
   },
   {
     title: "Network: access, operate, earn",

@@ -3,21 +3,20 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { CtrlRLogo } from "@/components/CtrlRLogo";
-import { JoinNetworkSection } from "@/components/JoinNetworkSection";
+import { ContactUsSection } from "@/components/ContactUsSection";
 import { SITE_LINKS } from "@/config/links";
 import { PageIntro } from "@/components/PageIntro";
 import { ParallaxTextSection } from "@/components/ParallaxTextSection";
-import { TrustedByMarquee } from "@/components/TrustedByMarquee";
 import { StoriesSection } from "@/components/StoriesSection";
 import { getCachedStories } from "@/lib/roboticsFeeds";
 import { PremiumShowcaseSection } from "@/components/PremiumShowcaseSection";
 import { UseCasesHorizontalScrollSection } from "@/components/UseCasesHorizontalScrollSection";
-import { HowItWorks } from "@/components/HowItWorks";
+import { FocusOnWhatMattersSection } from "@/components/FocusOnWhatMattersSection";
 import { NumbersSection } from "@/components/NumbersSection";
 import { WhyBuildersChooseSection } from "@/components/WhyBuildersChooseSection";
 import { CommandHQ } from "@/components/CommandHQ";
 import { DiscoverNewParadigm } from "@/components/DiscoverNewParadigm";
-import { TeleoperationSection } from "@/components/TeleoperationSection";
+import { RetailSection } from "@/components/RetailSection";
 import { SITE_ASSETS } from "@/config/assets";
 
 export default async function Home() {
@@ -91,37 +90,39 @@ export default async function Home() {
                 className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:items-center"
               >
                 <a
-                  href={SITE_LINKS.APP}
+                  href={SITE_LINKS.CLIENT}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
                 >
-                  Launch App
+                  Try It Free
                 </a>
                 <a
-                  href={SITE_LINKS.DEMO}
-                  target="_blank"
-                  rel="noreferrer"
+                  href="#how-it-works"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
                 >
-                  Book a Demo
+                  See How It Works
                 </a>
               </Reveal>
             </div>
           </div>
         </section>
-
-        <TrustedByMarquee />
         <DiscoverNewParadigm />
-        <TeleoperationSection />
+        <ParallaxTextSection />
         <WhyBuildersChooseSection />
-        <CommandHQ />
-        <HowItWorks />
+        
+        <RetailSection />
         <UseCasesHorizontalScrollSection />
+        
+        
+        <CommandHQ />
+        <FocusOnWhatMattersSection />
         <PremiumShowcaseSection />
         
         
-        <ParallaxTextSection />
+        
+        
+        
         
 
         {/* <AccessBentoSection /> */}
@@ -153,7 +154,7 @@ export default async function Home() {
 
         {/* <HorizontalRailAutoSection /> */}
         
-        <JoinNetworkSection />
+        <ContactUsSection />
       </main>
 
       <SiteFooter />

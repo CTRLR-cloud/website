@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useState } from "react";
 import { cn } from "@/lib/cn";
 
@@ -9,9 +10,11 @@ type Props = {
   className?: string;
   fallbackClassName?: string;
   fallbackSrc?: string;
+  /** Forwarded to the underlying `<img>` (e.g. `{ objectPosition: "right 42%" }` with `object-cover`) */
+  style?: CSSProperties;
 };
 
-export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc }: Props) {
+export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc, style }: Props) {
   const [broken, setBroken] = useState(false);
   const [fallbackBroken, setFallbackBroken] = useState(false);
 
@@ -23,6 +26,7 @@ export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc
         alt={alt}
         loading="lazy"
         className={className}
+        style={style}
         referrerPolicy="no-referrer"
         onError={() => setFallbackBroken(true)}
       />
@@ -48,6 +52,7 @@ export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc
       alt={alt}
       loading="lazy"
       className={className}
+      style={style}
       referrerPolicy="no-referrer"
       onError={() => setBroken(true)}
     />

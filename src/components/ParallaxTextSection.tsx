@@ -92,9 +92,9 @@ export function ParallaxTextSection() {
                     fontFamily: "var(--font-geist-sans), system-ui",
                   }}
                 >
-                  ROBOT
+                  ONE 
                   <br />
-                  ECONOMY
+                  PLATFORM
                 </h2>
 
                 {/* Filled reveal */}
@@ -111,9 +111,9 @@ export function ParallaxTextSection() {
                     className="text-[18vw] md:text-[14vw] lg:text-[12vw] font-black leading-[0.85] tracking-[-0.02em] uppercase bg-gradient-to-r from-white via-white to-[var(--accent)] bg-clip-text text-transparent"
                     style={{ fontFamily: "var(--font-geist-sans), system-ui" }}
                   >
-                    ROBOT
+                    ONE
                     <br />
-                    ECONOMY
+                    PLATFORM
                   </h2>
                 </motion.div>
               </div>
@@ -128,7 +128,7 @@ export function ParallaxTextSection() {
                   ),
                 }}
               >
-                built for <span className="text-[var(--accent)]">teleoperation</span>
+                To make controlling robots <span className="text-[var(--accent)]">Easy</span>
               </motion.p>
             </motion.div>
           </motion.div>

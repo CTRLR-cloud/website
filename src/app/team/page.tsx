@@ -18,32 +18,11 @@ type TeamMember = {
 
 const team: TeamMember[] = [
   {
-    name: "Christopher Boggs",
-    role: "Founder & Chief Technical Officer",
-    bio: "Christopher, founder of CTRL+R, combines blockchain expertise with 18 years in aerospace, robotics, and electronics. Formerly leading a 30+ person team at Moog Space & Defense Group, he is now building a decentralized base layer to power next-generation robotics, automation, and modular applications.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/6893cb0277da80ca82befd55_Frame%201948754903%20(1).png",
-  },
-  {
     name: "Mack Lorden",
-    role: "Chief Executive Officer",
-    bio: "Mack is an experienced strategic growth leader with over a decade of experience in sales, web3, AI, and frontier tech. He scaled a GPU computing product to $40M in revenue within 6 months, launched a $3M web3 ecosystem, and has angel invested in/advised 50+ early-stage tech companies. As CEO he is focused on making robots easy to operate and accessible to everyone.",
+    role: "Founder & CEO",
+    bio: "Mack is a former 7-figure entrepreneur and experienced strategic growth leader with over a decade of experience in sales, web3, AI, and robotics. He scaled a GPU computing product to $40M in revenue within 6 months, launched a $3M web3 ecosystem, and has angel invested in/advised 50+ early-stage tech companies. As CEO he is focused on making robots easy to operate and accessible to everyone.",
     imageSrc:
       "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8377f77cbae2fb3262d8_Mack%20Mono-p-2600.jpg",
-  },
-  {
-    name: "Vlad Chernenko",
-    role: "Lead Blockchain Developer",
-    bio: "Vlad, a top 1% TryHackMe cybersecurity expert, has secured major blockchain projects including Ethereum, MetaMask, and Aptos. With five years of experience in Python, Golang, and Node.js, he authored a perfect-scoring dissertation on smart contract execution and has served as a SOC analyst at MHP.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/6893cb16c3a320231f3ad9ae_Frame%201948754903%20(2).png",
-  },
-  {
-    name: "Kenneth Fox",
-    role: "UX/UI & Full-Stack Engineer",
-    bio: "Kenneth brings a decade of full-stack mastery—from early campaigns in martech to fintech trading platforms and AI-powered healthcare SaaS. He built advanced pipelines, multi-asset trading engines and multilingual SEO platforms; earlier, he scaled e-commerce ecosystems and marketing automation across global teams. Now he fuses intuitive UI/UX with deep backend engineering and AI integration to deliver product experiences that delight both users and customers.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8a934ceeaa3d9b80c03d_Kenneth%20Fox%20Mono.jpg",
   },
   {
     name: "Michael Hart",
@@ -53,25 +32,27 @@ const team: TeamMember[] = [
       "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68b20a19cfaf0e6a7c807a26_Mike%20H.jpg",
   },
   {
-    name: "Alexandre Pacheco",
-    role: "Chief Robotics Advisor",
-    bio: "Alexandre, a former NASA intern and active robotics researcher, specializes in swarm robotics and blockchain-powered coordination of robotic systems. His PhD research, supported by 12 peer-reviewed publications, and his strong academic ties with the Université Libre de Bruxelles, the University of Konstanz, and the University of the Azores, showcase his expertise. At CTRL+R, he contributes his knowledge in collective behavior and decentralized robotics to help develop the first decentralized marketplace for operating & earning from robotic systems.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68bc46c3dd2f680653b21718_telegram-cloud-photo-size-5-6183668341554661520-y.jpg",
-  },
-  {
-    name: "Evan Kim",
-    role: "Robotics Engineer",
-    bio: "Evan Kim combines hands-on engineering experience with a Computer Engineering background from Virginia Tech. Previously he designed trailer components using SolidWorks at Great Dane. A Swiss Army knife for robotics, he has experience in electronics repair, BGA soldering, Kubernetes clusters, network storage server management and more. At CTRL+R, he is focused on building robot prototypes and R&D.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/691f7fcd2c1b34489edebd33_Evan%20Kim.jpg",
-  },
-  {
     name: "Rick Friedman",
     role: "Robotics Engineer",
     bio: "Rick Friedman is a robotics engineering specialist and former researcher at Virginia Tech’s Bio-Inspired Science and Technology Lab. He has built fully autonomous ground rovers end-to-end, spanning software, electronics, mechanical design, and vehicle dynamics. Rick brings professional experience across industrial automation, mining technologies, and robotic agriculture, with a strong emphasis on deploying complete robotic systems in real-world environments. At CTRL+R, he is focused on end-to-end robotic system development and deployment.",
     imageSrc: "/rick_friedman.jpg",
   },
+  {
+    name: "Kenneth Fox",
+    role: "UX/UI & Full-Stack Engineer",
+    bio: "Kenneth brings a decade of full-stack mastery—from early campaigns in martech to fintech trading platforms and AI-powered healthcare SaaS. He built advanced pipelines, multi-asset trading engines and multilingual SEO platforms; earlier, he scaled e-commerce ecosystems and marketing automation across global teams. Now he fuses intuitive UI/UX with deep backend engineering and AI integration to deliver product experiences that delight both users and customers.",
+    imageSrc:
+      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8a934ceeaa3d9b80c03d_Kenneth%20Fox%20Mono.jpg",
+  },
+  
+  {
+    name: "Alexandre Pacheco",
+    role: "Chief Robotics Advisor",
+    bio: "Alexandre, a former NASA intern and active robotics researcher, specializes in swarm robotics and blockchain-powered coordination of robotic systems. His PhD research, supported by 12 peer-reviewed publications, and his strong academic ties with the Université Libre de Bruxelles, the University of Konstanz, and the University of the Azores, showcase his expertise. At CTRL+R, Alex advises CTRL+R on swarm robotics, system design, and developer experience.",
+    imageSrc:
+      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68bc46c3dd2f680653b21718_telegram-cloud-photo-size-5-6183668341554661520-y.jpg",
+  },
+  
 ];
 
 export default function TeamPage() {

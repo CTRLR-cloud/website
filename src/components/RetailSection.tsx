@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/cn";
-import { SITE_LINKS } from "@/config/links";
 import { Reveal } from "@/components/Reveal";
 import { SmartImage } from "@/components/SmartImage";
 
@@ -24,7 +23,7 @@ function RetailDemoVideo() {
     return (
       <SmartImage
         src={RETAIL_DEMO_POSTER}
-        alt="Teleoperation interface"
+        alt="Retail operations interface"
         className="absolute inset-0 h-full w-full object-cover object-bottom"
       />
     );
@@ -74,11 +73,12 @@ function IconShield({ className }: { className?: string }) {
   );
 }
 
-function IconChart({ className }: { className?: string }) {
+function IconTarget({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M3 3v18h18" />
-      <path d="M18 9l-5 5-4-4-3 3" />
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
     </svg>
   );
 }
@@ -87,26 +87,26 @@ const features = [
   {
     icon: IconGlobe,
     title: "Remote Robot Control",
-    desc: "Operate any robot from anywhere with real-time video streaming and precise control inputs.",
+    desc: "Operate any robot in any retail location from anywhere with real-time video streaming and precise control inputs.",
   },
   {
     icon: IconBolt,
-    title: "200ms Latency",
-    desc: "Enterprise-grade responsive control for manipulation, recovery, and intervention.",
+    title: "Deploy in Minutes",
+    desc: "Operate robots remotely across stores, eliminating travel and reducing operational overhead.",
   },
   {
     icon: IconShield,
-    title: "Secure Connections",
-    desc: "End-to-end encryption and zero-trust architecture protect every session.",
+    title: "Data Security",
+    desc: "End-to-end encryption and customizable video controls ensure that only relevant data is being shared in each session.",
   },
   {
-    icon: IconChart,
-    title: "Session Analytics & Logs",
-    desc: "Real-time feedback to debug issues, improve performance, and validate safe operation.",
+    icon: IconTarget,
+    title: "Point, Click, Audit",
+    desc: "Load in-store locations and complete audits in just a few clicks. No training required.",
   },
 ];
 
-export function TeleoperationSection({ className }: { className?: string }) {
+export function RetailSection({ className }: { className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -120,20 +120,20 @@ export function TeleoperationSection({ className }: { className?: string }) {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(201,0,7,0.08),transparent)]" />
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="mb-16 max-w-2xl">
+        <div className="mb-16 max-w-4xl">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.22em] text-white/55 mb-4">
-              Teleoperation
+              Introducing
             </p>
           </Reveal>
           <Reveal delayMs={40}>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white tracking-tight">
-              A new standard for robot control
+              A New Standard For Retail
             </h2>
           </Reveal>
           <Reveal delayMs={80}>
             <p className="mt-5 text-white/50 text-lg leading-relaxed">
-              Real-time robot operation built for enterprise reliability and security
+            Replace manual store audits with remote robot operations. Brands save time and money, while retailers generate new revenue streams.
             </p>
           </Reveal>
         </div>
@@ -161,7 +161,11 @@ export function TeleoperationSection({ className }: { className?: string }) {
               <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] bg-black">
                 <div className="relative aspect-[16/10]">
                   <RetailDemoVideo />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                  {/* Top ~30% only — keeps bottom 70% of the frame fully clear */}
+                  <div
+                    className="pointer-events-none absolute inset-x-0 top-0 h-[30%] bg-gradient-to-b from-black/40 to-transparent"
+                    aria-hidden
+                  />
                 </div>
 
                 {/* <div className="absolute bottom-0 inset-x-0 p-5">
@@ -189,21 +193,11 @@ export function TeleoperationSection({ className }: { className?: string }) {
         <Reveal delayMs={280}>
           <div className="mt-16 flex flex-wrap gap-3">
             <a
-              href={SITE_LINKS.APP}
-              target="_blank"
-              rel="noreferrer"
+              href="#how-it-works"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-white font-medium text-sm hover:brightness-110 transition shadow-[0_0_24px_color-mix(in_oklab,var(--accent)_40%,transparent)]"
             >
-              Launch App
+              See How It Works
               <span className="text-white/70">→</span>
-            </a>
-            <a
-              href={SITE_LINKS.DOCS}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/15 text-white/70 font-medium text-sm hover:bg-white/[0.04] transition"
-            >
-              Documentation
             </a>
           </div>
         </Reveal>

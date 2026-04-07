@@ -6,6 +6,11 @@ import { fileURLToPath } from "url";
 const turbopackRoot = fileURLToPath(new URL(".", import.meta.url));
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      { source: "/launch-app", destination: "/launch-client", permanent: true },
+    ];
+  },
   // Prevent Next/Turbopack from inferring a parent workspace root (monorepo-like)
   // and accidentally picking up sibling `middleware.ts`, lockfiles, etc.
   turbopack: {
