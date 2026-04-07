@@ -140,6 +140,11 @@ export function SiteFooter() {
                   Contact Us
                 </Link>
               </li>
+              <li>
+                <Link className="hover:text-white ring-premium rounded" href="/privacy">
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -181,7 +186,15 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-hairline pt-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
-          <div>Copyright © {new Date().getFullYear()} CTRL+R. All rights reserved.</div>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+            <span>Copyright © {new Date().getFullYear()} CTRL+R. All rights reserved.</span>
+            <Link
+              href="/privacy"
+              className="text-white/45 hover:text-white/80 transition ring-premium rounded w-fit"
+            >
+              Privacy Policy
+            </Link>
+          </div>
           <div className="text-white/25">One Platform. Any Robot. Total Control.</div>
         </div>
       </div>
