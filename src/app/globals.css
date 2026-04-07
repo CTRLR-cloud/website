@@ -2,9 +2,6 @@
 
 /* Palette: see src/config/brand-colors.ts — red = #C90007 or #690404; neutrals #000 #fff #4D4D4D */
 :root {
-  /* Sans: `--font-geist-sans` from next/font/local in layout (Geist variable TTF in src/fonts/geist/). */
-  --font-geist-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
-    monospace;
   --background: #000000;
   --bg-section: #030303;
   --foreground: #ffffff;

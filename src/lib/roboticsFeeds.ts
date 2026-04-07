@@ -229,7 +229,7 @@ export async function getCachedStoriesForNews() {
   return getCachedStoriesForNewsImpl();
 }
 
-/** Use remote URL directly (`output: "export"` has no `/api/proxy-image`). Some hosts may block hotlinking. */
+/** Proxied image URL so external feed images load (avoids hotlinking blocks). */
 export function proxyImageUrl(externalUrl: string): string {
-  return externalUrl;
+  return `/api/proxy-image?url=${encodeURIComponent(externalUrl)}`;
 }

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
-import { getResearchPost, researchPosts } from "@/content/research";
+import { getResearchPost } from "@/content/research";
 
 function Pill({ children }: { children: string }) {
   return (
@@ -60,10 +60,6 @@ function Body({ body }: { body: ResearchPostResolved["body"] }) {
 }
 
 type Props = { params: Promise<{ slug: string }> };
-
-export function generateStaticParams() {
-  return researchPosts.map((p) => ({ slug: p.slug }));
-}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
