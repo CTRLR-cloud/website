@@ -3,16 +3,14 @@
 **Project:** CTRL+R — https://ctrlr.fastmode.ai  
 **Project ID:** `b67e260c-49e2-499d-9294-2cefd08bbd64`
 
-This site uses **Next.js** with **`output: "export"`**. A single **`npm run build`** runs **`next build`** (writes **`out/`**, gitignored) **and** **`scripts/build-fastmode-package.mjs`**, which produces **`fastmode-out/`** in Fast Mode’s required layout (`manifest.json`, `pages/`, `public/`).
-
-**Important:** The packager is part of **`npm run build`**, not `next build` alone. If Fast Mode’s build command is only **`next build`**, **`fastmode-out/`** is never created and you get the “manifest.json is required” error.
+This site uses **Next.js** with **`output: "export"`**. `npm run build` writes the static export to **`out/`** (gitignored), then **`postbuild`** runs **`scripts/build-fastmode-package.mjs`**, which produces **`fastmode-out/`** in Fast Mode’s required layout (`manifest.json`, `pages/`, `public/` with `/public/` asset URLs).
 
 ## GitHub → Fast Mode
 
-1. Connect this repository. If the app lives in a subfolder (e.g. `website/`), set the project **root directory** in Fast Mode to that folder (the one that contains this **`package.json`**).
-2. **Install command:** `npm ci` or `npm install`
-3. **Build command:** **`npm run build`** (required — do **not** use `next build` only)
-4. **Publish / output directory:** **`fastmode-out`** (not `out` — the raw Next folder has no `manifest.json` at the package root)
+1. Connect this repository (or the monorepo path that contains this `package.json`) in Fast Mode.
+2. Set the **install command** to: `npm ci` or `npm install`
+3. Set the **build command** to: `npm run build`
+4. Set the **publish / output directory** to: **`fastmode-out`** (not `out` — Fast Mode validates the manifest package format, not the raw Next export folder)
 
 CI must run the build with **network access** so RSS feeds can populate the home and news pages during static generation (optional but recommended).
 
@@ -41,7 +39,7 @@ npm run build
 npx serve fastmode-out
 ```
 
-To preview the raw Next export only, run `npm run build:next` then `npx serve out` (skips `fastmode-out`; Fast Mode preview should use **`fastmode-out`**).
+To preview the raw Next export without the Fast Mode wrapper, use `npx serve out` after build (the `postbuild` step still runs `fastmode-out` generation).
 
 ## MCP
 
