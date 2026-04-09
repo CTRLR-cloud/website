@@ -72,9 +72,6 @@ export function CommandHQ({ className }: { className?: string }) {
 
   const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-  const titleY = useTransform(scrollYProgress, [0, 0.1], [40, 0]);
-
   const fadeOut = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
 
   const scrollHintOpacity = useTransform(
@@ -86,7 +83,13 @@ export function CommandHQ({ className }: { className?: string }) {
   const line = useMotionTemplate`linear-gradient(to right, color-mix(in oklab, var(--accent) 55%, transparent), rgba(255,255,255,0.30), transparent)`;
 
   return (
-    <section className={cn("relative bg-section border-t border-hairline", className)}>
+    <section
+      id="command-hq"
+      className={cn(
+        "scroll-mt-[max(6rem,12svh)] relative bg-section border-t border-hairline",
+        className,
+      )}
+    >
       <div ref={containerRef} className="relative h-[300vh]">
         <div className="sticky top-0 flex h-[100svh] min-h-0 w-full flex-col overflow-hidden">
           <div className="pointer-events-none absolute inset-0">
@@ -101,11 +104,9 @@ export function CommandHQ({ className }: { className?: string }) {
             <div className="absolute inset-0 k-noise opacity-[0.12]" />
           </div>
 
-          {/* Title stays in normal flow so it always reserves space above the card rail */}
-          <motion.div
-            className="relative z-20 flex-shrink-0 px-4 pb-5 pt-20 sm:pt-24 lg:mx-24 lg:px-0 lg:pb-6 lg:pt-28"
-            style={{ opacity: titleOpacity, y: titleY }}
-          >
+          {/* Title stays in normal flow so it always reserves space above the card rail.
+              Not scroll-faded: hash links land at progress≈0; opacity 0→1 would hide the headline. */}
+          <div className="relative z-20 flex-shrink-0 px-4 pb-5 pt-20 sm:pt-24 lg:mx-24 lg:px-0 lg:pb-6 lg:pt-28">
             <div className="mx-auto w-full max-w-[1600px]">
               <div className="mb-4 flex items-center gap-3 sm:mb-6">
                 <span className="h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_0_8px_color-mix(in_oklab,var(--accent)_14%,transparent)]" />
@@ -118,7 +119,7 @@ export function CommandHQ({ className }: { className?: string }) {
                 <span className="font-light text-white/50">Total Control.</span>
               </h2>
             </div>
-          </motion.div>
+          </div>
 
           <div className="relative z-10 flex-shrink-0 px-4 lg:mx-24 lg:px-0">
             <div className="mx-auto w-full max-w-[1600px]">

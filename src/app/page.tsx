@@ -86,6 +86,7 @@ export default async function Home() {
               </Reveal>
 
               <Reveal
+                immediate
                 delayMs={200}
                 className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:items-center"
               >
@@ -98,7 +99,7 @@ export default async function Home() {
                   Try It Free
                 </a>
                 <a
-                  href="#how-it-works"
+                  href="#command-hq"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
                 >
                   See How It Works
