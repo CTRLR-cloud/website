@@ -193,7 +193,7 @@ export function RetailSection({ className }: { className?: string }) {
         <Reveal delayMs={280}>
           <div className="mt-16 flex flex-wrap gap-3">
             <a
-              href="#how-it-works"
+              href="#command-hq"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-white font-medium text-sm hover:brightness-110 transition shadow-[0_0_24px_color-mix(in_oklab,var(--accent)_40%,transparent)]"
             >
               See How It Works

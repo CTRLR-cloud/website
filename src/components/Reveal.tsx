@@ -8,6 +8,8 @@ type RevealProps = {
   as?: React.ElementType;
   className?: string;
   delayMs?: number;
+  /** Skip scroll-triggered reveal; use for above-the-fold content so links stay clickable. */
+  immediate?: boolean;
   children: React.ReactNode;
 };
 
@@ -15,6 +17,7 @@ export function Reveal({
   as,
   className,
   delayMs = 0,
+  immediate = false,
   children,
 }: RevealProps) {
   const Tag = (as ?? "div") as any;
@@ -29,7 +32,7 @@ export function Reveal({
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-    if (reduceMotion) {
+    if (reduceMotion || immediate) {
       el.setAttribute("data-reveal", "in");
       return;
     }
@@ -51,11 +54,12 @@ export function Reveal({
 
     io.observe(el);
     return () => io.disconnect();
-  }, [delayMs, id]);
+  }, [delayMs, id, immediate]);
 
   return (
     <Tag
       ref={(node: Element | null) => (ref.current = node)}
+      {...(immediate ? { "data-reveal": "in" } : {})}
       className={cn(className)}
     >
       {children}
