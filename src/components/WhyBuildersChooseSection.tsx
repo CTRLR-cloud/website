@@ -55,7 +55,7 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
     <section className={cn("border-t border-hairline bg-section", className)}>
       {/* Mobile: stacked cards so user can scroll to see each card in full. Desktop unchanged. */}
       <div className="md:hidden">
-        <div className="mx-auto max-w-7xl px-6 pt-24 pb-10">
+        <div className="mx-auto max-w-6xl px-8 pt-24 pb-10">
           <Reveal>
             <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why CTRL+R</div>
           </Reveal>
@@ -82,7 +82,7 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
           </Reveal>
         </div>
 
-        <div className="mx-auto max-w-7xl px-6 pb-24 space-y-6">
+        <div className="mx-auto max-w-6xl px-8 pb-24 space-y-6">
           {panels.map((p, idx) => (
             <Reveal key={p.title} delayMs={80 + idx * 60}>
               <div className="min-h-[320px] overflow-hidden rounded-[32px] border border-white/10 shadow-glow relative">

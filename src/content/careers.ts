@@ -22,6 +22,18 @@ export const careerDepartments = [
 export const careerPosts: CareerPost[] = [
 
   {
+    slug: "embedded-systems-engineer",
+    title: "Embedded Systems Engineer",
+    department: "Robotics",
+    location: "Remote",
+    type: "Full-time",
+    level: "Senior",
+    salary: "$140k – $180k",
+    excerpt:
+      "Develop low-latency firmware for robotic controllers and edge devices. Experience with ARM, FPGA, and real-time operating systems required.",
+    posted: "April 3, 2026",
+  },
+  {
     slug: "robotics-systems-engineer",
     title: "Robotics Systems Engineer",
     department: "Robotics",
@@ -31,19 +43,7 @@ export const careerPosts: CareerPost[] = [
     salary: "$110k – $150k",
     excerpt:
       "Design and integrate robotic hardware and software systems. Work with ROS2, embedded systems, and real-time control architectures.",
-    posted: "Jan 12, 2026",
-  },
-  {
-    slug: "frontend-engineer",
-    title: "Frontend Engineer",
-    department: "Engineering",
-    location: "Remote",
-    type: "Full-time",
-    level: "Mid",
-    salary: "$80k – $120k",
-    excerpt:
-      "Create beautiful, high-performance user interfaces for our teleoperation dashboard and network explorer using React and Next.js.",
-    posted: "Jan 10, 2026",
+    posted: "April 10, 2026",
   },
   {
     slug: "product-designer",
@@ -55,20 +55,22 @@ export const careerPosts: CareerPost[] = [
     salary: "$80k – $120k",
     excerpt:
       "Shape the future of human-robot interaction. Design intuitive interfaces for complex robotic control systems and blockchain-native applications.",
-    posted: "Jan 8, 2026",
+    posted: "April 8, 2026",
   },
   {
-    slug: "embedded-systems-engineer",
-    title: "Embedded Systems Engineer",
-    department: "Robotics",
+    slug: "frontend-engineer",
+    title: "Frontend Engineer",
+    department: "Engineering",
     location: "Remote",
     type: "Full-time",
-    level: "Senior",
-    salary: "$140k – $180k",
+    level: "Mid",
+    salary: "$60k – $80k",
     excerpt:
-      "Develop low-latency firmware for robotic controllers and edge devices. Experience with ARM, FPGA, and real-time operating systems required.",
-    posted: "Jan 3, 2026",
+      "Create beautiful, high-performance user interfaces for our teleoperation dashboard and network explorer using React and Next.js.",
+    posted: "April 12, 2026",
   },
+  
+  
   /* Hidden
   {
     slug: "devrel-engineer",

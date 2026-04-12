@@ -55,7 +55,7 @@ export function CareerPostClient({ post }: { post: CareerPost }) {
             <Reveal delayMs={150}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href={`mailto:jobs@ctrlr.cloud?subject=Application: ${post.title}`}
+                  href={`mailto:info@ctrlr.cloud?subject=Application: ${post.title}`}
                   className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-semibold text-white transition hover:brightness-95 ring-premium"
                 >
                   Apply Now
@@ -159,7 +159,7 @@ export function CareerPostClient({ post }: { post: CareerPost }) {
 
                     <div className="mt-6 pt-6 border-t border-white/10">
                       <a
-                        href={`mailto:jobs@ctrlr.cloud?subject=Application: ${post.title}`}
+                        href={`mailto:info@ctrlr.cloud?subject=Application: ${post.title}`}
                         className="inline-flex w-full items-center justify-center rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:brightness-95 ring-premium"
                       >
                         Apply Now

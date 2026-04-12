@@ -70,7 +70,7 @@ export function ContactUsSection({ className }: { className?: string }) {
               <span className="text-[var(--accent)]">scale your business</span> risk-free
             </h2>
             <p className="mt-5 text-base leading-7 text-muted">
-              If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don't feel that we've saved you a significant amount of time, money, and efficiency, you pay nothing. Simple as that.
+              If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don't feel that we've saved you a significant amount of time, money, and efficiency after using CTRL+R, you pay nothing. Simple as that.
               
             </p>
           </div>

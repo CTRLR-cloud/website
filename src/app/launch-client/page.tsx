@@ -32,7 +32,7 @@ export default function LaunchClientPage() {
                 rel="noreferrer"
                 className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
               >
-                View Docs
+                View docs
               </a>
             </div>
 

@@ -123,7 +123,7 @@ export function RetailSection({ className }: { className?: string }) {
         <div className="mb-16 max-w-4xl">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.22em] text-white/55 mb-4">
-              Introducing
+              Key Industry
             </p>
           </Reveal>
           <Reveal delayMs={40}>
@@ -196,7 +196,7 @@ export function RetailSection({ className }: { className?: string }) {
               href="#command-hq"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[var(--accent)] text-white font-medium text-sm hover:brightness-110 transition shadow-[0_0_24px_color-mix(in_oklab,var(--accent)_40%,transparent)]"
             >
-              See How It Works
+              See how it works
               <span className="text-white/70">→</span>
             </a>
           </div>

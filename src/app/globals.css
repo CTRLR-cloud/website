@@ -130,6 +130,21 @@ html {
     color: transparent;
   }
 
+  /** Parallax “ONE PLATFORM” — bright white on the left, then into brand reds (same right end as before) */
+  .text-gradient-parallax {
+    background: linear-gradient(
+      90deg,
+      #ffffff 0%,
+      #ffffff 36%,
+      var(--accent-bright) 54%,
+      var(--accent) 76%,
+      var(--accent-deep) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
   .ring-premium:focus-visible {
     outline: none;
     box-shadow: 0 0 0 6px color-mix(in oklab, var(--ring) 32%, transparent);

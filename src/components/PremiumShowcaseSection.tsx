@@ -33,16 +33,18 @@ export function PremiumShowcaseSection() {
             <Reveal delayMs={150}>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:bg-white/90 ring-premium"
+                  href="https://client.ctrlr.cloud"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
                 >
-                  Contact Us
+                  Get set up in minutes
                 </a>
                 <Link
                   href="/technology-overview"
-                  className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-sm px-5 py-2.5 text-sm font-semibold text-white/80 transition hover:bg-white/[0.06] hover:text-white ring-premium"
+                  className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
                 >
-                  Technology Overview
+                  Explore technology
                 </Link>
               </div>
             </Reveal>
@@ -91,7 +93,7 @@ export function PremiumShowcaseSection() {
                       <div className="mt-3 min-h-[200px] rounded-xl overflow-hidden border border-white/5 bg-black/30">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                          src="/session-logs.jpeg"
+                          src="/Session-logs.jpeg"
                           alt="Session history: Total Sessions, Completed, Total Time, Avg Duration with session list"
                           className="w-full h-auto object-contain object-top"
                         />

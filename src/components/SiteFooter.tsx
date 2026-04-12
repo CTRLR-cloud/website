@@ -140,11 +140,6 @@ export function SiteFooter() {
                   Contact Us
                 </Link>
               </li>
-              <li>
-                <Link className="hover:text-white ring-premium rounded" href="/privacy">
-                  Privacy Policy
-                </Link>
-              </li>
             </ul>
           </div>
 
