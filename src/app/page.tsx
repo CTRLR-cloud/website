@@ -96,30 +96,37 @@ export default async function Home() {
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
                 >
-                  Try It Free
+                  Try it free
                 </a>
                 <a
                   href="#command-hq"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
                 >
-                  See How It Works
+                  See how it works
                 </a>
               </Reveal>
             </div>
           </div>
         </section>
         <DiscoverNewParadigm />
+        <RetailSection />
         <ParallaxTextSection />
         <WhyBuildersChooseSection />
         
-        <RetailSection />
-        <UseCasesHorizontalScrollSection />
         
         
-        <CommandHQ />
+        
         <FocusOnWhatMattersSection />
-        <PremiumShowcaseSection />
+        <CommandHQ />
         
+        <PremiumShowcaseSection />
+        <UseCasesHorizontalScrollSection />
+        <NumbersSection />
+        <StoriesSection stories={stories} />
+
+        {/* <HorizontalRailAutoSection /> */}
+        
+        <ContactUsSection />
         
         
         
@@ -150,12 +157,7 @@ export default async function Home() {
           </div>
         </section>
 */}
-        <NumbersSection />
-        <StoriesSection stories={stories} />
-
-        {/* <HorizontalRailAutoSection /> */}
         
-        <ContactUsSection />
       </main>
 
       <SiteFooter />

@@ -49,10 +49,9 @@ const tiles: Tile[] = [
       <>
         We&apos;re{" "}
         <strong className="font-bold">
-          standardizing robot control into one unified operations platform
+           saving companies time, money, and efficiency
         </strong>{" "}
-        that is intuitive for first-time operators, yet powerful and customizable for advanced
-        robotics teams. This approach earned CTRL+R a place in NVIDIA&apos;s Inception Program.
+        by standardizing robot control into one unified operations platform. Our innovative scaling solution  for robotics teams across industries earned CTRL+R a place in NVIDIA&apos;s Inception Program.
       </>
     ),
     image: "/NVIDIA-CTRLR.jpg",
@@ -69,7 +68,7 @@ const tiles: Tile[] = [
     desc: "Download the CTRL+R agent to your robot, connect in seconds, and start operating through our interface immediately. No custom integrations. No setup headaches.",
     image: "/Teleop-screenshot.png",
     href: SITE_LINKS.CLIENT,
-    cta: "Try It Out",
+    cta: "Try it out",
     accent: "rgba(0,200,150,0.25)",
     size: "medium",
     imagePosition: "right",
@@ -81,7 +80,7 @@ const tiles: Tile[] = [
     desc: "CTRL+R adapts to your entire fleet—across robot types, software stacks, and environments. Customize control systems, integrate existing tools, and extend functionality with a modular, API-driven platform.",
     image: "/software-visualizations.png",
     href: "/technology-overview",
-    cta: "View Capabilities",
+    cta: "View capabilities",
     accent: "rgba(201,0,7,0.25)",
     size: "medium",
   },
@@ -249,7 +248,7 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                           )}
                           {!tile.hideCta && (
                             <div className="mt-8 inline-flex items-center gap-4">
-                              <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-base font-semibold text-white transition group-hover:bg-white/20 group-hover:border-[var(--accent)]/60 group-hover:shadow-[0_0_24px_rgba(201,0,7,0.18)]">
+                              <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-base font-semibold text-white transition duration-200 ease-out [-webkit-backface-visibility:hidden] [backface-visibility:hidden] group-hover:border-[var(--accent-deep)] group-hover:bg-[linear-gradient(180deg,var(--accent-bright)_0%,var(--accent)_55%,var(--accent-deep)_100%)] group-hover:shadow-[0_0_26px_rgba(201,0,7,0.45),0_6px_20px_rgba(0,0,0,0.45)]">
                                 {tile.cta}
                               </span>
                               <span className="text-xl text-white/50 transition group-hover:translate-x-2 group-hover:text-white">
@@ -333,7 +332,7 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                         <MediumTileTitleAndDesc title={tile.title} desc={tile.desc} />
                         {!tile.hideCta && (
                           <div className="mt-8 inline-flex items-center gap-4">
-                            <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition group-hover:bg-white/20 group-hover:border-[var(--accent)]/60 group-hover:shadow-[0_0_24px_rgba(201,0,7,0.18)]">
+                            <span className="inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition duration-200 ease-out [-webkit-backface-visibility:hidden] [backface-visibility:hidden] group-hover:border-[var(--accent-deep)] group-hover:bg-[linear-gradient(180deg,var(--accent-bright)_0%,var(--accent)_55%,var(--accent-deep)_100%)] group-hover:shadow-[0_0_26px_rgba(201,0,7,0.45),0_6px_20px_rgba(0,0,0,0.45)]">
                               {tile.cta}
                             </span>
                             <span className="text-xl text-white/50 transition group-hover:translate-x-2 group-hover:text-white">

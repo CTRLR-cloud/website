@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { Reveal } from "@/components/Reveal";
+import { SITE_LINKS } from "@/config/links";
 import { cn } from "@/lib/cn";
 
 const ownerSteps = [
@@ -86,6 +87,16 @@ export function FocusOnWhatMattersSection({
                       <p className="mt-2 text-sm leading-6 text-white/60">{s.desc}</p>
                     </div>
                   ))}
+                </div>
+                <div className="mt-8 shrink-0">
+                  <a
+                    href={SITE_LINKS.CLIENT}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
+                  >
+                    Connect a robot now
+                  </a>
                 </div>
               </div>
             </div>
