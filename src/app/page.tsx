@@ -76,7 +76,7 @@ export default async function Home() {
             <div className="mt-10 text-center">
               <Reveal delayMs={60}>
                 <h1 className="text-premium text-4xl font-semibold leading-[1.03] tracking-tight text-white sm:text-6xl">
-                  Robot Operation, <span className="text-gradient whitespace-nowrap">at Scale.</span>
+                  Robot Operations <span className="text-gradient whitespace-nowrap">Made Easy</span>
                 </h1>
               </Reveal>
               <Reveal delayMs={110}>
@@ -108,19 +108,28 @@ export default async function Home() {
             </div>
           </div>
         </section>
-        <DiscoverNewParadigm />
+        
         <RetailSection />
-        <ParallaxTextSection />
         <WhyBuildersChooseSection />
+        
+        <PremiumShowcaseSection />
+        
+        <ParallaxTextSection />
+        <CommandHQ />
+        
+        <UseCasesHorizontalScrollSection />
+        <DiscoverNewParadigm />
+        
+        
         
         
         
         
         <FocusOnWhatMattersSection />
-        <CommandHQ />
         
-        <PremiumShowcaseSection />
-        <UseCasesHorizontalScrollSection />
+        
+        
+        
         <NumbersSection />
         <StoriesSection stories={stories} />
 

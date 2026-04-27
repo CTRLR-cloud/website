@@ -13,9 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const OG_IMAGE_VERSION = "20260427-tagline-update";
+
 export const metadata: Metadata = {
   title: {
-    default: "CTRL+R - Robot Operation, at Scale",
+    default: "CTRL+R - Robot Operations Made Easy",
     template: "CTRL+R - %s",
   },
   description: "One Platform. Any Robot. Total Control.",
@@ -24,25 +26,25 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "CTRL+R - Robot Operation, at Scale",
+    title: "CTRL+R - Robot Operations Made Easy",
     description: "One Platform. Any Robot. Total Control.",
     type: "website",
     url: "https://www.ctrlr.cloud/",
     siteName: "CTRL+R",
     images: [
       {
-        url: "/opengraph-image",
+        url: `/opengraph-image?v=${OG_IMAGE_VERSION}`,
         width: 1200,
         height: 630,
-        alt: "CTRL+R — Robot Operation, at Scale. One Platform. Any Robot. Total Control.",
+        alt: "CTRL+R — Robot Operations Made Easy. One Platform. Any Robot. Total Control.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CTRL+R - Robot Operation, at Scale",
+    title: "CTRL+R - Robot Operations Made Easy",
     description: "One Platform. Any Robot. Total Control.",
-    images: ["/opengraph-image"],
+    images: [`/opengraph-image?v=${OG_IMAGE_VERSION}`],
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],

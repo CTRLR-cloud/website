@@ -73,7 +73,7 @@ export function NumbersSection({ className }: { className?: string }) {
       <div ref={ref} className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <Reveal>
           <div className="text-xs tracking-[0.22em] uppercase text-white/55">
-            Network Stats
+            Traction
           </div>
         </Reveal>
         <Reveal delayMs={60}>

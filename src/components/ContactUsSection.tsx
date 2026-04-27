@@ -67,7 +67,7 @@ export function ContactUsSection({ className }: { className?: string }) {
             </div>
             <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Let CTRL+R{" "}
-              <span className="text-[var(--accent)]">scale your business</span> risk-free
+              <span className="text-[var(--accent)]">modernize</span> your business, risk-free
             </h2>
             <p className="mt-5 text-base leading-7 text-muted">
               If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don't feel that we've saved you a significant amount of time, money, and efficiency after using CTRL+R, you pay nothing. Simple as that.
