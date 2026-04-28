@@ -20,14 +20,14 @@ export const metadata: Metadata = {
     default: "CTRL+R - Robot Operations Made Easy",
     template: "CTRL+R - %s",
   },
-  description: "One Platform. Any Robot. Total Control.",
+  description: "One platform. Any robot. Total control.",
   metadataBase: new URL("https://www.ctrlr.cloud"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "CTRL+R - Robot Operations Made Easy",
-    description: "One Platform. Any Robot. Total Control.",
+    description: "One platform. Any robot. Total control.",
     type: "website",
     url: "https://www.ctrlr.cloud/",
     siteName: "CTRL+R",
@@ -36,14 +36,14 @@ export const metadata: Metadata = {
         url: `/opengraph-image?v=${OG_IMAGE_VERSION}`,
         width: 1200,
         height: 630,
-        alt: "CTRL+R — Robot Operations Made Easy. One Platform. Any Robot. Total Control.",
+        alt: "CTRL+R — Robot Operations Made Easy. One platform. Any robot. Total control.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "CTRL+R - Robot Operations Made Easy",
-    description: "One Platform. Any Robot. Total Control.",
+    description: "One platform. Any robot. Total control.",
     images: [`/opengraph-image?v=${OG_IMAGE_VERSION}`],
   },
   icons: {

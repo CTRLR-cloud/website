@@ -81,7 +81,7 @@ export default async function Home() {
               </Reveal>
               <Reveal delayMs={110}>
                 <p className="mx-auto mt-5 max-w-3xl text-lg font-medium leading-relaxed tracking-wide text-white/80 sm:mt-6 sm:text-xl">
-                  One Platform. Any Robot. Total Control.
+                  One platform. Any robot. Total control.
                 </p>
               </Reveal>
 

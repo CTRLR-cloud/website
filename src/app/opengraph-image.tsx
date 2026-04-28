@@ -224,7 +224,7 @@ export default async function Image() {
               marginBottom: 32,
             }}
           >
-            One Platform. Any Robot. Total Control.
+            One platform. Any robot. Total control.
           </p>
 
           <div
