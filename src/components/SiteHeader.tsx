@@ -10,6 +10,7 @@ import { SITE_LINKS } from "@/config/links";
 
 const nav = [
   { label: "Home", href: "/" },
+  { label: "Docs", href: "/docs" },
   { label: "News", href: "/news" },
   { label: "Careers", href: "/careers" },
   { label: "Technology", href: "/technology-overview" },
