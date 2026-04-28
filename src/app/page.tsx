@@ -9,11 +9,11 @@ import { PageIntro } from "@/components/PageIntro";
 import { ParallaxTextSection } from "@/components/ParallaxTextSection";
 import { StoriesSection } from "@/components/StoriesSection";
 import { getCachedStories } from "@/lib/roboticsFeeds";
-import { PremiumShowcaseSection } from "@/components/PremiumShowcaseSection";
+import { RetailOperationsSection } from "@/components/RetailOperationsSection";
 import { UseCasesHorizontalScrollSection } from "@/components/UseCasesHorizontalScrollSection";
 import { FocusOnWhatMattersSection } from "@/components/FocusOnWhatMattersSection";
 import { NumbersSection } from "@/components/NumbersSection";
-import { WhyBuildersChooseSection } from "@/components/WhyBuildersChooseSection";
+import { WhyCTRLRSection } from "@/components/WhyCTRLRSection";
 import { CommandHQ } from "@/components/CommandHQ";
 import { DiscoverNewParadigm } from "@/components/DiscoverNewParadigm";
 import { RetailSection } from "@/components/RetailSection";
@@ -110,32 +110,22 @@ export default async function Home() {
         </section>
         
         <RetailSection />
-        <WhyBuildersChooseSection />
-        
-        <PremiumShowcaseSection />
-        
+        <WhyCTRLRSection />
+        <RetailOperationsSection />
         <ParallaxTextSection />
         <CommandHQ />
-        
         <UseCasesHorizontalScrollSection />
         <DiscoverNewParadigm />
-        
-        
-        
-        
-        
-        
         <FocusOnWhatMattersSection />
-        
-        
-        
-        
         <NumbersSection />
         <StoriesSection stories={stories} />
-
+        <ContactUsSection />
+        
+        
+        
         {/* <HorizontalRailAutoSection /> */}
         
-        <ContactUsSection />
+        
         
         
         
