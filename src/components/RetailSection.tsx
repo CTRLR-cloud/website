@@ -1,49 +1,33 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
-import { SmartImage } from "@/components/SmartImage";
-
-const RETAIL_DEMO_VIDEO_MP4 = "/Final-retail-demo.mp4";
-const RETAIL_DEMO_POSTER = "/Command-HQ-multiview.png";
+const RETAIL_DEMO_VIDEO_MP4 = "/Lo-res-location-joystick-CTRLR-demo.mp4?v=20260427-3";
 
 function RetailDemoVideo() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [useImageFallback, setUseImageFallback] = useState(false);
 
   useEffect(() => {
     const el = videoRef.current;
-    if (!el || useImageFallback) return;
+    if (!el) return;
     void el.play().catch(() => {});
-  }, [useImageFallback]);
-
-  if (useImageFallback) {
-    return (
-      <SmartImage
-        src={RETAIL_DEMO_POSTER}
-        alt="Retail operations interface"
-        className="absolute inset-0 h-full w-full object-cover object-bottom"
-      />
-    );
-  }
+  }, []);
 
   return (
     <video
+      key={RETAIL_DEMO_VIDEO_MP4}
       ref={videoRef}
+      src={RETAIL_DEMO_VIDEO_MP4}
       className="absolute inset-0 h-full w-full object-cover object-bottom"
-      poster={RETAIL_DEMO_POSTER}
       autoPlay
       muted
       loop
       playsInline
       preload="auto"
       aria-label="Retail robot operations demo"
-      onError={() => setUseImageFallback(true)}
-    >
-      <source src={RETAIL_DEMO_VIDEO_MP4} type="video/mp4" />
-    </video>
+    />
   );
 }
 
@@ -123,7 +107,7 @@ export function RetailSection({ className }: { className?: string }) {
         <div className="mb-16 max-w-4xl">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.22em] text-white/55 mb-4">
-              Key Industry
+              Introducing
             </p>
           </Reveal>
           <Reveal delayMs={40}>
@@ -133,7 +117,7 @@ export function RetailSection({ className }: { className?: string }) {
           </Reveal>
           <Reveal delayMs={80}>
             <p className="mt-5 text-white/50 text-lg leading-relaxed">
-            Replace manual store audits with remote robot operations. Brands save time and money, while retailers generate new revenue streams.
+            Retail chains are losing money due to bad shelf execution & poor visibility into what’s happening across stores. We can fix that.
             </p>
           </Reveal>
         </div>

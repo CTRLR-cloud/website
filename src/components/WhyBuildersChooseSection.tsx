@@ -25,7 +25,7 @@ const panels: Panel[] = [
   {
     kicker: "Coordination",
     title: "Designed for human-in-the-loop operations",
-    desc: "CTRL+R helps teams coordinate live robot operations with safe interventions, clear handoffs, and detailed logs, so responsibility and oversight never get lost.",
+    desc: "CTRL+R helps teams coordinate live robot operations with safe interventions, real-time visibility, clear handoffs, and detailed logs, so responsibility and oversight never get lost.",
     theme: "green",
     backgroundImage: "/coordination-bg.png",
   },
@@ -61,8 +61,8 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
           </Reveal>
           <Reveal delayMs={60}>
             <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white">
-              Built for speed. Built {" "}
-              <span className="text-gradient">for operators.</span>
+            Built for anyone, {" "}
+              <span className="text-gradient">not just engineers.</span>
             </h2>
           </Reveal>
           <Reveal delayMs={110}>
@@ -128,8 +128,8 @@ export function WhyBuildersChooseSection({ className }: { className?: string }) 
                 </Reveal>
                 <Reveal delayMs={60}>
                   <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
-                    Built for speed. Built {" "}
-                    <span className="text-gradient">for operators.</span>
+                    Built for anyone, {" "}
+                    <span className="text-gradient">not just engineers.</span>
                   </h2>
                 </Reveal>
                 <Reveal delayMs={110}>

@@ -74,7 +74,7 @@ export function SiteFooter() {
               </span>
             </Link>
             <p className="mt-3 max-w-sm text-base font-medium leading-snug text-white/90 sm:text-lg">
-              Robot Operation, at Scale
+              Robot Operations Made Easy
             </p>
 
             <div className="mt-5 flex flex-wrap items-center gap-2">
