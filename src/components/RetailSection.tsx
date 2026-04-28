@@ -100,11 +100,14 @@ export function RetailSection({ className }: { className?: string }) {
   const y = useTransform(scrollYProgress, [0, 1], [40, -40]);
 
   return (
-    <section ref={ref} className={cn("relative border-t border-hairline bg-black", className)}>
+    <section
+      ref={ref}
+      className={cn("relative border-t border-hairline bg-black", className)}
+    >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(201,0,7,0.08),transparent)]" />
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="mb-16 max-w-4xl">
+        <div id="retail" className="mb-16 max-w-4xl scroll-mt-16">
           <Reveal>
             <p className="text-xs uppercase tracking-[0.22em] text-white/55 mb-4">
               Introducing

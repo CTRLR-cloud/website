@@ -190,7 +190,7 @@ export function SiteFooter() {
               Privacy Policy
             </Link>
           </div>
-          <div className="text-white/25">One Platform. Any Robot. Total Control.</div>
+          <div className="text-white/25">One platform. Any robot. Total control.</div>
         </div>
       </div>
     </footer>

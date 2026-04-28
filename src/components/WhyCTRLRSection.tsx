@@ -1,0 +1,213 @@
+"use client";
+
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import { Reveal } from "@/components/Reveal";
+import { cn } from "@/lib/cn";
+
+type Panel = {
+  kicker: string;
+  title: string;
+  desc: string;
+  theme: "mono" | "green" | "brand";
+  backgroundImage?: string;
+};
+
+const panels: Panel[] = [
+  {
+    kicker: "Customizability",
+    title: "Operate any robot with any interface",
+    desc: "CTRL+R works across robot manufacturers and control inputs including keyboards, joysticks, VR/AR, haptics, and custom controllers. Teams can operate diverse fleets without rebuilding control systems for each new robot.",
+    theme: "mono",
+    backgroundImage: "/operate_any_robot3.png",
+  },
+  {
+    kicker: "Coordination",
+    title: "Designed for human-in-the-loop operations",
+    desc: "CTRL+R helps teams coordinate live robot operations with safe interventions, real-time visibility, clear handoffs, and detailed logs, so responsibility and oversight never get lost.",
+    theme: "green",
+    backgroundImage: "/coordination-bg.png",
+  },
+  {
+    kicker: "Scale",
+    title: "Built to grow with your organization",
+    desc: "Easily add new robots, deployments, and team members as your organization grows, while keeping operations consistent, safe, and manageable over time.",
+    theme: "brand",
+    backgroundImage: "/expansion-2.png",
+  },
+];
+
+export function WhyCTRLRSection({ className }: { className?: string }) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const o0 = useTransform(scrollYProgress, [0, 0.25, 0.35], [1, 1, 0]);
+  const o1 = useTransform(scrollYProgress, [0.3, 0.45, 0.65], [0, 1, 0]);
+  const o2 = useTransform(scrollYProgress, [0.6, 0.75, 1], [0, 1, 1]);
+  const opacities = [o0, o1, o2];
+
+  return (
+    <section className={cn("border-t border-hairline bg-section", className)}>
+      {/* Mobile: stacked cards so user can scroll to see each card in full. Desktop unchanged. */}
+      <div className="md:hidden">
+        <div className="mx-auto max-w-6xl px-8 pt-24 pb-10">
+          <Reveal>
+            <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why CTRL+R</div>
+          </Reveal>
+          <Reveal delayMs={60}>
+            <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white">
+            Built for anyone, {" "}
+              <span className="text-gradient">not just engineers.</span>
+            </h2>
+          </Reveal>
+          <Reveal delayMs={110}>
+            <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
+              CTRL+R is designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams.
+            </p>
+          </Reveal>
+          <Reveal delayMs={160}>
+            <div className="mt-10 flex flex-wrap gap-3">
+              <Link
+                href="/technology-overview"
+                className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition ring-premium btn-secondary"
+              >
+                Explore technology
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+
+        <div className="mx-auto max-w-6xl px-8 pb-24 space-y-6">
+          {panels.map((p, idx) => (
+            <Reveal key={p.title} delayMs={80 + idx * 60}>
+              <div className="min-h-[320px] overflow-hidden rounded-[32px] border border-white/10 shadow-glow relative">
+                {p.backgroundImage ? (
+                  <>
+                    <div
+                      className="absolute inset-0 rounded-[32px] bg-cover bg-center"
+                      style={{ backgroundImage: `url(${p.backgroundImage})` }}
+                    />
+                    <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-black/60" />
+                    <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-[linear-gradient(to_bottom,rgba(0,0,0,.35),rgba(0,0,0,.75))]" />
+                  </>
+                ) : (
+                  <>
+                    <div className="absolute inset-0 rounded-[32px] bg-black/50" />
+                    <div className="pointer-events-none absolute inset-0 rounded-[32px] opacity-[0.10] bg-[linear-gradient(transparent_0,transparent_23px,rgba(255,255,255,0.06)_24px),linear-gradient(90deg,transparent_0,transparent_23px,rgba(255,255,255,0.06)_24px)] [background-size:26px_26px]" />
+                    <div className="pointer-events-none absolute inset-0 rounded-[32px] bg-[linear-gradient(to_bottom,rgba(0,0,0,.25),rgba(0,0,0,.70))]" />
+                  </>
+                )}
+                <div className="relative min-h-[320px] p-8 flex flex-col justify-end">
+                  <div className="text-sm font-medium text-white/70">{p.kicker}</div>
+                  <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">
+                    {p.title}
+                  </h3>
+                  <p className={cn("mt-4 max-w-lg text-sm leading-7", p.backgroundImage ? "text-white/95 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" : "text-white/55")}>
+                    {p.desc}
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+
+      {/* Desktop: original sticky scroll + crossfade (unchanged) */}
+      <div ref={containerRef} className="relative hidden md:block min-h-[300vh]">
+        <div className="sticky top-0 min-h-screen">
+          <div className="mx-auto max-w-7xl px-6">
+            <div className="grid gap-10 md:grid-cols-12 md:gap-16 pt-24 md:pt-32 pb-20">
+              <div className="md:col-span-5">
+                <Reveal>
+                  <div className="text-xs tracking-[0.22em] uppercase text-white/55">Why CTRL+R</div>
+                </Reveal>
+                <Reveal delayMs={60}>
+                  <h2 className="mt-4 text-premium text-4xl font-semibold leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
+                    Built for anyone, {" "}
+                    <span className="text-gradient">not just engineers.</span>
+                  </h2>
+                </Reveal>
+                <Reveal delayMs={110}>
+                  <p className="mt-6 max-w-sm text-sm leading-7 text-white/60">
+                  CTRL+R is designed to be intuitive for first-time operators, yet powerful and customizable for advanced robotics teams.
+                  </p>
+                </Reveal>
+                <Reveal delayMs={160}>
+                  <div className="mt-10 flex flex-wrap gap-3">
+                    <Link
+                      href="/technology-overview"
+                      className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition ring-premium btn-secondary"
+                    >
+                      Explore technology
+                    </Link>
+                  </div>
+                </Reveal>
+
+                <div className="mt-12 hidden md:flex items-center gap-3">
+                  {panels.map((_, idx) => (
+                    <motion.div
+                      key={idx}
+                      className="h-1 w-10 rounded-full bg-white/10 overflow-hidden"
+                    >
+                      <motion.div
+                        className="h-full bg-[var(--accent)]"
+                        style={{
+                          scaleX: opacities[idx],
+                          transformOrigin: "left",
+                        }}
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="md:col-span-7 relative">
+                <div className="relative h-[480px] md:h-[540px]">
+                  {panels.map((p, idx) => (
+                    <motion.div
+                      key={p.title}
+                      style={{ opacity: opacities[idx] }}
+                      className="absolute inset-0"
+                    >
+                      <div className="h-full overflow-hidden rounded-[40px] border border-white/10 shadow-glow relative">
+                        {p.backgroundImage ? (
+                          <>
+                            <div
+                              className="absolute inset-0 rounded-[40px] bg-cover bg-center"
+                              style={{ backgroundImage: `url(${p.backgroundImage})` }}
+                            />
+                            <div className="pointer-events-none absolute inset-0 rounded-[40px] bg-black/60" />
+                            <div className="pointer-events-none absolute inset-0 rounded-[40px] bg-[linear-gradient(to_bottom,rgba(0,0,0,.35),rgba(0,0,0,.75))]" />
+                          </>
+                        ) : (
+                          <>
+                            <div className="absolute inset-0 rounded-[40px] bg-black/50" />
+                            <div className="pointer-events-none absolute inset-0 rounded-[40px] opacity-[0.10] bg-[linear-gradient(transparent_0,transparent_23px,rgba(255,255,255,0.06)_24px),linear-gradient(90deg,transparent_0,transparent_23px,rgba(255,255,255,0.06)_24px)] [background-size:26px_26px]" />
+                            <div className="pointer-events-none absolute inset-0 rounded-[40px] bg-[linear-gradient(to_bottom,rgba(0,0,0,.25),rgba(0,0,0,.70))]" />
+                          </>
+                        )}
+
+                        <div className="relative h-full p-8 md:p-10 flex flex-col">
+                          <div className="text-sm font-medium text-white/70">{p.kicker}</div>
+                          <h3 className="mt-4 text-2xl md:text-3xl font-semibold tracking-tight text-white">
+                            {p.title}
+                          </h3>
+                          <p className={cn("mt-4 max-w-lg text-sm leading-7", p.backgroundImage ? "text-white/95 drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]" : "text-white/55")}>{p.desc}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
