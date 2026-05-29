@@ -434,8 +434,25 @@ export function DocsContent() {
                 <code className={CODE}>std_msgs/String</code>,
                 "Navigation status published by the robot",
               ],
+              [
+                "Pose",
+                <code className={CODE}>/amcl_pose</code>,
+                <code className={CODE}>geometry_msgs/PoseWithCovarianceStamped</code>,
+                "Robot's live pose, streamed back to the webapp (off by default)",
+              ],
             ]}
           />
+          <Callout title="Pose streaming">
+            Pose streaming is <strong className="text-white">disabled by default</strong>. Enable
+            it by setting <code className={CODE}>ros.pose_enabled</code> to{" "}
+            <code className={CODE}>true</code>. The agent then subscribes to{" "}
+            <code className={CODE}>ros.pose_topic</code> and forwards the robot&apos;s pose to the
+            webapp, throttled to 5&nbsp;Hz. The default source is Nav2&apos;s{" "}
+            <code className={CODE}>/amcl_pose</code>; set{" "}
+            <code className={CODE}>ros.pose_msg_type</code> to{" "}
+            <code className={CODE}>geometry_msgs/PoseStamped</code> if your robot publishes pose
+            without covariance.
+          </Callout>
           <Callout title="Note">
             The agent expects exactly three string values from the nav status topic:{" "}
             <code className={CODE}>&quot;started&quot;</code>,{" "}
