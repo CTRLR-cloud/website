@@ -3,12 +3,12 @@ import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "CTRL+R — Robot Operations Made Easy. One Platform. Any Robot. Total Control.";
+  "CTRL+R — The Operating Layer for Physical AI. One Platform. Any Robot. Total Control.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-/** Matches `globals.css` `.text-gradient` (hero “Made Easy”) */
-const TEXT_GRADIENT_MADE_EASY = `linear-gradient(105deg, #ffffff 0%, #f2f2f2 14%, #e8aeb2 38%, #d62830 58%, #c90007 78%, #690404 100%)`;
+/** Matches `globals.css` `.text-gradient` (hero “Physical AI”) */
+const TEXT_GRADIENT_TAGLINE = `linear-gradient(105deg, #ffffff 0%, #f2f2f2 14%, #e8aeb2 38%, #d62830 58%, #c90007 78%, #690404 100%)`;
 
 /** Matches `.btn-primary` vertical gradient */
 const BTN_PRIMARY_BG = `linear-gradient(180deg, #dc1e26 0%, #c90007 55%, #690404 100%)`;
@@ -176,9 +176,8 @@ export default async function Image() {
           <div
             style={{
               display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignItems: "baseline",
+              flexDirection: "column",
+              alignItems: "center",
               justifyContent: "center",
               textAlign: "center",
               marginBottom: 18,
@@ -194,7 +193,7 @@ export default async function Image() {
                 lineHeight: 1.05,
               }}
             >
-              Robot Operations{" "}
+              The Operating Layer for
             </span>
             <span
               style={{
@@ -202,13 +201,13 @@ export default async function Image() {
                 fontWeight: 600,
                 letterSpacing: "-0.02em",
                 lineHeight: 1.05,
-                backgroundImage: TEXT_GRADIENT_MADE_EASY,
+                backgroundImage: TEXT_GRADIENT_TAGLINE,
                 backgroundClip: "text",
                 WebkitBackgroundClip: "text",
                 color: "transparent",
               }}
             >
-              Made Easy
+              Physical AI
             </span>
           </div>
 

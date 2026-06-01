@@ -26,7 +26,7 @@ const items: Item[] = [
     title: "Your fleet, one dashboard",
     subtitle: "Robots",
     desc: "Monitor every asset from a single pane—status, model, and type at a glance. Track operators, sessions, and hours across quadrupeds, humanoids, arms, drones, and more in real time.",
-    image: "/command-hq-robots.png",
+    image: "/robots_screenshot_commandHQ.png",
     accent: "rgba(0,200,180,0.25)",
   },
   {
@@ -34,7 +34,7 @@ const items: Item[] = [
     title: "Sessions & logs",
     subtitle: "Operations",
     desc: "See live and completed sessions side by side with full context: robots, operators, session durations & time stamps. Catch errors early and share analytics with team members to inform strategy.",
-    image: "/command-hq-sessions-logs.png",
+    image: "/sessions-and-logs.png",
     accent: "rgba(201,0,7,0.25)",
   },
   {
@@ -42,7 +42,7 @@ const items: Item[] = [
     title: "ROS commands & controls",
     subtitle: "Customizations",
     desc: "Configure ROS commands, controllers, locations, and keyboard bindings in one place. Search, enable, and run the actions your team depends on, from emergency stops to sensor scans.",
-    image: "/command-hq-customizations.png",
+    image: "/customizations_commandHQ2.png",
     accent: "rgba(110,150,255,0.22)",
   },
   {

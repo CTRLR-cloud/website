@@ -13,11 +13,11 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const OG_IMAGE_VERSION = "20260427-tagline-update";
+const OG_IMAGE_VERSION = "20260601-tagline-update";
 
 export const metadata: Metadata = {
   title: {
-    default: "CTRL+R - Robot Operations Made Easy",
+    default: "CTRL+R - The Operating Layer for Physical AI",
     template: "CTRL+R - %s",
   },
   description: "One platform. Any robot. Total control.",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "CTRL+R - Robot Operations Made Easy",
+    title: "CTRL+R - The Operating Layer for Physical AI",
     description: "One platform. Any robot. Total control.",
     type: "website",
     url: "https://www.ctrlr.cloud/",
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
         url: `/opengraph-image?v=${OG_IMAGE_VERSION}`,
         width: 1200,
         height: 630,
-        alt: "CTRL+R — Robot Operations Made Easy. One platform. Any robot. Total control.",
+        alt: "CTRL+R — The Operating Layer for Physical AI. One platform. Any robot. Total control.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CTRL+R - Robot Operations Made Easy",
+    title: "CTRL+R - The Operating Layer for Physical AI",
     description: "One platform. Any robot. Total control.",
     images: [`/opengraph-image?v=${OG_IMAGE_VERSION}`],
   },
