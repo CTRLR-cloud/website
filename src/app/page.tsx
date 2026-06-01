@@ -76,7 +76,8 @@ export default async function Home() {
             <div className="mt-10 text-center">
               <Reveal delayMs={60}>
                 <h1 className="text-premium text-4xl font-semibold leading-[1.03] tracking-tight text-white sm:text-6xl">
-                  Robot Operations <span className="text-gradient whitespace-nowrap">Made Easy</span>
+                  The Operating Layer for{" "}
+                  <span className="text-gradient whitespace-nowrap">Physical AI</span>
                 </h1>
               </Reveal>
               <Reveal delayMs={110}>
@@ -108,9 +109,9 @@ export default async function Home() {
             </div>
           </div>
         </section>
-        
-        <RetailSection />
         <WhyCTRLRSection />
+        <RetailSection />
+        
         <RetailOperationsSection />
         <ParallaxTextSection />
         <CommandHQ />

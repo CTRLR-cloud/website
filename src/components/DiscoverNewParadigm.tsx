@@ -66,7 +66,7 @@ const tiles: Tile[] = [
   {
     title: "Start Operating Your Robot in Minutes",
     desc: "Download the CTRL+R agent to your robot, connect in seconds, and start operating through our interface immediately. No custom integrations. No setup headaches.",
-    image: "/Teleop-screenshot.png",
+    image: "/robot_soccer.png",
     href: SITE_LINKS.CLIENT,
     cta: "Try it out",
     accent: "rgba(0,200,150,0.25)",

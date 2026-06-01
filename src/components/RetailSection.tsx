@@ -120,7 +120,7 @@ export function RetailSection({ className }: { className?: string }) {
           </Reveal>
           <Reveal delayMs={80}>
             <p className="mt-5 text-white/50 text-lg leading-relaxed">
-            Retail chains are losing money due to bad shelf execution & poor visibility into what’s happening across stores. We can fix that.
+            Retail chains and CPGs alike are losing money due to bad shelf execution & poor visibility into what’s happening on shelves. CTRL+R provides real-time intelligence to improve revenue and efficiency.
             </p>
           </Reveal>
         </div>
