@@ -1,7 +1,7 @@
 # website
 
 Standalone CTRL+R marketing/docs site. Next.js 16 (App Router) + Tailwind v4 + React 19.
-Link-only coupling to the product — **zero env vars, no auth, no backend**.
+Link-only coupling to the product — **zero env vars, no auth, and no external/product backend dependency**; it still uses local Next.js server routes and server-side content fetching.
 
 ## Commands
 
