@@ -24,3 +24,10 @@ npm run lint
 
 Local dev via docker: `../ctrlr-local-stack` (`make web`). Workspace docs:
 `../ctrlr-local-stack/docs/`.
+
+## Docs sync
+
+After every major piece of work in this repo, sync the meta-repo `docs/` pages it affects — or ask
+the user "sync docs now or not yet?" before wrapping up. The meta-repo tracks last-synced state in
+`docs/.docs-sync-state.json`: from the meta-repo root, `make docs-sync-status` detects unsynced
+commits and `make docs-sync-mark` records a new baseline after syncing.
