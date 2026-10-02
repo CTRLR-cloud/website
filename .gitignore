@@ -3,6 +3,13 @@ node_modules
 out
 build
 .DS_Store
+fastmode-out/
+
+# Superpowers / SDD working files — never commit
+.superpowers/
+docs/plans/
+docs/specs/
+docs/sdd/
 
 
 

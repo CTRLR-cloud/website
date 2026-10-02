@@ -37,6 +37,7 @@ const SECTIONS: Section[] = [
     id: "supported-platforms",
     label: "Supported Platforms",
     toc: [
+      { href: "#device-classes", label: "Device Classes" },
       { href: "#os", label: "Operating System" },
       { href: "#ros", label: "ROS" },
       { href: "#architectures", label: "Architectures" },
@@ -54,8 +55,13 @@ const SECTIONS: Section[] = [
   },
   {
     id: "getting-started",
-    label: "Getting Started",
-    toc: [{ href: "#individuals", label: "For Individuals" }],
+    label: "Add a Device",
+    toc: [
+      { href: "#individuals", label: "For Individuals" },
+      { href: "#device-robot-edge", label: "Robot / Edge Device" },
+      { href: "#device-ip-camera", label: "IP Camera" },
+      { href: "#device-iot", label: "IoT Sensor" },
+    ],
   },
   {
     id: "configuring-your-robot",
@@ -63,6 +69,7 @@ const SECTIONS: Section[] = [
     toc: [
       { href: "#config-overview", label: "Overview" },
       { href: "#robot-params", label: "Robot Parameters" },
+      { href: "#video-source", label: "Video Source" },
       { href: "#ros-topics", label: "ROS Topics" },
     ],
   },
@@ -90,7 +97,17 @@ const SECTIONS: Section[] = [
     ],
   },
   { id: "locations", label: "Locations" },
-  { id: "command-hq", label: "Command HQ" },
+  {
+    id: "command-hq",
+    label: "Command HQ",
+    toc: [
+      { href: "#hq-overview", label: "Overview" },
+      { href: "#hq-devices-tab", label: "The Devices Tab" },
+      { href: "#hq-type-filters", label: "Type Filters" },
+      { href: "#hq-tiles", label: "Interface-driven Tiles" },
+      { href: "#hq-gateway-rollup", label: "Gateway Roll-up" },
+    ],
+  },
   { id: "foxglove", label: "FoxGlove Data Integration" },
   { id: "troubleshooting", label: "Troubleshooting" },
 ];
@@ -233,7 +250,7 @@ export function DocsContent() {
           </p>
           <p className={P}>
             Ready to get started?{" "}
-            <NavBtn to="getting-started">Getting Started →</NavBtn>
+            <NavBtn to="getting-started">Add a Device →</NavBtn>
           </p>
         </div>
 
@@ -246,6 +263,73 @@ export function DocsContent() {
         {/* Supported Platforms */}
         <div className={activeSection === "supported-platforms" ? "block" : "hidden"}>
           <h1 className={H1}>Supported Platforms</h1>
+          <p className={P}>
+            CTRL+R organizes everything that connects to the platform as a{" "}
+            <strong className="text-white">Device</strong>. A teleoperable robot is one device
+            class among several — an edge gateway, an IP/CCTV camera, and an IoT sensor are
+            devices too. What a device class can do is entirely a function of its{" "}
+            <strong className="text-white">transport</strong> (how bytes move) and its declared{" "}
+            <strong className="text-white">stream/command interfaces</strong> — the webapp never
+            special-cases a device type, it renders whatever interfaces a device declares.
+          </p>
+
+          <h2 id="device-classes" className={H2}>Device Classes</h2>
+          <Table
+            head={["Device Class", "Transport", "Streams", "What You See in the UI"]}
+            rows={[
+              [
+                "Robot",
+                <>
+                  <code className={CODE}>agent</code> — outbound WSS + PKI, WebRTC media/data
+                </>,
+                <>
+                  <code className={CODE}>video.live</code>, <code className={CODE}>telemetry.pose</code>,{" "}
+                  <code className={CODE}>telemetry.position</code>, <code className={CODE}>telemetry.metrics</code>
+                </>,
+                "Live video tile, map marker with pose track, battery/CPU status chips, and full teleop session controls.",
+              ],
+              [
+                "Edge Device",
+                <>
+                  <code className={CODE}>agent</code>
+                </>,
+                <code className={CODE}>telemetry.metrics</code>,
+                "Status chips only — no video tile, no teleop. When it hosts camera ingesters (see below), its cameras roll up to it as one online/offline state.",
+              ],
+              [
+                "IP Camera",
+                <>
+                  <code className={CODE}>pulled-stream</code> — an on-site gateway dials the
+                  camera over RTSP
+                </>,
+                <code className={CODE}>video.live</code>,
+                "View-only live video tile in EagleEye and Command HQ, same as a robot's — but no teleop controls, since its descriptor declares no commands. Viewing a camera never starts a billed session.",
+              ],
+              [
+                "IoT Sensor",
+                <>
+                  <code className={CODE}>push-api</code> — declared, not yet implemented
+                </>,
+                "none (v1)",
+                "Inventory card only: name, type icon, and an “unmonitored” state. No live data yet.",
+              ],
+            ]}
+          />
+          <Callout title="Gate on interfaces, not device type">
+            Every renderer above is keyed by <strong className="text-white">interface</strong>{" "}
+            (does this device declare <code className={CODE}>video.live</code>? {" "}
+            <code className={CODE}>control.teleop</code>?), never by device type. A future
+            device class that declares <code className={CODE}>telemetry.position</code> gets a
+            map marker automatically, with no product code change.
+          </Callout>
+
+          <p className={cn(P, "italic")}>
+            The requirements below cover the CTRL+R agent — the software that runs on{" "}
+            <strong className="text-white not-italic">agent-transport</strong> devices (robots and
+            edge gateways). IP cameras and IoT sensors have no compute to host an agent; adding
+            one is IP address + metadata, no install — see{" "}
+            <NavBtn to="getting-started">Add a Device</NavBtn>.
+          </p>
 
           <h2 id="os" className={H2}>Operating System</h2>
           <p className={P}>
@@ -324,14 +408,27 @@ export function DocsContent() {
           </p>
         </div>
 
-        {/* Getting Started */}
+        {/* Getting Started / Add a Device */}
         <div className={activeSection === "getting-started" ? "block" : "hidden"}>
-          <h1 className={H1}>Getting Started</h1>
+          <h1 className={H1}>Add a Device</h1>
+          <p className={P}>
+            Everything that connects to CTRL+R — a teleoperable robot, an edge gateway, an IP
+            camera, an IoT sensor — is added the same way: click{" "}
+            <strong className="text-white">Add Device</strong> and pick a type. What happens next
+            depends entirely on that type&apos;s transport (see{" "}
+            <NavBtn to="supported-platforms">Supported Platforms</NavBtn>):{" "}
+            <strong className="text-white">robot</strong> and{" "}
+            <strong className="text-white">edge</strong> devices install the CTRL+R agent on their
+            own compute; an <strong className="text-white">IP camera</strong> has no compute of
+            its own, so a one-liner runs on a site gateway instead; an{" "}
+            <strong className="text-white">IoT sensor</strong> is inventory-only for now — no
+            install, no live data.
+          </p>
 
           <h2 id="individuals" className={H2}>For Individuals</h2>
           <p className={P}>
-            This section contains instructions for individuals getting set up operating robots. For
-            organizations, please see <NavBtn to="command-hq">Command HQ</NavBtn>.
+            This section contains instructions for individuals getting set up operating devices.
+            For organizations, please see <NavBtn to="command-hq">Command HQ</NavBtn>.
           </p>
           <p className={P}>
             Please read the{" "}
@@ -341,15 +438,127 @@ export function DocsContent() {
           <Callout title="Recommendation">
             We recommend using Google Chrome with the CTRL+R webapp.
           </Callout>
+
+          <h2 id="device-robot-edge" className={H2}>Robot / Edge Device</h2>
+          <p className={P}>
+            Both are <strong className="text-white">agent-transport</strong> devices — they install
+            and run the CTRL+R agent on their own onboard compute, and connect outbound over WSS.
+            An edge device differs from a robot only in which streams/commands it declares (metrics
+            only, no teleop) — pick <strong className="text-white">Edge Device</strong> instead of{" "}
+            <strong className="text-white">Robot</strong> if the host&apos;s job is to sit on a
+            network and report health, or to act as a site gateway running camera ingesters (see{" "}
+            <NavBtn to="getting-started">IP Camera</NavBtn> below).
+          </p>
           <ol className="pl-6 mb-4 list-decimal space-y-1.5">
             <li className={LI}>Go to the CTRL+R client from our website</li>
             <li className={LI}>
-              From the dashboard, click the <strong className="text-white">Add Robot</strong> button
+              From the dashboard, click <strong className="text-white">Add Device</strong> and
+              choose <strong className="text-white">Robot</strong> or{" "}
+              <strong className="text-white">Edge Device</strong>
             </li>
-            <li className={LI}>Follow the webapp instructions and create your robot listing</li>
+            <li className={LI}>Follow the webapp instructions and create the device listing</li>
             <li className={LI}>
-              Once you reach the Robot Setup page, connect to your robot via SSH and follow the
-              displayed instructions
+              Once you reach the Device Setup page, connect to the host via SSH and run the
+              displayed <code className={CODE}>install.sh</code> one-liner, which carries the
+              device&apos;s pre-assigned id and a one-time enrollment token, e.g.:
+            </li>
+          </ol>
+          <pre className="bg-white/[0.05] border border-hairline rounded-lg px-5 py-4 overflow-x-auto my-4">
+            <code className="font-mono text-sm text-white/80">{`curl -sSL https://install.ctrlr.cloud/install.sh | sudo bash -s -- \\
+  --device-type robot \\
+  --robot-id my-robot \\
+  --enrollment-token TOKEN \\
+  --signaling-url "wss://signal.ctrlr.cloud" \\
+  --enrollment-url "https://api.ctrlr.cloud/enroll"`}</code>
+          </pre>
+          <p className={P}>
+            Use <code className={CODE}>--device-type edge</code> for an edge gateway instead of{" "}
+            <code className={CODE}>robot</code> — every other flag is identical. (
+            <code className={CODE}>--robot-id</code> is the flag name for historical reasons;{" "}
+            <code className={CODE}>--device-id</code> is accepted as an alias and means the same
+            thing for any device type.)
+          </p>
+
+          <h2 id="device-ip-camera" className={H2}>IP Camera</h2>
+          <p className={P}>
+            An IP/CCTV camera has no compute to host an agent, so from your point of view adding
+            one is just <strong className="text-white">IP address + RTSP URL</strong> — the one
+            install step happens on a <strong className="text-white">site gateway</strong>, not on
+            the camera.
+          </p>
+          <Callout title="What's a site gateway?">
+            A site gateway is any host on the camera&apos;s LAN already enrolled as an{" "}
+            <strong className="text-white">Edge Device</strong> (see above) — it can be a
+            dedicated edge box, or a robot&apos;s onboard computer doing double duty. The gateway
+            runs one lightweight ingester process per camera that dials the camera&apos;s RTSP
+            stream and forwards it to CTRL+R; it never touches the cloud media path.
+          </Callout>
+          <ol className="pl-6 mb-4 list-decimal space-y-1.5">
+            <li className={LI}>
+              Make sure a site gateway is already enrolled (see{" "}
+              <NavBtn to="getting-started">Robot / Edge Device</NavBtn> above) and reachable on the
+              camera&apos;s LAN.
+            </li>
+            <li className={LI}>
+              From the dashboard, click <strong className="text-white">Add Device</strong> and
+              choose <strong className="text-white">IP Camera</strong>.
+            </li>
+            <li className={LI}>
+              Enter the camera&apos;s <strong className="text-white">IP address</strong> and{" "}
+              <strong className="text-white">RTSP URL</strong> (e.g.{" "}
+              <code className={CODE}>rtsp://192.168.1.50:554/stream1</code>), and pick the site
+              gateway that will host its ingester.
+            </li>
+            <li className={LI}>
+              Run the displayed one-liner on the <strong className="text-white">gateway host</strong>{" "}
+              (not the camera):
+            </li>
+          </ol>
+          <pre className="bg-white/[0.05] border border-hairline rounded-lg px-5 py-4 overflow-x-auto my-4">
+            <code className="font-mono text-sm text-white/80">{`curl -sSL https://install.ctrlr.cloud/install.sh | sudo bash -s -- \\
+  --device-type ip_camera \\
+  --rtsp-url rtsp://192.168.1.50:554/stream1 \\
+  --rtsp-transport tcp \\
+  --robot-id cam-XXXX \\
+  --enrollment-token TOKEN \\
+  --signaling-url "wss://signal.ctrlr.cloud" \\
+  --enrollment-url "https://api.ctrlr.cloud/enroll"`}</code>
+          </pre>
+          <p className={P}>
+            This starts one ingester process on the gateway for this camera only, isolated under
+            its own config dir and service name (<code className={CODE}>--instance</code> defaults
+            to the camera&apos;s device id, so it never touches an existing agent&apos;s config or
+            key on the same host). A second camera on the same gateway gets its own{" "}
+            <code className={CODE}>install.sh</code> run with its own id and token, and the two
+            run side by side. This install step supports{" "}
+            <strong className="text-white">unauthenticated RTSP endpoints only</strong> — there is
+            no credential field or prompt. If the camera requires a username/password, add it by
+            hand to the ingester&apos;s <code className={CODE}>config.json</code> on the gateway
+            host afterward (as userinfo in the RTSP URL); it lives only on that host and is never
+            sent to or stored by CTRL+R.
+          </p>
+          <Callout title="Note">
+            <code className={CODE}>--rtsp-transport</code> defaults to{" "}
+            <code className={CODE}>tcp</code>; use <code className={CODE}>udp</code> only if the
+            camera requires it. Camera viewing in CTRL+R is view-only and does not start a billed
+            session.
+          </Callout>
+
+          <h2 id="device-iot" className={H2}>IoT Sensor</h2>
+          <p className={P}>
+            IoT sensors are <strong className="text-white">inventory-only</strong> today — there is
+            no install step and no live data feed yet.
+          </p>
+          <ol className="pl-6 mb-4 list-decimal space-y-1.5">
+            <li className={LI}>
+              From the dashboard, click <strong className="text-white">Add Device</strong> and
+              choose <strong className="text-white">IoT Sensor</strong>.
+            </li>
+            <li className={LI}>Enter a name and, optionally, an IP address and metadata (vendor, model, placement).</li>
+            <li className={LI}>
+              Save — the sensor appears immediately in the Devices tab with an{" "}
+              <strong className="text-white">unmonitored</strong> card. Nothing runs on the sensor
+              itself.
             </li>
           </ol>
         </div>
@@ -409,6 +618,60 @@ export function DocsContent() {
               ["Video Source", <code className={CODE}>Ros</code>],
             ]}
           />
+
+          <h2 id="video-source" className={H2}>Video Source</h2>
+          <p className={P}>
+            <code className={CODE}>video_source</code> selects which pipeline front end feeds the
+            agent&apos;s encoder. <code className={CODE}>Ros</code> is the default for teleoperated
+            robots; <code className={CODE}>Rtsp</code> is what a camera ingester uses (set
+            automatically by <code className={CODE}>install.sh --device-type ip_camera</code>, see{" "}
+            <NavBtn to="getting-started">Add a Device</NavBtn>). An{" "}
+            <strong className="text-white">edge device</strong> declares no{" "}
+            <code className={CODE}>video.live</code> interface, so pointing{" "}
+            <code className={CODE}>Rtsp</code> at a camera from an edge host&apos;s own config is
+            silently ignored — enroll the camera as its own <strong className="text-white">IP
+            Camera</strong> device instead.
+          </p>
+          <Table
+            head={["Source", "Config Keys", "Notes"]}
+            rows={[
+              [
+                <code className={CODE}>Ros</code>,
+                <>
+                  <code className={CODE}>ros.camera_raw_topic</code>,{" "}
+                  <code className={CODE}>ros.camera_jpeg_topic</code>
+                </>,
+                "Subscribes to a ROS image topic — raw or JPEG-compressed, per Image Format.",
+              ],
+              [
+                <code className={CODE}>Zenoh</code>,
+                "—",
+                <>
+                  Alternative to ROS; no dedicated config keys yet. See the{" "}
+                  <NavBtn to="before-you-begin">Before You Begin</NavBtn> section.
+                </>,
+              ],
+              [
+                <code className={CODE}>Rtsp</code>,
+                <>
+                  <code className={CODE}>rtsp.url</code>, <code className={CODE}>rtsp.transport</code>,{" "}
+                  <code className={CODE}>rtsp.latency_ms</code>
+                </>,
+                <>
+                  Pulls <code className={CODE}>rtspsrc ! rtph264depay ! h264parse</code> with H.264
+                  passthrough (no re-encode). <code className={CODE}>rtsp.url</code> excludes
+                  userinfo credentials; <code className={CODE}>rtsp.transport</code> is{" "}
+                  <code className={CODE}>tcp</code> or <code className={CODE}>udp</code> (default{" "}
+                  <code className={CODE}>tcp</code>); <code className={CODE}>rtsp.latency_ms</code>{" "}
+                  sets the jitter buffer (default <code className={CODE}>200</code>).
+                </>,
+              ],
+            ]}
+          />
+          <Callout title="Note">
+            All three <code className={CODE}>video_source</code> and <code className={CODE}>rtsp.*</code>{" "}
+            keys require an agent restart to take effect, like the rest of the video pipeline.
+          </Callout>
 
           <h2 id="ros-topics" className={H2}>ROS Topics</h2>
           <p className={P}>
@@ -825,7 +1088,84 @@ aplay -L     # list outputs (speakers)`}</code>
         {/* Command HQ */}
         <div className={activeSection === "command-hq" ? "block" : "hidden"}>
           <h1 className={H1}>Command HQ</h1>
-          <p className={cn(P, "italic text-muted")}>Coming soon.</p>
+
+          <h2 id="hq-overview" className={H2}>Overview</h2>
+          <p className={P}>
+            Command HQ is the organization-scoped dashboard for teams: Overview, Members, Eagle
+            Eye, <strong className="text-white">Devices</strong>, Sites, Sessions, Customizations,
+            Deny List, and Notifications tabs, all scoped to your org&apos;s fleet. This section
+            covers the topology-facing pieces — the Devices tab and how Eagle Eye/Command HQ render
+            a mixed fleet of robots, edge gateways, cameras, and sensors side by side.
+          </p>
+
+          <h2 id="hq-devices-tab" className={H2}>The Devices Tab</h2>
+          <p className={P}>
+            The <strong className="text-white">Devices</strong> tab is where the old Robots tab
+            lives now — every device in your org shows up here, robots included, in one list. It
+            has two add entry points side by side: <strong className="text-white">Add
+            Robot</strong> is the classic robot-listing flow, and{" "}
+            <strong className="text-white">Add Device</strong> (see{" "}
+            <NavBtn to="getting-started">Add a Device</NavBtn>) renders a type picker and then a
+            provisioning form specific to the type you choose (SSH one-liner for robot/edge, IP +
+            RTSP URL for a camera, name + metadata for an IoT sensor).
+          </p>
+
+          <h2 id="hq-type-filters" className={H2}>Type Filters</h2>
+          <p className={P}>
+            Above the device list, the same status chips you know from the old Robots tab (All, In
+            use, Online, Offline, Error, Unassigned) are joined by a second row of{" "}
+            <strong className="text-white">device type</strong> chips — All types, Robot, Edge
+            Device, IP Camera, IoT Sensor — whenever your org has more than one device type. The
+            two rows combine: picking <strong className="text-white">Online</strong> +{" "}
+            <strong className="text-white">IP Camera</strong> shows only cameras that are
+            currently streaming.
+          </p>
+          <Callout title="Cosmetic only">
+            Type filters just narrow what&apos;s shown — they never change what a device can do.
+            That&apos;s decided once, per device, by its declared interfaces (next section). An
+            org with only robots never sees the type row at all, so nothing changes for existing
+            single-type fleets.
+          </Callout>
+
+          <h2 id="hq-tiles" className={H2}>Interface-driven Tiles</h2>
+          <p className={P}>
+            A device&apos;s card, list row, and detail tile are{" "}
+            <strong className="text-white">composed</strong> from whichever streams and commands
+            its descriptor declares — Command HQ and Eagle Eye never branch on device type to
+            decide what to draw:
+          </p>
+          <Table
+            head={["Declared interface", "What renders"]}
+            rows={[
+              [<code className={CODE}>video.live</code>, "Live video tile — the same viewer used for a robot's camera, whether the source is an agent or a camera ingester."],
+              [<code className={CODE}>telemetry.position</code>, "Map marker on the fleet map."],
+              [<code className={CODE}>telemetry.pose</code>, "Site-map pose track."],
+              [<code className={CODE}>telemetry.metrics</code>, "Battery/CPU status chips on the card and fleet list."],
+              [<code className={CODE}>control.teleop</code>, "\"Start session\" action and session/billing controls."],
+              [<>(none declared)</>, "Plain inventory card — name, type icon, and an \"unmonitored\" state."],
+            ]}
+          />
+          <p className={P}>
+            This is why an IP camera can show up in the exact same Eagle Eye grid as a robot with a
+            live video tile, yet never expose a teleop button: its descriptor declares{" "}
+            <code className={CODE}>video.live</code> and nothing else, so there is no{" "}
+            <code className={CODE}>control.teleop</code> interface for a teleop tile to attach to
+            — by construction, not by a permissions check.
+          </p>
+
+          <h2 id="hq-gateway-rollup" className={H2}>Gateway Roll-up</h2>
+          <p className={P}>
+            An IP camera has no compute of its own — it depends on its{" "}
+            <strong className="text-white">site gateway</strong>&apos;s ingester process to reach
+            CTRL+R at all (see <NavBtn to="getting-started">IP Camera</NavBtn>). When a gateway
+            goes offline, every camera it hosts would otherwise show as a wall of unexplained
+            offline tiles. Command HQ and Eagle Eye roll that up instead: a camera whose gateway is
+            down is shown as{" "}
+            <strong className="text-white">&quot;gateway offline&quot;</strong> rather than a bare{" "}
+            <strong className="text-white">&quot;offline&quot;</strong>, so it&apos;s immediately
+            clear the camera itself isn&apos;t the problem — the fix is the gateway host, not each
+            camera individually.
+          </p>
         </div>
 
         {/* FoxGlove */}
