@@ -21,48 +21,52 @@ type UseCase = {
 };
 
 const useCases: UseCase[] = [
-  
   {
-    title: "Retail",
-    desc: "Control real robots across retail environments—stores, warehouses, and fulfillment centers—from anywhere in the world. Think: shelf scanning, restocking, customer assistance, and real-time operations.",
-    image: "/retail.png",
+    title: "Delivery & Logistics",
+    desc: "Coordinate first-mile and last-mile delivery robots that move orders between restaurants, malls, pickup points and customers' doors. Manage a mixed fleet from one dashboard, regardless of manufacturer.",
+    image: "/industrial-automation.jpg",
     accent: "rgba(0,200,150,0.35)",
-    stat: "On-Demand",
-    statLabel: "Access",
+    stat: "24/7",
+    statLabel: "Operations",
   },
-
   {
-    title: "Industrial Automation",
-    desc: "Remotely manage robotic arms, AGVs, and factory floor equipment with sub-second latency. Scale operations without physical presence.",
-    image: "/industrial-automation.png",
+    title: "Distributors & Solution Providers",
+    desc: "Give every customer you sell robots to a ready-made operations platform. Offer CTRL+R alongside the hardware and manage mixed fleets across all of your accounts in one place.",
+    image: "/robots_screenshot_commandHQ.png",
     accent: "rgba(120,100,255,0.35)",
-    stat: "Unlimited",
-    statLabel: "Scale",
+    stat: "1",
+    statLabel: "Platform, every fleet",
   },
-  
   {
-    title: "Security & Surveillance",
-    desc: "Operate unmanned ground and aerial vehicles for reconnaissance, patrol, and hazardous environment inspection with military-grade reliability, perfect for construction sites, oil fields, and more.",
-    image: "/construction-site.png",
+    title: "Energy",
+    desc: "Operate inspection robots and drones along pipelines, across solar installations and at remote sites, so fewer people have to travel into hazardous or hard-to-reach locations.",
+    image: "/construction-site.jpg",
     accent: "rgba(250, 204, 21, 0.38)",
-    stat: "99.9%",
-    statLabel: "Uptime",
-  },
-  
-  {
-    title: "Mining & Offshore",
-    desc: "Control robots across mining sites and offshore environments with real-time feedback, handling inspection, maintenance, and operations from anywhere.",
-    image: "/mining-2.png",
-    accent: "rgba(255,100,100,0.35)",
     stat: "∞",
     statLabel: "Range",
   },
   {
-    title: "Healthcare & Medical",
-    desc: "Enable surgeons and specialists to operate robotic surgery systems and assistive devices remotely, expanding access to expertise.",
-    image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1400&h=900&fit=crop",
+    title: "Defense & Critical Infrastructure",
+    desc: "Operate unmanned ground and aerial vehicles for patrol, reconnaissance and hazardous-environment inspection with military-grade reliability. Deploy in the cloud, on-premises or in a sovereign environment.",
+    image: "/drones.png",
+    accent: "rgba(255,100,100,0.35)",
+    stat: "99.9%",
+    statLabel: "Uptime",
+  },
+  {
+    title: "Robotics Companies (OEMs)",
+    desc: "Ship your robots with a proven operations platform. Use CTRL+R internally to test, support and operate your robots, or white-label it for your customers.",
+    image: "/robot_soccer.png",
+    accent: "rgba(201,0,7,0.35)",
+    stat: "Any",
+    statLabel: "Robot",
+  },
+  {
+    title: "Retail & Visitor Experience",
+    desc: "Operate shelf-scanning, restocking, greeting and wayfinding robots across stores, malls and venues from anywhere.",
+    image: "/retail.jpg",
     accent: "rgba(0,180,220,0.35)",
-    stat: "24/7",
+    stat: "On-Demand",
     statLabel: "Access",
   },
 ];
@@ -146,8 +150,8 @@ export function UseCasesHorizontalScrollSection({
                         Any Robot. Any Vertical.
                       </div>
                       <p className="text-lg md:text-xl leading-8 text-white/70 max-w-md">
-                        From retail to deep sea exploration, CTRL+R powers
-                        real-time robotic control in the most demanding
+                        From delivery to defense, CTRL+R powers
+                        real-time robot operations in the most demanding
                         environments.
                       </p>
                     </motion.div>

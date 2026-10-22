@@ -3,7 +3,6 @@ node_modules
 out
 build
 .DS_Store
-fastmode-out/
 
 # Playwright
 /test-results/

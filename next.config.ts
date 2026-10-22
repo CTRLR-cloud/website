@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/launch-app", destination: "/launch-client", permanent: true },
+      // Careers and Roadmap were removed; send old links somewhere useful.
+      { source: "/careers", destination: "/contact", permanent: true },
+      { source: "/careers/:slug", destination: "/contact", permanent: true },
+      { source: "/roadmap", destination: "/", permanent: true },
+      { source: "/technology-overview", destination: "/platform", permanent: true },
     ];
   },
   // Prevent Next/Turbopack from inferring a parent workspace root (monorepo-like)

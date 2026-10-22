@@ -14,13 +14,11 @@ npm run lint
 
 ## Structure / conventions
 
-- App Router pages under `src/app/` (careers, contact, docs, news, research, roadmap, team, ...).
+- App Router pages under `src/app/` (contact, docs, news, platform, team, ...).
 - **Tailwind v4: there is no `tailwind.config.*` file** — design tokens live in
   `src/app/globals.css`. Don't create a config file.
 - Content is TypeScript modules in `src/content/` rendered by components in `src/components/`
   (docs pages via `DocsContent.tsx`). Edit content there, not in page components.
-- `fastmode-out/` (~103 MB) is stray build output — never import from it, keep it out of Docker
-  contexts and commits.
 
 Local dev via docker: `../ctrlr-local-stack` (`make web`). Workspace docs:
 `../ctrlr-local-stack/docs/`.

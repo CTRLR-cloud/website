@@ -7,5 +7,6 @@ export const SITE_LINKS = {
   X: "https://x.com/ctrlr_cloud",
   LINKEDIN: "https://www.linkedin.com/company/ctrlr-cloud",
   LINKTREE: "https://linktr.ee/ctrlr.cloud",
+  EMAIL: "info@ctrlr.cloud",
   
 } as const;

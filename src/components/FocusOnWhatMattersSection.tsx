@@ -16,7 +16,7 @@ const ownerSteps = [
   },
   {
     title: "Operate on your terms",
-    desc: "Use custom controllers, AR/VR headsets, keyboards, joysticks, location/task presets, ROS commands, or any bespoke interface to make the CTRL+R interface your own.",
+    desc: "Use custom controllers, keyboards, joysticks, location/task presets, ROS commands, or any bespoke interface to make the CTRL+R interface your own.",
   },
 ];
 
@@ -90,12 +90,12 @@ export function FocusOnWhatMattersSection({
                 </div>
                 <div className="mt-8 shrink-0">
                   <a
-                    href={SITE_LINKS.CLIENT}
+                    href={SITE_LINKS.DEMO}
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
                   >
-                    Connect a robot now
+                    Book a demo
                   </a>
                 </div>
               </div>

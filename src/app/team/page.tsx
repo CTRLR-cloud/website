@@ -20,7 +20,7 @@ const team: TeamMember[] = [
   {
     name: "Mack Lorden",
     role: "Founder & CEO",
-    bio: "Mack is a former 7-figure entrepreneur and experienced strategic growth leader with over a decade of experience in sales, web3, AI, and robotics. He scaled a GPU computing product to $40M in revenue within 6 months, launched a $3M web3 ecosystem, and has angel invested in/advised 50+ early-stage tech companies. As CEO he is focused on making robots easy to operate and accessible to everyone.",
+    bio: "Mack is a former 7-figure entrepreneur and experienced strategic growth leader with over a decade of experience in sales, AI, and robotics. He scaled a GPU computing product to $40M in revenue within 6 months, and has angel invested in/advised 50+ early-stage tech companies. As CEO he is focused on making robots easy to operate and accessible to everyone.",
     imageSrc:
       "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8377f77cbae2fb3262d8_Mack%20Mono-p-2600.jpg",
   },
@@ -32,25 +32,11 @@ const team: TeamMember[] = [
       "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68b20a19cfaf0e6a7c807a26_Mike%20H.jpg",
   },
   {
-    name: "Rick Friedman",
-    role: "Robotics Engineer",
-    bio: "Rick Friedman is a robotics engineering specialist and former researcher at Virginia Tech’s Bio-Inspired Science and Technology Lab. He has built fully autonomous ground rovers end-to-end, spanning software, electronics, mechanical design, and vehicle dynamics. Rick brings professional experience across industrial automation, mining technologies, and robotic agriculture, with a strong emphasis on deploying complete robotic systems in real-world environments. At CTRL+R, he is focused on end-to-end robotic system development and deployment.",
-    imageSrc: "/rick_friedman.jpg",
-  },
-  {
     name: "Kenneth Fox",
     role: "UX/UI & Full-Stack Engineer",
     bio: "Kenneth brings a decade of full-stack mastery—from early campaigns in martech to fintech trading platforms and AI-powered healthcare SaaS. He built advanced pipelines, multi-asset trading engines and multilingual SEO platforms; earlier, he scaled e-commerce ecosystems and marketing automation across global teams. Now he fuses intuitive UI/UX with deep backend engineering and AI integration to deliver product experiences that delight both users and customers.",
     imageSrc:
       "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8a934ceeaa3d9b80c03d_Kenneth%20Fox%20Mono.jpg",
-  },
-  
-  {
-    name: "Alexandre Pacheco",
-    role: "Chief Robotics Advisor",
-    bio: "Alexandre, a former NASA intern and active robotics researcher, specializes in swarm robotics and blockchain-powered coordination of robotic systems. His PhD research, supported by 12 peer-reviewed publications, and his strong academic ties with the Université Libre de Bruxelles, the University of Konstanz, and the University of the Azores, showcase his expertise. At CTRL+R, Alex advises CTRL+R on swarm robotics, system design, and developer experience.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68bc46c3dd2f680653b21718_telegram-cloud-photo-size-5-6183668341554661520-y.jpg",
   },
   
 ];
@@ -61,7 +47,7 @@ export default function TeamPage() {
       <SiteHeader />
 
       <main className="pt-16 flex-1">
-        {/* Hero - same style as Research, News, Careers */}
+        {/* Hero - same style as News */}
         <section className="relative overflow-hidden border-b border-hairline">
           <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-8 md:pb-12">
             <div className="max-w-3xl">

@@ -9,15 +9,17 @@ import { PageIntro } from "@/components/PageIntro";
 import { ParallaxTextSection } from "@/components/ParallaxTextSection";
 import { StoriesSection } from "@/components/StoriesSection";
 import { getCachedStories } from "@/lib/roboticsFeeds";
-import { RetailOperationsSection } from "@/components/RetailOperationsSection";
 import { UseCasesHorizontalScrollSection } from "@/components/UseCasesHorizontalScrollSection";
 import { FocusOnWhatMattersSection } from "@/components/FocusOnWhatMattersSection";
 import { NumbersSection } from "@/components/NumbersSection";
 import { WhyCTRLRSection } from "@/components/WhyCTRLRSection";
 import { CommandHQ } from "@/components/CommandHQ";
 import { DiscoverNewParadigm } from "@/components/DiscoverNewParadigm";
-import { RetailSection } from "@/components/RetailSection";
+import { SeeItInActionSection } from "@/components/SeeItInActionSection";
 import { SITE_ASSETS } from "@/config/assets";
+import { BrandStrip } from "@/components/BrandStrip";
+import { PilotSection } from "@/components/PilotSection";
+import { RoboticsCompaniesSection } from "@/components/RoboticsCompaniesSection";
 
 export default async function Home() {
   const stories = await getCachedStories();
@@ -92,72 +94,49 @@ export default async function Home() {
                 className="mt-9 flex flex-col justify-center gap-3 sm:flex-row sm:items-center"
               >
                 <a
-                  href={SITE_LINKS.CLIENT}
+                  href={SITE_LINKS.DEMO}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-primary"
                 >
-                  Try it free
+                  Book a demo
                 </a>
                 <a
-                  href="#command-hq"
+                  href="/contact"
                   className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
                 >
-                  See how it works
+                  Talk to us
                 </a>
+              </Reveal>
+              <Reveal immediate delayMs={260}>
+                <p className="mt-5 text-sm text-white/55">
+                  Already using robots?{" "}
+                  <a
+                    href={SITE_LINKS.CLIENT}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-white/80 underline underline-offset-4 hover:text-white"
+                  >
+                    Try it free
+                  </a>
+                </p>
               </Reveal>
             </div>
           </div>
         </section>
+        <BrandStrip />
         <WhyCTRLRSection />
-        <RetailSection />
-        
-        <RetailOperationsSection />
+        <SeeItInActionSection />
         <ParallaxTextSection />
         <CommandHQ />
         <UseCasesHorizontalScrollSection />
+        <RoboticsCompaniesSection />
         <DiscoverNewParadigm />
         <FocusOnWhatMattersSection />
         <NumbersSection />
         <StoriesSection stories={stories} />
+        <PilotSection />
         <ContactUsSection />
-        
-        
-        
-        {/* <HorizontalRailAutoSection /> */}
-        
-        
-        
-        
-        
-        
-        
-
-        {/* <AccessBentoSection /> */}
-
-        
-
-{/*
-        <section className="border-t border-hairline bg-section">
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-            <Reveal>
-              <h2 className="text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-                Building The <span className="text-gradient">Global Robot Economy</span>
-              </h2>
-            </Reveal>
-            <Reveal delayMs={120} className="mt-10">
-              <div className="bg-card-2 rounded-3xl p-4 shadow-glow">
-                <SmartImage
-                  src={ROADMAP_IMG}
-                  alt="CTRL+R roadmap"
-                  className="w-full rounded-2xl border border-hairline"
-                />
-              </div>
-            </Reveal>
-          </div>
-        </section>
-*/}
-        
       </main>
 
       <SiteFooter />

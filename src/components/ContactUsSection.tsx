@@ -1,59 +1,8 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import { cn } from "@/lib/cn";
+import { SITE_LINKS } from "@/config/links";
 
-type JoinPayload = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  message: string;
-};
-
+// Messages go by email until the new backend can receive form submissions.
 export function ContactUsSection({ className }: { className?: string }) {
-  const [form, setForm] = useState<JoinPayload>({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
-    "idle",
-  );
-  const [error, setError] = useState<string | null>(null);
-
-  const canSubmit = useMemo(() => {
-    return (
-      form.firstName.trim().length > 0 &&
-      form.lastName.trim().length > 0 &&
-      form.email.trim().length > 0 &&
-      form.message.trim().length > 0
-    );
-  }, [form.email, form.firstName, form.lastName, form.message]);
-
-  const onSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-    setError(null);
-    try {
-      const res = await fetch("/api/join", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(form),
-      });
-      const data: { ok: boolean; error?: string } | null =
-        await res.json().catch(() => null);
-
-      if (!res.ok || !data?.ok) {
-        throw new Error(data?.error || "Something went wrong while submitting the form.");
-      }
-      setStatus("success");
-    } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong.");
-    }
-  };
-
   return (
     <section
       id="contact"
@@ -70,96 +19,47 @@ export function ContactUsSection({ className }: { className?: string }) {
               <span className="text-[var(--accent)]">modernize</span> your business, risk-free
             </h2>
             <p className="mt-5 text-base leading-7 text-muted">
-              If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don't feel that we've saved you a significant amount of time, money, and efficiency after using CTRL+R, you pay nothing. Simple as that.
+              If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don&apos;t feel that we&apos;ve saved you a significant amount of time, money, and efficiency after using CTRL+R, you pay nothing. Simple as that.
               
             </p>
           </div>
 
           <div className="md:col-span-7">
-            <div className="bg-card-2 rounded-3xl p-6 shadow-glow">
-              <form onSubmit={onSubmit} className="grid gap-4">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <label className="grid gap-2">
-                    <span className="text-xs text-white/55">First Name</span>
-                    <input
-                      className="h-11 rounded-2xl border border-hairline bg-black/35 px-4 text-sm text-white/90 placeholder:text-white/30 outline-none ring-premium"
-                      placeholder="First name"
-                      value={form.firstName}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, firstName: e.target.value }))
-                      }
-                      autoComplete="given-name"
-                    />
-                  </label>
-                  <label className="grid gap-2">
-                    <span className="text-xs text-white/55">Last Name</span>
-                    <input
-                      className="h-11 rounded-2xl border border-hairline bg-black/35 px-4 text-sm text-white/90 placeholder:text-white/30 outline-none ring-premium"
-                      placeholder="Last name"
-                      value={form.lastName}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, lastName: e.target.value }))
-                      }
-                      autoComplete="family-name"
-                    />
-                  </label>
-                </div>
-
-                <label className="grid gap-2">
-                  <span className="text-xs text-white/55">Email</span>
-                  <input
-                    className="h-11 rounded-2xl border border-hairline bg-black/35 px-4 text-sm text-white/90 placeholder:text-white/30 outline-none ring-premium"
-                    placeholder="Email"
-                    value={form.email}
-                    onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
-                    autoComplete="email"
-                    inputMode="email"
-                  />
-                </label>
-
-                <label className="grid gap-2">
-                  <span className="text-xs text-white/55">Message</span>
-                  <textarea
-                    className="min-h-[130px] resize-y rounded-2xl border border-hairline bg-black/35 px-4 py-3 text-sm text-white/90 placeholder:text-white/30 outline-none ring-premium"
-                    placeholder="Leave us a message"
-                    value={form.message}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, message: e.target.value }))
-                    }
-                  />
-                </label>
-
-                <div className="flex items-center justify-between gap-4">
-                  <div className="text-xs">
-                    {status === "success" ? (
-                      <span className="text-[var(--accent)]">
-                        Thank you! Your submission has been received!
-                      </span>
-                    ) : status === "error" ? (
-                      <span className="text-white/70">
-                        {error ?? "Oops! Something went wrong while submitting the form."}
-                      </span>
-                    ) : (
-                      <span className="text-white/30">
-                        We'll reply to your email as soon as possible.
-                      </span>
-                    )}
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={!canSubmit || status === "loading" || status === "success"}
-                    className={cn(
-                      "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium",
-                      "btn-primary",
-                      (!canSubmit || status === "loading" || status === "success") &&
-                        "opacity-60 cursor-not-allowed",
-                    )}
+            <div className="bg-card-2 rounded-3xl p-6 sm:p-8 shadow-glow">
+              <p className="text-lg font-semibold text-white">Talk to our team</p>
+              <p className="mt-2 text-sm leading-6 text-muted">
+                Tell us about your robots and what you want them to do. We&apos;ll reply as soon as
+                possible.
+              </p>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href={`mailto:${SITE_LINKS.EMAIL}`}
+                  className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-primary"
+                >
+                  Email {SITE_LINKS.EMAIL}
+                </a>
+                <a
+                  href={SITE_LINKS.DEMO}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
+                >
+                  Book a call
+                </a>
+              </div>
+              <div className="mt-8 border-t border-hairline pt-6">
+                <p className="text-sm font-semibold text-white">Want to join the team?</p>
+                <p className="mt-2 text-sm leading-6 text-muted">
+                  We&apos;re always looking for great talent. Send your resume/CV to{" "}
+                  <a
+                    href={`mailto:${SITE_LINKS.EMAIL}?subject=Resume%20%2F%20CV`}
+                    className="text-white underline underline-offset-4 hover:text-[var(--accent)]"
                   >
-                    {status === "loading" ? "Sending…" : "Send Message"}
-                  </button>
-                </div>
-              </form>
+                    {SITE_LINKS.EMAIL}
+                  </a>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>

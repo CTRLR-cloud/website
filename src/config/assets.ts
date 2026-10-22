@@ -1,7 +1,7 @@
 /** Brand assets — lockup + compact mark for nav (`public/`). */
 export const SITE_ASSETS = {
-  /** Full-bleed home hero — place at `public/background-ctrlr-hero.png`. */
-  HERO_BACKGROUND: "/background-ctrlr-hero.png",
+  /** Full-bleed home hero — place at `public/background-ctrlr-hero.jpg`. */
+  HERO_BACKGROUND: "/background-ctrlr-hero.jpg",
   LOGO_MARK: "/Main-CTRLR-logo-trans-bg.png",
   LOGO_HERO: "/Main-CTRLR-logo-trans-bg.png",
   LOGO_FOOTER: "/Main-CTRLR-logo-trans-bg.png",

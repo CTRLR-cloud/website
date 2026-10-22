@@ -18,7 +18,7 @@ const panels: Panel[] = [
   {
     kicker: "Customizability",
     title: "Operate any robot with any interface",
-    desc: "CTRL+R works across robot manufacturers and control inputs including keyboards, joysticks, VR/AR, haptics, and custom controllers. Teams can operate diverse fleets without rebuilding control systems for each new robot.",
+    desc: "CTRL+R works across robot manufacturers and control inputs including keyboards, joysticks, gamepads, and custom controllers. Teams can operate diverse fleets without rebuilding control systems for each new robot.",
     theme: "mono",
     backgroundImage: "/operate_any_robot3.png",
   },
@@ -27,14 +27,14 @@ const panels: Panel[] = [
     title: "Designed for human-in-the-loop operations",
     desc: "CTRL+R helps teams coordinate live robot operations with safe interventions, real-time visibility, clear handoffs, and detailed logs, so responsibility and oversight never get lost.",
     theme: "green",
-    backgroundImage: "/coordination-bg.png",
+    backgroundImage: "/coordination-bg.jpg",
   },
   {
     kicker: "Scale",
     title: "Built to grow with your organization",
     desc: "Easily add new robots, deployments, and team members as your organization grows, while keeping operations consistent, safe, and manageable over time.",
     theme: "brand",
-    backgroundImage: "/expansion-2.png",
+    backgroundImage: "/expansion-2.jpg",
   },
 ];
 
@@ -73,10 +73,10 @@ export function WhyCTRLRSection({ className }: { className?: string }) {
           <Reveal delayMs={160}>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
-                href="/technology-overview"
+                href="/platform"
                 className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition ring-premium btn-secondary"
               >
-                Explore technology
+                Explore the platform
               </Link>
             </div>
           </Reveal>
@@ -140,10 +140,10 @@ export function WhyCTRLRSection({ className }: { className?: string }) {
                 <Reveal delayMs={160}>
                   <div className="mt-10 flex flex-wrap gap-3">
                     <Link
-                      href="/technology-overview"
+                      href="/platform"
                       className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-semibold transition ring-premium btn-secondary"
                     >
-                      Explore technology
+                      Explore the platform
                     </Link>
                   </div>
                 </Reveal>

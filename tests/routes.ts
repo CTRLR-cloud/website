@@ -1,26 +1,21 @@
-import { careerPosts } from "../src/content/careers";
 import { newsPosts } from "../src/content/news";
-import { researchPosts } from "../src/content/research";
+import { SECTIONS as docsSections } from "../src/content/docs";
 
 /** Every public page, derived from src/app + src/content so new posts are covered automatically. */
 export const routes: string[] = [
   "/",
-  "/careers",
   "/contact",
   "/docs",
   "/launch-client",
   "/news",
   "/privacy",
-  "/research",
-  "/roadmap",
   "/team",
-  "/technology-overview",
-  ...careerPosts.map((p) => `/careers/${p.slug}`),
+  "/platform",
+  ...docsSections.map((s) => `/docs/${s.id}`),
   ...newsPosts.map((p) => `/news/${p.slug}`),
-  ...researchPosts.map((p) => `/research/${p.slug}`),
 ];
 
-/** File-safe name for a route, e.g. "/careers/foo" -> "careers-foo", "/" -> "home". */
+/** File-safe name for a route, e.g. "/docs/locations" -> "docs-locations", "/" -> "home". */
 export function routeSlug(route: string) {
   return route === "/" ? "home" : route.slice(1).replaceAll("/", "-");
 }

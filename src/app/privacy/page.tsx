@@ -118,7 +118,7 @@ export default function PrivacyPage() {
                   change when we do.
                 </p>
                 <p className="text-xs text-white/40 pt-4">
-                  Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  Last updated: April 8, 2026
                 </p>
               </div>
             </Reveal>

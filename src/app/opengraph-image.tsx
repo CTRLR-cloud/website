@@ -15,7 +15,7 @@ const BTN_PRIMARY_BG = `linear-gradient(180deg, #dc1e26 0%, #c90007 55%, #690404
 
 export default async function Image() {
   const [heroBuf, logoBuf, watermarkBuf] = await Promise.all([
-    readFile(join(process.cwd(), "public", "background-ctrlr-hero.png")),
+    readFile(join(process.cwd(), "public", "background-ctrlr-hero.jpg")),
     readFile(join(process.cwd(), "public", "Main-CTRLR-logo-trans-bg.png")),
     readFile(join(process.cwd(), "public", "CTRLR_logo_symbol.png")),
   ]);
@@ -23,7 +23,7 @@ export default async function Image() {
   const toDataUrl = (buf: Buffer, mime: string) =>
     `data:${mime};base64,${buf.toString("base64")}`;
 
-  const heroSrc = toDataUrl(heroBuf, "image/png");
+  const heroSrc = toDataUrl(heroBuf, "image/jpeg");
   const logoSrc = toDataUrl(logoBuf, "image/png");
   const watermarkSrc = toDataUrl(watermarkBuf, "image/png");
 
@@ -252,7 +252,7 @@ export default async function Image() {
                   "0 0 26px rgba(201, 0, 7, 0.45), 0 6px 20px rgba(0, 0, 0, 0.45)",
               }}
             >
-              Try it free
+              Book a demo
             </div>
             <div
               style={{

@@ -21,6 +21,8 @@ type Tile = {
   cta: string;
   accent: string;
   size: "large" | "medium";
+  /** "contain" shows the whole image (e.g. UI screenshots) instead of cropping to fill. */
+  imageFit?: "cover" | "contain";
   /** When true, use minimal overlay so the image stays sharp (no blur/fade) */
   minimalOverlay?: boolean;
   hideCta?: boolean;
@@ -51,11 +53,12 @@ const tiles: Tile[] = [
         <strong className="font-bold">
            saving companies time, money, and efficiency
         </strong>{" "}
-        by standardizing robot control into one unified operations platform. Our innovative scaling solution  for robotics teams across industries earned CTRL+R a place in NVIDIA&apos;s Inception Program.
+        by standardizing robot control into one unified operations platform.
       </>
     ),
-    image: "/NVIDIA-CTRLR.jpg",
-    href: "/technology-overview",
+    image: "/command-hq-eagle-eye-map.webp",
+    imageFit: "contain",
+    href: "/platform",
     cta: "Learn More",
     accent: "rgba(201,0,7,0.25)",
     size: "large",
@@ -67,8 +70,8 @@ const tiles: Tile[] = [
     title: "Start Operating Your Robot in Minutes",
     desc: "Download the CTRL+R agent to your robot, connect in seconds, and start operating through our interface immediately. No custom integrations. No setup headaches.",
     image: "/robot_soccer.png",
-    href: SITE_LINKS.CLIENT,
-    cta: "Try it out",
+    href: SITE_LINKS.DEMO,
+    cta: "Book a demo",
     accent: "rgba(0,200,150,0.25)",
     size: "medium",
     imagePosition: "right",
@@ -79,8 +82,8 @@ const tiles: Tile[] = [
     title: "Deeply Customizable. Infinitely Scalable.",
     desc: "CTRL+R adapts to your entire fleet—across robot types, software stacks, and environments. Customize control systems, integrate existing tools, and extend functionality with a modular, API-driven platform.",
     image: "/software-visualizations.png",
-    href: "/technology-overview",
-    cta: "View capabilities",
+    href: "/platform",
+    cta: "Explore the platform",
     accent: "rgba(201,0,7,0.25)",
     size: "medium",
   },
@@ -167,7 +170,10 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                         <SmartImage
                           src={tile.image}
                           alt={tile.title}
-                          className="absolute inset-0 h-full w-full object-cover"
+                          className={cn(
+                            "absolute inset-0 h-full w-full",
+                            tile.imageFit === "contain" ? "object-contain p-3" : "object-cover",
+                          )}
                         />
                       </div>
                       <div className="border-t border-white/10 bg-black/95 px-6 py-6">
@@ -211,7 +217,8 @@ export function DiscoverNewParadigm({ className }: { className?: string }) {
                           src={tile.image}
                           alt={tile.title}
                           className={cn(
-                            "absolute inset-0 h-full w-full object-cover transition duration-700",
+                            "absolute inset-0 h-full w-full transition duration-700",
+                            tile.imageFit === "contain" ? "object-contain p-6" : "object-cover",
                             !tile.staticCard && "group-hover:scale-[1.04]",
                           )}
                         />

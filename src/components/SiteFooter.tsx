@@ -4,8 +4,6 @@ import Link from "next/link";
 import { CtrlRLogo } from "@/components/CtrlRLogo";
 import { SITE_LINKS } from "@/config/links";
 
-const NVIDIA_INCEPTION_URL = "https://www.nvidia.com/en-us/startups/";
-
 function IconButton({
   href,
   label,
@@ -90,19 +88,6 @@ export function SiteFooter() {
               </IconButton>
             </div>
 
-            <a
-              href={NVIDIA_INCEPTION_URL}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-6 inline-flex shrink-0 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]/50 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-section)]"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/nvidia-inception-program-badge-rgb-for-screen.png"
-                alt="NVIDIA Inception Program"
-                className="h-12 w-auto sm:h-14"
-              />
-            </a>
           </div>
 
           <div className="min-w-[9rem]">
@@ -114,21 +99,21 @@ export function SiteFooter() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:text-white ring-premium rounded" href="/docs">
+                  Docs
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-white ring-premium rounded" href="/news">
                   News
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-white ring-premium rounded" href="/careers">
-                  Careers
-                </Link>
-              </li>
-              <li>
                 <Link
                   className="hover:text-white ring-premium rounded"
-                  href="/technology-overview"
+                  href="/platform"
                 >
-                  Technology
+                  Platform
                 </Link>
               </li>
               <li>
@@ -154,7 +139,7 @@ export function SiteFooter() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Book a Demo
+                  Book a demo
                 </a>
               </li>
               <li>
@@ -191,7 +176,7 @@ export function SiteFooter() {
               Privacy Policy
             </Link>
           </div>
-          <div className="text-white/25">One platform. Any robot. Total control.</div>
+          <div className="text-white/25">Built in Dubai · Serving the UAE &amp; GCC</div>
         </div>
       </div>
     </footer>

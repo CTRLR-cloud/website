@@ -31,8 +31,8 @@ export default function ContactPage() {
               </Reveal>
               <Reveal delayMs={100}>
                 <p className="mt-6 text-lg text-white/60 max-w-2xl">
-                  Questions about CTRL+R, partnerships, or trying the platform? Send us
-                  a message—we typically reply within a few business days.
+                  Questions about CTRL+R, partnerships, or trying the platform? Email us
+                  or book a call. We typically reply within a few business days.
                 </p>
               </Reveal>
             </div>
