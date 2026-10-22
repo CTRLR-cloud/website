@@ -130,7 +130,7 @@ export default function PlatformPage() {
                   it easy for teams across industries to use, we can help scale the evolution of
                   robotics technology and advance the human race.&rdquo;
                 </em>{" "}
-                <span className="text-white/55">- Mack Lorden, Founder &amp; CEO</span>
+                <span className="text-white/55">- Mack Lorden, Cofounder &amp; CEO</span>
               </p>
             </Reveal>
           </div>
