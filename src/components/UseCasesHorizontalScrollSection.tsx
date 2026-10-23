@@ -16,58 +16,51 @@ type UseCase = {
   desc: string;
   image: string;
   accent: string;
-  stat: string;
-  statLabel: string;
+  /** CSS object-position, so narrow (phone) cards keep the subject in view. */
+  focus?: string;
+  /** Attribution required by the photo's license, shown small in the corner. */
+  credit?: { text: string; href: string };
 };
 
 const useCases: UseCase[] = [
   {
     title: "Delivery & Logistics",
     desc: "Coordinate first-mile and last-mile delivery robots that move orders between restaurants, malls, pickup points and customers' doors. Manage a mixed fleet from one dashboard, regardless of manufacturer.",
-    image: "/industrial-automation.jpg",
+    image: "/use-cases/delivery-logistics.jpg",
+    focus: "72% center",
     accent: "rgba(0,200,150,0.35)",
-    stat: "24/7",
-    statLabel: "Operations",
   },
   {
     title: "Distributors & Solution Providers",
     desc: "Give every customer you sell robots to a ready-made operations platform. Offer CTRL+R alongside the hardware and manage mixed fleets across all of your accounts in one place.",
-    image: "/robots_screenshot_commandHQ.png",
+    // From yslootahrobotics.com, used with permission; recoloured to CTRL+R's palette.
+    image: "/use-cases/distributors.jpg",
+    credit: {
+      text: "Image: YS Lootah Robotics",
+      href: "https://yslootahrobotics.com/",
+    },
     accent: "rgba(120,100,255,0.35)",
-    stat: "1",
-    statLabel: "Platform, every fleet",
   },
   {
     title: "Energy",
     desc: "Operate inspection robots and drones along pipelines, across solar installations and at remote sites, so fewer people have to travel into hazardous or hard-to-reach locations.",
-    image: "/construction-site.jpg",
+    image: "/use-cases/energy.jpg",
     accent: "rgba(250, 204, 21, 0.38)",
-    stat: "∞",
-    statLabel: "Range",
   },
   {
     title: "Defense & Critical Infrastructure",
     desc: "Operate unmanned ground and aerial vehicles for patrol, reconnaissance and hazardous-environment inspection with military-grade reliability. Deploy in the cloud, on-premises or in a sovereign environment.",
-    image: "/drones.png",
+    image: "/use-cases/defense.jpg",
+    focus: "68% center",
     accent: "rgba(255,100,100,0.35)",
-    stat: "99.9%",
-    statLabel: "Uptime",
   },
   {
     title: "Robotics Companies (OEMs)",
     desc: "Ship your robots with a proven operations platform. Use CTRL+R internally to test, support and operate your robots, or white-label it for your customers.",
-    image: "/robot_soccer.png",
+    // Supplied by AgiBot for CTRL+R's use.
+    image: "/use-cases/robotics-companies.jpg",
+    focus: "62% center",
     accent: "rgba(201,0,7,0.35)",
-    stat: "Any",
-    statLabel: "Robot",
-  },
-  {
-    title: "Retail & Visitor Experience",
-    desc: "Operate shelf-scanning, restocking, greeting and wayfinding robots across stores, malls and venues from anywhere.",
-    image: "/retail.jpg",
-    accent: "rgba(0,180,220,0.35)",
-    stat: "On-Demand",
-    statLabel: "Access",
   },
 ];
 
@@ -302,10 +295,12 @@ function UseCaseCard({
           src={useCase.image}
           alt={useCase.title}
           className="absolute inset-0 h-full w-full object-cover"
+          style={useCase.focus ? { objectPosition: useCase.focus } : undefined}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/30" />
+        {/* Dark only where the text sits, so the photo stays clear. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent" />
         <div
-          className="pointer-events-none absolute inset-0 opacity-60"
+          className="pointer-events-none absolute inset-0 opacity-25"
           style={{
             background: `radial-gradient(900px 600px at 70% 70%, ${useCase.accent}, transparent 55%)`,
           }}
@@ -313,25 +308,24 @@ function UseCaseCard({
       </div>
 
       <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-10 lg:p-12">
-        <div className="mb-6 inline-flex self-start items-center gap-3">
-          <div className="rounded-2xl border border-white/15 bg-black/50 backdrop-blur-sm px-5 py-3">
-            <div className="text-2xl md:text-3xl font-bold text-white">
-              {useCase.stat}
-            </div>
-            <div className="text-[10px] tracking-[0.2em] uppercase text-white/50">
-              {useCase.statLabel}
-            </div>
-          </div>
-        </div>
-
         <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold tracking-tight text-white">
           {useCase.title}
         </h3>
         <p className="mt-3 text-sm md:text-base leading-7 text-white/60 max-w-xl">
           {useCase.desc}
         </p>
-
       </div>
+
+      {useCase.credit && (
+        <a
+          href={useCase.credit.href}
+          target="_blank"
+          rel="noreferrer"
+          className="absolute bottom-3 right-5 z-10 text-[10px] text-white/40 transition hover:text-white/70 md:bottom-4 md:right-8"
+        >
+          {useCase.credit.text}
+        </a>
+      )}
 
       <div
         className="pointer-events-none absolute inset-0 rounded-[28px] md:rounded-[40px]"
