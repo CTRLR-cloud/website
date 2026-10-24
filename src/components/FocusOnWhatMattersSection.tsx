@@ -31,7 +31,7 @@ export function FocusOnWhatMattersSection({
   const ref = useRef<HTMLDivElement | null>(null);
 
   return (
-    <section ref={ref} className={cn("border-t border-hairline bg-section", className)}>
+    <section ref={ref} className={cn("relative", className)}>
       <div
         className={cn(
           "mx-auto max-w-6xl px-6 pb-16 md:pb-24",

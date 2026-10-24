@@ -94,7 +94,7 @@ export function UseCasesHorizontalScrollSection({
     <section
       ref={containerRef}
       className={cn(
-        "relative bg-black border-t border-hairline",
+        "relative",
         className
       )}
       style={{ height: `${100 + cardCount * 100}vh` }}
@@ -140,7 +140,7 @@ export function UseCasesHorizontalScrollSection({
                       transition={{ duration: 0.8, delay: 0.3 }}
                     >
                       <div className="text-xs tracking-[0.28em] uppercase text-white/45 mb-3">
-                        Any Robot. Any Vertical.
+                        Hardware agnostic. Industry agnostic.
                       </div>
                       <p className="text-lg md:text-xl leading-8 text-white/70 max-w-md">
                         From delivery to defense, CTRL+R powers

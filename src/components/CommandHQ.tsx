@@ -109,7 +109,7 @@ export function CommandHQ({
     <section
       id="command-hq"
       className={cn(
-        "scroll-mt-[max(6rem,12svh)] relative bg-section border-t border-hairline",
+        "scroll-mt-[max(6rem,12svh)] relative",
         className,
       )}
     >

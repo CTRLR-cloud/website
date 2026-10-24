@@ -191,12 +191,12 @@ function CycleTimeline() {
 /** How working with CTRL+R starts: makes reaching out feel like a small, defined first step. */
 export function PilotSection() {
   return (
-    <section id="how-a-pilot-works" className="scroll-mt-24 border-t border-hairline bg-section">
+    <section id="how-a-pilot-works" className="relative scroll-mt-24">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="max-w-3xl">
           <Reveal>
             <div className="text-xs tracking-[0.22em] uppercase text-white/55">
-              How a pilot works
+              Build your autonomous workforce
             </div>
           </Reveal>
           <Reveal delayMs={60}>

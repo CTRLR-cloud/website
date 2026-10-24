@@ -1,3 +1,4 @@
+import { AmbientBackground } from "@/components/AmbientBackground";
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -67,6 +68,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-[color-mix(in_oklab,var(--accent)_28%,transparent)] selection:text-white`}
       >
         <PointerGlow />
+        <AmbientBackground />
         <div id="app-root">{children}</div>
       </body>
     </html>

@@ -3,6 +3,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { CommandHQ } from "@/components/CommandHQ";
+import { InteractiveSession } from "@/components/InteractiveSession";
 import { ContactUsSection } from "@/components/ContactUsSection";
 
 export const metadata: Metadata = {
@@ -93,6 +94,8 @@ export default function PlatformPage() {
 
       <main className="pt-16 flex-1">
         <CommandHQ headingLevel="h1" />
+
+        <InteractiveSession />
 
         <section className="border-t border-hairline bg-section">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">

@@ -6,63 +6,76 @@ export function ContactUsSection({ className }: { className?: string }) {
   return (
     <section
       id="contact"
-      className={cn("scroll-mt-24 border-t border-hairline bg-section", className)}
+      className={cn("relative scroll-mt-24", className)}
     >
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <div className="grid gap-10 md:grid-cols-12 md:items-start">
-          <div className="md:col-span-5">
-            <div className="text-xs tracking-[0.18em] uppercase text-white/45">
-              Try It Risk-Free
+        <div className="max-w-3xl">
+          <div className="text-xs tracking-[0.22em] uppercase text-white/55">Contact us</div>
+          <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+            Try CTRL+R <span className="text-gradient">risk-free</span>
+          </h2>
+        </div>
+
+        {/* Two ways in: small fleets sign up and try it; larger or mixed fleets get a free pilot. */}
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="flex flex-col rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-white/55">
+              Have a small fleet?
             </div>
-            <h2 className="mt-4 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Let CTRL+R{" "}
-              <span className="text-[var(--accent)]">modernize</span> your business, risk-free
-            </h2>
-            <p className="mt-5 text-base leading-7 text-muted">
-              If your business uses robots (or wants to), reach out to us about trying CTRL+R risk-free. If you don&apos;t feel that we&apos;ve saved you a significant amount of time, money, and efficiency after using CTRL+R, you pay nothing. Simple as that.
-              
+            <p className="mt-3 text-2xl font-semibold tracking-tight text-white">Try CTRL+R free</p>
+            <p className="mt-3 flex-1 text-sm leading-6 text-muted">
+              Sign up, connect your robots, and take control from one screen.
             </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={SITE_LINKS.CLIENT}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
+              >
+                Try it free
+              </a>
+            </div>
           </div>
 
-          <div className="md:col-span-7">
-            <div className="bg-card-2 rounded-3xl p-6 sm:p-8 shadow-glow">
-              <p className="text-lg font-semibold text-white">Talk to our team</p>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                Tell us about your robots and what you want them to do. We&apos;ll reply as soon as
-                possible.
-              </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={`mailto:${SITE_LINKS.EMAIL}`}
-                  className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-primary"
-                >
-                  Email {SITE_LINKS.EMAIL}
-                </a>
-                <a
-                  href={SITE_LINKS.DEMO}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
-                >
-                  Book a call
-                </a>
-              </div>
-              <div className="mt-8 border-t border-hairline pt-6">
-                <p className="text-sm font-semibold text-white">Want to join the team?</p>
-                <p className="mt-2 text-sm leading-6 text-muted">
-                  We&apos;re always looking for great talent. Send your resume/CV to{" "}
-                  <a
-                    href={`mailto:${SITE_LINKS.EMAIL}?subject=Resume%20%2F%20CV`}
-                    className="text-white underline underline-offset-4 hover:text-[var(--accent)]"
-                  >
-                    {SITE_LINKS.EMAIL}
-                  </a>
-                  .
-                </p>
-              </div>
+          <div className="flex flex-col rounded-3xl border border-[var(--accent)]/40 bg-card-2 p-6 shadow-glow sm:p-8">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">
+              Operating at scale?
+            </div>
+            <p className="mt-3 text-2xl font-semibold tracking-tight text-white">Start with a free pilot</p>
+            <p className="mt-3 flex-1 text-sm leading-6 text-muted">
+              Tell us about your operation. We&apos;ll set goals together and prove the results on
+              your own fleet before you commit.
+            </p>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={SITE_LINKS.DEMO}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-primary"
+              >
+                Book a demo
+              </a>
+              <a
+                href={`mailto:${SITE_LINKS.EMAIL}`}
+                className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
+              >
+                Email {SITE_LINKS.EMAIL}
+              </a>
             </div>
           </div>
         </div>
+
+        <p className="mt-8 text-sm leading-6 text-muted">
+          Want to join the team? We&apos;re always looking for great talent. Send your resume/CV to{" "}
+          <a
+            href={`mailto:${SITE_LINKS.EMAIL}?subject=Resume%20%2F%20CV`}
+            className="text-white underline underline-offset-4 hover:text-[var(--accent)]"
+          >
+            {SITE_LINKS.EMAIL}
+          </a>
+          .
+        </p>
       </div>
     </section>
   );

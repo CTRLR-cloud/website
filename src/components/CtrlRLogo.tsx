@@ -8,6 +8,10 @@ import { SITE_ASSETS } from "@/config/assets";
 const sizeConfig = {
   default: { className: "h-7 w-auto", sizes: "120px" },
   large: { className: "h-16 w-auto", sizes: "240px" },
+  hero: {
+    className: "h-24 w-auto sm:h-28 md:h-32",
+    sizes: "(max-width: 640px) 220px, (max-width: 768px) 260px, 300px",
+  },
   xl: {
     className: "h-36 w-auto sm:h-40 md:h-48 lg:h-52",
     sizes: "(max-width: 640px) 360px, (max-width: 1024px) 420px, (max-width: 1280px) 520px, 600px",
@@ -29,7 +33,7 @@ export function CtrlRLogo({
   wordmark?: boolean;
   /** `symbol` = CR mark only for the top nav; `footer` = lockup in footer. */
   variant?: "mark" | "footer" | "symbol";
-  size?: "default" | "large" | "xl";
+  size?: "default" | "large" | "hero" | "xl";
 }) {
   const effectiveSize = wordmark ? "large" : size;
   const useSymbol = variant === "symbol";

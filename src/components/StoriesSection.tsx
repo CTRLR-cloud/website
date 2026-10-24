@@ -66,7 +66,7 @@ export function StoriesSection({ stories: storiesProp }: StoriesSectionProps) {
   const isExternalFeed = storiesProp != null && storiesProp.length > 0;
 
   return (
-    <section className="border-t border-hairline bg-section">
+    <section className="relative">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="flex items-end justify-between gap-6">
           <Reveal>

@@ -17,12 +17,6 @@ export function ParallaxTextSection() {
     offset: ["start end", "end start"],
   });
 
-  const bgY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? ["0%", "0%"] : ["-18%", "18%"],
-  );
-
   const textY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [48, -48]);
   const opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.7, 0.9], [0, 1, 1, 0]);
   const scale = useTransform(
@@ -33,49 +27,10 @@ export function ParallaxTextSection() {
   const maskSize = useTransform(scrollYProgress, [0.15, 0.5], ["0%", "100%"]);
 
   return (
-    <section className="relative bg-section overflow-hidden border-t border-hairline">
+    <section className="relative overflow-hidden">
       <div ref={containerRef} className="relative h-[100svh]">
         <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
-          {/* Parallax animated background */}
-          <motion.div
-            className="absolute inset-[-20%] w-[140%] h-[140%]"
-            style={{ y: bgY }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `
-                  radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,0,7,0.20) 0%, transparent 54%),
-                  radial-gradient(ellipse 70% 45% at 30% 60%, rgba(255,255,255,0.08) 0%, transparent 55%),
-                  radial-gradient(ellipse 55% 40% at 70% 28%, rgba(201,0,7,0.10) 0%, transparent 52%),
-                  radial-gradient(ellipse 110% 90% at 50% 100%, rgba(201,0,7,0.10) 0%, transparent 46%)
-                `,
-              }}
-            />
-
-            {/* Moving grid lines */}
-            <motion.div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(90deg, rgba(255,255,255,0.03) 0px, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 110px)",
-                y: useTransform(scrollYProgress, [0, 1], [0, -110]),
-              }}
-            />
-            <motion.div
-              className="absolute inset-0"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 110px)",
-                x: useTransform(scrollYProgress, [0, 1], [0, -60]),
-              }}
-            />
-
-            <div className="absolute inset-0 k-noise opacity-[0.15]" />
-          </motion.div>
-
-          <div className="absolute inset-0 bg-black/55" />
-
+          {/* The page-wide ambient light shows through here, so this section has no backdrop of its own. */}
           {/* Text */}
           <motion.div
             className="absolute inset-0 flex items-center justify-center"

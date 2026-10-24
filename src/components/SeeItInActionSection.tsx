@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
+import { HudFrame } from "@/components/HudFrame";
 
 type IconProps = { className?: string };
 
@@ -183,11 +184,13 @@ function ShowcaseRow({ showcase, reverse }: { showcase: Showcase; reverse: boole
         delayMs={80}
         className={cn("lg:col-span-7 lg:row-span-2 lg:row-start-1 lg:self-center", videoCol)}
       >
-        <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-black shadow-glow">
-          <div className={cn("relative", showcase.aspect)}>
-            <DemoVideo src={showcase.video} poster={showcase.poster} label={showcase.videoLabel} />
+        <HudFrame>
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-black shadow-glow">
+            <div className={cn("relative", showcase.aspect)}>
+              <DemoVideo src={showcase.video} poster={showcase.poster} label={showcase.videoLabel} />
+            </div>
           </div>
-        </div>
+        </HudFrame>
       </Reveal>
 
       <ul className={cn("space-y-2 lg:col-span-5 lg:row-start-2 lg:mt-6 lg:self-start", textCol)}>
@@ -214,8 +217,7 @@ function ShowcaseRow({ showcase, reverse }: { showcase: Showcase; reverse: boole
 /** The two core product videos: monitoring the fleet, then stepping in to operate a robot. */
 export function SeeItInActionSection({ className }: { className?: string }) {
   return (
-    <section className={cn("relative border-t border-hairline bg-black", className)}>
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(201,0,7,0.08),transparent)]" />
+    <section className={cn("relative", className)}>
 
       <div className="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
         <div id="see-it-in-action" className="mb-16 max-w-4xl scroll-mt-16">

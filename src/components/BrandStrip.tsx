@@ -49,16 +49,16 @@ export function BrandStrip() {
   const half = brands;
 
   return (
-    <section className="border-b border-hairline bg-black py-12 md:py-14">
+    <section className="relative py-12 md:py-14">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <Reveal>
           <h2 className="text-premium text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            We work on the biggest names in robotics and drones
+            We work on the biggest names in the industry
           </h2>
         </Reveal>
         <Reveal delayMs={60}>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-7 text-white/60">
-            Our agent works on any robot, drone, or physical AI device, regardless of manufacturer.
+            Choose the best robot for the job, whatever your tech stack, with or without a robotics team.
           </p>
         </Reveal>
       </div>

@@ -52,7 +52,7 @@ export function WhyCTRLRSection({ className }: { className?: string }) {
   const opacities = [o0, o1, o2];
 
   return (
-    <section className={cn("border-t border-hairline bg-section", className)}>
+    <section className={cn("relative", className)}>
       {/* Mobile: stacked cards so user can scroll to see each card in full. Desktop unchanged. */}
       <div className="md:hidden">
         <div className="mx-auto max-w-6xl px-8 pt-24 pb-10">
