@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
 import { SITE_LINKS } from "@/config/links";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Launch Client",
   description:
     "Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, keyboard, gaming controller, or custom rig.",
-};
+  path: "/launch-client",
+});
 
 export default function LaunchClientPage() {
   return (

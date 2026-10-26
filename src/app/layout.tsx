@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { PointerGlow } from "@/components/PointerGlow";
+import { StructuredData } from "@/components/StructuredData";
+import { DEFAULT_DESCRIPTION, OG_IMAGE, SITE_NAME, SITE_URL, TAGLINE } from "@/lib/seo";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,38 +16,26 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const OG_IMAGE_VERSION = "20261026-hero-still";
-
 export const metadata: Metadata = {
   title: {
-    default: "CTRL+R - One unified platform for your entire physical AI fleet",
-    template: "CTRL+R - %s",
+    default: `${SITE_NAME} - ${TAGLINE}`,
+    template: `${SITE_NAME} - %s`,
   },
-  description: "One platform. Any device. Total control.",
-  metadataBase: new URL("https://www.ctrlr.cloud"),
-  alternates: {
-    canonical: "/",
-  },
+  description: DEFAULT_DESCRIPTION,
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "CTRL+R - One unified platform for your entire physical AI fleet",
-    description: "One platform. Any device. Total control.",
+    title: `${SITE_NAME} - ${TAGLINE}`,
+    description: DEFAULT_DESCRIPTION,
     type: "website",
-    url: "https://www.ctrlr.cloud/",
-    siteName: "CTRL+R",
-    images: [
-      {
-        url: `/opengraph-image?v=${OG_IMAGE_VERSION}`,
-        width: 1200,
-        height: 630,
-        alt: "CTRL+R: One unified platform for your entire physical AI fleet.",
-      },
-    ],
+    url: "/",
+    siteName: SITE_NAME,
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CTRL+R - One unified platform for your entire physical AI fleet",
-    description: "One platform. Any device. Total control.",
-    images: [`/opengraph-image?v=${OG_IMAGE_VERSION}`],
+    title: `${SITE_NAME} - ${TAGLINE}`,
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
   icons: {
     icon: [{ url: "/favicon.png", type: "image/png" }],
@@ -67,6 +57,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased selection:bg-[color-mix(in_oklab,var(--accent)_28%,transparent)] selection:text-white`}
       >
+        <StructuredData />
         <PointerGlow />
         <AmbientBackground />
         <div id="app-root">{children}</div>

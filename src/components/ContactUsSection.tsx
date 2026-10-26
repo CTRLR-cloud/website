@@ -39,7 +39,7 @@ export function ContactUsSection({ className }: { className?: string }) {
           </div>
 
           <div className="flex flex-col rounded-3xl border border-[var(--accent)]/40 bg-card-2 p-6 shadow-glow sm:p-8">
-            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">
+            <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent-text)]">
               Operating at scale?
             </div>
             <p className="mt-3 text-2xl font-semibold tracking-tight text-white">Start with a free pilot</p>

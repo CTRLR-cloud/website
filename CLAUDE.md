@@ -19,6 +19,9 @@ npm run lint
   `src/app/globals.css`. Don't create a config file.
 - Content is TypeScript modules in `src/content/` rendered by components in `src/components/`
   (docs pages via `DocsContent.tsx`). Edit content there, not in page components.
+- SEO: each page sets title/description/canonical via `pageMetadata()` in `src/lib/seo.ts` (no
+  site-wide canonical). `src/app/sitemap.ts`, `src/app/robots.ts`, JSON-LD in `StructuredData.tsx`,
+  and `public/llms.txt` (AI summary; update it when product facts change).
 
 Local dev via docker: `../ctrlr-local-stack` (`make web`). Workspace docs:
 `../ctrlr-local-stack/docs/`.

@@ -142,9 +142,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                           <div className="text-xs text-white/55">
                             {rssFeatured.meta}
                           </div>
-                          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
+                          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
                             {rssFeatured.title}
-                          </h3>
+                          </h2>
                           <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[var(--accent)] transition">
                             Read article{" "}
                             <span className="text-white/60 group-hover:translate-x-1 transition">
@@ -177,9 +177,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                             {staticFeatured.date} • {staticFeatured.readingMinutes}{" "}
                             min read
                           </div>
-                          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
+                          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
                             {staticFeatured.title}
-                          </h3>
+                          </h2>
                           <p className="mt-3 text-sm leading-6 text-white/60">
                             {staticFeatured.excerpt}
                           </p>
@@ -264,9 +264,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                                 <div className="text-xs text-white/55">
                                   {s.meta}
                                 </div>
-                                <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
+                                <h3 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
                                   {s.title}
-                                </h4>
+                                </h3>
                                 <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition">
                                   Read article{" "}
                                   <span className="group-hover:translate-x-1 transition">
@@ -305,9 +305,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                                 <div className="text-xs text-white/55">
                                   {c.date} • {c.readingMinutes} min read
                                 </div>
-                                <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
+                                <h3 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
                                   {c.title}
-                                </h4>
+                                </h3>
                                 <p className="mt-2 text-sm leading-6 text-white/60 line-clamp-2">
                                   {c.excerpt}
                                 </p>

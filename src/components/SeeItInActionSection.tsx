@@ -165,12 +165,12 @@ function ShowcaseRow({ showcase, reverse }: { showcase: Showcase; reverse: boole
   // Desktop: video in the wider column spanning both rows, heading and features in the narrower one,
   // alternating sides. On wide screens the video also reaches past the content edge on its side.
   const textCol = reverse ? "lg:col-start-1" : "lg:col-start-9";
-  const videoCol = reverse ? "lg:col-start-5 xl:-mr-20" : "lg:col-start-1 xl:-ml-20";
+  const videoCol = reverse ? "lg:col-start-5 xl:-mr-12 2xl:-mr-20" : "lg:col-start-1 xl:-ml-12 2xl:-ml-20";
   return (
     <div className="grid gap-6 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0">
       <div className={cn("lg:col-span-4 lg:row-start-1 lg:self-end", textCol)}>
         <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent-text)]">
             {showcase.eyebrow}
           </p>
         </Reveal>

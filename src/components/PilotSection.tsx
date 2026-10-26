@@ -223,7 +223,7 @@ export function PilotSection() {
 
           <div className="lg:col-span-5">
             <Reveal delayMs={160}>
-              <div className="text-xs font-semibold tracking-[0.22em] uppercase text-[var(--accent)]">
+              <div className="text-xs font-semibold tracking-[0.22em] uppercase text-[var(--accent-text)]">
                 What you get
               </div>
             </Reveal>

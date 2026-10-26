@@ -60,6 +60,8 @@ export function CommandHQ({
   headingLevel?: "h1" | "h2";
 }) {
   const Heading = headingLevel;
+  // Slide titles sit one level below the section heading.
+  const CardHeading = headingLevel === "h1" ? "h2" : "h3";
   const reduceMotion = useReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -185,16 +187,16 @@ export function CommandHQ({
 
                   <div className="p-5 lg:p-6">
                     <div className="flex items-center gap-3">
-                      <span className="text-sm font-medium tracking-[0.15em] text-[var(--accent)]">
+                      <span className="text-sm font-medium tracking-[0.15em] text-[var(--accent-text)]">
                         {item.number}
                       </span>
                       <span className="rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/60">
                         {item.subtitle}
                       </span>
                     </div>
-                    <h3 className="mt-3 text-xl lg:text-2xl font-semibold text-white leading-tight tracking-[-0.02em]">
+                    <CardHeading className="mt-3 text-xl lg:text-2xl font-semibold text-white leading-tight tracking-[-0.02em]">
                       {item.title}
-                    </h3>
+                    </CardHeading>
                     <p className="mt-2 text-sm text-white/60 leading-relaxed">{item.desc}</p>
                   </div>
 

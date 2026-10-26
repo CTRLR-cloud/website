@@ -16,6 +16,8 @@
   --accent-deep: #690404;
   /* Slightly lifted primary for subtle highlights (still red-only) */
   --accent-bright: color-mix(in oklab, var(--accent) 88%, white 12%);
+  /* Brand red lifted just enough for small text on black to meet WCAG AA contrast (5.4:1). */
+  --accent-text: #f2383e;
   --ring: color-mix(in oklab, var(--accent) 45%, transparent);
   --mx: 50vw;
   --my: 35vh;

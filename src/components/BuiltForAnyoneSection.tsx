@@ -303,7 +303,7 @@ function RoboticsTeamToggle() {
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(201,0,7,0.25),transparent_70%)]"
         />
-        <p className="relative text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">Quick question</p>
+        <p className="relative text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent-text)]">Quick question</p>
         <p
           id="robotics-team-question"
           className="text-premium relative mt-3 text-3xl font-semibold tracking-tight text-white sm:text-5xl"
@@ -427,16 +427,16 @@ export function BuiltForAnyoneSection() {
               </div>
 
               {/* Which state the picture is in. */}
-              <div className="relative mt-6 inline-grid grid-cols-2 rounded-full border border-white/10 bg-black/40 p-1 text-xs font-semibold uppercase tracking-[0.18em] sm:mt-8 sm:text-sm">
+              <div className="relative mt-6 inline-grid grid-cols-2 rounded-full border border-white/10 bg-black/40 p-1 text-[11px] font-semibold uppercase tracking-[0.12em] sm:mt-8 sm:text-sm sm:tracking-[0.18em]">
                 <motion.span
                   aria-hidden
                   className="absolute inset-y-1 left-1 w-[calc(50%-0.25rem)] rounded-full bg-[var(--accent)]/20 ring-1 ring-[var(--accent)]/50"
                   style={{ x: indicatorX }}
                 />
-                <motion.span className="relative px-4 py-2 text-center text-white sm:px-6" style={{ opacity: beforeTab }}>
+                <motion.span className="relative whitespace-nowrap px-3 py-2 text-center text-white sm:px-6" style={{ opacity: beforeTab }}>
                   Built in-house
                 </motion.span>
-                <motion.span className="relative px-4 py-2 text-center text-white sm:px-6" style={{ opacity: afterTab }}>
+                <motion.span className="relative whitespace-nowrap px-3 py-2 text-center text-white sm:px-6" style={{ opacity: afterTab }}>
                   With CTRL+R
                 </motion.span>
               </div>

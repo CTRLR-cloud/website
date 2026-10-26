@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
@@ -7,11 +8,12 @@ import { CommandHQ } from "@/components/CommandHQ";
 import { InteractiveSession } from "@/components/InteractiveSession";
 import { ContactUsSection } from "@/components/ContactUsSection";
 
-export const metadata: Metadata = {
-  title: "Platform",
+export const metadata: Metadata = pageMetadata({
+  title: "Platform: Teleoperation and Fleet Management",
   description:
-    "Operate, monitor, and manage every robot, drone, camera, and sensor across every site from one browser.",
-};
+    "Command HQ: operate, monitor, and manage every robot, drone, camera, and sensor across every site from one browser, with teleoperation, fleet management, session logs, and security built in.",
+  path: "/platform",
+});
 
 const security = [
   {

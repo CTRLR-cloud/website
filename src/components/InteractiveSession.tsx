@@ -90,7 +90,8 @@ export function InteractiveSession() {
                       aria-expanded={isActive}
                       onMouseEnter={() => setActive(h.id)}
                       onFocus={() => setActive(h.id)}
-                      onClick={() => setActive(isActive ? null : h.id)}
+                      // Always open: touch screens fire a hover before the tap, so toggling here would close it again.
+                      onClick={() => setActive(h.id)}
                       className="group relative -translate-x-1/2 -translate-y-1/2 grid h-7 w-7 place-items-center rounded-full ring-premium md:h-8 md:w-8"
                     >
                       <span
@@ -130,14 +131,36 @@ export function InteractiveSession() {
 
         {/* Phones: the popup would cover most of the image, so the details show below it instead. */}
         <div className="mt-4 min-h-[88px] rounded-xl border border-white/10 bg-white/[0.03] p-4 md:hidden" aria-live="polite">
-          {current ? (
-            <>
-              <div className="text-sm font-semibold text-white">{current.title}</div>
-              {current.desc && <p className="mt-1.5 text-sm leading-6 text-white/65">{current.desc}</p>}
-            </>
-          ) : (
-            <p className="text-sm leading-6 text-white/50">Tap the red dots on the screen above to learn about each feature.</p>
-          )}
+          {/* Step through every feature too: on a phone-sized screenshot some dots sit too close to tap apart. */}
+          <div className="flex items-start gap-3">
+            <div className="min-w-0 flex-1">
+              {current ? (
+                <>
+                  <div className="text-sm font-semibold text-white">{current.title}</div>
+                  {current.desc && <p className="mt-1.5 text-sm leading-6 text-white/65">{current.desc}</p>}
+                </>
+              ) : (
+                <p className="text-sm leading-6 text-white/50">Tap the red dots, or use the arrows, to learn about each feature.</p>
+              )}
+            </div>
+            <div className="flex shrink-0 gap-2">
+              {([-1, 1] as const).map((dir) => (
+                <button
+                  key={dir}
+                  type="button"
+                  aria-label={dir < 0 ? "Previous feature" : "Next feature"}
+                  onClick={() => {
+                    const i = hotspots.findIndex((h) => h.id === active);
+                    const next = i < 0 ? (dir > 0 ? 0 : hotspots.length - 1) : (i + dir + hotspots.length) % hotspots.length;
+                    setActive(hotspots[next].id);
+                  }}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-white/5 text-lg text-white/80 ring-premium"
+                >
+                  {dir < 0 ? "‹" : "›"}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

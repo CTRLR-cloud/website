@@ -5,6 +5,8 @@ import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Team",
+  // Hidden for now (/team redirects home); keep it out of search results.
+  robots: { index: false, follow: false },
   description:
     "World-class engineers and operators building the future of robotics.",
 };

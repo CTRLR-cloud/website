@@ -13,7 +13,7 @@ function BuyerChecklist() {
   ];
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">What your customer compares</div>
+      <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">What your customer compares</div>
       <ul className="mt-4 space-y-3">
         {items.map((item, i) => (
           <motion.li
@@ -28,7 +28,7 @@ function BuyerChecklist() {
               className={
                 item.ok
                   ? "grid h-6 w-6 place-items-center rounded-full bg-white text-xs font-bold text-black"
-                  : "grid h-6 w-6 place-items-center rounded-full border border-[var(--accent)] text-xs font-bold text-[var(--accent)]"
+                  : "grid h-6 w-6 place-items-center rounded-full border border-[var(--accent)] text-xs font-bold text-[var(--accent-text)]"
               }
             >
               {item.ok ? "✓" : "✕"}
@@ -52,7 +52,7 @@ function TimeBars() {
   ];
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
-      <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">Your team&apos;s time</div>
+      <div className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">Your team&apos;s time</div>
       <div className="mt-4 space-y-4">
         {bars.map((bar) => (
           <div key={bar.label}>
@@ -205,7 +205,7 @@ export function RoboticsCompaniesSection() {
             >
               <div className="grid items-center gap-8 md:grid-cols-12">
                 <div className="md:col-span-7">
-                  <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">Simple truth</div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent-text)]">Simple truth</div>
                   <p className="text-premium mt-3 text-2xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
                     {truth}
                   </p>

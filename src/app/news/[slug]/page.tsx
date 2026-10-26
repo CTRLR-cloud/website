@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -68,10 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getNewsPost(slug);
   if (!post) return {};
-  return {
-    title: post.title,
-    description: post.excerpt,
-  };
+  return pageMetadata({ title: post.title, description: post.excerpt, path: `/news/${post.slug}` });
 }
 
 export default async function NewsArticlePage({ params }: Props) {

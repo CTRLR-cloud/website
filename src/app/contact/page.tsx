@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { ContactUsSection } from "@/components/ContactUsSection";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact Us",
   description:
-    "Reach CTRL+R about teleoperation, partnerships, or trying the platform.",
-};
+    "Try CTRL+R free for a small fleet, or start a free pilot for your operation at scale. Email info@ctrlr.cloud or book a demo.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

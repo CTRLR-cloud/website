@@ -66,14 +66,16 @@ export function PageIntro() {
                   animate={phase === "loading" ? { opacity: 1 } : { opacity: 0, scale: 1.05, y: -20 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <motion.h1
-                    className="text-2xl md:text-4xl lg:text-5xl font-light tracking-[0.15em] uppercase text-white"
+                  {/* Decorative splash text, not a page heading: the hero's headline is the page's one h1. */}
+                  <motion.p
+                    aria-hidden
+                    className="px-6 text-xl sm:text-2xl md:text-4xl lg:text-5xl font-light tracking-[0.15em] uppercase text-white"
                     initial={{ y: 50, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   >
                     Powering the future
-                  </motion.h1>
+                  </motion.p>
                 </motion.div>
 
                 <motion.div

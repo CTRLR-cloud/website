@@ -49,7 +49,8 @@ export function DocsContent({ section }: { section?: string }) {
         </div>
 
         {/* What is CTRL+R */}
-        <div className={`docs-section ${activeSection === 'what-is-ctrlr' ? 'active' : ''}`}>
+        {activeSection === 'what-is-ctrlr' && (
+        <div className="docs-section active">
           <h1>What is CTRL+R?</h1>
           <p id="what-is-ctrlr">
             CTRL+R is a browser-based operations platform for robots and physical AI. It gives you
@@ -108,9 +109,11 @@ export function DocsContent({ section }: { section?: string }) {
             </Link>
           </p>
         </div>
+        )}
 
         {/* Use Cases */}
-        <div className={`docs-section ${activeSection === 'use-cases' ? 'active' : ''}`}>
+        {activeSection === 'use-cases' && (
+        <div className="docs-section active">
           <h1>Use Cases</h1>
           <p>
             CTRL+R is hardware and industry agnostic. The examples below are illustrative of how the
@@ -212,9 +215,11 @@ export function DocsContent({ section }: { section?: string }) {
             <li>Builds a longitudinal dataset of site conditions over time, powering predictive maintenance specific to your equipment and environment</li>
           </ul>
         </div>
+        )}
 
         {/* Supported Platforms */}
-        <div className={`docs-section ${activeSection === 'supported-platforms' ? 'active' : ''}`}>
+        {activeSection === 'supported-platforms' && (
+        <div className="docs-section active">
           <h1>Supported Platforms</h1>
 
           <h2 id="os">Operating System</h2>
@@ -244,7 +249,7 @@ export function DocsContent({ section }: { section?: string }) {
           </div>
 
           <h2 id="architectures">Architectures</h2>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -274,7 +279,7 @@ export function DocsContent({ section }: { section?: string }) {
             CTRL+R works with any robot exposing a ROS interface. The manufacturers below publish ROS
             drivers for their hardware, so they connect through the standard setup.
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -325,9 +330,11 @@ export function DocsContent({ section }: { section?: string }) {
             </p>
           </div>
         </div>
+        )}
 
         {/* Getting Started */}
-        <div className={`docs-section ${activeSection === 'getting-started' ? 'active' : ''}`}>
+        {activeSection === 'getting-started' && (
+        <div className="docs-section active">
           <h1>Getting Started</h1>
           <p>
             Every robot or device you operate through CTRL+R runs a small piece of software called
@@ -464,9 +471,9 @@ export function DocsContent({ section }: { section?: string }) {
             If you plan to use ROS to control your robot, you must have{' '}
             <code>rosbridge_server</code> installed on your robot.
           </p>
-          <pre><code>sudo apt install ros-$ROS_DISTRO-rosbridge-suite</code></pre>
+          <pre tabIndex={0}><code>sudo apt install ros-$ROS_DISTRO-rosbridge-suite</code></pre>
           <p>Start it with:</p>
-          <pre><code>ros2 launch rosbridge_server rosbridge_websocket_launch.xml</code></pre>
+          <pre tabIndex={0}><code>ros2 launch rosbridge_server rosbridge_websocket_launch.xml</code></pre>
           <p>
             The agent expects rosbridge at <code>ws://127.0.0.1:9090</code>, on the same machine.
             That address is fixed, which is why the Docker install uses host networking. Do not
@@ -497,9 +504,11 @@ export function DocsContent({ section }: { section?: string }) {
             for setup instructions.
           </p>
         </div>
+        )}
 
         {/* Configuring Your Robot */}
-        <div className={`docs-section ${activeSection === 'configuring-your-robot' ? 'active' : ''}`}>
+        {activeSection === 'configuring-your-robot' && (
+        <div className="docs-section active">
           <h1>Configuring Your Robot</h1>
 
           <h2 id="config-overview">Overview</h2>
@@ -519,7 +528,7 @@ export function DocsContent({ section }: { section?: string }) {
           <p>
             When the CTRL+R agent is installed, a configuration file is saved locally on the robot at:
           </p>
-          <pre><code>/etc/ctrlr_agent/config.json</code></pre>
+          <pre tabIndex={0}><code>/etc/ctrlr_agent/config.json</code></pre>
           <p>The sections that apply to a robot are:</p>
           <ul>
             <li><strong>Core</strong>—These parameters should not be changed. They are essential for identifying the robot.</li>
@@ -539,7 +548,7 @@ export function DocsContent({ section }: { section?: string }) {
           </p>
 
           <h2 id="robot-params">Robot Parameters</h2>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -568,7 +577,7 @@ export function DocsContent({ section }: { section?: string }) {
             them are editable from the live config panel except <strong>Velocity 2</strong>, which is
             read from the config file on the robot.
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -663,13 +672,13 @@ export function DocsContent({ section }: { section?: string }) {
             On the robot, with your ROS environment sourced, list every topic along with its message
             type:
           </p>
-          <pre><code>{`ros2 topic list -t          # ROS 2
+          <pre tabIndex={0}><code>{`ros2 topic list -t          # ROS 2
 rostopic list -v            # ROS 1`}</code></pre>
           <p>
             That gives you the real names. To inspect one topic in detail, including its type (message format) and
             whether anything is actually listening to it:
           </p>
-          <pre><code>{`ros2 topic info /cmd_vel    # ROS 2
+          <pre tabIndex={0}><code>{`ros2 topic info /cmd_vel    # ROS 2
 rostopic info /cmd_vel      # ROS 1`}</code></pre>
           <p>
             The two things to look for: the topic the robot publishes camera frames on, and whether
@@ -682,7 +691,7 @@ rostopic info /cmd_vel      # ROS 1`}</code></pre>
             camera from a misconfigured one. <code>echo</code> prints a real message, and some
             settings can only be found this way:
           </p>
-          <pre><code>{`ros2 topic hz /camera/image_raw            # publishing? how fast?
+          <pre tabIndex={0}><code>{`ros2 topic hz /camera/image_raw            # publishing? how fast?
 ros2 topic echo /camera/image_raw --once   # read one real message
 
 rostopic hz /camera/image_raw              # ROS 1
@@ -703,7 +712,7 @@ rostopic echo -n1 /camera/image_raw`}</code></pre>
             If you need to know which program owns a topic, so you can tell the manufacturer's driver
             apart from the navigation stack:
           </p>
-          <pre><code>{`ros2 node list
+          <pre tabIndex={0}><code>{`ros2 node list
 ros2 node info /<node_name>
 
 rosnode list                               # ROS 1
@@ -746,7 +755,7 @@ rosnode info /<node_name>`}</code></pre>
             <code>position.enabled</code>, then choose where the position comes from with{' '}
             <code>position.source</code>:
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -773,9 +782,11 @@ rosnode info /<node_name>`}</code></pre>
             </table>
           </div>
         </div>
+        )}
 
         {/* Custom Commands */}
-        <div className={`docs-section ${activeSection === 'custom-commands' ? 'active' : ''}`}>
+        {activeSection === 'custom-commands' && (
+        <div className="docs-section active">
           <h1>Custom Commands</h1>
           <p>
             Custom commands let you publish to <strong>any</strong> ROS topic on your robot from
@@ -812,7 +823,7 @@ rosnode info /<node_name>`}</code></pre>
             one-shot button bound to Twist would leave the actuator running indefinitely. Use
             the built-in joystick / WASD <code>cmd_vel</code> path for continuous motion.
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -972,9 +983,11 @@ rosnode info /<node_name>`}</code></pre>
             </li>
           </ul>
         </div>
+        )}
 
         {/* Two-way Audio */}
-        <div className={`docs-section ${activeSection === 'two-way-audio' ? 'active' : ''}`}>
+        {activeSection === 'two-way-audio' && (
+        <div className="docs-section active">
           <h1>Two-way Audio</h1>
           <p>
             Two-way audio lets you talk to people near the robot and hear them in real time during
@@ -1029,7 +1042,7 @@ rosnode info /<node_name>`}</code></pre>
               is wired up at startup, not on the fly. From the robot host:
             </li>
           </ul>
-          <pre><code>{`sudo systemctl restart ctrlr-agent   # apt install (the default)
+          <pre tabIndex={0}><code>{`sudo systemctl restart ctrlr-agent   # apt install (the default)
 docker restart ctrlr-agent           # Docker install`}</code></pre>
           <p>If you don't restart, the toggle will save but no audio will flow.</p>
 
@@ -1042,7 +1055,7 @@ docker restart ctrlr-agent           # Docker install`}</code></pre>
             fields to ALSA device names.
           </p>
           <p>To list available devices, run on the robot:</p>
-          <pre><code>{`arecord -L   # list inputs (microphones)
+          <pre tabIndex={0}><code>{`arecord -L   # list inputs (microphones)
 aplay -L     # list outputs (speakers)`}</code></pre>
           <p>
             Pick the name you want (typically a <code>plughw:CARD=&lt;name&gt;,DEV=&lt;n&gt;</code>{' '}
@@ -1083,9 +1096,11 @@ aplay -L     # list outputs (speakers)`}</code></pre>
             </p>
           </div>
         </div>
+        )}
 
         {/* Locations */}
-        <div className={`docs-section ${activeSection === 'locations' ? 'active' : ''}`}>
+        {activeSection === 'locations' && (
+        <div className="docs-section active">
           <h1>Locations</h1>
           <p>
             A location is a named point a robot can be sent to. Instead of an operator driving a
@@ -1242,9 +1257,11 @@ aplay -L     # list outputs (speakers)`}</code></pre>
             </li>
           </ul>
         </div>
+        )}
 
         {/* Command HQ */}
-        <div className={`docs-section ${activeSection === 'command-hq' ? 'active' : ''}`}>
+        {activeSection === 'command-hq' && (
+        <div className="docs-section active">
           <h1>Command HQ</h1>
           <p>
             Command HQ is the fleet management side of CTRL+R, built for organizations running more
@@ -1280,7 +1297,7 @@ aplay -L     # list outputs (speakers)`}</code></pre>
           <p>
             People are invited by email address and given a role. There are four:
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -1344,7 +1361,7 @@ aplay -L     # list outputs (speakers)`}</code></pre>
             Everything enrolled in the organization lives here, and it is deliberately broader than
             robots. Four types can be added:
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -1507,9 +1524,11 @@ aplay -L     # list outputs (speakers)`}</code></pre>
             so a shift handover starts from what is still outstanding.
           </p>
         </div>
+        )}
 
         {/* Security */}
-        <div className={`docs-section ${activeSection === 'security' ? 'active' : ''}`}>
+        {activeSection === 'security' && (
+        <div className="docs-section active">
           <h1>Security</h1>
           <p>
             Teleoperation means a person on the internet can move a physical machine. Every robot
@@ -1654,9 +1673,11 @@ aplay -L     # list outputs (speakers)`}</code></pre>
             </li>
           </ul>
         </div>
+        )}
 
         {/* Troubleshooting */}
-        <div className={`docs-section ${activeSection === 'troubleshooting' ? 'active' : ''}`}>
+        {activeSection === 'troubleshooting' && (
+        <div className="docs-section active">
           <h1>Troubleshooting</h1>
           <p>
             Most problems come down to one of three things: the agent is not running, rosbridge
@@ -1666,11 +1687,11 @@ aplay -L     # list outputs (speakers)`}</code></pre>
 
           <h2 id="ts-first">Check These First</h2>
           <p>Three commands on the robot answer most questions. Run them over SSH:</p>
-          <pre><code>{`systemctl status ctrlr-agent    # apt install: is the agent running?
+          <pre tabIndex={0}><code>{`systemctl status ctrlr-agent    # apt install: is the agent running?
 docker ps                       # Docker install: is the container up?
 ss -lntp | grep 9090            # is rosbridge listening?`}</code></pre>
           <p>Then the agent's own logs, which say why it stopped if it did:</p>
-          <pre><code>{`journalctl -u ctrlr-agent -f    # apt install
+          <pre tabIndex={0}><code>{`journalctl -u ctrlr-agent -f    # apt install
 docker logs -f ctrlr-agent      # Docker install`}</code></pre>
 
           <h2 id="ts-offline">Robot Will Not Come Online</h2>
@@ -1729,7 +1750,7 @@ docker logs -f ctrlr-agent      # Docker install`}</code></pre>
               instructions meant for the first. Restrict discovery to the local machine:
             </li>
           </ul>
-          <pre><code>{`export ROS_LOCALHOST_ONLY=1
+          <pre tabIndex={0}><code>{`export ROS_LOCALHOST_ONLY=1
 export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST`}</code></pre>
 
           <h2 id="ts-topics">No Video or Controls</h2>
@@ -1777,7 +1798,7 @@ export ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST`}</code></pre>
 
           <h3>1. See what the robot actually publishes</h3>
           <p>On the robot, with your ROS environment sourced:</p>
-          <pre><code>{`ros2 topic list -t              # every topic, with its message type
+          <pre tabIndex={0}><code>{`ros2 topic list -t              # every topic, with its message type
 ros2 node list                  # what is actually running
 
 rostopic list -v                # ROS 1 equivalent
@@ -1788,7 +1809,7 @@ rosnode list`}</code></pre>
           </p>
 
           <h3>2. Inspect the topics that matter</h3>
-          <pre><code>{`ros2 topic info /cmd_vel        # type, and whether anything is listening
+          <pre tabIndex={0}><code>{`ros2 topic info /cmd_vel        # type, and whether anything is listening
 ros2 topic echo /camera/image_raw --once   # is real data flowing?
 ros2 topic hz /camera/image_raw            # how fast?`}</code></pre>
           <p>
@@ -1803,7 +1824,7 @@ ros2 topic hz /camera/image_raw            # how fast?`}</code></pre>
             topics are missing entirely, their package is usually either not installed or not sourced
             in the shell where rosbridge was started.
           </p>
-          <pre><code>{`ls /opt/ros/                       # which ROS versions are installed
+          <pre tabIndex={0}><code>{`ls /opt/ros/                       # which ROS versions are installed
 ros2 pkg list | grep -i <vendor>   # is the vendor package present?
 printenv | grep -i ros             # what is sourced in this shell`}</code></pre>
           <p>
@@ -1906,7 +1927,7 @@ printenv | grep -i ros             # what is sourced in this shell`}</code></pre
             CTRL+R sits on top of standard, open tooling rather than anything proprietary, so
             problems underneath us usually have well documented answers.
           </p>
-          <div className="docs-table-wrapper">
+          <div className="docs-table-wrapper" tabIndex={0}>
             <table className="docs-table">
               <thead>
                 <tr>
@@ -1967,14 +1988,15 @@ printenv | grep -i ros             # what is sourced in this shell`}</code></pre
             </p>
           </div>
         </div>
+        )}
       </main>
 
       {/* Right TOC — always rendered to prevent layout shift */}
-      <aside className="docs-toc">
+      <aside className="docs-toc" aria-label="On this page">
         {current?.toc && current.toc.length > 0 && (
           <>
             <div className="docs-toc-title">On this page</div>
-            <nav>
+            <nav aria-label="On this page">
               {current.toc.map(item => (
                 <a key={item.href} href={item.href} className="docs-toc-link">
                   {item.label}

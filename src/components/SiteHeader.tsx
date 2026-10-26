@@ -54,9 +54,12 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  // Close the mobile menu after navigating (adjusting state during render, as React recommends).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
     setMobileOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -87,7 +90,7 @@ export function SiteHeader() {
               <CtrlRLogo variant="symbol" />
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6 text-sm font-semibold">
+            <nav aria-label="Main" className="hidden md:flex items-center gap-6 text-sm font-semibold">
               {nav.map((item) => {
                 const active = pathname === item.href;
                 return (
