@@ -14,21 +14,21 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const OG_IMAGE_VERSION = "20260601-tagline-update";
+const OG_IMAGE_VERSION = "20261026-hero-still";
 
 export const metadata: Metadata = {
   title: {
-    default: "CTRL+R - The Operating Layer for Physical AI",
+    default: "CTRL+R - One unified platform for your entire physical AI fleet",
     template: "CTRL+R - %s",
   },
-  description: "One platform. Any robot. Total control.",
+  description: "One platform. Any device. Total control.",
   metadataBase: new URL("https://www.ctrlr.cloud"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "CTRL+R - The Operating Layer for Physical AI",
-    description: "One platform. Any robot. Total control.",
+    title: "CTRL+R - One unified platform for your entire physical AI fleet",
+    description: "One platform. Any device. Total control.",
     type: "website",
     url: "https://www.ctrlr.cloud/",
     siteName: "CTRL+R",
@@ -37,14 +37,14 @@ export const metadata: Metadata = {
         url: `/opengraph-image?v=${OG_IMAGE_VERSION}`,
         width: 1200,
         height: 630,
-        alt: "CTRL+R — The Operating Layer for Physical AI. One platform. Any robot. Total control.",
+        alt: "CTRL+R: One unified platform for your entire physical AI fleet.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CTRL+R - The Operating Layer for Physical AI",
-    description: "One platform. Any robot. Total control.",
+    title: "CTRL+R - One unified platform for your entire physical AI fleet",
+    description: "One platform. Any device. Total control.",
     images: [`/opengraph-image?v=${OG_IMAGE_VERSION}`],
   },
   icons: {

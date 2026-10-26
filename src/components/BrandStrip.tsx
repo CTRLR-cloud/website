@@ -49,11 +49,11 @@ export function BrandStrip() {
   const half = brands;
 
   return (
-    <section className="relative py-12 md:py-14">
+    <section className="relative pb-20 pt-12 md:pb-32 md:pt-14">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <Reveal>
           <h2 className="text-premium text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-            We work on the biggest names in the industry
+            We work with the biggest names in the industry
           </h2>
         </Reveal>
         <Reveal delayMs={60}>

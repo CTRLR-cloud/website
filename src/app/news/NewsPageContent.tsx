@@ -11,7 +11,8 @@ import { newsPosts } from "@/content/news";
 import type { RoboticsStoryCard } from "@/lib/roboticsFeeds";
 import { proxyImageUrl } from "@/lib/roboticsFeeds";
 
-const FALLBACK_IMAGE = "/drones.png";
+/** Shown when a story's own picture fails to load: the CTRL+R logo over its construction drawing. */
+const FALLBACK_IMAGE = "/news-fallback.jpg";
 
 function Pill({ children, variant }: { children: string; variant: "a" | "b" }) {
   return (
@@ -78,7 +79,7 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
       <SiteHeader />
 
       <main className="pt-16 flex-1 min-w-0 w-full max-w-[100vw] overflow-x-hidden">
-        <section className="relative overflow-hidden border-b border-hairline">
+        <section className="relative overflow-hidden">
           <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-8 md:pb-12">
             <div className="max-w-3xl">
               <Reveal>
@@ -101,7 +102,7 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
         </section>
 
         {/* Featured + Rail */}
-        <section className="bg-section min-w-0 w-full max-w-[100vw] overflow-x-hidden">
+        <section className="relative min-w-0 w-full max-w-[100vw] overflow-x-hidden">
           <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 pt-8 md:pt-12 pb-16 md:pb-24">
             <div className="grid w-full min-w-0 grid-cols-12 gap-6 sm:gap-8">
               <div className="col-span-12 min-w-0 lg:col-span-5">

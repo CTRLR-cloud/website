@@ -120,7 +120,7 @@ export default async function NewsArticlePage({ params }: Props) {
           </Reveal>
         </section>
 
-        <section className="bg-section">
+        <section className="relative">
           <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
             <Reveal delayMs={120}>
               <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-3xl">

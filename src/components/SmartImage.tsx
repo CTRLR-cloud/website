@@ -48,6 +48,10 @@ export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
+      // An image that fails before the page becomes interactive never fires onError, so check on mount too.
+      ref={(el) => {
+        if (el && el.complete && el.naturalWidth === 0) setBroken(true);
+      }}
       src={src}
       alt={alt}
       loading="lazy"

@@ -13,7 +13,6 @@ const nav = [
   { label: "Docs", href: "/docs" },
   { label: "News", href: "/news" },
   { label: "Platform", href: "/platform" },
-  { label: "Team", href: "/team" },
   { label: "Contact Us", href: "/contact" },
 ];
 

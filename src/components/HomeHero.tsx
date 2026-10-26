@@ -39,7 +39,7 @@ function AnyDevice() {
         by half the average word's overhang so "Any robot" and "Any camera" both look centred.
       */}
       <span aria-hidden className="grid -translate-x-[0.65em] grid-cols-2 gap-[0.3em]">
-        <span className="text-right">Any</span>
+        <span className="text-right">any</span>
         <span className="grid h-[1.2em] overflow-hidden text-left">
           <AnimatePresence initial={false}>
             <motion.span

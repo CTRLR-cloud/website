@@ -14,6 +14,8 @@ const nextConfig: NextConfig = {
       { source: "/careers/:slug", destination: "/contact", permanent: true },
       { source: "/roadmap", destination: "/", permanent: true },
       { source: "/technology-overview", destination: "/platform", permanent: true },
+      // Team page is hidden for now (page kept for later); temporary so it can come back.
+      { source: "/team", destination: "/", permanent: false },
     ];
   },
   // Prevent Next/Turbopack from inferring a parent workspace root (monorepo-like)

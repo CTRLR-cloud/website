@@ -129,28 +129,27 @@ export function CommandHQ({
 
           {/* Title stays in normal flow so it always reserves space above the card rail.
               Not scroll-faded: hash links land at progress≈0; opacity 0→1 would hide the headline. */}
-          <div className="relative z-20 flex-shrink-0 px-4 pb-5 pt-20 sm:pt-24 lg:mx-24 lg:px-0 lg:pb-6 lg:pt-28">
-            <div className="mx-auto w-full max-w-[1600px]">
+          <div className="relative z-20 flex-shrink-0 pb-5 pt-20 sm:pt-24 lg:pb-6 lg:pt-28">
+            <div className="mx-auto w-full max-w-6xl px-6">
               <div className="mb-4 flex items-center gap-3 sm:mb-6">
                 <span className="h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_0_8px_color-mix(in_oklab,var(--accent)_14%,transparent)]" />
                 <span className="text-xs uppercase tracking-[0.22em] text-white/55">
-                  Command HQ
+                  The Platform
                 </span>
               </div>
               <Heading className="text-3xl font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
-                One Platform.{" "}
-                <span className="font-light text-white/50">Total Control.</span>
+                Your <span className="text-gradient">Command HQ</span>
               </Heading>
               <p className="mt-4 max-w-3xl text-sm leading-6 text-white/60 sm:text-base sm:leading-7">
-                Our agent works on any robot, drone, or physical AI device, regardless of
-                manufacturer. Once it&apos;s connected, your team gets the same tools for every
-                device.
+                Command HQ is your center for real-time ops. Monitor any connected device,
+                teleoperate when autonomy stalls, collect data, manage team members &amp; sites,
+                and more.
               </p>
             </div>
           </div>
 
-          <div className="relative z-10 flex-shrink-0 px-4 lg:mx-24 lg:px-0">
-            <div className="mx-auto w-full max-w-[1600px]">
+          <div className="relative z-10 flex-shrink-0">
+            <div className="mx-auto w-full max-w-6xl px-6">
               <div className="relative h-[1px] bg-white/5">
                 <motion.div className="absolute left-0 top-0 h-full" style={{ width: lineWidth, background: line }} />
               </div>
@@ -161,7 +160,8 @@ export function CommandHQ({
           <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-hidden pt-6 md:pt-8">
             <motion.div
               ref={trackRef}
-              className="flex w-max max-w-none gap-8 pl-4 lg:pl-24"
+              // Starts in line with the standard content column, then slides edge to edge.
+              className="flex w-max max-w-none gap-8 pl-[max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]"
               style={{ x }}
             >
             {items.map((item, index) => (

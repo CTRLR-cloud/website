@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -38,11 +39,7 @@ const deployments = [
   },
   {
     title: "On-premises",
-    desc: "Deploy CTRL+R on your own infrastructure, inside your own network.",
-  },
-  {
-    title: "Sovereign",
-    desc: "Keep data and operations in-country, for government and regulated industries.",
+    desc: "Deploy CTRL+R on your own infrastructure, inside your own network, so data never leaves your site or country.",
   },
 ];
 
@@ -97,7 +94,7 @@ export default function PlatformPage() {
 
         <InteractiveSession />
 
-        <section className="border-t border-hairline bg-section">
+        <section className="relative">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
             <SectionIntro
               eyebrow="Security"
@@ -105,37 +102,25 @@ export default function PlatformPage() {
               desc="Robots, cameras, and the people operating them are protected at every step."
             />
             <CardGrid items={security} columns="sm:grid-cols-2 lg:grid-cols-4" />
+            <div className="mt-8">
+              <Link
+                href="/docs/security"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition ring-premium btn-secondary"
+              >
+                Read the security docs <span aria-hidden>→</span>
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className="border-t border-hairline bg-black">
+        <section className="relative">
           <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
             <SectionIntro
               eyebrow="Deployment"
               title="Deploy it where your operation needs it"
               desc="Built in Dubai and serving the UAE and GCC, with deployment options for every kind of organization."
             />
-            <CardGrid items={deployments} columns="md:grid-cols-3" />
-          </div>
-        </section>
-
-        <section className="border-t border-hairline bg-section">
-          <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-            <Reveal>
-              <div className="text-xs tracking-[0.18em] uppercase text-white/45">
-                CTRL+R Vision
-              </div>
-            </Reveal>
-            <Reveal delayMs={100} className="mt-6 bg-card-2 rounded-3xl p-7 shadow-glow">
-              <p className="text-base leading-7 text-white/80">
-                <em>
-                  &ldquo;Our vision is to become the industry standard for robot operation. By making
-                  it easy for teams across industries to use, we can help scale the evolution of
-                  robotics technology and advance the human race.&rdquo;
-                </em>{" "}
-                <span className="text-white/55">- Mack Lorden, Cofounder &amp; CEO</span>
-              </p>
-            </Reveal>
+            <CardGrid items={deployments} columns="md:grid-cols-2" />
           </div>
         </section>
 

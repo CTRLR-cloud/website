@@ -196,12 +196,12 @@ export function PilotSection() {
         <div className="max-w-3xl">
           <Reveal>
             <div className="text-xs tracking-[0.22em] uppercase text-white/55">
-              Build your autonomous workforce
+              Get started with CTRL+R
             </div>
           </Reveal>
           <Reveal delayMs={60}>
             <h2 className="mt-3 text-premium text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              From first call to <span className="text-gradient">live operations</span>
+              Build your <span className="text-gradient">autonomous workforce</span>
             </h2>
           </Reveal>
           <Reveal delayMs={110}>

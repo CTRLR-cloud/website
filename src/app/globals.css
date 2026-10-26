@@ -100,19 +100,18 @@ html {
 
   .text-premium { letter-spacing: -0.02em; }
 
+  /**
+   * Accent words in headlines: white like the rest of the line, turning brand red with a soft glow when
+   * the visitor hovers the headline, echoing the background lighting up under the cursor.
+   */
   .text-gradient {
-    background: linear-gradient(
-      105deg,
-      #ffffff 0%,
-      #f2f2f2 14%,
-      color-mix(in oklab, var(--accent) 35%, white 65%) 38%,
-      var(--accent-bright) 58%,
-      var(--accent) 78%,
-      var(--accent-deep) 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: inherit;
+    transition: color 0.35s ease, text-shadow 0.35s ease;
+  }
+  :is(h1, h2, h3, p):hover > .text-gradient,
+  .text-gradient:hover {
+    color: var(--accent);
+    text-shadow: 0 0 28px color-mix(in oklab, var(--accent) 55%, transparent);
   }
 
   /** Parallax “ONE PLATFORM” — bright white on the left, then into brand reds (same right end as before) */

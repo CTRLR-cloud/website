@@ -9,7 +9,6 @@ export const routes: string[] = [
   "/launch-client",
   "/news",
   "/privacy",
-  "/team",
   "/platform",
   ...docsSections.map((s) => `/docs/${s.id}`),
   ...newsPosts.map((p) => `/news/${p.slug}`),

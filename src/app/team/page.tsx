@@ -29,16 +29,6 @@ const team: TeamMember[] = [
     imageSrc: "/team/mack-lorden.jpg",
   },
   {
-    name: "Amer Ghazal",
-    role: "Cofounder & CTO",
-    bio: [
-      "Autonomy Co-Lead at Micropolis, behind the M02 deployed with Dubai Police",
-      "Architected Mission Control at DroneLeaf AI",
-      "Owns architecture and engineering",
-    ],
-    imageSrc: "/team/amer-ghazal.jpg",
-  },
-  {
     name: "Michael Hart",
     role: "Lead Robotics Engineer",
     bio: ["Former senior robotics engineer at Amazon", "Built the CTRL+R agent running today"],
@@ -92,7 +82,7 @@ export default function TeamPage() {
               </h2>
             </Reveal>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((m, i) => (
               <Reveal
                 key={m.name}

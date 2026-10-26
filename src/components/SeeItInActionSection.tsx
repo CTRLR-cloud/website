@@ -119,12 +119,12 @@ const showcases: Showcase[] = [
       {
         icon: IconGlobe,
         title: "Remote robot control",
-        desc: "Operate real robots at any site from anywhere, with real-time video and your choice of joystick, keyboard, or gamepad.",
+        desc: "Remotely operate real robots at any site using custom controllers or built-in browser controls like a joystick, keyboard, or preset map locations.",
       },
       {
         icon: IconTarget,
         title: "Point, click, go",
-        desc: "Send a robot to a saved location in a few clicks and follow its beacon on the minimap. No training required.",
+        desc: "No training required—send a robot to a saved location in one click and follow its beacon on the minimap.",
       },
       {
         icon: IconShield,
@@ -162,12 +162,13 @@ function DemoVideo({ src, poster, label }: { src: string; poster: string; label:
 
 function ShowcaseRow({ showcase, reverse }: { showcase: Showcase; reverse: boolean }) {
   // Phones: heading, then video, then features, so each video sits under its own heading.
-  // Desktop: video in one column spanning both rows, heading and features in the other.
-  const textCol = reverse ? "lg:col-start-1" : "lg:col-start-8";
-  const videoCol = reverse ? "lg:col-start-6" : "lg:col-start-1";
+  // Desktop: video in the wider column spanning both rows, heading and features in the narrower one,
+  // alternating sides. On wide screens the video also reaches past the content edge on its side.
+  const textCol = reverse ? "lg:col-start-1" : "lg:col-start-9";
+  const videoCol = reverse ? "lg:col-start-5 xl:-mr-20" : "lg:col-start-1 xl:-ml-20";
   return (
-    <div className="grid gap-6 lg:grid-cols-12 lg:gap-x-12 lg:gap-y-0">
-      <div className={cn("lg:col-span-5 lg:row-start-1 lg:self-end", textCol)}>
+    <div className="grid gap-6 lg:grid-cols-12 lg:gap-x-10 lg:gap-y-0">
+      <div className={cn("lg:col-span-4 lg:row-start-1 lg:self-end", textCol)}>
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--accent)]">
             {showcase.eyebrow}
@@ -182,7 +183,7 @@ function ShowcaseRow({ showcase, reverse }: { showcase: Showcase; reverse: boole
 
       <Reveal
         delayMs={80}
-        className={cn("lg:col-span-7 lg:row-span-2 lg:row-start-1 lg:self-center", videoCol)}
+        className={cn("lg:col-span-8 lg:row-span-2 lg:row-start-1 lg:self-center", videoCol)}
       >
         <HudFrame>
           <div className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-black shadow-glow">
@@ -193,7 +194,7 @@ function ShowcaseRow({ showcase, reverse }: { showcase: Showcase; reverse: boole
         </HudFrame>
       </Reveal>
 
-      <ul className={cn("space-y-2 lg:col-span-5 lg:row-start-2 lg:mt-6 lg:self-start", textCol)}>
+      <ul className={cn("space-y-2 lg:col-span-4 lg:row-start-2 lg:mt-6 lg:self-start", textCol)}>
         {showcase.features.map((feature, i) => (
           <li key={feature.title}>
             <Reveal delayMs={100 + i * 40}>
@@ -226,7 +227,7 @@ export function SeeItInActionSection({ className }: { className?: string }) {
           </Reveal>
           <Reveal delayMs={40}>
             <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl">
-              Monitor everything. <span className="text-gradient">Control anything.</span>
+              Full visibility. <span className="text-gradient">Full control.</span>
             </h2>
           </Reveal>
         </div>
@@ -240,7 +241,7 @@ export function SeeItInActionSection({ className }: { className?: string }) {
         <Reveal delayMs={120}>
           <div className="mt-16 flex flex-wrap gap-3">
             <a
-              href="#command-hq"
+              href="/platform"
               className="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-2.5 text-sm font-medium text-white shadow-[0_0_24px_color-mix(in_oklab,var(--accent)_40%,transparent)] transition hover:brightness-110"
             >
               See how it works

@@ -36,7 +36,7 @@ export function InteractiveSession() {
   const current = hotspots.find((h) => h.id === active) ?? null;
 
   return (
-    <section className="border-t border-hairline bg-black">
+    <section className="relative bg-black">
       <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
         <div className="max-w-3xl">
           <Reveal>

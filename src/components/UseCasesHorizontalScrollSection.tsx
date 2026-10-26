@@ -33,12 +33,8 @@ const useCases: UseCase[] = [
   {
     title: "Distributors & Solution Providers",
     desc: "Give every customer you sell robots to a ready-made operations platform. Offer CTRL+R alongside the hardware and manage mixed fleets across all of your accounts in one place.",
-    // From yslootahrobotics.com, used with permission; recoloured to CTRL+R's palette.
-    image: "/use-cases/distributors.jpg",
-    credit: {
-      text: "Image: YS Lootah Robotics",
-      href: "https://yslootahrobotics.com/",
-    },
+    // CTRL+R's own image.
+    image: "/use-cases/distributors-lineup.jpg",
     accent: "rgba(120,100,255,0.35)",
   },
   {
@@ -49,9 +45,9 @@ const useCases: UseCase[] = [
   },
   {
     title: "Defense & Critical Infrastructure",
-    desc: "Operate unmanned ground and aerial vehicles for patrol, reconnaissance and hazardous-environment inspection with military-grade reliability. Deploy in the cloud, on-premises or in a sovereign environment.",
-    image: "/use-cases/defense.jpg",
-    focus: "68% center",
+    desc: "Operate unmanned ground and aerial vehicles for patrol, reconnaissance and hazardous-environment inspection with military-grade reliability. Deploy in the cloud or on your own premises.",
+    image: "/use-cases/defense-swarm.jpg",
+    focus: "center 35%",
     accent: "rgba(255,100,100,0.35)",
   },
   {
@@ -89,6 +85,8 @@ export function UseCasesHorizontalScrollSection({
   });
 
   const cardCount = useCases.length;
+  const lastCardAt = (cardCount - 1) / cardCount;
+  const hintOpacity = useTransform(scrollYProgress, [lastCardAt - 0.08, lastCardAt], [1, 0]);
 
   return (
     <section
@@ -192,13 +190,16 @@ export function UseCasesHorizontalScrollSection({
           animate={showTitle ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 1 }}
         >
-          <motion.div
-            className="flex items-center gap-3 text-xs text-white/30 uppercase tracking-[0.3em]"
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <span>Scroll to explore</span>
-            <span>↓</span>
+          {/* Fades out once the last use case is showing. */}
+          <motion.div style={{ opacity: hintOpacity }}>
+            <motion.div
+              className="flex items-center gap-3 text-xs text-white/30 uppercase tracking-[0.3em]"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <span>Scroll to explore</span>
+              <span>↓</span>
+            </motion.div>
           </motion.div>
         </motion.div>
 
