@@ -161,10 +161,11 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                     >
                       <article className="mt-6 w-full min-w-0 rounded-[28px] border border-white/10 bg-white/[0.03] overflow-hidden group">
                         <div className="relative aspect-[16/10] overflow-hidden">
-                          <img
+                          <SmartImage
                             src={staticFeatured.image}
                             alt={staticFeatured.title}
                             className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                            fallbackSrc={FALLBACK_IMAGE}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
                           <div className="absolute bottom-5 left-5 flex items-center gap-2">
@@ -291,10 +292,11 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                           >
                             <article className="rounded-[22px] border border-white/10 bg-white/[0.03] overflow-hidden group h-full">
                               <div className="relative aspect-[16/9] overflow-hidden">
-                                <img
+                                <SmartImage
                                   src={c.image}
                                   alt={c.title}
                                   className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                  fallbackSrc={FALLBACK_IMAGE}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
                                 <div className="absolute bottom-3 left-3 flex items-center gap-2">

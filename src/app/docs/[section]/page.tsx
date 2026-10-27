@@ -9,7 +9,8 @@ type Props = { params: Promise<{ section: string }> };
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return SECTIONS.map((s) => ({ section: s.id }));
+  // The first section is served at /docs; /docs/what-is-ctrlr redirects there.
+  return SECTIONS.slice(1).map((s) => ({ section: s.id }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

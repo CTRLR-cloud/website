@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { getNewsPost, type NewsPost } from "@/content/news";
+import { SmartImage } from "@/components/SmartImage";
 
 function Pill({ children, variant }: { children: string; variant: "category" | "type" }) {
   return (
@@ -86,7 +87,7 @@ export default async function NewsArticlePage({ params }: Props) {
         <section className="relative">
           <Reveal>
             <div className="relative w-full h-[54vh] min-h-[420px] max-h-[720px] overflow-hidden">
-              <img
+              <SmartImage
                 src={post.image}
                 alt={post.title}
                 className="absolute inset-0 w-full h-full object-cover"

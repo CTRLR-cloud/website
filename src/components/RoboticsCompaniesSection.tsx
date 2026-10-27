@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { LogoBlueprint } from "@/components/LogoBlueprint";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 /** What buyers actually weigh up: the dashboard isn't on the list. */
 function BuyerChecklist() {
@@ -45,7 +46,7 @@ function BuyerChecklist() {
 
 /** Where the team's time goes, before and after handing fleet software off. */
 function TimeBars() {
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const bars = [
     { label: "Fleet management", from: "72%", to: "12%", className: "bg-white/25" },
     { label: "Your product & deals", from: "28%", to: "88%", className: "bg-[var(--accent)]" },

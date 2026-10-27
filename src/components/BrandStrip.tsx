@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { cn } from "@/lib/cn";
 
 type Brand = {
   name: string;
@@ -22,9 +23,9 @@ const brands: Brand[] = [
   { name: "ROBOTIS", logo: "/logos/robotis.png", height: 24 },
 ];
 
-function BrandItem({ brand }: { brand: Brand }) {
+function BrandItem({ brand, className }: { brand: Brand; className?: string }) {
   return (
-    <li className="flex h-12 shrink-0 items-center px-8 md:px-12">
+    <li className={cn("flex h-12 shrink-0 items-center px-8 md:px-12", className)}>
       {brand.logo ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
@@ -63,10 +64,13 @@ export function BrandStrip() {
         </Reveal>
       </div>
 
-      <div className="mask-fade-x mt-10 overflow-hidden" aria-hidden>
-        <ul className="animate-marquee-slow flex w-max hover:[animation-play-state:paused]">
-          {[...half, ...half].map((brand, i) => (
-            <BrandItem key={`${brand.name}-${i}`} brand={brand} />
+      <div className="mask-fade-x mt-10 overflow-hidden motion-reduce:overflow-visible motion-reduce:[mask-image:none]" aria-hidden>
+        <ul className="animate-marquee-slow flex w-max hover:[animation-play-state:paused] motion-reduce:mx-auto motion-reduce:w-full motion-reduce:max-w-6xl motion-reduce:flex-wrap motion-reduce:justify-center motion-reduce:px-6">
+          {half.map((brand) => (
+            <BrandItem key={brand.name} brand={brand} />
+          ))}
+          {half.map((brand) => (
+            <BrandItem key={`${brand.name}-dup`} brand={brand} className="motion-reduce:hidden" />
           ))}
         </ul>
       </div>

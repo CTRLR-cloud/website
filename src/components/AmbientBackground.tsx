@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { LogoBlueprint } from "@/components/LogoBlueprint";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 /** Maps page scroll (0 to 1) onto six evenly spaced stops. */
 function useStops(progress: MotionValue<number>, values: (string | number)[]) {
@@ -13,7 +14,7 @@ function useStops(progress: MotionValue<number>, values: (string | number)[]) {
  * scroll, and the CTRL+R logo blueprint, which only shows where the light falls on it.
  */
 export function AmbientBackground() {
-  const reduce = useReducedMotion();
+  const reduce = usePrefersReducedMotion();
   const { scrollYProgress } = useScroll();
 
   // Main light: wanders side to side down the page, brightest at the big moments.

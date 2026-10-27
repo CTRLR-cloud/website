@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
 import { SITE_LINKS } from "@/config/links";
@@ -28,14 +29,12 @@ export default function LaunchClientPage() {
               >
                 Book a Demo
               </a>
-              <a
-                href={SITE_LINKS.DOCS}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/docs"
                 className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
               >
                 View docs
-              </a>
+              </Link>
             </div>
 
             <div className="mt-6 text-xs text-white/35">

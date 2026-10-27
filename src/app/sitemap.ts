@@ -5,10 +5,8 @@ import { SITE_URL } from "@/lib/seo";
 
 /** Every public page. The Team page is hidden for now, so it is left out. */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
   const page = (path: string, priority: number, changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"]) => ({
     url: `${SITE_URL}${path}`,
-    lastModified: now,
     changeFrequency,
     priority,
   });

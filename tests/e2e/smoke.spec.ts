@@ -20,7 +20,22 @@ test("unknown route returns 404 page", async ({ page }) => {
   await expect(page.getByRole("heading", { name: "Page not found" })).toBeVisible();
 });
 
-test("/launch-app redirects to /launch-client", async ({ page }) => {
-  await page.goto("/launch-app");
-  await expect(page).toHaveURL(/\/launch-client$/);
-});
+const redirects: [string, string][] = [
+  ["/launch-app", "/launch-client"],
+  ["/careers", "/contact"],
+  ["/careers/embedded-systems-engineer", "/contact"],
+  ["/roadmap", "/"],
+  ["/research", "/"],
+  ["/research/teleoperation-latency", "/"],
+  ["/technology-overview", "/platform"],
+  ["/docs/what-is-ctrlr", "/docs"],
+  ["/team", "/"],
+];
+
+for (const [from, to] of redirects) {
+  test(`${from} redirects to ${to}`, async ({ page }) => {
+    const res = await page.goto(from);
+    expect(res?.ok(), "final response").toBeTruthy();
+    expect(new URL(page.url()).pathname).toBe(to);
+  });
+}

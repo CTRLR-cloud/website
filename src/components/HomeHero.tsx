@@ -2,10 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { Reveal } from "@/components/Reveal";
 import { CtrlRLogo } from "@/components/CtrlRLogo";
 import { cn } from "@/lib/cn";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 const devices = ["robot", "drone", "camera", "sensor"];
 
@@ -24,12 +25,13 @@ const backgrounds = [
 /** "Any robot" with the device word cycling on a timer. */
 function AnyDevice() {
   const [index, setIndex] = useState(0);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion) return;
     const id = window.setInterval(() => setIndex((i) => (i + 1) % devices.length), 2200);
     return () => window.clearInterval(id);
-  }, []);
+  }, [reduceMotion]);
 
   return (
     <p className="text-2xl font-semibold leading-[1.2] tracking-tight text-white sm:text-4xl">
@@ -63,19 +65,22 @@ function AnyDevice() {
 /** Full-screen homepage hero: crossfading photos that slowly zoom and drifts as you scroll, with the copy fading away. */
 export function HomeHero() {
   const ref = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const [bgIndex, setBgIndex] = useState(0);
   const [restLoaded, setRestLoaded] = useState(false);
 
   // Background photos crossfade on their own timer, independent of the cycling word.
+  // Reduced motion keeps the first photo: the crossfade is decoration, not content.
+  const shownBg = reduceMotion ? 0 : bgIndex;
   useEffect(() => {
+    if (reduceMotion) return;
     const load = window.setTimeout(() => setRestLoaded(true), 1500);
     const cycle = window.setInterval(() => setBgIndex((i) => (i + 1) % backgrounds.length), 5000);
     return () => {
       window.clearTimeout(load);
       window.clearInterval(cycle);
     };
-  }, []);
+  }, [reduceMotion]);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const imageScale = useTransform(scrollYProgress, [0, 1], [1.04, reduceMotion ? 1.04 : 1.22]);
   const imageY = useTransform(scrollYProgress, [0, 1], ["0%", reduceMotion ? "0%" : "12%"]);
@@ -101,7 +106,7 @@ export function HomeHero() {
               className={cn(
                 "object-cover transition-opacity duration-[1500ms] ease-in-out md:object-center",
                 bg.phonePosition,
-                i === bgIndex ? "opacity-100" : "opacity-0",
+                i === shownBg ? "opacity-100" : "opacity-0",
               )}
             />
           )

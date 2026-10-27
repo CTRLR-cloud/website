@@ -9,11 +9,15 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/launch-app", destination: "/launch-client", permanent: true },
-      // Careers and Roadmap were removed; send old links somewhere useful.
+      // Removed pages; send old links somewhere useful.
       { source: "/careers", destination: "/contact", permanent: true },
       { source: "/careers/:slug", destination: "/contact", permanent: true },
       { source: "/roadmap", destination: "/", permanent: true },
+      { source: "/research", destination: "/", permanent: true },
+      { source: "/research/:slug", destination: "/", permanent: true },
       { source: "/technology-overview", destination: "/platform", permanent: true },
+      // The first docs section is the /docs page itself.
+      { source: "/docs/what-is-ctrlr", destination: "/docs", permanent: true },
       // Team page is hidden for now (page kept for later); temporary so it can come back.
       { source: "/team", destination: "/", permanent: false },
     ];

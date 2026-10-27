@@ -31,7 +31,7 @@ export function DocsContent({ section }: { section?: string }) {
           {SECTIONS.map(s => (
             <Link
               key={s.id}
-              href={`/docs/${s.id}`}
+              href={s.id === SECTIONS[0].id ? "/docs" : `/docs/${s.id}`}
               className={`docs-nav-link ${activeSection === s.id ? 'active' : ''}`}
             >
               {s.label}

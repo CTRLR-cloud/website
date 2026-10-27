@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 import { Reveal } from "@/components/Reveal";
 import { HudFrame } from "@/components/HudFrame";
@@ -137,26 +137,50 @@ const showcases: Showcase[] = [
 
 function DemoVideo({ src, poster, label }: { src: string; poster: string; label: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
-    void el.play().catch(() => {});
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    void el.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
   }, []);
 
+  function toggle() {
+    const el = videoRef.current;
+    if (!el) return;
+    if (el.paused) {
+      void el.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+    } else {
+      el.pause();
+      setPlaying(false);
+    }
+  }
+
   return (
-    <video
-      ref={videoRef}
-      src={src}
-      poster={poster}
-      className="absolute inset-0 h-full w-full object-cover"
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      aria-label={label}
-    />
+    <>
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        className="absolute inset-0 h-full w-full object-cover"
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-label={label}
+        onPlay={() => setPlaying(true)}
+        onPause={() => setPlaying(false)}
+      />
+      <button
+        type="button"
+        onClick={toggle}
+        aria-pressed={playing}
+        className="absolute bottom-3 right-3 z-10 inline-flex items-center rounded-full border border-white/20 bg-black/70 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm ring-premium"
+      >
+        {playing ? "Pause" : "Play"}
+      </button>
+    </>
   );
 }
 

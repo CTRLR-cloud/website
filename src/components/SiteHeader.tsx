@@ -16,6 +16,11 @@ const nav = [
   { label: "Contact Us", href: "/contact" },
 ];
 
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
 function MenuIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className={className}>
@@ -92,7 +97,7 @@ export function SiteHeader() {
 
             <nav aria-label="Main" className="hidden md:flex items-center gap-6 text-sm font-semibold">
               {nav.map((item) => {
-                const active = pathname === item.href;
+                const active = isActive(pathname, item.href);
                 return (
                   <Link
                     key={item.href}
@@ -101,6 +106,7 @@ export function SiteHeader() {
                       "rounded ring-premium transition",
                       active ? "text-white" : "text-white/70 hover:text-white",
                     )}
+                    aria-current={active ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
@@ -168,7 +174,7 @@ export function SiteHeader() {
 
                 <div className="mt-4 grid gap-1">
                   {nav.map((item) => {
-                    const active = pathname === item.href;
+                    const active = isActive(pathname, item.href);
                     return (
                       <Link
                         key={item.href}
@@ -177,6 +183,7 @@ export function SiteHeader() {
                           "rounded-xl px-3 py-3 text-sm font-semibold ring-premium transition",
                           active ? "bg-white/8 text-white" : "text-white/80 hover:bg-white/6 hover:text-white",
                         )}
+                        aria-current={active ? "page" : undefined}
                       >
                         {item.label}
                       </Link>

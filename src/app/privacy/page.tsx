@@ -50,7 +50,7 @@ export default function PrivacyPage() {
                 </h2>
                 <p className="text-sm leading-7 md:text-base md:leading-8">
                   We do not collect personal or usage data without your permission. When we
-                  ask for information—such as through a contact form, signup flow, or optional
+                  ask for information—such as when you email us, create an account, or opt into
                   analytics—it is only with your knowledge and agreement, and we use it for the
                   purpose we describe at the time.
                 </p>

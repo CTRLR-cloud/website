@@ -28,7 +28,7 @@ export function PageIntro() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-[100] pointer-events-none"
+          className="pointer-events-none fixed inset-0 z-[100] motion-reduce:hidden"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}

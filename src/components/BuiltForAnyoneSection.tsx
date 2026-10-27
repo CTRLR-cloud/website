@@ -1,8 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { cn } from "@/lib/cn";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 type Point = { x: number; y: number };
 type IconName = "robot" | "drone" | "camera" | "sensor";
@@ -292,7 +293,7 @@ const ANSWERS: Record<"yes" | "no", { lead: string; points: ValuePoint[] }> = {
 function RoboticsTeamToggle() {
   const [answer, setAnswer] = useState<"yes" | "no">("yes");
   const [answered, setAnswered] = useState(false);
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
   const current = ANSWERS[answer];
 
   return (

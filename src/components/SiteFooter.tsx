@@ -96,7 +96,9 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-hairline pt-6 text-xs leading-5 text-white/35 sm:flex-row sm:items-baseline sm:justify-between">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-4">
-            <span>Copyright © {new Date().getFullYear()} CTRL+R. All rights reserved.</span>
+            <span suppressHydrationWarning>
+              Copyright © {new Date().getFullYear()} CTRL+R. All rights reserved.
+            </span>
             <Link
               href="/privacy"
               className="text-white/45 hover:text-white/80 transition ring-premium rounded w-fit"

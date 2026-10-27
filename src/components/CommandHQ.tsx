@@ -5,12 +5,12 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
-  useReducedMotion,
   useScroll,
   useTransform,
 } from "framer-motion";
 import { cn } from "@/lib/cn";
 import { SmartImage } from "@/components/SmartImage";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 type Item = {
   number: "01" | "02" | "03" | "04";
@@ -62,7 +62,10 @@ export function CommandHQ({
   const Heading = headingLevel;
   // Slide titles sit one level below the section heading.
   const CardHeading = headingLevel === "h1" ? "h2" : "h3";
-  const reduceMotion = useReducedMotion();
+  const reduceMotion = usePrefersReducedMotion();
+  // The pinned horizontal rail hides every card but the first when motion is reduced.
+  // Stack them instead, so the whole section stays reachable.
+  const stacked = reduceMotion === true;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -75,6 +78,7 @@ export function CommandHQ({
   const trackRef = useRef<HTMLDivElement | null>(null);
   const maxShift = useMotionValue(0);
   useEffect(() => {
+    if (reduceMotion) return;
     const el = trackRef.current;
     if (!el) return;
     const measure = () => {
@@ -89,7 +93,7 @@ export function CommandHQ({
       ro.disconnect();
       window.removeEventListener("resize", measure);
     };
-  }, [maxShift]);
+  }, [maxShift, reduceMotion]);
 
   // The rail reaches the last card at 85% scroll, then holds it there as the section scrolls away.
   const x = useTransform([scrollYProgress, maxShift], ([p, shift]: number[]) =>
@@ -115,8 +119,14 @@ export function CommandHQ({
         className,
       )}
     >
-      <div ref={containerRef} className="relative h-[300vh]">
-        <div className="sticky top-0 flex h-[100svh] min-h-0 w-full flex-col overflow-hidden">
+      <div ref={containerRef} className={stacked ? "relative" : "relative h-[300vh]"}>
+        <div
+          className={
+            stacked
+              ? "relative flex w-full flex-col"
+              : "sticky top-0 flex h-[100svh] min-h-0 w-full flex-col overflow-hidden"
+          }
+        >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
             <div
@@ -159,17 +169,31 @@ export function CommandHQ({
           </div>
 
           {/* Remaining viewport height only — cards cannot overlap the headline */}
-          <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-hidden pt-6 md:pt-8">
+          <div
+            className={
+              stacked
+                ? "relative z-10 px-6 pb-16 pt-6"
+                : "relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-hidden pt-6 md:pt-8"
+            }
+          >
             <motion.div
               ref={trackRef}
               // Starts in line with the standard content column, then slides edge to edge.
-              className="flex w-max max-w-none gap-8 pl-[max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]"
-              style={{ x }}
+              className={
+                stacked
+                  ? "mx-auto flex w-full max-w-6xl flex-col gap-8"
+                  : "flex w-max max-w-none gap-8 pl-[max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]"
+              }
+              style={stacked ? undefined : { x }}
             >
             {items.map((item, index) => (
               <motion.div
                 key={item.number}
-                className="relative w-[88vw] flex-shrink-0 sm:w-[75vw] md:w-[60vw] lg:w-[50vw] xl:w-[44vw] max-w-[min(760px,calc(200svh_-_70rem))]"
+                className={
+                  stacked
+                    ? "relative w-full"
+                    : "relative w-[88vw] flex-shrink-0 sm:w-[75vw] md:w-[60vw] lg:w-[50vw] xl:w-[44vw] max-w-[min(760px,calc(200svh_-_70rem))]"
+                }
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -215,25 +239,29 @@ export function CommandHQ({
 
           </motion.div>
 
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
-              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
-            </div>
+            {!stacked && (
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
+                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
+              </div>
+            )}
           </div>
 
-          <motion.div
-            className="relative z-20 flex-shrink-0 pb-6 pt-2 pointer-events-none"
-            style={{ opacity: scrollHintOpacity }}
-          >
-            <div className="flex justify-center">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/30">
-                <span>Scroll to explore</span>
-                <motion.span animate={{ x: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                  →
-                </motion.span>
+          {!stacked && (
+            <motion.div
+              className="relative z-20 flex-shrink-0 pb-6 pt-2 pointer-events-none"
+              style={{ opacity: scrollHintOpacity }}
+            >
+              <div className="flex justify-center">
+                <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/30">
+                  <span>Scroll to explore</span>
+                  <motion.span animate={{ x: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                    →
+                  </motion.span>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

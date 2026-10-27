@@ -5,11 +5,11 @@ import {
   motion,
   useScroll,
   useTransform,
-  useReducedMotion,
   useInView,
 } from "framer-motion";
 import { SmartImage } from "@/components/SmartImage";
 import { cn } from "@/lib/cn";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 type UseCase = {
   title: string;
@@ -65,7 +65,7 @@ export function UseCasesHorizontalScrollSection({
 }: {
   className?: string;
 }) {
-  const reduce = useReducedMotion();
+  const reduce = usePrefersReducedMotion();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const titleRef = useRef<HTMLDivElement | null>(null);
   const titleInView = useInView(titleRef, { once: true, margin: "0px 0px -20px 0px" });
@@ -194,8 +194,8 @@ export function UseCasesHorizontalScrollSection({
           <motion.div style={{ opacity: hintOpacity }}>
             <motion.div
               className="flex items-center gap-3 text-xs text-white/30 uppercase tracking-[0.3em]"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+              animate={reduce ? undefined : { y: [0, 8, 0] }}
+              transition={reduce ? undefined : { duration: 2, repeat: Infinity }}
             >
               <span>Scroll to explore</span>
               <span>↓</span>
