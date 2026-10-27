@@ -1,0 +1,45 @@
+# CTRL+R
+
+> CTRL+R is one unified platform to operate and manage your entire physical AI fleet: robots, drones, cameras, and sensors, from any manufacturer. One platform. Any device. Total control. Built in Dubai, serving the UAE and GCC.
+
+CTRL+R helps businesses build, operate, and scale their autonomous workforce. A lightweight agent installed on each robot connects it to CTRL+R, and the team then works from one web-based command center, Command HQ.
+
+Key facts:
+
+- Works with robots from any manufacturer. Robots that run ROS 1 or ROS 2 are supported, and drones, IP cameras, and sensors connect alongside them.
+- Teleoperation from a web browser using a joystick, keyboard bindings, gamepad or custom controllers, or by sending a robot to a saved location in one click.
+- Fleet management across sites, teams, and devices, with a live map of every connected device.
+- Every session is recorded end to end and time-stamped; warnings, faults, and actions are logged as searchable events.
+- Security: end-to-end encrypted sessions, robots connect outbound only (no open inbound ports), role-based access, and a full audit trail.
+- Built for anyone, not just engineers: first-time operators can use it, and robotics teams can customize it (controls, key bindings, saved locations, ROS commands).
+- Deployment in the cloud (hosted by CTRL+R) or on-premises.
+- For robot makers (OEMs) and distributors: CTRL+R can be white-labeled, so every robot sold comes with fleet operations on day one, and distributors can offer one platform across mixed fleets.
+- Small fleets can try CTRL+R free; larger operations can start with a free pilot.
+
+Contact: info@ctrlr.cloud
+
+## Pages
+
+- [Home](https://www.ctrlr.cloud/): what CTRL+R does, use cases, how a pilot works, and contact options
+- [Platform](https://www.ctrlr.cloud/platform): Command HQ features, interactive teleoperation screen, security, and deployment options
+- [Contact](https://www.ctrlr.cloud/contact): try it free, book a demo, or start a free pilot
+- [Docs](https://www.ctrlr.cloud/docs): product documentation
+
+## Docs
+
+- [What is CTRL+R?](https://www.ctrlr.cloud/docs/what-is-ctrlr): overview and what makes it different
+- [Use Cases](https://www.ctrlr.cloud/docs/use-cases): example deployments
+- [Supported Platforms](https://www.ctrlr.cloud/docs/supported-platforms): supported robots, operating systems, and hardware
+- [Getting Started](https://www.ctrlr.cloud/docs/getting-started): installing the agent and its requirements
+- [Configuring Your Robot](https://www.ctrlr.cloud/docs/configuring-your-robot): robot parameters, ROS topics, and position reporting
+- [Custom Commands](https://www.ctrlr.cloud/docs/custom-commands): adding your own ROS commands
+- [Two-way Audio](https://www.ctrlr.cloud/docs/two-way-audio): talking and listening through a robot
+- [Locations](https://www.ctrlr.cloud/docs/locations): saved locations and one-click navigation
+- [Command HQ](https://www.ctrlr.cloud/docs/command-hq): fleet view, teams, sites, and permissions
+- [Security](https://www.ctrlr.cloud/docs/security): identity, encryption, network posture, access control, and audit trail
+- [Troubleshooting](https://www.ctrlr.cloud/docs/troubleshooting): fixing common problems
+
+## Optional
+
+- [Privacy Policy](https://www.ctrlr.cloud/privacy)
+- [News](https://www.ctrlr.cloud/news): robotics and physical AI news collected from industry sources

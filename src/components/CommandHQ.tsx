@@ -1,15 +1,16 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import {
   motion,
   useMotionTemplate,
-  useReducedMotion,
+  useMotionValue,
   useScroll,
   useTransform,
 } from "framer-motion";
 import { cn } from "@/lib/cn";
 import { SmartImage } from "@/components/SmartImage";
+import { usePrefersReducedMotion } from "@/lib/usePrefersReducedMotion";
 
 type Item = {
   number: "01" | "02" | "03" | "04";
@@ -17,46 +18,54 @@ type Item = {
   subtitle: string;
   desc: string;
   image: string;
-  accent: string;
 };
 
 const items: Item[] = [
   {
     number: "01",
-    title: "Your fleet, one dashboard",
-    subtitle: "Robots",
-    desc: "Monitor every asset from a single pane—status, model, and type at a glance. Track operators, sessions, and hours across quadrupeds, humanoids, arms, drones, and more in real time.",
-    image: "/robots_screenshot_commandHQ.png",
-    accent: "rgba(0,200,180,0.25)",
+    title: "Teleoperation",
+    subtitle: "Control",
+    desc: "Control any robot or drone live from your browser with a keyboard, gamepad, or custom controller, with real-time video and two-way audio.",
+    image: "/robot_soccer.png",
   },
   {
     number: "02",
-    title: "Sessions & logs",
+    title: "Fleet management",
     subtitle: "Operations",
-    desc: "See live and completed sessions side by side with full context: robots, operators, session durations & time stamps. Catch errors early and share analytics with team members to inform strategy.",
-    image: "/sessions-and-logs.png",
-    accent: "rgba(201,0,7,0.25)",
+    desc: "See every robot, site, and live feed in real time. Know what's online and what needs attention, and alert operators fast when autonomy fails or something goes wrong.",
+    image: "/command-hq-eagle-eye-map.webp",
   },
   {
     number: "03",
-    title: "ROS commands & controls",
-    subtitle: "Customizations",
-    desc: "Configure ROS commands, controllers, locations, and keyboard bindings in one place. Search, enable, and run the actions your team depends on, from emergency stops to sensor scans.",
-    image: "/customizations_commandHQ2.png",
-    accent: "rgba(110,150,255,0.22)",
+    title: "Sessions & logs",
+    subtitle: "Data collection",
+    desc: "Every session is recorded, time-stamped, and replayable, with full context on robots, operators, and durations. Catch errors early and build one dataset across your whole fleet.",
+    image: "/sessions-and-logs.png",
   },
   {
     number: "04",
-    title: "Alerts that reach the right people",
-    subtitle: "Notifications",
-    desc: "A live feed of disconnects, battery warnings, session failures, and security events, plus rules so operators respond fast when autonomy fails or something goes wrong.",
-    image: "/command-hq-notifications.png",
-    accent: "rgba(242, 180, 0, 0.22)",
+    title: "Customizability",
+    subtitle: "Configuration",
+    desc: "Configure ROS commands, custom controllers, locations, and keyboard bindings in one place. Enable and trigger the actions your team depends on, from emergency stops to sensor scans.",
+    image: "/customizations_commandHQ2.png",
   },
 ];
 
-export function CommandHQ({ className }: { className?: string }) {
-  const reduceMotion = useReducedMotion();
+export function CommandHQ({
+  className,
+  headingLevel = "h2",
+}: {
+  className?: string;
+  /** "h1" when this section opens the page (Platform). */
+  headingLevel?: "h1" | "h2";
+}) {
+  const Heading = headingLevel;
+  // Slide titles sit one level below the section heading.
+  const CardHeading = headingLevel === "h1" ? "h2" : "h3";
+  const reduceMotion = usePrefersReducedMotion();
+  // The pinned horizontal rail hides every card but the first when motion is reduced.
+  // Stack them instead, so the whole section stays reachable.
+  const stacked = reduceMotion === true;
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   const { scrollYProgress } = useScroll({
@@ -64,15 +73,35 @@ export function CommandHQ({ className }: { className?: string }) {
     offset: ["start start", "end end"],
   });
 
-  const x = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? ["0%", "0%"] : ["5%", "-75%"],
+  // How far the card rail must slide so the last card ends fully on screen, measured
+  // rather than guessed, since card widths change with the viewport.
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const maxShift = useMotionValue(0);
+  useEffect(() => {
+    if (reduceMotion) return;
+    const el = trackRef.current;
+    if (!el) return;
+    const measure = () => {
+      const pad = parseFloat(getComputedStyle(el).paddingLeft) || 0;
+      maxShift.set(Math.max(0, el.scrollWidth - window.innerWidth + pad));
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [maxShift, reduceMotion]);
+
+  // The rail reaches the last card at 85% scroll, then holds it there as the section scrolls away.
+  const x = useTransform([scrollYProgress, maxShift], ([p, shift]: number[]) =>
+    reduceMotion ? 0 : -shift * Math.min(1, p / 0.85),
   );
 
   const lineWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
-  const fadeOut = useTransform(scrollYProgress, [0.85, 1], [1, 0]);
 
   const scrollHintOpacity = useTransform(
     scrollYProgress,
@@ -86,12 +115,18 @@ export function CommandHQ({ className }: { className?: string }) {
     <section
       id="command-hq"
       className={cn(
-        "scroll-mt-[max(6rem,12svh)] relative bg-section border-t border-hairline",
+        "scroll-mt-[max(6rem,12svh)] relative",
         className,
       )}
     >
-      <div ref={containerRef} className="relative h-[300vh]">
-        <div className="sticky top-0 flex h-[100svh] min-h-0 w-full flex-col overflow-hidden">
+      <div ref={containerRef} className={stacked ? "relative" : "relative h-[300vh]"}>
+        <div
+          className={
+            stacked
+              ? "relative flex w-full flex-col"
+              : "sticky top-0 flex h-[100svh] min-h-0 w-full flex-col overflow-hidden"
+          }
+        >
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-black/95 to-black" />
             <div
@@ -106,23 +141,27 @@ export function CommandHQ({ className }: { className?: string }) {
 
           {/* Title stays in normal flow so it always reserves space above the card rail.
               Not scroll-faded: hash links land at progress≈0; opacity 0→1 would hide the headline. */}
-          <div className="relative z-20 flex-shrink-0 px-4 pb-5 pt-20 sm:pt-24 lg:mx-24 lg:px-0 lg:pb-6 lg:pt-28">
-            <div className="mx-auto w-full max-w-[1600px]">
+          <div className="relative z-20 flex-shrink-0 pb-5 pt-20 sm:pt-24 lg:pb-6 lg:pt-28">
+            <div className="mx-auto w-full max-w-6xl px-6">
               <div className="mb-4 flex items-center gap-3 sm:mb-6">
                 <span className="h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_0_8px_color-mix(in_oklab,var(--accent)_14%,transparent)]" />
                 <span className="text-xs uppercase tracking-[0.22em] text-white/55">
-                  Command HQ
+                  The Platform
                 </span>
               </div>
-              <h2 className="text-3xl font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
-                One Platform.{" "}
-                <span className="font-light text-white/50">Total Control.</span>
-              </h2>
+              <Heading className="text-3xl font-semibold leading-[1.08] tracking-[-0.03em] text-white sm:text-5xl md:text-6xl">
+                Your <span className="text-gradient">Command HQ</span>
+              </Heading>
+              <p className="mt-4 max-w-3xl text-sm leading-6 text-white/60 sm:text-base sm:leading-7">
+                Command HQ is your center for real-time ops. Monitor any connected device,
+                teleoperate when autonomy stalls, collect data, manage team members &amp; sites,
+                and more.
+              </p>
             </div>
           </div>
 
-          <div className="relative z-10 flex-shrink-0 px-4 lg:mx-24 lg:px-0">
-            <div className="mx-auto w-full max-w-[1600px]">
+          <div className="relative z-10 flex-shrink-0">
+            <div className="mx-auto w-full max-w-6xl px-6">
               <div className="relative h-[1px] bg-white/5">
                 <motion.div className="absolute left-0 top-0 h-full" style={{ width: lineWidth, background: line }} />
               </div>
@@ -130,56 +169,59 @@ export function CommandHQ({ className }: { className?: string }) {
           </div>
 
           {/* Remaining viewport height only — cards cannot overlap the headline */}
-          <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-hidden">
+          <div
+            className={
+              stacked
+                ? "relative z-10 px-6 pb-16 pt-6"
+                : "relative z-10 flex min-h-0 flex-1 flex-col justify-center overflow-hidden pt-6 md:pt-8"
+            }
+          >
             <motion.div
-              className="flex w-max max-w-none gap-8 pl-4 lg:pl-24"
-              style={{ x, opacity: fadeOut }}
+              ref={trackRef}
+              // Starts in line with the standard content column, then slides edge to edge.
+              className={
+                stacked
+                  ? "mx-auto flex w-full max-w-6xl flex-col gap-8"
+                  : "flex w-max max-w-none gap-8 pl-[max(1.5rem,calc((100vw_-_72rem)/2_+_1.5rem))]"
+              }
+              style={stacked ? undefined : { x }}
             >
             {items.map((item, index) => (
               <motion.div
                 key={item.number}
-                className="relative h-[min(480px,52svh,calc(100svh-13.5rem))] w-[85vw] flex-shrink-0 sm:w-[70vw] md:w-[50vw] lg:w-[40vw] xl:w-[32vw]"
+                className={
+                  stacked
+                    ? "relative w-full"
+                    : "relative w-[88vw] flex-shrink-0 sm:w-[75vw] md:w-[60vw] lg:w-[50vw] xl:w-[44vw] max-w-[min(760px,calc(200svh_-_70rem))]"
+                }
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true, margin: "-10%" }}
               >
-                <div className="relative h-full rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden group">
-                  <div className="relative h-[50%] overflow-hidden">
+                <div className="relative rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-sm overflow-hidden group">
+                  {/* Product screenshots are ~2:1; this keeps them whole and unfiltered. */}
+                  <div className="relative aspect-[2/1] overflow-hidden border-b border-white/10 bg-black">
                     <SmartImage
                       src={item.image}
                       alt={item.title}
-                      className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+                      className="absolute inset-0 h-full w-full object-contain transition duration-700 group-hover:scale-[1.03]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                    <div
-                      className="pointer-events-none absolute inset-0 opacity-60"
-                      style={{
-                        background: `radial-gradient(600px 400px at 50% 100%, ${item.accent}, transparent 50%)`,
-                      }}
-                    />
+                  </div>
 
-                    <div className="absolute top-6 left-6 h-10 w-10 rounded-xl border border-white/15 bg-black/50 backdrop-blur grid place-items-center">
-                      <span className="text-sm font-medium tracking-[0.15em] text-white/80">
+                  <div className="p-5 lg:p-6">
+                    <div className="flex items-center gap-3">
+                      <span className="text-sm font-medium tracking-[0.15em] text-[var(--accent-text)]">
                         {item.number}
                       </span>
-                    </div>
-
-                    <div className="absolute top-6 right-6 px-3 py-1.5 rounded-full border border-white/15 bg-black/50 backdrop-blur">
-                      <span className="text-[10px] uppercase tracking-[0.25em] text-white/60">
+                      <span className="rounded-full border border-white/15 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-white/60">
                         {item.subtitle}
                       </span>
                     </div>
-                  </div>
-
-                  <div className="p-6 lg:p-8 flex flex-col justify-between h-[50%]">
-                    <div>
-                      <h3 className="text-xl lg:text-2xl font-semibold text-white leading-tight tracking-[-0.02em]">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 text-sm text-white/50 leading-relaxed">{item.desc}</p>
-                    </div>
-
+                    <CardHeading className="mt-3 text-xl lg:text-2xl font-semibold text-white leading-tight tracking-[-0.02em]">
+                      {item.title}
+                    </CardHeading>
+                    <p className="mt-2 text-sm text-white/60 leading-relaxed">{item.desc}</p>
                   </div>
 
                   <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
@@ -195,28 +237,31 @@ export function CommandHQ({ className }: { className?: string }) {
               </motion.div>
             ))}
 
-            <div className="flex-shrink-0 w-[20vw]" />
           </motion.div>
 
-            <div className="pointer-events-none absolute inset-0">
-              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
-              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
-            </div>
+            {!stacked && (
+              <div className="pointer-events-none absolute inset-0">
+                <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
+                <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-black to-transparent opacity-70 md:w-16 md:opacity-90 lg:w-24 lg:opacity-100" />
+              </div>
+            )}
           </div>
 
-          <motion.div
-            className="relative z-20 flex-shrink-0 pb-6 pt-2 pointer-events-none"
-            style={{ opacity: scrollHintOpacity }}
-          >
-            <div className="flex justify-center">
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/30">
-                <span>Scroll to explore</span>
-                <motion.span animate={{ x: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                  →
-                </motion.span>
+          {!stacked && (
+            <motion.div
+              className="relative z-20 flex-shrink-0 pb-6 pt-2 pointer-events-none"
+              style={{ opacity: scrollHintOpacity }}
+            >
+              <div className="flex justify-center">
+                <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/30">
+                  <span>Scroll to explore</span>
+                  <motion.span animate={{ x: [0, 8, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                    →
+                  </motion.span>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

@@ -5,6 +5,8 @@ import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Team",
+  // Hidden for now (/team redirects home); keep it out of search results.
+  robots: { index: false, follow: false },
   description:
     "World-class engineers and operators building the future of robotics.",
 };
@@ -12,47 +14,37 @@ export const metadata: Metadata = {
 type TeamMember = {
   name: string;
   role: string;
-  bio: string;
+  /** Short points, as in the pitch deck. */
+  bio: string[];
   imageSrc?: string;
 };
 
 const team: TeamMember[] = [
   {
     name: "Mack Lorden",
-    role: "Founder & CEO",
-    bio: "Mack is a former 7-figure entrepreneur and experienced strategic growth leader with over a decade of experience in sales, web3, AI, and robotics. He scaled a GPU computing product to $40M in revenue within 6 months, launched a $3M web3 ecosystem, and has angel invested in/advised 50+ early-stage tech companies. As CEO he is focused on making robots easy to operate and accessible to everyone.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8377f77cbae2fb3262d8_Mack%20Mono-p-2600.jpg",
+    role: "Cofounder & CEO",
+    bio: [
+      "Former 7-figure founder",
+      "Scaled a GPU compute product to $40M revenue in six months",
+      "Owns sales, marketing, and commercial",
+    ],
+    imageSrc: "/team/mack-lorden.jpg",
   },
   {
     name: "Michael Hart",
-    role: "Chief Robotics Engineer",
-    bio: "Michael, an ex-Amazon robotics expert, brings years of practical experience in engineering robotics. At Amazon he worked as a senior robotics engineer and was one of the core figures behind the development of the Amazon Scout, the company's flagship autonomous delivery robot. He studied at Imperial College and has been active in the robotics community through YouTube, GitHub, and his personal blog, where he shares projects and insights. At CTRL+R he is architecting core teleoperation functionality and system architecture.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68b20a19cfaf0e6a7c807a26_Mike%20H.jpg",
-  },
-  {
-    name: "Rick Friedman",
-    role: "Robotics Engineer",
-    bio: "Rick Friedman is a robotics engineering specialist and former researcher at Virginia Tech’s Bio-Inspired Science and Technology Lab. He has built fully autonomous ground rovers end-to-end, spanning software, electronics, mechanical design, and vehicle dynamics. Rick brings professional experience across industrial automation, mining technologies, and robotic agriculture, with a strong emphasis on deploying complete robotic systems in real-world environments. At CTRL+R, he is focused on end-to-end robotic system development and deployment.",
-    imageSrc: "/rick_friedman.jpg",
+    role: "Lead Robotics Engineer",
+    bio: ["Former senior robotics engineer at Amazon", "Built the CTRL+R agent running today"],
+    imageSrc: "/team/michael-hart.jpg",
   },
   {
     name: "Kenneth Fox",
-    role: "UX/UI & Full-Stack Engineer",
-    bio: "Kenneth brings a decade of full-stack mastery—from early campaigns in martech to fintech trading platforms and AI-powered healthcare SaaS. He built advanced pipelines, multi-asset trading engines and multilingual SEO platforms; earlier, he scaled e-commerce ecosystems and marketing automation across global teams. Now he fuses intuitive UI/UX with deep backend engineering and AI integration to deliver product experiences that delight both users and customers.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68ff8a934ceeaa3d9b80c03d_Kenneth%20Fox%20Mono.jpg",
+    role: "UX/UI Engineer",
+    bio: [
+      "Over a decade of full-stack engineering and UX/UI design",
+      "Owns the product's experience and interface",
+    ],
+    imageSrc: "/team/kenneth-fox.jpg",
   },
-  
-  {
-    name: "Alexandre Pacheco",
-    role: "Chief Robotics Advisor",
-    bio: "Alexandre, a former NASA intern and active robotics researcher, specializes in swarm robotics and blockchain-powered coordination of robotic systems. His PhD research, supported by 12 peer-reviewed publications, and his strong academic ties with the Université Libre de Bruxelles, the University of Konstanz, and the University of the Azores, showcase his expertise. At CTRL+R, Alex advises CTRL+R on swarm robotics, system design, and developer experience.",
-    imageSrc:
-      "https://cdn.prod.website-files.com/688b650d15ca6b144341e1f7/68bc46c3dd2f680653b21718_telegram-cloud-photo-size-5-6183668341554661520-y.jpg",
-  },
-  
 ];
 
 export default function TeamPage() {
@@ -61,7 +53,7 @@ export default function TeamPage() {
       <SiteHeader />
 
       <main className="pt-16 flex-1">
-        {/* Hero - same style as Research, News, Careers */}
+        {/* Hero - same style as News */}
         <section className="relative overflow-hidden border-b border-hairline">
           <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-8 md:pb-12">
             <div className="max-w-3xl">
@@ -92,7 +84,7 @@ export default function TeamPage() {
               </h2>
             </Reveal>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {team.map((m, i) => (
               <Reveal
                 key={m.name}
@@ -100,17 +92,18 @@ export default function TeamPage() {
                 className="overflow-hidden rounded-3xl border border-hairline bg-black/35"
               >
                 {m.imageSrc ? (
-                  <div className="relative aspect-[16/10] overflow-hidden">
+                  // Photos are pre-cropped square with every face at the same size and height.
+                  <div className="relative aspect-square overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={m.imageSrc}
                       alt={m.name}
                       loading="lazy"
-                      className="absolute inset-0 h-full w-full object-cover object-[center_35%]"
+                      className="absolute inset-0 h-full w-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
                   </div>
                 ) : (
-                  <div className="aspect-[16/10] bg-[radial-gradient(900px_420px_at_80%_25%,rgba(201,0,7,0.12),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.2))]" />
+                  <div className="aspect-square bg-[radial-gradient(900px_420px_at_80%_25%,rgba(201,0,7,0.12),transparent_60%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.2))]" />
                 )}
 
                 <div className="p-6">
@@ -118,7 +111,14 @@ export default function TeamPage() {
                   <div className="mt-1 text-xs tracking-[0.18em] uppercase text-white/45">
                     {m.role}
                   </div>
-                  <p className="mt-4 text-sm leading-6 text-white/60">{m.bio}</p>
+                  <ul className="mt-4 space-y-2">
+                    {m.bio.map((point) => (
+                      <li key={point} className="flex gap-2.5 text-sm leading-6 text-white/60">
+                        <span className="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </Reveal>
             ))}

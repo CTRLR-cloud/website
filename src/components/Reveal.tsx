@@ -20,7 +20,7 @@ export function Reveal({
   immediate = false,
   children,
 }: RevealProps) {
-  const Tag = (as ?? "div") as any;
+  const Tag: React.ElementType = as ?? "div";
   const id = useId();
   const ref = useRef<Element | null>(null);
 

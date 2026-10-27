@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Privacy Policy",
   description:
     "How CTRL+R handles your data: no collection without permission, end-to-end encrypted client streams, and a security-first approach.",
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (
@@ -48,7 +50,7 @@ export default function PrivacyPage() {
                 </h2>
                 <p className="text-sm leading-7 md:text-base md:leading-8">
                   We do not collect personal or usage data without your permission. When we
-                  ask for information—such as through a contact form, signup flow, or optional
+                  ask for information—such as when you email us, create an account, or opt into
                   analytics—it is only with your knowledge and agreement, and we use it for the
                   purpose we describe at the time.
                 </p>
@@ -118,7 +120,7 @@ export default function PrivacyPage() {
                   change when we do.
                 </p>
                 <p className="text-xs text-white/40 pt-4">
-                  Last updated: {new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+                  Last updated: April 8, 2026
                 </p>
               </div>
             </Reveal>

@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { cn } from "@/lib/cn";
 
 type Props = {
@@ -17,6 +17,20 @@ type Props = {
 export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc, style }: Props) {
   const [broken, setBroken] = useState(false);
   const [fallbackBroken, setFallbackBroken] = useState(false);
+  const [seenSrc, setSeenSrc] = useState(src);
+
+  if (src !== seenSrc) {
+    setSeenSrc(src);
+    setBroken(false);
+    setFallbackBroken(false);
+  }
+
+  // A cached failure is already complete when the node mounts, so onError never fires.
+  // Defer the update: setState inside the ref runs while React is still hydrating.
+  const noteCachedFailure = useCallback((el: HTMLImageElement | null) => {
+    if (!el || !el.complete || el.naturalWidth !== 0) return;
+    queueMicrotask(() => setBroken(true));
+  }, []);
 
   if (broken && fallbackSrc && !fallbackBroken) {
     return (
@@ -48,6 +62,7 @@ export function SmartImage({ src, alt, className, fallbackClassName, fallbackSrc
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
+      ref={noteCachedFailure}
       src={src}
       alt={alt}
       loading="lazy"

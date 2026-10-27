@@ -13,17 +13,17 @@ const FEEDS: { url: string; name: string; fallbackImage: string }[] = [
   {
     url: "https://www.therobotreport.com/feed/",
     name: "The Robot Report",
-    fallbackImage: "https://images.unsplash.com/photo-1561557944-6e7860d2c758?w=800&h=500&fit=crop",
+    fallbackImage: "/news-fallback.jpg",
   },
   {
     url: "https://spectrum.ieee.org/rss/robotics/fulltext",
     name: "IEEE Spectrum",
-    fallbackImage: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=500&fit=crop",
+    fallbackImage: "/news-fallback.jpg",
   },
   {
     url: "https://robohub.org/feed/",
     name: "Robohub",
-    fallbackImage: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&h=500&fit=crop",
+    fallbackImage: "/news-fallback.jpg",
   },
 ];
 
@@ -181,18 +181,6 @@ export async function fetchRoboticsStories(limit = 3): Promise<RoboticsStoryCard
   }));
 }
 
-const getCachedStoriesImpl = unstable_cache(
-  async () => {
-    try {
-      return await fetchRoboticsStories(3);
-    } catch {
-      return undefined;
-    }
-  },
-  ["robotics-stories-v4"],
-  { revalidate: REVALIDATE_SECONDS },
-);
-
 const getCachedStoriesForNewsImpl = unstable_cache(
   async () => {
     try {
@@ -204,18 +192,6 @@ const getCachedStoriesForNewsImpl = unstable_cache(
   ["robotics-stories-news-v4"],
   { revalidate: REVALIDATE_SECONDS },
 );
-
-/** Cached stories for homepage (e.g. StoriesSection). In dev, bypasses cache so stories update every load. */
-export async function getCachedStories() {
-  if (process.env.NODE_ENV === "development") {
-    try {
-      return await fetchRoboticsStories(3);
-    } catch {
-      return undefined;
-    }
-  }
-  return getCachedStoriesImpl();
-}
 
 /** Cached stories for News page: 10 total (1 featured + 9 in Latest rail). In dev, bypasses cache so stories update every load. */
 export async function getCachedStoriesForNews() {

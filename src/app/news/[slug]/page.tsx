@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { Reveal } from "@/components/Reveal";
 import { getNewsPost, type NewsPost } from "@/content/news";
+import { SmartImage } from "@/components/SmartImage";
 
 function Pill({ children, variant }: { children: string; variant: "category" | "type" }) {
   return (
@@ -68,10 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const post = getNewsPost(slug);
   if (!post) return {};
-  return {
-    title: post.title,
-    description: post.excerpt,
-  };
+  return pageMetadata({ title: post.title, description: post.excerpt, path: `/news/${post.slug}` });
 }
 
 export default async function NewsArticlePage({ params }: Props) {
@@ -88,7 +87,7 @@ export default async function NewsArticlePage({ params }: Props) {
         <section className="relative">
           <Reveal>
             <div className="relative w-full h-[54vh] min-h-[420px] max-h-[720px] overflow-hidden">
-              <img
+              <SmartImage
                 src={post.image}
                 alt={post.title}
                 className="absolute inset-0 w-full h-full object-cover"
@@ -120,7 +119,7 @@ export default async function NewsArticlePage({ params }: Props) {
           </Reveal>
         </section>
 
-        <section className="bg-section">
+        <section className="relative">
           <div className="mx-auto max-w-6xl px-6 py-12 md:py-16">
             <Reveal delayMs={120}>
               <p className="text-xl text-white/80 leading-relaxed mb-10 max-w-3xl">

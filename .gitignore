@@ -3,7 +3,13 @@ node_modules
 out
 build
 .DS_Store
-fastmode-out/
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/screenshots/
 
 # Superpowers / SDD working files — never commit
 .superpowers/
@@ -14,3 +20,4 @@ docs/sdd/
 
 
 
+*.tsbuildinfo

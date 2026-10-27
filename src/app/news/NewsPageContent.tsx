@@ -11,7 +11,8 @@ import { newsPosts } from "@/content/news";
 import type { RoboticsStoryCard } from "@/lib/roboticsFeeds";
 import { proxyImageUrl } from "@/lib/roboticsFeeds";
 
-const FALLBACK_IMAGE = "/drones.png";
+/** Shown when a story's own picture fails to load: the CTRL+R logo over its construction drawing. */
+const FALLBACK_IMAGE = "/news-fallback.jpg";
 
 function Pill({ children, variant }: { children: string; variant: "a" | "b" }) {
   return (
@@ -78,7 +79,7 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
       <SiteHeader />
 
       <main className="pt-16 flex-1 min-w-0 w-full max-w-[100vw] overflow-x-hidden">
-        <section className="relative overflow-hidden border-b border-hairline">
+        <section className="relative overflow-hidden">
           <div className="mx-auto max-w-6xl px-6 pt-16 md:pt-24 pb-8 md:pb-12">
             <div className="max-w-3xl">
               <Reveal>
@@ -101,7 +102,7 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
         </section>
 
         {/* Featured + Rail */}
-        <section className="bg-section min-w-0 w-full max-w-[100vw] overflow-x-hidden">
+        <section className="relative min-w-0 w-full max-w-[100vw] overflow-x-hidden">
           <div className="mx-auto w-full min-w-0 max-w-6xl px-4 sm:px-6 pt-8 md:pt-12 pb-16 md:pb-24">
             <div className="grid w-full min-w-0 grid-cols-12 gap-6 sm:gap-8">
               <div className="col-span-12 min-w-0 lg:col-span-5">
@@ -141,9 +142,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                           <div className="text-xs text-white/55">
                             {rssFeatured.meta}
                           </div>
-                          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
+                          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
                             {rssFeatured.title}
-                          </h3>
+                          </h2>
                           <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white group-hover:text-[var(--accent)] transition">
                             Read article{" "}
                             <span className="text-white/60 group-hover:translate-x-1 transition">
@@ -160,10 +161,11 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                     >
                       <article className="mt-6 w-full min-w-0 rounded-[28px] border border-white/10 bg-white/[0.03] overflow-hidden group">
                         <div className="relative aspect-[16/10] overflow-hidden">
-                          <img
+                          <SmartImage
                             src={staticFeatured.image}
                             alt={staticFeatured.title}
                             className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                            fallbackSrc={FALLBACK_IMAGE}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
                           <div className="absolute bottom-5 left-5 flex items-center gap-2">
@@ -176,9 +178,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                             {staticFeatured.date} • {staticFeatured.readingMinutes}{" "}
                             min read
                           </div>
-                          <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
+                          <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition">
                             {staticFeatured.title}
-                          </h3>
+                          </h2>
                           <p className="mt-3 text-sm leading-6 text-white/60">
                             {staticFeatured.excerpt}
                           </p>
@@ -263,9 +265,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                                 <div className="text-xs text-white/55">
                                   {s.meta}
                                 </div>
-                                <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
+                                <h3 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
                                   {s.title}
-                                </h4>
+                                </h3>
                                 <div className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-white/70 group-hover:text-white transition">
                                   Read article{" "}
                                   <span className="group-hover:translate-x-1 transition">
@@ -290,10 +292,11 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                           >
                             <article className="rounded-[22px] border border-white/10 bg-white/[0.03] overflow-hidden group h-full">
                               <div className="relative aspect-[16/9] overflow-hidden">
-                                <img
+                                <SmartImage
                                   src={c.image}
                                   alt={c.title}
                                   className="absolute inset-0 w-full h-full object-cover transition duration-500 group-hover:scale-105"
+                                  fallbackSrc={FALLBACK_IMAGE}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
                                 <div className="absolute bottom-3 left-3 flex items-center gap-2">
@@ -304,9 +307,9 @@ export function NewsPageContent({ stories }: NewsPageContentProps) {
                                 <div className="text-xs text-white/55">
                                   {c.date} • {c.readingMinutes} min read
                                 </div>
-                                <h4 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
+                                <h3 className="mt-2 text-base font-semibold tracking-tight text-white group-hover:text-[var(--accent)] transition line-clamp-2">
                                   {c.title}
-                                </h4>
+                                </h3>
                                 <p className="mt-2 text-sm leading-6 text-white/60 line-clamp-2">
                                   {c.excerpt}
                                 </p>

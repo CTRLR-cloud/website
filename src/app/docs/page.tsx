@@ -1,21 +1,14 @@
 import type { Metadata } from "next";
-import { SiteHeader } from "@/components/SiteHeader";
-import { SiteFooter } from "@/components/SiteFooter";
-import { DocsContent } from "@/components/DocsContent";
+import { pageMetadata } from "@/lib/seo";
+import { DocsShell } from "@/components/DocsShell";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Docs",
-  description: "Learn how to connect, configure, and operate your robots with CTRL+R.",
-};
+  description:
+    "Learn how to connect, configure, and operate your robots, drones, and other devices with CTRL+R.",
+  path: "/docs",
+});
 
 export default function DocsPage() {
-  return (
-    <div className="min-h-screen flex flex-col">
-      <SiteHeader />
-      <main className="pt-16 flex-1">
-        <DocsContent />
-      </main>
-      <SiteFooter />
-    </div>
-  );
+  return <DocsShell />;
 }

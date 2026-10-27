@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { pageMetadata } from "@/lib/seo";
 import { PageShell } from "@/components/PageShell";
 import { SITE_LINKS } from "@/config/links";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Launch Client",
   description:
-    "Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, VR headset, gaming controller, or custom rig.",
-};
+    "Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, keyboard, gaming controller, or custom rig.",
+  path: "/launch-client",
+});
 
 export default function LaunchClientPage() {
   return (
     <PageShell
       title="Launch Client"
-      subtitle="Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, VR headset, gaming controller, or custom rig."
+      subtitle="Connect to and control robots from anywhere in the world with near-zero latency, all while using your preferred interface: web browser, keyboard, gaming controller, or custom rig."
     >
       <section className="border-t border-hairline bg-section">
         <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
@@ -26,14 +29,12 @@ export default function LaunchClientPage() {
               >
                 Book a Demo
               </a>
-              <a
-                href={SITE_LINKS.DOCS}
-                target="_blank"
-                rel="noreferrer"
+              <Link
+                href="/docs"
                 className="inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold transition ring-premium btn-secondary"
               >
                 View docs
-              </a>
+              </Link>
             </div>
 
             <div className="mt-6 text-xs text-white/35">

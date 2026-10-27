@@ -12,11 +12,14 @@ const nav = [
   { label: "Home", href: "/" },
   { label: "Docs", href: "/docs" },
   { label: "News", href: "/news" },
-  { label: "Careers", href: "/careers" },
-  { label: "Technology", href: "/technology-overview" },
-  { label: "Team", href: "/team" },
+  { label: "Platform", href: "/platform" },
   { label: "Contact Us", href: "/contact" },
 ];
+
+function isActive(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 function MenuIcon({ className }: { className?: string }) {
   return (
@@ -56,9 +59,12 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
+  // Close the mobile menu after navigating (adjusting state during render, as React recommends).
+  const [menuPath, setMenuPath] = useState(pathname);
+  if (pathname !== menuPath) {
+    setMenuPath(pathname);
     setMobileOpen(false);
-  }, [pathname]);
+  }
 
   useEffect(() => {
     if (!mobileOpen) return;
@@ -89,9 +95,9 @@ export function SiteHeader() {
               <CtrlRLogo variant="symbol" />
             </Link>
 
-            <nav className="hidden md:flex items-center gap-6 text-sm font-semibold">
+            <nav aria-label="Main" className="hidden md:flex items-center gap-6 text-sm font-semibold">
               {nav.map((item) => {
-                const active = pathname === item.href;
+                const active = isActive(pathname, item.href);
                 return (
                   <Link
                     key={item.href}
@@ -100,6 +106,7 @@ export function SiteHeader() {
                       "rounded ring-premium transition",
                       active ? "text-white" : "text-white/70 hover:text-white",
                     )}
+                    aria-current={active ? "page" : undefined}
                   >
                     {item.label}
                   </Link>
@@ -167,7 +174,7 @@ export function SiteHeader() {
 
                 <div className="mt-4 grid gap-1">
                   {nav.map((item) => {
-                    const active = pathname === item.href;
+                    const active = isActive(pathname, item.href);
                     return (
                       <Link
                         key={item.href}
@@ -176,6 +183,7 @@ export function SiteHeader() {
                           "rounded-xl px-3 py-3 text-sm font-semibold ring-premium transition",
                           active ? "bg-white/8 text-white" : "text-white/80 hover:bg-white/6 hover:text-white",
                         )}
+                        aria-current={active ? "page" : undefined}
                       >
                         {item.label}
                       </Link>
